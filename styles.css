@@ -89,14 +89,17 @@ h1, h2, h3, h4, select, button {
 
 @media (max-width: 1200px) {
     .dashboard-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     .practice-cards-grid {
         grid-template-columns: 1fr 1fr !important;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
     .practice-cards-grid {
         grid-template-columns: 1fr !important;
     }
@@ -433,21 +436,7 @@ input[type="range"] {
     stroke: #000000 !important;
     fill: #000000;
 }
-/* Ensure the staff panel takes 100% width on top */
-.dashboard-grid {
-    display: flex;
-    flex-direction: column;
-}
-.controls-panel {
-    order: 2;
-}
-.practice-plan-panel {
-    order: 3;
-}
-.staff-panel {
-    order: 1; /* Pauta no TOPO e gigante */
-    width: 100%;
-}
+/* Staff panel is positioned globally */
 
 
 .play-arrow {
@@ -923,6 +912,72 @@ input[type="range"] {
 
 .weekly-day-card .practice-item span {
     color: var(--text-muted);
+}
+
+/* ── RESPONSIVE OVERRIDES FOR MOBILE & TABLET ── */
+@media (max-width: 900px) {
+    .dashboard-content-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0.75rem 0.5rem !important;
+    }
+    
+    .app-container {
+        gap: 1rem !important;
+    }
+    
+    .main-header h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .main-header .tagline {
+        font-size: 0.85rem !important;
+    }
+    
+    .panel {
+        padding: 1rem !important;
+        border-radius: 12px !important;
+    }
+    
+    .panel-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    
+    .staff-container {
+        padding: 1rem !important;
+        min-height: 200px !important;
+    }
+    
+    .weekly-day-card {
+        padding: 1rem !important;
+    }
+    
+    .harmony-table th, .harmony-table td {
+        padding: 0.4rem 0.25rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .suzuki-step .step-label {
+        display: none !important;
+    }
+    
+    .playback-buttons, .action-buttons {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+    }
+    
+    .staff-transport {
+        padding: 0.5rem 0.75rem !important;
+        gap: 0.5rem !important;
+    }
 }
 
 

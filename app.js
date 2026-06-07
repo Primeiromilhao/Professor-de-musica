@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const levelSelect       = document.getElementById("level-select");
     const tonicSelect       = document.getElementById("tonic-select");
     const scaleTypeSelect   = document.getElementById("scale-type-select");
+    const rhythmDivisionSelect = document.getElementById("rhythm-division-select");
     const octavesSelect     = document.getElementById("octaves-select");
     const intervalSelect    = document.getElementById("interval-select");
     const octavesGroup      = document.getElementById("octaves-group");
@@ -339,7 +340,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const note = activeNotesList[activeNoteIndex];
         const bpm  = parseInt(bpmSlider.value);
-        const dur  = 60 / bpm; // segundos
+        const rhythmSel = rhythmDivisionSelect?.value || "seminima";
+        let factor = 1.0;
+        if (rhythmSel === "minima") factor = 2.0;
+        else if (rhythmSel === "colcheia") factor = 0.5;
+        else if (rhythmSel === "semicolcheia") factor = 0.25;
+        const dur  = (60 / bpm) * factor; // segundos
 
         // Notas para tocar (escala ± intervalo)
         let toPlay = [`${note.name}${note.octave}`];
@@ -463,7 +469,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
 
-                const staveNote = new StaveNote({ clef: "treble", keys, duration: "q" });
+                const rhythmSel = rhythmDivisionSelect?.value || "seminima";
+                const durMap = { "minima": "h", "seminima": "q", "colcheia": "8", "semicolcheia": "16" };
+                const vexDuration = durMap[rhythmSel] || "q";
+
+                const staveNote = new StaveNote({ clef: "treble", keys, duration: vexDuration });
 
                 // Acidentais explícitos (quando NÃO fazem parte da armadura)
                 keys.forEach((k, kIdx) => {
@@ -497,6 +507,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const fmtWidth = chunkIdx === 0 ? (width - 160) : (width - 60);
             new Formatter().joinVoices([voice]).format([voice], fmtWidth);
             voice.draw(ctx, stave);
+
+            const rhythmSel = rhythmDivisionSelect?.value || "seminima";
+            const durMap = { "minima": "h", "seminima": "q", "colcheia": "8", "semicolcheia": "16" };
+            const vexDuration = durMap[rhythmSel] || "q";
+            if (vexDuration === "8" || vexDuration === "16") {
+                const beams = Vex.Flow.Beam.generateBeams(vexNotes);
+                beams.forEach(b => b.setContext(ctx).draw());
+            }
 
             yOffset += STAVE_HEIGHT;
         });
@@ -614,6 +632,10 @@ document.addEventListener("DOMContentLoaded", () => {
     levelSelect.addEventListener("change",     () => { applyLevelSettings(); updateDashboard(); });
     tonicSelect.addEventListener("change",     () => updateDashboard());
     scaleTypeSelect.addEventListener("change", () => updateDashboard());
+    rhythmDivisionSelect?.addEventListener("change", () => {
+        drawSheetMusic(activeNotesList);
+        updateDashboard();
+    });
     octavesSelect.addEventListener("change",   () => updateDashboard());
     intervalSelect.addEventListener("change",  () => updateDashboard());
 

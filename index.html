@@ -205,9 +205,20 @@
                         </select>
                     </div>
 
-                    <div class="checkbox-control" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="checkbox-control" style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
                         <input type="checkbox" id="chk-show-degrees" style="width: auto; cursor: pointer;">
                         <label for="chk-show-degrees" style="color: var(--text-muted); font-size: 0.9rem; cursor: pointer; user-select: none;">Mostrar Graus na Pauta</label>
+                    </div>
+                    
+                    <div class="mixer-controls-box" style="display: flex; gap: 1rem; margin-bottom: 1rem; background: rgba(255,255,255,0.01); padding: 0.5rem; border-radius: 8px; border: 1px dashed var(--border-color);">
+                        <div class="checkbox-control" style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0;">
+                            <input type="checkbox" id="chk-mute-scale" checked style="width: auto; cursor: pointer;">
+                            <label for="chk-mute-scale" style="color: var(--text-main); font-size: 0.85rem; cursor: pointer; user-select: none;">Ouvir Escala</label>
+                        </div>
+                        <div class="checkbox-control" style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0;">
+                            <input type="checkbox" id="chk-mute-pedal" checked style="width: auto; cursor: pointer;">
+                            <label for="chk-mute-pedal" style="color: var(--text-main); font-size: 0.85rem; cursor: pointer; user-select: none;">Ouvir Pedal</label>
+                        </div>
                     </div>
                     
                     <div class="playback-buttons">
@@ -603,6 +614,23 @@
                             <!-- Inserido dinamicamente -->
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Plano de Estudo Semanal (Professor Online) -->
+            <section class="panel weekly-plan-panel no-print" id="weekly-plan-panel" style="grid-column: 1 / -1;">
+                <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <h2 class="panel-title" style="margin: 0;"><i class="fa-solid fa-calendar-days"></i> Plano de Estudo Semanal (Professor Online)</h2>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="badge" id="weekly-plan-dates" style="background: var(--primary);">Carregando plano...</span>
+                        <button id="btn-rebuild-weekly-plan" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-arrows-rotate"></i> Regenerar Plano</button>
+                    </div>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 1.25rem 0; line-height: 1.4;">
+                    Este plano divide o seu tempo diário de prática de forma equilibrada entre golpes de arco (mão direita), técnica de mão esquerda, escalas/afinação com cordas duplas e repertório real. É atualizado automaticamente aos domingos à noite ou clicando em Regenerar. Marque os dias concluídos para acompanhar o seu progresso.
+                </p>
+                <div class="weekly-plan-grid" id="weekly-plan-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                    <!-- Gerado dinamicamente via JS -->
                 </div>
             </section>
         </main>

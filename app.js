@@ -289,6 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (suzukiActive && currentStep === 4 && activePlaybackType === "scale") {
             setSuzukiLoopRange();
         }
+        // Iniciar pedal de sustentação contínuo (se selecionado)
+        const droneSelect = document.getElementById("drone-select");
+        if (droneSelect && droneSelect.value !== "none") {
+            startDroneAudio(parseInt(droneSelect.value));
+        } else if (activeDroneDegree !== null) {
+            startDroneAudio(activeDroneDegree);
+        }
         playNextNote();
     }
 
@@ -304,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnFsStop.disabled  = true;
 
         if (piano) piano.releaseAll();
-        if (synth)  synth.releaseAll();
+        stopDroneAudio();
 
         updateSuzukiPlaybackUI(false);
         removeVisualNoteHighlight();
@@ -386,17 +393,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (iv) toPlay.push(`${iv.name}${iv.octave}`);
         }
 
-        // Drone de fundo
-        const droneEl = document.getElementById("drone-select");
-        let drone = droneEl ? droneEl.value : "none";
-        if (suzukiActive && currentStep === 4 && drone === "none") drone = "0";
-        if (drone !== "none" && activeNoteIndex % 4 === 0) {
-            const chordNotes = getDroneChord(parseInt(drone));
-            if (synth) { synth.releaseAll(); synth.triggerAttack(chordNotes); }
+        // Tocar nota (suporta polifonia real com PolySynth) se a escala não estiver silenciada
+        const muteScale = document.getElementById("chk-mute-scale")?.checked === false;
+        if (piano && !muteScale) {
+            piano.triggerAttackRelease(toPlay, dur * 0.85);
         }
-
-        // Tocar nota (suporta polifonia real com PolySynth)
-        if (piano) piano.triggerAttackRelease(toPlay, dur * 0.85);
 
         // Visuais
         highlightVisualNote(activeNoteIndex);
@@ -713,6 +714,44 @@ document.addEventListener("DOMContentLoaded", () => {
     octavesSelect.addEventListener("change",   () => updateDashboard());
     intervalSelect.addEventListener("change",  () => updateDashboard());
 
+    // Event listeners para o Mixer de Áudio e Drone Select
+    const droneSelect = document.getElementById("drone-select");
+    if (droneSelect) {
+        droneSelect.addEventListener("change", e => {
+            const val = e.target.value;
+            if (val === "none") {
+                stopDroneAudio();
+            } else {
+                startDroneAudio(parseInt(val));
+            }
+        });
+    }
+
+    const chkMutePedal = document.getElementById("chk-mute-pedal");
+    if (chkMutePedal) {
+        chkMutePedal.addEventListener("change", e => {
+            if (e.target.checked) {
+                if (activeDroneDegree !== null) {
+                    startDroneAudio(activeDroneDegree);
+                }
+            } else {
+                if (synth) synth.releaseAll();
+            }
+        });
+    }
+
+    const chkMuteScale = document.getElementById("chk-mute-scale");
+    if (chkMuteScale) {
+        chkMuteScale.addEventListener("change", () => {
+            // Apenas para sincronizar/salvar estado se necessário
+        });
+    }
+
+    document.getElementById("btn-rebuild-weekly-plan")?.addEventListener("click", () => {
+        generateWeeklyPlan();
+        alert("Plano semanal recalculado para a escala e nível ativos!");
+    });
+
     const chkShowDegrees = document.getElementById("chk-show-degrees");
     if (chkShowDegrees) {
         chkShowDegrees.addEventListener("change", () => {
@@ -914,6 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderHarmonyTable();
         updateAcademyStats();
         drawCircleOfFifths();
+        generateWeeklyPlan();
     }
 
     // ── PDF BADGES ────────────────────────────────────────────
@@ -933,6 +973,74 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = `<span class="pdf-badge pdf-badge-conditional"><i class="fa-solid fa-book-bookmark"></i> Livro Físico</span>`;
     }
 
+    // ── SUSTAINED DRONE AUDIO FUNCTIONS ───────────────────────
+    let activeDroneDegree = null;
+
+    function startDroneAudio(degree) {
+        initAudio();
+        const mutePedal = document.getElementById("chk-mute-pedal")?.checked === false;
+        
+        if (synth) synth.releaseAll();
+        
+        activeDroneDegree = degree;
+        
+        const droneSelect = document.getElementById("drone-select");
+        if (droneSelect) {
+            droneSelect.value = String(degree);
+        }
+        
+        updatePedalButtonsUI();
+
+        if (mutePedal) return;
+
+        const notes = getDroneChord(degree);
+        if (synth) {
+            synth.triggerAttack(notes);
+        }
+    }
+
+    function stopDroneAudio() {
+        activeDroneDegree = null;
+        if (synth) {
+            synth.releaseAll();
+        }
+        
+        const droneSelect = document.getElementById("drone-select");
+        if (droneSelect) {
+            droneSelect.value = "none";
+        }
+        
+        updatePedalButtonsUI();
+    }
+
+    function toggleDroneAudio(degree) {
+        if (activeDroneDegree === degree) {
+            stopDroneAudio();
+        } else {
+            startDroneAudio(degree);
+        }
+    }
+
+    function updatePedalButtonsUI() {
+        const rows = document.querySelectorAll("#harmony-table-body tr");
+        rows.forEach((row, idx) => {
+            const btn = row.querySelector(".btn-play-chord");
+            if (activeDroneDegree === idx) {
+                row.classList.add("active-pedal-row");
+                if (btn) {
+                    btn.classList.add("active-pedal");
+                    btn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i> Parar`;
+                }
+            } else {
+                row.classList.remove("active-pedal-row");
+                if (btn) {
+                    btn.classList.remove("active-pedal");
+                    btn.innerHTML = `<i class="fa-solid fa-volume-high"></i> Ouvir`;
+                }
+            }
+        });
+    }
+
     // ── HARMONY TABLE ─────────────────────────────────────────
     function renderHarmonyTable() {
         if (!harmonyTableBody) return;
@@ -945,16 +1053,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const chord = getDroneChord(i);
             const tr = document.createElement("tr");
             tr.innerHTML = `<td><strong>${DEGREE_ROMAN[i]}</strong></td><td>${chord[0].slice(0,-1)}</td><td>${chordsDesc[i]}</td><td><button class="btn btn-sm btn-secondary btn-play-chord" data-degree="${i}" style="padding:0.2rem 0.5rem;font-size:0.75rem;"><i class="fa-solid fa-volume-high"></i> Ouvir</button></td>`;
-            tr.querySelector(".btn-play-chord").addEventListener("mousedown", e => {
-                initAudio();
-                const deg   = parseInt(e.currentTarget.dataset.degree);
-                const notes = getDroneChord(deg);
-                if (synth) { synth.releaseAll(); synth.triggerAttack(notes); }
+            tr.querySelector(".btn-play-chord").addEventListener("click", e => {
+                const deg = parseInt(e.currentTarget.dataset.degree);
+                toggleDroneAudio(deg);
             });
-            tr.querySelector(".btn-play-chord").addEventListener("mouseup",    () => { if (synth) synth.releaseAll(); });
-            tr.querySelector(".btn-play-chord").addEventListener("mouseleave", () => { if (synth) synth.releaseAll(); });
             harmonyTableBody.appendChild(tr);
         }
+        updatePedalButtonsUI();
     }
 
     // ── STUDY FUNDAMENTALS ────────────────────────────────────
@@ -1061,6 +1166,141 @@ document.addEventListener("DOMContentLoaded", () => {
         if (tryGet("study-practice-guide")) {
             tryGet("study-practice-guide").innerHTML = getDetailedStudyGuide(key, mode, level, route);
         }
+    }
+
+    // ── WEEKLY STUDY PLAN GENERATOR (PROFESSOR ONLINE) ────────
+    function getPreviousSunday(date) {
+        const d = new Date(date);
+        const day = d.getDay();
+        const diff = d.getDate() - day; // Sunday is 0
+        return new Date(d.setDate(diff));
+    }
+
+    function formatDate(date) {
+        return date.toLocaleDateString("pt-PT", { day: '2-digit', month: '2-digit' });
+    }
+
+    function generateWeeklyPlan() {
+        const key = tonicSelect.value;
+        const mode = scaleTypeSelect.value;
+        const level = levelSelect.value;
+        const modeLabel = {
+            "major":"Maior","minor-natural":"Menor Natural",
+            "minor-harmonic":"Menor Harmónica","minor-melodic":"Menor Melódica"
+        }[mode] || mode;
+
+        const container = document.getElementById("weekly-plan-grid");
+        const datesLabel = document.getElementById("weekly-plan-dates");
+        if (!container || !datesLabel) return;
+
+        const sunday = getPreviousSunday(new Date());
+        const saturday = new Date(sunday);
+        saturday.setDate(sunday.getDate() + 6);
+        datesLabel.innerText = `Semana de ${formatDate(sunday)} a ${formatDate(saturday)}`;
+
+        const savedStates = JSON.parse(localStorage.getItem("violin_lab_weekly_plan_completed_days") || "{}");
+
+        let scaleBook = "Suzuki Vol. 1";
+        let techBookLeft = "Ševčík Op. 1 Part 1";
+        let techBookRight = "Ševčík Op. 2 (Arcadas)";
+        let etudeBook = "Wohlfahrt Op. 45";
+        let pieceName = activePracticePlan?.piece ? `${activePracticePlan.piece.title} (${activePracticePlan.piece.composer})` : `Concerto em ${key} ${modeLabel}`;
+        let doubleStopType = "Segundas";
+
+        if (level === "intermedio") {
+            scaleBook = "Ševčík Op. 1 (Escalas)";
+            techBookLeft = "Ševčík Op. 8 (Posições)";
+            techBookRight = "Ševčík Op. 3 (Arco)";
+            etudeBook = "Kayser Op. 20";
+            doubleStopType = "Terças / Quartas";
+        } else if (level === "avancado") {
+            scaleBook = "Carl Flesch (Sistema de Escalas)";
+            techBookLeft = "Ševčík Op. 9 (Cordas Duplas)";
+            techBookRight = "Fiorillo 36 Estudos";
+            etudeBook = "Kreutzer 42 Estudos";
+            doubleStopType = "Sextas / Oitavas";
+        } else if (level === "solista") {
+            scaleBook = "Ivan Galamian (Contemporânea)";
+            techBookLeft = "Ševčík Op. 1 Part 4 (Oitavas)";
+            techBookRight = "Paganini Caprichos";
+            etudeBook = "Jakob Dont Op. 35";
+            doubleStopType = "Décimas / Polifonia";
+        }
+
+        const days = [
+            { name: "Segunda-Feira", time: 45, focus: "Articulação e Legato", 
+              bow: `10 min: ${techBookRight} - Detaché e ligaduras uniformes.`, 
+              left: `10 min: ${techBookLeft} - Flexibilidade e postura.`, 
+              scale: `10 min: ${scaleBook} em ${key} ${modeLabel} - 1 oitava bem cantada.`, 
+              piece: `15 min: Estudo de ${etudeBook} - Leitura de notas lentas.` },
+            { name: "Terça-Feira", time: 45, focus: "Agilidade de Dedos (Esquerda)", 
+              bow: `10 min: Velocidade de arco no meio do arco.`, 
+              left: `10 min: ${techBookLeft} - Força e queda vertical dos dedos.`, 
+              scale: `10 min: ${scaleBook} com ligaduras de 2 notas.`, 
+              piece: `15 min: Repertório: ${pieceName} - Compassos 1-4.` },
+            { name: "Quarta-Feira", time: 50, focus: "Cordas Duplas e Afinação", 
+              bow: `10 min: Ângulo de arco plano (45º) tocando duas cordas.`, 
+              left: `15 min: ${techBookLeft} - Preparação de dedos duplos (${doubleStopType}).`, 
+              scale: `10 min: Escala em ${key} com pedal de tónica ativo no fundo.`, 
+              piece: `15 min: ${etudeBook} - Sincronização em tempo médio.` },
+            { name: "Quinta-Feira", time: 45, focus: "Arcadas Curtas (Martelé/Spiccato)", 
+              bow: `10 min: ${techBookRight} - Martelé com pausas e pressão firme.`, 
+              left: `10 min: Extensão do 4º dedo para afinação alta.`, 
+              scale: `10 min: ${scaleBook} em staccato curto.`, 
+              piece: `15 min: ${pieceName} - Compassos 5-8.` },
+            { name: "Sexta-Feira", time: 50, focus: "Expressividade e Vibrato", 
+              bow: `10 min: Controle de volume (crescendo / decrescendo).`, 
+              left: `15 min: Dedos de apoio (Anchor) e vibrato em notas longas.`, 
+              scale: `10 min: ${scaleBook} em legato lento de 4 notas por arco.`, 
+              piece: `15 min: ${pieceName} - Juntar as partes de forma contínua.` },
+            { name: "Sábado", time: 60, focus: "Performance e Gravação", 
+              bow: `15 min: Aquecimento completo com variações de arco da semana.`, 
+              left: `10 min: Revisão de trechos técnicos difíceis.`, 
+              scale: `15 min: Tocar a escala com metrônomo no tempo ideal.`, 
+              piece: `20 min: Gravar em WAV a peça ${pieceName} e avaliar afinação.` },
+            { name: "Domingo", time: 30, focus: "Auto-Avaliação e Leitura", 
+              bow: `10 min: Prática de leitura à primeira vista livre.`, 
+              left: `10 min: Alongamentos e relaxamento muscular da mão.`, 
+              scale: `10 min: Prática livre no Círculo de Quintas.`, 
+              piece: `Marcar conquistas e planejar próxima tonalidade.` }
+        ];
+
+        container.innerHTML = "";
+        days.forEach(day => {
+            const isCompleted = savedStates[day.name] || false;
+            const card = document.createElement("div");
+            card.className = `weekly-day-card${isCompleted ? " completed-day" : ""}`;
+            card.innerHTML = `
+                <h3 style="margin:0; font-size:0.9rem; display:flex; justify-content:space-between; align-items:center;">
+                    <span>${day.name}</span>
+                    <span style="font-size:0.75rem; font-weight:normal; opacity:0.8;">${day.time} min</span>
+                </h3>
+                <p style="font-size:0.75rem; color:var(--secondary); font-weight:600; margin:0.25rem 0 0.5rem 0; font-style:italic;"><i class="fa-solid fa-bullseye"></i> ${day.focus}</p>
+                <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.75rem;">
+                    <div class="practice-item"><strong>Mão Direita:</strong> <span>${day.bow}</span></div>
+                    <div class="practice-item"><strong>Mão Esquerda:</strong> <span>${day.left}</span></div>
+                    <div class="practice-item"><strong>Escala:</strong> <span>${day.scale}</span></div>
+                    <div class="practice-item"><strong>Repertório/Estudo:</strong> <span>${day.piece}</span></div>
+                </div>
+                <div style="margin-top:auto; display:flex; align-items:center; justify-content:space-between; font-size:0.7rem; border-top:1px dashed var(--border-color); padding-top:0.5rem;">
+                    <span style="color:var(--text-muted); font-style:italic;">Concluído:</span>
+                    <input type="checkbox" class="weekly-day-checkbox" data-day="${day.name}" ${isCompleted ? "checked" : ""} style="width:auto; height:16px; width:16px; cursor:pointer;">
+                </div>
+            `;
+
+            card.querySelector(".weekly-day-checkbox").addEventListener("change", e => {
+                const dayName = e.target.dataset.day;
+                savedStates[dayName] = e.target.checked;
+                localStorage.setItem("violin_lab_weekly_plan_completed_days", JSON.stringify(savedStates));
+                if (e.target.checked) {
+                    userXP += 15;
+                    updateAcademyStats();
+                }
+                generateWeeklyPlan();
+            });
+
+            container.appendChild(card);
+        });
     }
 
     // ── CIRCLE OF FIFTHS ──────────────────────────────────────

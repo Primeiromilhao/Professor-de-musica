@@ -20,7 +20,7 @@ Basta abrir o ficheiro `index.html` no browser — funciona 100% offline.
 
 ## 🌐 Acesso Online
 
-Disponível em: **https://brunovivo26.github.io/violin-lab/**
+Disponível em: **https://primeiromilhao.github.io/Professor-de-musica/**
 
 ## 📚 Métodos Pedagógicos
 

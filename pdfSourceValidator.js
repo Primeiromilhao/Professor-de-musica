@@ -23,8 +23,52 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
 
   const units = idList => (idList || []).map(id => catalog.studyUnits.find(u => u.id === id)).filter(Boolean);
   
-  const piece = catalog.repertoirePieces.find(p => p.id === route.dailyPlan.repertoirePieceId) || null;
-  const excerpts = (route.dailyPlan.excerptIds || []).map(id => catalog.excerptLinks.find(e => e.id === id)).filter(Boolean);
+  // Enriquecer técnica com o sevcikDb global se disponível
+  let bows = [];
+  if (typeof sevcikDb !== "undefined" && sevcikDb[key]) {
+    const s = sevcikDb[key];
+    bows = [{
+      id: s.id,
+      bookId: "sevcik_op1_1",
+      title: s.title,
+      focus: s.foco || s.focus,
+      notes: s.notes
+    }];
+  } else {
+    bows = units(route.dailyPlan.bowUnits);
+  }
+
+  // Enriquecer repertório com o repertoireDb global se disponível
+  let piece = null;
+  let excerpts = [];
+  if (typeof repertoireDb !== "undefined" && repertoireDb[key]) {
+    const list = repertoireDb[key];
+    const item = list.find(r => r.level.toLowerCase() === studentLevel.toLowerCase()) || list[0];
+    if (item) {
+      piece = {
+        id: item.id,
+        title: item.obra,
+        composer: item.composer,
+        key: key,
+        mode: mode,
+        studentLevel: studentLevel,
+        difficultyDescription: item.dificuldade
+      };
+      excerpts = [{
+        id: item.id + "_exc",
+        pieceId: item.id,
+        title: "Excerto Célebre",
+        bars: "Tema Principal",
+        transferObjective: item.dificuldade,
+        notes: item.notes
+      }];
+    }
+  }
+
+  if (!piece) {
+    piece = catalog.repertoirePieces.find(p => p.id === route.dailyPlan.repertoirePieceId) || null;
+    excerpts = (route.dailyPlan.excerptIds || []).map(id => catalog.excerptLinks.find(e => e.id === id)).filter(Boolean);
+  }
 
   const relatedBookIds = [...new Set([
     ...units(route.dailyPlan.scaleUnits).map(x => x.bookId),
@@ -41,7 +85,7 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
   return {
     route,
     scales: units(route.dailyPlan.scaleUnits),
-    bows: units(route.dailyPlan.bowUnits),
+    bows,
     etudes: units(route.dailyPlan.etudeUnits),
     piece,
     excerpts,
@@ -143,27 +187,27 @@ function generateMajorScaleNotes(tonic, mode, octaves) {
   let rootIdx = chromaticScale.indexOf(tonic);
   if (rootIdx === -1) rootIdx = 0;
 
-  const scalePitches = [];
-  let currIdx = rootIdx;
-  
+  // Definir oitava de início com base na tónica para violino
+  const startOct = (rootIdx >= chromaticScale.indexOf("G")) ? 3 : 4;
+
+  let ascending = [];
+  let chrIdx = rootIdx;
+  let octave = startOct;
+
   for (let o = 0; o < octaves; o++) {
-    const baseOct = o === 0 ? 4 : 5;
     for (let i = 0; i < 7; i++) {
-      let pitch = chromaticScale[currIdx % 12];
-      let oct = baseOct;
-      if (currIdx >= 12) oct += 1;
-      scalePitches.push(`${pitch}${oct}`);
-      currIdx = (currIdx + intervals[i]) % 12;
+      ascending.push(`${chromaticScale[chrIdx]}${octave}`);
+      chrIdx += intervals[i];
+      if (chrIdx >= 12) {
+        chrIdx -= 12;
+        octave++;
+      }
     }
   }
-  // Adiciona a nota de topo
-  let topPitch = chromaticScale[currIdx % 12];
-  let topOct = 4 + octaves;
-  scalePitches.push(`${topPitch}${topOct}`);
-  
-  // Adiciona o descendente
-  const desc = [...scalePitches].reverse().slice(1);
-  return scalePitches.concat(desc);
+  ascending.push(`${chromaticScale[chrIdx]}${octave}`);
+
+  const descending = [...ascending].reverse().slice(1);
+  return ascending.concat(descending);
 }
 
 /**

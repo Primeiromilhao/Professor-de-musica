@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const planRepFocus     = document.getElementById("plan-rep-focus");
     const repPdfContainer  = document.getElementById("rep-pdf-container");
     const btnRestoreScale  = document.getElementById("btn-restore-scale");
+    const btnRestoreScaleStaff = document.getElementById("btn-restore-scale-staff");
     const vexflowPanelTitle= document.getElementById("vexflow-panel-title");
     const challengeDayNum  = document.getElementById("challenge-day-num");
     const streakCountDisplay= document.getElementById("streak-count-display");
@@ -251,6 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
         isPlaying = true;
         btnPlay.innerHTML   = `<i class="fa-solid fa-pause"></i> Pausar`;
         btnFsPlay.innerHTML = `<i class="fa-solid fa-pause"></i> Pausar`;
+        const btnStaffPlay = document.getElementById("btn-staff-play");
+        if (btnStaffPlay) btnStaffPlay.innerHTML = `<i class="fa-solid fa-pause"></i> Pausar`;
         btnStop.disabled    = false;
         btnFsStop.disabled  = false;
         updateSuzukiPlaybackUI(true);
@@ -269,6 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         btnPlay.innerHTML   = `<i class="fa-solid fa-play"></i> Tocar`;
         btnFsPlay.innerHTML = `<i class="fa-solid fa-play"></i> Tocar`;
+        const btnStaffPlay = document.getElementById("btn-staff-play");
+        if (btnStaffPlay) btnStaffPlay.innerHTML = `<i class="fa-solid fa-play"></i> Tocar`;
         btnStop.disabled    = true;
         btnFsStop.disabled  = true;
 
@@ -301,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const chkEscala = document.getElementById("chk-chal-escala");
                 if (chkEscala) chkEscala.checked = true;
                 updateAcademyStats();
-            } else if (activePlaybackType === "tecnica") {
+            } else if (activePlaybackType === "tecnica" || activePlaybackType === "etude") {
                 challengeStates.tecnica = true;
                 const chkTecnica = document.getElementById("chk-chal-tecnica");
                 if (chkTecnica) chkTecnica.checked = true;
@@ -543,6 +548,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const raw   = buildScale(tonic, mode, octaves);
         activeNotesList = enrichWithFingering(raw);
         drawSheetMusic(activeNotesList);
+
+        vexflowPanelTitle.innerHTML = `<i class="fa-solid fa-music"></i> Pauta Clave de Sol`;
+        const modeLabel = {
+            "major":"Maior","minor-natural":"Menor Natural",
+            "minor-harmonic":"Menor Harmónica","minor-melodic":"Melódica"
+        }[mode] || mode;
+        scaleBadge.innerText = `${tonic} ${modeLabel}`;
+
+        if (btnRestoreScaleStaff) btnRestoreScaleStaff.style.display = "none";
+        const staffContentLabel = document.getElementById("staff-content-label");
+        if (staffContentLabel) staffContentLabel.innerText = "Escala Principal";
     }
 
     function loadPedagogicUnitIntoStaff(unit, badgeText, type) {
@@ -563,6 +579,9 @@ document.addEventListener("DOMContentLoaded", () => {
         vexflowPanelTitle.innerHTML = `<i class="fa-solid fa-music"></i> Pauta: ${unit.title}`;
         scaleBadge.innerText = badgeText;
         btnRestoreScale.style.display = "inline-block";
+        if (btnRestoreScaleStaff) btnRestoreScaleStaff.style.display = "inline-block";
+        const staffContentLabel = document.getElementById("staff-content-label");
+        if (staffContentLabel) staffContentLabel.innerText = `A praticar: ${unit.title}`;
         drawSheetMusic(activeNotesList);
     }
 
@@ -617,6 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnFsPlay.addEventListener("click", togglePlayback);
     btnFsStop.addEventListener("click", stopPlayback);
     btnRestoreScale.addEventListener("click", () => { loadScaleIntoStaff(); });
+    btnRestoreScaleStaff?.addEventListener("click", () => { loadScaleIntoStaff(); });
 
     // ── PRACTICE PLAN CARDS ACTIONS ──────────────────────────
     const tryGet = id => document.getElementById(id);

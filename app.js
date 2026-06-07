@@ -324,6 +324,32 @@ document.addEventListener("DOMContentLoaded", () => {
         if (positionDisplay) positionDisplay.innerText= "Posição: -";
     }
 
+    // Stop playback without stopping the drone (used when scale finishes)
+    function stopPlaybackPreserveDrone() {
+        isPlaying = false;
+        if (playTimeout) clearTimeout(playTimeout);
+
+        btnPlay.innerHTML   = `<i class="fa-solid fa-play"></i> Tocar`;
+        btnFsPlay.innerHTML = `<i class="fa-solid fa-play"></i> Tocar`;
+        const btnStaffPlay = document.getElementById("btn-staff-play");
+        if (btnStaffPlay) btnStaffPlay.innerHTML = `<i class="fa-solid fa-play"></i> Tocar`;
+        btnStop.disabled    = true;
+        btnFsStop.disabled  = true;
+
+        if (piano) piano.releaseAll();
+        // Do not stop drone audio to keep pedal sounding
+
+        updateSuzukiPlaybackUI(false);
+        removeVisualNoteHighlight();
+        const arrow = document.getElementById("play-arrow");
+        if (arrow) arrow.style.display = "none";
+        if (fingerDot) fingerDot.style.display = "none";
+        document.querySelectorAll(".violin-neck .dynamic-finger-dot").forEach(el => el.remove());
+        if (noteDisplay)     noteDisplay.innerText    = "Nota: ---";
+        if (fingerDisplay)   fingerDisplay.innerText  = "Dedo: -";
+        if (positionDisplay) positionDisplay.innerText= "Posição: -";
+    }
+
     function playNextNote() {
         if (!isPlaying) return;
 
@@ -351,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (chkRep) chkRep.checked = true;
                 updateAcademyStats();
             }
-            stopPlayback();
+            if (activePlaybackType === "scale") { stopPlaybackPreserveDrone(); } else { stopPlayback(); }
             return;
         }
 

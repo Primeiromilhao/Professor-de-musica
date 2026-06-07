@@ -1,0 +1,814 @@
+/* ==========================================================================
+   RESET & SYSTEM BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #0a0c10;
+    --bg-panel: rgba(18, 22, 32, 0.75);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(124, 77, 255, 0.3);
+    
+    --primary: #7c4dff;
+    --primary-glow: rgba(124, 77, 255, 0.4);
+    --secondary: #00e5ff;
+    --secondary-glow: rgba(0, 229, 255, 0.3);
+    
+    --text-main: #f0f3f8;
+    --text-muted: #8a99ad;
+    --text-dark: #6b7c96;
+    
+    --success: #00e676;
+    --danger: #ff1744;
+    --warning: #ffea00;
+    
+    --panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(124, 77, 255, 0.12) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(0, 229, 255, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, select, button {
+    font-family: 'Outfit', sans-serif;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.main-header h1 span {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-header .tagline {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-top: 0.3rem;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr 340px;
+    gap: 1.25rem;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .practice-cards-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .practice-cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Glassmorphism Panel */
+.panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--panel-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition);
+}
+
+.panel:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 4px 14px 0 var(--primary-glow);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #6200ea;
+    border-color: #6200ea;
+    box-shadow: 0 6px 20px 0 var(--primary-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    border-color: var(--border-color);
+}
+
+.btn-record {
+    border-color: rgba(255, 23, 72, 0.3);
+    color: #ff1744;
+}
+
+.btn-record:hover:not(:disabled) {
+    background: rgba(255, 23, 72, 0.08);
+    border-color: #ff1744;
+}
+
+.btn-pdf {
+    border-color: rgba(0, 230, 118, 0.3);
+    color: #00e676;
+}
+
+.btn-pdf:hover:not(:disabled) {
+    background: rgba(0, 230, 118, 0.08);
+    border-color: #00e676;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Controls */
+.control-group {
+    margin-bottom: 1.25rem;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+select {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    padding: 0.6rem;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: var(--primary);
+}
+
+.slider-control {
+    margin-bottom: 1.25rem;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
+}
+
+.playback-buttons, .action-buttons {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.record-status {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
+/* Practice Plan Panel & Cards */
+.practice-plan-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--panel-shadow);
+}
+
+.practice-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: var(--transition);
+}
+
+.practice-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 77, 255, 0.15);
+}
+
+.practice-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.practice-card-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.card-icon {
+    font-size: 1.15rem;
+}
+
+.practice-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.practice-card-body h4 {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+}
+
+.practice-card-body p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.info-row span {
+    color: var(--text-muted);
+}
+
+.info-row strong {
+    color: var(--text-main);
+}
+
+.card-actions-row {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: auto;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Badges */
+.badge {
+    background: rgba(124, 77, 255, 0.15);
+    color: #b388ff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.pdf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pdf-badge-embed {
+    background: rgba(124, 77, 255, 0.2);
+    color: #b388ff;
+    border: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+.pdf-badge-open {
+    background: rgba(0, 229, 255, 0.2);
+    color: #84ffff;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.pdf-badge-download {
+    background: rgba(0, 230, 118, 0.2);
+    color: #69f0ae;
+    border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.pdf-badge-conditional {
+    background: rgba(255, 234, 0, 0.15);
+    color: #ffff8d;
+    border: 1px solid rgba(255, 234, 0, 0.3);
+}
+
+.pdf-badge-rejected {
+    background: rgba(255, 23, 72, 0.15);
+    color: #ff8a80;
+    border: 1px solid rgba(255, 23, 72, 0.3);
+}
+
+/* Circle of Fifths */
+.circle-of-fifths-box {
+    margin-top: 0.5rem;
+}
+
+/* VexFlow Staff & Fretboard */
+.staff-container {
+    background: #ffffff !important;
+    border: 3px solid #ccc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow-x: auto;
+    width: 100%;
+    min-height: 400px; /* Takes up massive space */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#vexflow-staff svg {
+    background: #ffffff !important;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+.staff-panel .staff-container svg text {
+    fill: #000000 !important;
+    font-weight: bold;
+}
+.staff-panel .staff-container svg path {
+    stroke: #000000 !important;
+    fill: #000000;
+}
+/* Ensure the staff panel takes 100% width on top */
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+}
+.controls-panel {
+    order: 2;
+}
+.practice-plan-panel {
+    order: 3;
+}
+.staff-panel {
+    order: 1; /* Pauta no TOPO e gigante */
+    width: 100%;
+}
+
+
+.play-arrow {
+    position: absolute;
+    top: 5px;
+    color: #ff1744;
+    font-size: 1.25rem;
+    transition: left 0.1s linear;
+}
+
+/* Fretboard Graphic */
+.fretboard-info {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.3);
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.violin-neck-wrapper {
+    overflow-x: auto;
+    padding: 0.5rem 0;
+}
+
+.violin-neck {
+    position: relative;
+    width: 290px;
+    height: 120px;
+    background: #2b1d0c;
+    border: 4px solid #1a1005;
+    border-radius: 6px;
+    margin: 0 auto;
+}
+
+.nut {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: #e2e8f0;
+}
+
+.fret-marker {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgba(255,255,255,0.15);
+}
+
+.fret-marker::after {
+    content: attr(data-pos);
+    position: absolute;
+    bottom: -18px;
+    left: -12px;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.pos-1 { left: 80px; }
+.pos-3 { left: 145px; }
+.pos-5 { left: 195px; }
+.pos-7 { left: 245px; }
+
+.string-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #cbd5e1;
+}
+
+.string-g { top: 20px; height: 3.5px; }
+.string-d { top: 45px; height: 2.8px; }
+.string-a { top: 70px; height: 2.2px; }
+.string-e { top: 95px; height: 1.5px; }
+
+.string-label {
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.finger-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--secondary);
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px var(--secondary);
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10;
+}
+
+/* Suzuki Panel Step flow */
+.suzuki-step {
+    transition: var(--transition);
+}
+
+.suzuki-step.active .step-num {
+    background: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+    color: #000 !important;
+    box-shadow: 0 0 12px var(--secondary-glow);
+}
+
+.suzuki-step.active .step-label {
+    color: var(--text-main) !important;
+    font-weight: 600;
+}
+
+.suzuki-step.completed .step-num {
+    background: var(--success) !important;
+    border-color: var(--success) !important;
+    color: #000 !important;
+}
+
+.harmony-table-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.harmony-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.harmony-table th, .harmony-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.harmony-table th {
+    color: var(--text-muted);
+}
+
+.study-fundamentals-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .study-fundamentals-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.fundamental-degree-card, .fundamental-guide-card {
+    background: rgba(255,255,255,0.01);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.fundamental-degree-card h3, .fundamental-guide-card h3 {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.25rem;
+}
+
+.fundamental-degree-card p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+
+/* Fullscreen Mode */
+.fullscreen-controls-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 12, 16, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    z-index: 9999;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.body.fullscreen-active {
+    padding-top: 60px !important;
+}
+
+.body.fullscreen-active .app-container {
+    max-width: 100% !important;
+    padding: 0 1rem;
+}
+
+.body.fullscreen-active .panel {
+    display: none !important;
+}
+
+.body.fullscreen-active .staff-panel {
+    display: block !important;
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+}
+
+.body.fullscreen-active .fullscreen-controls-bar {
+    display: flex !important;
+}
+
+.fs-tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.fs-tempo-control input[type="range"] {
+    width: 150px;
+}
+
+/* Print Only Styles */
+.print-only-header { display: none; }
+@media print {
+    .no-print { display: none !important; }
+    body { background: white !important; color: black !important; padding: 0 !important; }
+    .print-only-header { display: block !important; }
+    .staff-panel { border: none !important; box-shadow: none !important; background: transparent !important; }
+}
+
+/* HARD OVERRIDES FOR STAFF PANEL */
+.staff-panel {
+    background: #ffffff !important;
+    border: 3px solid #ccc !important;
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+    padding: 2rem !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+.staff-panel * {
+    color: #111111 !important; /* Force all text to be dark for readability on white */
+}
+
+.staff-panel h2.panel-title {
+    color: #000000 !important;
+    border-bottom: 2px solid #ddd !important;
+}
+
+.staff-panel .staff-container {
+    background: #ffffff !important;
+    border: none !important;
+    min-height: 400px !important;
+    width: 100% !important;
+}
+
+#vexflow-staff svg {
+    background: #ffffff !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+#vexflow-staff svg path, #vexflow-staff svg rect {
+    stroke: #000000 !important;
+    fill: #000000 !important;
+}
+
+#vexflow-staff svg text {
+    fill: #000000 !important;
+    font-weight: bold !important;
+}
+
+/* Fix active note highlight on white bg */
+.note-highlight-active {
+    fill: #ff1744 !important;
+    stroke: #ff1744 !important;
+}
+
+/* ── EXTREME WHITE STAFF OVERRIDES ── */
+.staff-panel,
+.staff-container,
+#vexflow-staff,
+#vexflow-staff svg,
+#vexflow-staff div {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+}
+
+/* Forçar as notas a serem pretas para contraste perfeito no branco */
+#vexflow-staff svg path, 
+#vexflow-staff svg rect, 
+#vexflow-staff svg text {
+    fill: #000000 !important;
+    stroke: #000000 !important;
+}
+
+/* Remover sombra interior que pode parecer escura */
+.staff-container {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}
+
+/* O texto do título da pauta também deve ser escuro */
+.staff-panel .panel-title,
+.staff-panel .panel-title i,
+.staff-panel .panel-header * {
+    color: #000000 !important;
+}
+
+/* ─── PAUTA BRANCA PADRÃO ─── */
+.staff-panel {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    border: 2px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+}
+
+.staff-panel h2.panel-title {
+    color: #333333 !important;
+    border-bottom: 2px solid #eeeeee !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.staff-container {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    min-height: 250px !important;
+}
+
+/* Forçar SVG do VexFlow a ficar perfeito e preto no branco */
+#vexflow-staff svg {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+}
+
+#vexflow-staff svg path, 
+#vexflow-staff svg rect {
+    stroke: #000000 !important;
+    fill: #000000 !important;
+}
+
+#vexflow-staff svg text {
+    fill: #000000 !important;
+    stroke: none !important;
+    font-weight: 600 !important;
+}
+
+/* O fundo da App Container não deve ser escuro na área da pauta */

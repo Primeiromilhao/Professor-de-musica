@@ -1,0 +1,258 @@
+{
+  "studyBooks": [
+    { "id": "sevcik_op1_1", "title": "School of Violin Technics, Op.1 Part 1", "composer": "Otakar Ševčík", "difficulty": "Iniciante", "type": "tecnica" },
+    { "id": "kayser_op20", "title": "36 Elementary and Progressive Studies, Op.20", "composer": "Heinrich Ernst Kayser", "difficulty": "Intermedio", "type": "etude" },
+    { "id": "kreutzer_42", "title": "42 Studies or Caprices", "composer": "Rodolphe Kreutzer", "difficulty": "Avancado", "type": "etude" },
+    { "id": "fiorillo_36", "title": "36 Etudes or Caprices", "composer": "Federigo Fiorillo", "difficulty": "Avancado", "type": "etude" },
+    { "id": "flesch_scale_system", "title": "Scale System", "composer": "Carl Flesch", "difficulty": "Avancado", "type": "escala" },
+    { "id": "galamian_scale_system", "title": "Contemporary Violin Technique", "composer": "Ivan Galamian", "difficulty": "Avancado", "type": "escala" },
+    { "id": "suzuki_vol1", "title": "Suzuki Violin School, Vol 1", "composer": "Shinichi Suzuki", "difficulty": "Iniciante", "type": "escala" },
+    { "id": "suzuki_vol2", "title": "Suzuki Violin School, Vol 2", "composer": "Shinichi Suzuki", "difficulty": "Iniciante", "type": "escala" }
+  ],
+  "studyUnits": [
+    {
+      "id": "sevcik_unit_g_maj",
+      "bookId": "sevcik_op1_1",
+      "title": "Ševčík Op.1 Part 1 Ex.17 (Sol Maior)",
+      "focus": "Fortalecimento do 4º dedo, flexibilidade do punho no arco e afinação na primeira posição.",
+      "notes": ["G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "G5", "F#5", "E5", "D5", "C5", "B4", "A4", "G4"]
+    },
+    {
+      "id": "sevcik_unit_d_maj",
+      "bookId": "sevcik_op1_1",
+      "title": "Ševčík Op.1 Part 1 Ex.18 (Ré Maior)",
+      "focus": "Estudo de terças e quintas na 1ª posição com cruzamento de cordas rápido.",
+      "notes": ["D4", "F#4", "E4", "G4", "F#4", "A4", "G4", "B4", "A4", "C#5", "B4", "D5", "C#5", "E5", "D5"]
+    },
+    {
+      "id": "sevcik_unit_a_maj",
+      "bookId": "sevcik_op1_1",
+      "title": "Ševčík Op.1 Part 1 Ex.19 (Lá Maior)",
+      "focus": "Precisão tonal de sustenidos altos (C#, F#, G#) na corda Lá e Mi.",
+      "notes": ["A4", "B4", "C#5", "D5", "E5", "F#5", "G#5", "A5", "G#5", "F#5", "E5", "D5", "C#5", "B4", "A4"]
+    },
+    {
+      "id": "kayser_unit_g_maj",
+      "bookId": "kayser_op20",
+      "title": "Kayser Op.20 Estudo Nº 2 (Sol Maior)",
+      "focus": "Desenvolvimento do staccato na metade superior do arco, transição ágil de corda.",
+      "notes": ["G4", "B4", "D5", "G5", "F#5", "D5", "B4", "G4", "A4", "C5", "E5", "A5", "G5", "E5", "C5", "A4"]
+    },
+    {
+      "id": "kayser_unit_d_maj",
+      "bookId": "kayser_op20",
+      "title": "Kayser Op.20 Estudo Nº 5 (Ré Maior)",
+      "focus": "Cruzes de corda complexos, mantendo dedilhado firme na primeira posição.",
+      "notes": ["D4", "A4", "F#4", "D5", "A4", "F#5", "D5", "A5", "G5", "E5", "C#5", "A4", "D4"]
+    },
+    {
+      "id": "kayser_unit_a_maj",
+      "bookId": "kayser_op20",
+      "title": "Kayser Op.20 Estudo Nº 7 (Lá Maior)",
+      "focus": "Distribuição de arco (Whole Bow / Half Bow) com ligaduras amplas.",
+      "notes": ["A4", "E5", "C#5", "A5", "E5", "A5", "G#5", "E5", "D5", "B4", "G#4", "E4", "A4"]
+    },
+    {
+      "id": "flesch_unit_g_maj",
+      "bookId": "flesch_scale_system",
+      "title": "Flesch - Escala Sol Maior (3 Oitavas)",
+      "focus": "Afinação temperada pura, passagens de posição (shifts) entre 1ª, 3ª e 5ª posições.",
+      "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "B5", "C6", "D6", "E6", "F#6", "G6"]
+    },
+    {
+      "id": "galamian_unit_g_maj",
+      "bookId": "galamian_scale_system",
+      "title": "Galamian - Ritmos de Escala Sol Maior",
+      "focus": "Padrão de aceleração rítmica de Galamian (dupletos, tripletos, quadrupletos).",
+      "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "B5", "G5"]
+    },
+    {
+      "id": "suzuki_unit_g_maj",
+      "bookId": "suzuki_vol1",
+      "title": "Suzuki Vol 1 - Escala de Sol Maior",
+      "focus": "Estudo de afinação básica na 1ª posição com dedilhado padrão 0-1-2-3-4 nas cordas G e D.",
+      "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "F#4", "E4", "D4", "C4", "B3", "A3", "G3"]
+    }
+  ],
+  "repertoirePieces": [
+    {
+      "id": "vivaldi_rv310",
+      "title": "Concerto em Sol Maior Op.3 No.3 RV 310",
+      "composer": "Antonio Vivaldi",
+      "key": "G",
+      "mode": "major",
+      "studentLevel": "iniciante",
+      "difficultyDescription": "Concerto barroco alegre com passagens brilhantes de semicolcheias na 1ª posição."
+    },
+    {
+      "id": "handel_hwv371",
+      "title": "Sonata em Ré Maior HWV 371",
+      "composer": "G. F. Handel",
+      "key": "D",
+      "mode": "major",
+      "studentLevel": "intermedio",
+      "difficultyDescription": "Sonata clássica barroca exigindo expressividade nos movimentos lentos e agilidade no Allegro."
+    },
+    {
+      "id": "vivaldi_rv356",
+      "title": "Concerto em Lá Menor Op.3 No.6 RV 356",
+      "composer": "Antonio Vivaldi",
+      "key": "A",
+      "mode": "minor-natural",
+      "studentLevel": "iniciante",
+      "difficultyDescription": "Obra pedagógica clássica de violino. Estudo excelente de staccato e posições na corda E."
+    }
+  ],
+  "excerptLinks": [
+    {
+      "id": "vivaldi_rv310_exc1",
+      "pieceId": "vivaldi_rv310",
+      "title": "Tema do Allegro Inicial",
+      "bars": "Compassos 1-8",
+      "transferObjective": "Controle do staccato martelado na metade superior do arco e ressonância da tónica G nas cordas soltas.",
+      "notes": ["G4", "B4", "D5", "G5", "F#5", "D5", "B4", "G4", "D5", "B4", "G4", "D4", "G4"]
+    },
+    {
+      "id": "handel_hwv371_exc1",
+      "pieceId": "handel_hwv371",
+      "title": "Affettuoso - Abertura",
+      "bars": "Compassos 1-6",
+      "transferObjective": "Expressividade em notas longas, vibrato controlado e passagens suaves de arco na corda Ré e Lá.",
+      "notes": ["D4", "A4", "F#4", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"]
+    },
+    {
+      "id": "vivaldi_rv356_exc1",
+      "pieceId": "vivaldi_rv356",
+      "title": "Tema Principal do Allegro",
+      "bars": "Compassos 1-10",
+      "transferObjective": "Precisão tonal na corda E, shift para a 3ª posição e cruzamento rápido de cordas.",
+      "notes": ["A4", "C5", "E5", "A5", "G#5", "E5", "C5", "A4", "B4", "D5", "F5", "D5", "B4", "G#4", "A4"]
+    }
+  ],
+  "scaleRoutes": [
+    {
+      "key": "G",
+      "mode": "major",
+      "studentLevel": "iniciante",
+      "octaves": 1,
+      "bowingPattern": "2 notas ligadas, 2 separadas",
+      "dailyPlan": {
+        "scaleUnits": ["suzuki_unit_g_maj"],
+        "bowUnits": ["sevcik_unit_g_maj"],
+        "etudeUnits": ["kayser_unit_g_maj"],
+        "repertoirePieceId": "vivaldi_rv310",
+        "excerptIds": ["vivaldi_rv310_exc1"]
+      }
+    },
+    {
+      "key": "D",
+      "mode": "major",
+      "studentLevel": "intermedio",
+      "octaves": 2,
+      "bowingPattern": "4 notas ligadas, 4 marteladas",
+      "dailyPlan": {
+        "scaleUnits": ["sevcik_unit_d_maj"],
+        "bowUnits": ["sevcik_unit_d_maj"],
+        "etudeUnits": ["kayser_unit_d_maj"],
+        "repertoirePieceId": "handel_hwv371",
+        "excerptIds": ["handel_hwv371_exc1"]
+      }
+    },
+    {
+      "key": "A",
+      "mode": "minor-natural",
+      "studentLevel": "iniciante",
+      "octaves": 1,
+      "bowingPattern": "Detaché simples no meio do arco",
+      "dailyPlan": {
+        "scaleUnits": ["sevcik_unit_a_maj"],
+        "bowUnits": ["sevcik_unit_a_maj"],
+        "etudeUnits": ["kayser_unit_a_maj"],
+        "repertoirePieceId": "vivaldi_rv356",
+        "excerptIds": ["vivaldi_rv356_exc1"]
+      }
+    }
+  ],
+  "pdfEntries": [
+    {
+      "id": "pdf_sevcik_op1_1",
+      "bookId": "sevcik_op1_1",
+      "title": "Ševčík School of Violin Technics Op.1 Book 1",
+      "composer": "Ševčík",
+      "sourceDomain": "s9.imslp.org",
+      "sourcePageUrl": "https://imslp.org/wiki/School_of_Violin_Technics_(%C5%A0ev%C4%8D%C3%ADk,_Otakar)",
+      "pdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+      "fallbackUrl": "https://imslp.org/wiki/Special:Search/Sevcik_Op1_Book1"
+    },
+    {
+      "id": "pdf_kayser_op20",
+      "bookId": "kayser_op20",
+      "title": "Kayser 36 Elementary Studies Op.20",
+      "composer": "Kayser",
+      "sourceDomain": "imslp.org",
+      "sourcePageUrl": "https://imslp.org/wiki/36_Elementary_and_Progressive_Studies,_Op.20_(Kayser,_Heinrich_Ernst)",
+      "pdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+      "fallbackUrl": "https://imslp.org/wiki/Special:Search/Kayser_Op20"
+    },
+    {
+      "id": "pdf_vivaldi_rv310",
+      "pieceId": "vivaldi_rv310",
+      "title": "Vivaldi Concerto em Sol Maior RV 310",
+      "composer": "Vivaldi",
+      "sourceDomain": "imslp.org",
+      "sourcePageUrl": "https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",
+      "pdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+      "fallbackUrl": "https://imslp.org/wiki/Special:Search/Vivaldi_RV310"
+    },
+    {
+      "id": "pdf_handel_hwv371",
+      "pieceId": "handel_hwv371",
+      "title": "Handel Sonata em Ré Maior HWV 371",
+      "composer": "Handel",
+      "sourceDomain": "imslp.org",
+      "sourcePageUrl": "https://imslp.org/wiki/Violin_Sonata_in_D_major,_HWV_371_(Handel,_George_Frideric)",
+      "pdfUrl": "https://s9.imslp.org/files/imglnks/usimg/9/9f/IMSLP204312-WIMA.8a33-Handel_Sonata_D.pdf",
+      "fallbackUrl": "https://imslp.org/wiki/Special:Search/Handel_Sonata_HWV371"
+    },
+    {
+      "id": "pdf_vivaldi_rv356",
+      "pieceId": "vivaldi_rv356",
+      "title": "Vivaldi Concerto em Lá Menor RV 356",
+      "composer": "Vivaldi",
+      "sourceDomain": "imslp.org",
+      "sourcePageUrl": "https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",
+      "pdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+      "fallbackUrl": "https://imslp.org/wiki/Special:Search/Vivaldi_RV356"
+    },
+    {
+      "id": "pdf_flesch_scale_system",
+      "bookId": "flesch_scale_system",
+      "title": "Flesch Scale System (Manual Entry)",
+      "composer": "Flesch",
+      "sourceDomain": "violinlab.com",
+      "sourcePageUrl": "",
+      "pdfUrl": "",
+      "fallbackUrl": ""
+    },
+    {
+      "id": "pdf_galamian_scale_system",
+      "bookId": "galamian_scale_system",
+      "title": "Galamian Scale System (Manual Entry)",
+      "composer": "Galamian",
+      "sourceDomain": "violinlab.com",
+      "sourcePageUrl": "",
+      "pdfUrl": "",
+      "fallbackUrl": ""
+    },
+    {
+      "id": "pdf_suzuki_vol1",
+      "bookId": "suzuki_vol1",
+      "title": "Suzuki School Vol 1 (Manual Entry)",
+      "composer": "Suzuki",
+      "sourceDomain": "violinlab.com",
+      "sourcePageUrl": "",
+      "pdfUrl": "",
+      "fallbackUrl": ""
+    }
+  ]
+}

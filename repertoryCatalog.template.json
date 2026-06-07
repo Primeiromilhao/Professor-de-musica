@@ -1,0 +1,51 @@
+{
+  "catalog": {
+    "G": {
+      "books": ["Suzuki Violin School Book 1", "Ševčík Op.1 Part 1"],
+      "pdfEntries": [
+        {
+          "title": "Concerto em Sol Maior RV 310 (IMSLP)",
+          "composer": "Vivaldi",
+          "sourceDomain": "imslp.org",
+          "sourcePageUrl": "https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",
+          "pdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+          "fallbackUrl": "https://imslp.org/wiki/Special:Search/Vivaldi_RV310"
+        },
+        {
+          "title": "Ševčík Op.1 Part 1 (Estudos na 1ª Posição)",
+          "composer": "Ševčík",
+          "sourceDomain": "s9.imslp.org",
+          "sourcePageUrl": "https://imslp.org/wiki/School_of_Violin_Technics_(%C5%A0ev%C4%8D%C3%ADk,_Otakar)",
+          "pdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+          "fallbackUrl": "https://imslp.org/wiki/Special:Search/Sevcik_Op1_Book1"
+        }
+      ]
+    },
+    "D": {
+      "books": ["Handel Sonatas HWV 371", "Ševčík Op.1 Part 1"],
+      "pdfEntries": [
+        {
+          "title": "Sonata em Ré Maior HWV 371 (IMSLP)",
+          "composer": "Handel",
+          "sourceDomain": "imslp.org",
+          "sourcePageUrl": "https://imslp.org/wiki/Violin_Sonata_in_D_major,_HWV_371_(Handel,_George_Frideric)",
+          "pdfUrl": "https://s9.imslp.org/files/imglnks/usimg/9/9f/IMSLP204312-WIMA.8a33-Handel_Sonata_D.pdf",
+          "fallbackUrl": "https://imslp.org/wiki/Special:Search/Handel_Sonata_HWV371"
+        }
+      ]
+    },
+    "A": {
+      "books": ["Suzuki Violin School Book 2", "Ševčík Op.1 Part 1"],
+      "pdfEntries": [
+        {
+          "title": "Concerto em Lá Menor RV 356 (IMSLP)",
+          "composer": "Vivaldi",
+          "sourceDomain": "imslp.org",
+          "sourcePageUrl": "https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",
+          "pdfUrl": "https://s9.imslp.org/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+          "fallbackUrl": "https://imslp.org/wiki/Special:Search/Vivaldi_RV356"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HERMES Approved PDF Sources Schema",
+  "type": "object",
+  "required": ["domains"],
+  "properties": {
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["domain", "status", "cors_allowed", "requires_auth"],
+        "properties": {
+          "domain": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": [
+              "approved_embed",
+              "approved_external_open",
+              "approved_download_only",
+              "rejected_unstable",
+              "rejected_copyright_or_access"
+            ]
+          },
+          "cors_allowed": { "type": "boolean" },
+          "requires_auth": { "type": "boolean" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor de Violino - HERMES Violin Lab v4.6</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=9999">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra de Controle Flutuante para Modo Tela Cheia -->
+        <div id="fullscreen-controls-bar" class="fullscreen-controls-bar">
+            <button id="btn-fs-play" class="btn btn-primary btn-sm"><i class="fa-solid fa-play"></i> Tocar</button>
+            <button id="btn-fs-stop" class="btn btn-secondary btn-sm" disabled><i class="fa-solid fa-square"></i> Parar</button>
+            <div class="fs-tempo-control">
+                <span>BPM: <strong id="fs-bpm-val">80</strong></span>
+                <input type="range" id="fs-bpm-slider" min="40" max="180" value="80">
+            </div>
+            <button id="btn-exit-fs" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Sair do Modo Execução</button>
+        </div>
+
+        <header class="main-header no-print">
+            <div class="logo">
+                <i class="fa-solid fa-violin"></i>
+                <h1>HERMES <span>Violin Lab v4.6</span></h1>
+            </div>
+            <p class="tagline">Plano de Prática Inteligente: Suzuki + Ševčík + Repertório Real + Validador PDF</p>
+        </header>
+
+        <section class="panel staff-panel" style="background-color: #ffffff !important; border: 4px solid #ccc; padding: 20px; border-radius: 10px;">
+                <div class="panel-header no-print">
+                    <h2 class="panel-title" id="vexflow-panel-title"><i class="fa-solid fa-music"></i> Pauta Clave de Sol</h2>
+                    <div class="header-actions">
+                        <button id="btn-fullscreen-mode" class="btn btn-secondary btn-sm"><i class="fa-solid fa-expand"></i> Modo Execução</button>
+                        <span class="badge" id="scale-badge">Sol Maior</span>
+                    </div>
+                </div>
+
+                <!-- ── BARRA DE TRANSPORTE DA PAUTA ──────────────────── -->
+                <div class="staff-transport no-print" id="staff-transport-bar" style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    flex-wrap: wrap;
+                    background: linear-gradient(135deg, rgba(124,77,255,0.08), rgba(0,229,255,0.05));
+                    border: 1px solid rgba(124,77,255,0.25);
+                    border-radius: 12px;
+                    padding: 0.75rem 1.25rem;
+                    margin-bottom: 1rem;
+                ">
+                    <!-- Botão Tocar -->
+                    <button id="btn-staff-play" class="btn btn-primary btn-sm" onclick="document.getElementById('btn-play').click()" style="min-width: 90px;">
+                        <i class="fa-solid fa-play"></i> Tocar
+                    </button>
+                    <!-- Botão Parar -->
+                    <button id="btn-staff-stop" class="btn btn-secondary btn-sm" onclick="document.getElementById('btn-stop').click()" style="min-width: 90px;">
+                        <i class="fa-solid fa-square"></i> Parar
+                    </button>
+                    <!-- BPM inline -->
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-gauge" style="color: var(--secondary); font-size: 0.85rem;"></i>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); white-space: nowrap;">BPM: <strong id="staff-bpm-val">80</strong></span>
+                        <input type="range" id="staff-bpm-slider" min="40" max="180" value="80"
+                               style="width: 100px; height: 4px; cursor: pointer;"
+                               oninput="
+                                   document.getElementById('staff-bpm-val').innerText = this.value;
+                                   document.getElementById('bpm-slider').value = this.value;
+                                   document.getElementById('bpm-val').innerText = this.value;
+                                   document.getElementById('fs-bpm-slider').value = this.value;
+                                   document.getElementById('fs-bpm-val').innerText = this.value;
+                               ">
+                    </div>
+                    <!-- Separador -->
+                    <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1);"></div>
+                    <!-- Botão Repetir (reinicia do início) -->
+                    <button class="btn btn-sm" title="Repetir desde o início"
+                            style="background: rgba(0,229,255,0.12); border: 1px solid rgba(0,229,255,0.3); color: var(--secondary); padding: 0.3rem 0.75rem;"
+                            onclick="document.getElementById('btn-stop').click(); setTimeout(() => document.getElementById('btn-play').click(), 100);">
+                        <i class="fa-solid fa-rotate-right"></i> Repetir
+                    </button>
+                    <!-- Botão Voltar à Escala -->
+                    <button id="btn-restore-scale-staff" class="btn btn-sm" title="Voltar à escala principal" style="display:none; background: rgba(124,77,255,0.12); border: 1px solid rgba(124,77,255,0.3); color: var(--primary); padding: 0.3rem 0.75rem;">
+                        <i class="fa-solid fa-rotate-left"></i> Escala
+                    </button>
+                    <!-- Label do conteúdo atual -->
+                    <span id="staff-content-label" style="font-size: 0.75rem; color: var(--text-muted); margin-left: auto; font-style: italic;"></span>
+                </div>
+
+                <div class="print-only-header">
+                    <h1>Método HERMES de Violino - Escala Prática</h1>
+                    <h2 id="print-scale-title">Escala de Sol Maior - 1 Oitava</h2>
+                    <hr>
+                </div>
+
+                <div class="staff-container">
+                    <div id="vexflow-staff">
+                        <div id="play-arrow" class="play-arrow" style="display: none;"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                </div>
+                
+                <div class="staff-footer no-print" style="display:flex; justify-content:space-between; align-items:center; margin-top: 0.5rem;">
+                    <p style="margin:0; font-size: 0.8rem;"><i class="fa-solid fa-circle-info"></i> A seta vermelha indica a nota ativa em reprodução.</p>
+                    <button id="btn-restore-scale" class="btn btn-secondary btn-sm" style="display:none; padding:0.25rem 0.5rem; font-size:0.75rem;"><i class="fa-solid fa-rotate-left"></i> Voltar p/ Escala</button>
+                </div>
+            </section>
+
+<main class="dashboard-grid">
+            <!-- Coluna 1: Configurações, Desafios Diários -->
+            
+            <!-- Painel de Configurações -->
+            <section class="panel controls-panel no-print">
+                <h2 class="panel-title"><i class="fa-solid fa-sliders"></i> Configurações</h2>
+                
+                <div class="control-group">
+                    <label for="level-select">Nível do Aluno</label>
+                    <select id="level-select">
+                        <option value="iniciante" selected>Iniciante</option>
+                        <option value="intermedio">Intermédio</option>
+                        <option value="avancado">Avançado</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="tonic-select">Nota Tónica</label>
+                    <select id="tonic-select">
+                        <option value="G" selected>Sol (G)</option>
+                        <option value="Ab">Lá bemol (Ab)</option>
+                        <option value="A">Lá (A)</option>
+                        <option value="Bb">Si bemol (Bb)</option>
+                        <option value="B">Si (B)</option>
+                        <option value="C">Dó (C)</option>
+                        <option value="C#">Dó sustenido (C#)</option>
+                        <option value="D">Ré (D)</option>
+                        <option value="Eb">Mi bemol (Eb)</option>
+                        <option value="E">Mi (E)</option>
+                        <option value="F">Fá (F)</option>
+                        <option value="F#">Fá sustenido (F#)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="scale-type-select">Tipo de Escala</label>
+                    <select id="scale-type-select">
+                        <option value="major" selected>Maior</option>
+                        <option value="minor-natural">Menor Natural</option>
+                        <option value="minor-harmonic">Menor Harmónica</option>
+                        <option value="minor-melodic">Menor Melódica</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="octaves-group" style="display: none;">
+                    <label for="octaves-select">Oitavas</label>
+                    <select id="octaves-select">
+                        <option value="1">1 Oitava</option>
+                        <option value="2">2 Oitavas</option>
+                        <option value="3">3 Oitavas</option>
+                        <option value="4">4 Oitavas</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="interval-group" style="display: none;">
+                    <label for="interval-select">Treino de Afinação (Intervalo Acima)</label>
+                    <select id="interval-select">
+                        <option value="none" selected>Nenhum (Só a Escala)</option>
+                        <option value="3rd">Tocar com 3ª Acima</option>
+                        <option value="4th">Tocar com 4ª Acima</option>
+                        <option value="5th">Tocar com 5ª Acima</option>
+                        <option value="6th">Tocar com 6ª Acima</option>
+                        <option value="8th">Tocar com 8ª Acima</option>
+                    </select>
+                </div>
+
+                <div class="audio-controls-box">
+                    <div class="slider-control">
+                        <div class="slider-labels">
+                            <span>BPM (Tempo): <strong id="bpm-val">80</strong></span>
+                        </div>
+                        <input type="range" id="bpm-slider" min="40" max="180" value="80">
+                    </div>
+                    
+                    <div class="control-group" style="margin-bottom: 0.75rem;">
+                        <label for="drone-select">Acorde de Fundo (Pedal)</label>
+                        <select id="drone-select">
+                            <option value="none" selected>Nenhum (Só a Escala)</option>
+                            <option value="0">Acorde I (Tónica)</option>
+                            <option value="3">Acorde IV (Subdominante)</option>
+                            <option value="4">Acorde V (Dominante)</option>
+                            <option value="5">Acorde VI (Sobredominante)</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-control" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="chk-show-degrees" style="width: auto; cursor: pointer;">
+                        <label for="chk-show-degrees" style="color: var(--text-muted); font-size: 0.9rem; cursor: pointer; user-select: none;">Mostrar Graus na Pauta</label>
+                    </div>
+                    
+                    <div class="playback-buttons">
+                        <button id="btn-play" class="btn btn-primary"><i class="fa-solid fa-play"></i> Tocar</button>
+                        <button id="btn-stop" class="btn btn-secondary" disabled><i class="fa-solid fa-square"></i> Parar</button>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="btn-record" class="btn btn-record"><i class="fa-solid fa-circle"></i> Gravar WAV</button>
+                        <button id="btn-pdf" class="btn btn-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Pauta</button>
+                    </div>
+                    <div id="record-status" class="record-status">Pronto</div>
+                </div>
+
+                <div class="relative-scales-box">
+                    <h3>Escala Relativa</h3>
+                    <div id="relative-scale-display" class="relative-scale-display">Mi Menor (Em)</div>
+                    <button id="btn-switch-relative" class="btn btn-small">Mudar p/ Relativa</button>
+                </div>
+            </section>
+
+            <!-- Painel de Desafios Diários -->
+            <section class="panel challenge-panel no-print" id="challenge-panel">
+                <h2 class="panel-title"><i class="fa-solid fa-calendar-check"></i> Desafio de Hoje (Dia <span id="challenge-day-num">1</span>/30)</h2>
+                
+                <div class="xp-streak-box" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <div>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Streak Ativa:</span>
+                        <strong style="color: var(--warning); font-size: 1rem;" id="streak-count-display">0 Dias 🔥</strong>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">XP Total:</span>
+                        <strong style="color: var(--secondary); font-size: 1rem;" id="total-xp-display">0 XP 🌟</strong>
+                    </div>
+                </div>
+
+                <div class="challenge-list-container" style="display: flex; flex-direction: column; gap: 0.85rem;">
+                    <div class="challenge-item-card" data-challenge="tecnica" style="border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 10px; display: flex; gap: 0.75rem; align-items: flex-start;">
+                        <input type="checkbox" id="chk-chal-tecnica" style="margin-top:0.25rem;">
+                        <div>
+                            <strong style="color: var(--primary); font-size: 0.85rem; display: block;"><i class="fa-solid fa-dumbbell"></i> Técnica (Ševčík/Flesch)</strong>
+                            <p id="txt-chal-tecnica" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.3;">Estude as arcadas de Ševčík propostas.</p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item-card" data-challenge="escala" style="border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 10px; display: flex; gap: 0.75rem; align-items: flex-start;">
+                        <input type="checkbox" id="chk-chal-escala" style="margin-top:0.25rem;">
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 0.85rem; display: block;"><i class="fa-solid fa-music"></i> Escala (Suzuki + Teoria)</strong>
+                            <p id="txt-chal-escala" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.3;">Execute a escala na tónica correta.</p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item-card" data-challenge="repertorio" style="border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 10px; display: flex; gap: 0.75rem; align-items: flex-start;">
+                        <input type="checkbox" id="chk-chal-repertorio" style="margin-top:0.25rem;">
+                        <div>
+                            <strong style="color: var(--success); font-size: 0.85rem; display: block;"><i class="fa-solid fa-violin"></i> Repertório Clássico</strong>
+                            <p id="txt-chal-repertorio" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.3;">Tocar ou ouvir o excerto clássico.</p>
+                        </div>
+                    </div>
+
+                    <div class="challenge-item-card bonus-card" data-challenge="bonus" style="border: 1px solid rgba(0, 229, 255, 0.2); background: rgba(0, 229, 255, 0.01); padding: 0.75rem; border-radius: 10px; display: flex; gap: 0.75rem; align-items: flex-start;">
+                        <input type="checkbox" id="chk-chal-bonus" style="margin-top:0.25rem;">
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 0.85rem; display: block;"><i class="fa-solid fa-star"></i> Desafio Bónus (+25 XP)</strong>
+                            <p id="txt-chal-bonus" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.3;">Tocar sem olhar para a mão esquerda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-progress-box" style="margin-top: 0.5rem;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-bottom: 0.25rem;">
+                        <span>Conclusão do Desafio Diário</span>
+                        <span id="txt-chal-percent">0%</span>
+                    </div>
+                    <div class="suzuki-progress-container" style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;">
+                        <div id="bar-chal-progress" style="height: 100%; background: linear-gradient(90deg, var(--secondary), var(--success)); width: 0%; transition: width 0.3s ease;"></div>
+                    </div>
+                </div>
+
+                <button id="btn-complete-day" class="btn btn-secondary btn-sm" style="width: 100%; font-size: 0.8rem; padding: 0.5rem;" disabled><i class="fa-solid fa-circle-check"></i> Concluir Dia & Próxima Escala</button>
+            </section>
+
+            <!-- Coluna 2: Suzuki Panel, Pauta Musical, Harmonia -->
+            
+            <!-- Painel de Estudo Suzuki (V3) -->
+            <section class="panel suzuki-panel no-print" id="suzuki-panel">
+                <div class="suzuki-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="suzuki-title-box" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fa-solid fa-graduation-cap suzuki-logo-icon" style="font-size: 1.5rem; color: var(--secondary);"></i>
+                        <div>
+                            <h3 style="font-size: 1.15rem; color: var(--text-main); margin: 0;">Professor Digital Suzuki</h3>
+                            <p style="color: var(--text-muted); font-size: 0.75rem; margin: 0;">Metodologia guiada para estudo consciente</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Modo Suzuki:</span>
+                        <input type="checkbox" id="chk-suzuki-mode" style="width: auto; cursor: pointer; height: 18px; width: 18px;">
+                    </div>
+                </div>
+
+                <div class="suzuki-content" id="suzuki-content" style="display: none; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                    <!-- Indicador de Passos -->
+                    <div class="suzuki-steps-indicator" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <div class="suzuki-step active" data-step="1" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">1</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Ouvir</span>
+                        </div>
+                        <div class="suzuki-step" data-step="2" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">2</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Cantar</span>
+                        </div>
+                        <div class="suzuki-step" data-step="3" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">3</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Imitar</span>
+                        </div>
+                        <div class="suzuki-step" data-step="4" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">4</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Repetir</span>
+                        </div>
+                        <div class="suzuki-step" data-step="5" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">5</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Tocar</span>
+                        </div>
+                        <div class="suzuki-step" data-step="6" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1;">
+                            <div class="step-num" style="width: 26px; height: 26px; border-radius: 50%; background: var(--border-color); display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; color: var(--text-muted); border: 1px solid var(--border-color);">6</div>
+                            <span class="step-label" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Revisar</span>
+                        </div>
+                    </div>
+
+                    <!-- Progresso -->
+                    <div class="suzuki-progress-container" style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-bottom: 1.25rem;">
+                        <div class="suzuki-progress-bar" id="suzuki-progress-bar" style="height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 16.66%; transition: width 0.3s ease;"></div>
+                    </div>
+
+                    <!-- Instruções e Ações -->
+                    <div class="suzuki-step-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+                        <h4 id="suzuki-step-title" style="font-size: 1.05rem; color: var(--secondary); margin-bottom: 0.5rem;">Passo 1: Ouvir antes de tocar</h4>
+                        <p id="suzuki-step-instruction" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+                            Oiça a escala completa e o acorde de fundo para memorizar a sonoridade e afinação das notas.
+                        </p>
+                        
+                        <div id="suzuki-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                            <!-- Injetado dinamicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Micro-Objetivos / Checklist -->
+                    <div class="suzuki-checklist-box" style="background: rgba(0, 229, 255, 0.02); border: 1px solid rgba(0, 229, 255, 0.1); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;">
+                        <h4 style="font-size: 0.9rem; color: var(--secondary); margin-bottom: 0.50rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-list-check"></i> Micro-Objetivos / Checklist</h4>
+                        <ul id="suzuki-checklist" style="list-style: none; display: flex; flex-direction: column; gap: 0.50rem; padding-left: 0;">
+                            <!-- Injetado dinamicamente -->
+                        </ul>
+                    </div>
+
+                    <!-- Navegação inferior -->
+                    <div class="suzuki-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                        <button id="btn-suzuki-prev" class="btn btn-secondary btn-sm" disabled><i class="fa-solid fa-chevron-left"></i> Anterior</button>
+                        <span class="step-indicator-text" id="suzuki-step-indicator-text" style="font-size: 0.8rem; color: var(--text-muted);">Passo 1 de 6</span>
+                        <button id="btn-suzuki-next" class="btn btn-primary btn-sm">Seguinte <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <!-- Histórico e Sessões de Revisão -->
+                    <div id="suzuki-history-container" style="display: none; margin-top: 1.25rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+                        <h4 style="font-size: 0.9rem; color: var(--secondary); margin-bottom: 0.5rem;"><i class="fa-solid fa-history"></i> Histórico de Prática</h4>
+                        <div class="harmony-table-container">
+                            <table class="harmony-table" style="font-size: 0.8rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Escala</th>
+                                        <th>BPM</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="suzuki-history-table-body">
+                                    <!-- Populado por JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel da Pauta Musical -->
+            
+
+            <!-- Painel de Acordes de Sustentação -->
+            <section class="panel harmony-panel no-print">
+                <h2 class="panel-title"><i class="fa-solid fa-shapes"></i> Acordes de Sustentação</h2>
+                <div class="harmony-table-container">
+                    <table class="harmony-table">
+                        <thead>
+                            <tr>
+                                <th>Grau</th>
+                                <th>Nota</th>
+                                <th>Acorde</th>
+                                <th>Ouvir</th>
+                            </tr>
+                        </thead>
+                        <tbody id="harmony-table-body">
+                            <!-- Populado dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Coluna 3: Braço do Violino, Dicas do Professor -->
+            
+            <!-- Painel do Braço de Violino -->
+            <section class="panel fretboard-panel no-print">
+                <h2 class="panel-title"><i class="fa-solid fa-fingerprint"></i> Braço do Violino</h2>
+                <div class="fretboard-info">
+                    <span id="current-note-display">Nota: ---</span>
+                    <span id="current-finger-display">Dedo: -</span>
+                    <span id="current-position-display">Posição: -</span>
+                </div>
+
+                <div class="violin-neck-wrapper">
+                    <div class="violin-neck">
+                        <div class="nut"></div>
+                        <div class="fret-marker pos-1" data-pos="1ª Pos"></div>
+                        <div class="fret-marker pos-3" data-pos="3ª Pos"></div>
+                        <div class="fret-marker pos-5" data-pos="5ª Pos"></div>
+                        <div class="fret-marker pos-7" data-pos="7ª Pos"></div>
+
+                        <div class="string-line string-g" data-string="G"><div class="string-label">G</div></div>
+                        <div class="string-line string-d" data-string="D"><div class="string-label">D</div></div>
+                        <div class="string-line string-a" data-string="A"><div class="string-label">A</div></div>
+                        <div class="string-line string-e" data-string="E"><div class="string-label">E</div></div>
+
+                        <div id="finger-dot" class="finger-dot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel teacher-tips-panel no-print">
+                <h2 class="panel-title"><i class="fa-solid fa-chalkboard-user"></i> Dicas do Professor</h2>
+                <div id="teacher-tips-content" class="teacher-tips-content">
+                    <!-- Dicas dinâmicas -->
+                </div>
+            </section>
+
+            <!-- Linha Inferior Alargada (Novo Plano de Prática Integrado 4 Pilares) -->
+            
+            <!-- Módulo Plano de Prática Pedagógica HERMES (4 Pilares) -->
+            <section class="panel practice-plan-panel no-print" id="practice-plan-panel" style="grid-column: 1 / -1;">
+                <h2 class="panel-title"><i class="fa-solid fa-graduation-cap"></i> Plano de Prática Pedagógica HERMES — Os 4 Pilares da Escala</h2>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem; margin-top:-0.50rem;">
+                    O motor resolve automaticamente os estudos e excertos associados a esta tonalidade e nível de estudo:
+                </p>
+
+                <div class="practice-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+                    
+                    <!-- Cartão 1: Escala Ativa -->
+                    <div class="practice-card" id="card-escala-ativa">
+                        <div class="practice-card-header">
+                            <i class="fa-solid fa-music card-icon" style="color:var(--secondary);"></i>
+                            <h3>1. Escala Ativa</h3>
+                        </div>
+                        <div class="practice-card-body">
+                            <div class="info-row"><span>Tonalidade:</span> <strong id="plan-scale-name">G Maior</strong></div>
+                            <div class="info-row"><span>Oitavas:</span> <strong id="plan-scale-octaves">1 Oitava</strong></div>
+                            <div class="info-row"><span>Arcadas:</span> <strong id="plan-scale-bowing">2 Notas Ligadas, 2 Separadas</strong></div>
+                            <div class="info-row" style="flex-direction:column; border:none; margin-top:0.4rem;">
+                                <span style="font-weight:600; margin-bottom:0.15rem;">Foco do Dia:</span>
+                                <p id="plan-scale-focus" style="font-size:0.75rem; line-height:1.3; color:var(--text-muted);"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 2: Técnica (Ševčík / Flesch / Galamian) -->
+                    <div class="practice-card" id="card-tecnica">
+                        <div class="practice-card-header">
+                            <i class="fa-solid fa-dumbbell card-icon" style="color:var(--primary);"></i>
+                            <h3>2. Técnica</h3>
+                        </div>
+                        <div class="practice-card-body">
+                            <h4 id="plan-tech-title">Ševčík Técnico</h4>
+                            <p id="plan-tech-focus" style="font-size:0.75rem; margin-bottom:0.6rem;"></p>
+                            <div class="card-actions-row">
+                                <button class="btn btn-secondary btn-sm" id="btn-tech-view"><i class="fa-solid fa-eye"></i> Pauta</button>
+                                <button class="btn btn-primary btn-sm" id="btn-tech-play"><i class="fa-solid fa-play"></i> Tocar</button>
+                                <div id="tech-pdf-container"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 3: Estudo Progressivo (Kayser / Kreutzer / Fiorillo) -->
+                    <div class="practice-card" id="card-estudo">
+                        <div class="practice-card-header">
+                            <i class="fa-solid fa-book-open card-icon" style="color:var(--warning);"></i>
+                            <h3>3. Estudo Musical</h3>
+                        </div>
+                        <div class="practice-card-body">
+                            <h4 id="plan-study-title">Kayser Estudo</h4>
+                            <p id="plan-study-focus" style="font-size:0.75rem; margin-bottom:0.6rem;"></p>
+                            <div class="card-actions-row">
+                                <button class="btn btn-secondary btn-sm" id="btn-study-view"><i class="fa-solid fa-eye"></i> Pauta</button>
+                                <button class="btn btn-primary btn-sm" id="btn-study-play"><i class="fa-solid fa-play"></i> Tocar</button>
+                                <div id="study-pdf-container"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão 4: Repertório Real -->
+                    <div class="practice-card" id="card-repertorio">
+                        <div class="practice-card-header">
+                            <i class="fa-solid fa-violin card-icon" style="color:var(--success);"></i>
+                            <h3>4. Repertório Real</h3>
+                        </div>
+                        <div class="practice-card-body">
+                            <h4 id="plan-rep-title">Vivaldi RV 310</h4>
+                            <div class="info-row"><span>Movimento:</span> <strong id="plan-rep-excerpt">-</strong></div>
+                            <div class="info-row"><span>Compassos:</span> <strong id="plan-rep-bars">-</strong></div>
+                            <div class="info-row" style="flex-direction:column; border:none; margin-top:0.3rem;">
+                                <span style="font-weight:600; margin-bottom:0.15rem;">Objetivo de Transferência:</span>
+                                <p id="plan-rep-focus" style="font-size:0.75rem; line-height:1.3; color:var(--text-muted); margin-bottom:0.6rem;"></p>
+                            </div>
+                            <div class="card-actions-row">
+                                <button class="btn btn-secondary btn-sm" id="btn-rep-view"><i class="fa-solid fa-eye"></i> Pauta</button>
+                                <button class="btn btn-primary btn-sm" id="btn-rep-play"><i class="fa-solid fa-play"></i> Tocar</button>
+                                <button class="btn btn-secondary btn-sm" id="btn-rep-study" style="color:var(--secondary); border-color:rgba(0,229,255,0.2);"><i class="fa-solid fa-graduation-cap"></i> Estudar</button>
+                                <div id="rep-pdf-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo Dashboard Geral / Círculo das Quintas -->
+            <section class="panel dashboard-panel no-print" id="dashboard-panel" style="grid-column: 1 / -1;">
+                <h2 class="panel-title"><i class="fa-solid fa-chart-line"></i> Dashboard de Alto Crescimento</h2>
+                
+                <div class="dashboard-content-grid" style="display: grid; grid-template-columns: 350px 1fr; gap: 1.5rem;">
+                    <!-- Círculo das Quintas (SVG Interativo) -->
+                    <div class="circle-of-fifths-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <h4 style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 0.75rem; text-align: center;"><i class="fa-solid fa-circle-notch"></i> Círculo das Quintas</h4>
+                        <div id="circle-fifths-container" style="width: 200px; height: 200px; position: relative;">
+                            <!-- SVG Injetado dinamicamente em JS -->
+                        </div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.3;">
+                            Tonalidades iluminadas a <strong>Verde</strong> estão dominadas. A escala ativa pulsa a <strong>Violeta</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Progresso Geral e Métricas -->
+                    <div class="academy-progress-stats" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 10px; text-align: center;">
+                                <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Tonalidades Dominadas</span>
+                                <strong id="mastered-keys-count" style="font-size: 1.75rem; color: var(--success);">1 / 12</strong>
+                            </div>
+
+                            <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 10px; text-align: center;">
+                                <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Nível de Atleta do Violino</span>
+                                <strong id="student-rank-title" style="font-size: 1.25rem; color: var(--secondary); line-height: 2.2rem;">Recruta da Pauta</strong>
+                            </div>
+
+                            <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 10px; text-align: center;">
+                                <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Sessões de Estudo</span>
+                                <strong id="sessions-count" style="font-size: 1.75rem; color: var(--warning);">0</strong>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar-academy" style="margin-top: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-bottom: 0.4rem;">
+                                <span>Domínio do Currículo da Academia</span>
+                                <span id="academy-percent-text">8%</span>
+                            </div>
+                            <div class="suzuki-progress-container" style="height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden;">
+                                <div id="bar-academy-progress" style="height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 8%; transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guia de Estudo e Graus -->
+            <section class="panel study-fundamentals-panel no-print" style="grid-column: 1 / -1;">
+                <h2 class="panel-title"><i class="fa-solid fa-graduation-cap"></i> Guia de Estudo & Graus</h2>
+                <div class="study-fundamentals-content">
+                    <div class="fundamental-degree-card">
+                        <h3>Estrutura e Notas de Apoio</h3>
+                        <p id="study-tonic-desc"><strong>Tónica (I Grau):</strong> Sol (G) - Resolução e repouso principal.</p>
+                        <p id="study-subdominant-desc"><strong>Subdominante (IV Grau):</strong> Dó (C) - Tensão intermédia.</p>
+                        <p id="study-dominant-desc"><strong>Dominante (V Grau):</strong> Ré (D) - Nota de grande tensão direcionada para a tónica.</p>
+                        <p id="study-leading-desc"><strong>Sensível (VII Grau):</strong> Fá# (F#) - Atração máxima para a tónica.</p>
+                    </div>
+                    <div class="fundamental-guide-card">
+                        <h3>Como Estudar Esta Escala</h3>
+                        <div id="study-practice-guide">
+                            <!-- Inserido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Scripts Carregados em Ordem -->
+    <script src="pdfSourceValidator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Ficheiros temporários e de sistema
+*.py
+*.bat
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Ficheiros de editor
+*.log
+.vscode/
+.idea/
+
+# Ficheiros de ambiente local
+*.env
+node_modules/

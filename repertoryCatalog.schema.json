@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HERMES Repertory Catalog Detailed Schema",
+  "type": "object",
+  "required": ["studyBooks", "studyUnits", "repertoirePieces", "excerptLinks", "scaleRoutes", "pdfEntries"],
+  "properties": {
+    "studyBooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "composer", "difficulty", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "composer": { "type": "string" },
+          "difficulty": { "type": "string" },
+          "type": { "type": "string", "enum": ["tecnica", "etude", "escala"] }
+        }
+      }
+    },
+    "studyUnits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "bookId", "title", "focus", "notes"],
+        "properties": {
+          "id": { "type": "string" },
+          "bookId": { "type": "string" },
+          "title": { "type": "string" },
+          "focus": { "type": "string" },
+          "notes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "repertoirePieces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "composer", "key", "mode", "studentLevel", "difficultyDescription"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "composer": { "type": "string" },
+          "key": { "type": "string" },
+          "mode": { "type": "string" },
+          "studentLevel": { "type": "string" },
+          "difficultyDescription": { "type": "string" }
+        }
+      }
+    },
+    "excerptLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "pieceId", "title", "bars", "transferObjective", "notes"],
+        "properties": {
+          "id": { "type": "string" },
+          "pieceId": { "type": "string" },
+          "title": { "type": "string" },
+          "bars": { "type": "string" },
+          "transferObjective": { "type": "string" },
+          "notes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "scaleRoutes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "mode", "studentLevel", "octaves", "bowingPattern", "dailyPlan"],
+        "properties": {
+          "key": { "type": "string" },
+          "mode": { "type": "string" },
+          "studentLevel": { "type": "string" },
+          "octaves": { "type": "integer" },
+          "bowingPattern": { "type": "string" },
+          "dailyPlan": {
+            "type": "object",
+            "required": ["scaleUnits", "bowUnits", "etudeUnits", "repertoirePieceId", "excerptIds"],
+            "properties": {
+              "scaleUnits": { "type": "array", "items": { "type": "string" } },
+              "bowUnits": { "type": "array", "items": { "type": "string" } },
+              "etudeUnits": { "type": "array", "items": { "type": "string" } },
+              "repertoirePieceId": { "type": "string" },
+              "excerptIds": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "pdfEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "composer", "sourceDomain", "sourcePageUrl", "pdfUrl", "fallbackUrl"],
+        "properties": {
+          "id": { "type": "string" },
+          "bookId": { "type": "string" },
+          "pieceId": { "type": "string" },
+          "title": { "type": "string" },
+          "composer": { "type": "string" },
+          "sourceDomain": { "type": "string" },
+          "sourcePageUrl": { "type": "string" },
+          "pdfUrl": { "type": "string" },
+          "fallbackUrl": { "type": "string" }
+        }
+      }
+    }
+  }
+}

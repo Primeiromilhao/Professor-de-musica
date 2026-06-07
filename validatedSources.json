@@ -1,0 +1,53 @@
+{
+  "domains": [
+    {
+      "domain": "imslp.org",
+      "status": "approved_external_open",
+      "cors_allowed": false,
+      "requires_auth": false,
+      "description": "Biblioteca principal de partituras de domínio público. Abre em aba externa."
+    },
+    {
+      "domain": "s9.imslp.org",
+      "status": "approved_download_only",
+      "cors_allowed": false,
+      "requires_auth": false,
+      "description": "CDN oficial da IMSLP. Permite descarregar diretamente."
+    },
+    {
+      "domain": "imslp.simssa.ca",
+      "status": "approved_download_only",
+      "cors_allowed": false,
+      "requires_auth": false,
+      "description": "CDN canadiano da IMSLP. Permite descarregar diretamente."
+    },
+    {
+      "domain": "archive.org",
+      "status": "approved_embed",
+      "cors_allowed": true,
+      "requires_auth": false,
+      "description": "Internet Archive. Embutido ou visualização direta suportada."
+    },
+    {
+      "domain": "raw.githubusercontent.com",
+      "status": "approved_embed",
+      "cors_allowed": true,
+      "requires_auth": false,
+      "description": "Ficheiros Raw do GitHub. Suporta CORS e incorporação direta."
+    },
+    {
+      "domain": "musescore.com",
+      "status": "rejected_copyright_or_access",
+      "cors_allowed": false,
+      "requires_auth": true,
+      "description": "Bloqueia downloads atrás de paywall comercial."
+    },
+    {
+      "domain": "violinlab.com",
+      "status": "rejected_copyright_or_access",
+      "cors_allowed": false,
+      "requires_auth": true,
+      "description": "Conteúdo comercial protegido por direitos autorais."
+    }
+  ]
+}

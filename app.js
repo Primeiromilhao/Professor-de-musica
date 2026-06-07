@@ -1,0 +1,1261 @@
+/**
+ * HERMES Violin Lab v4.6 - Core App Logic (REWRITE LIMPO)
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const { Renderer, Stave, StaveNote, Voice, Formatter, Accidental, Annotation } = Vex.Flow;
+
+    // ── DOM ELEMENTS ──────────────────────────────────────────
+    const levelSelect       = document.getElementById("level-select");
+    const tonicSelect       = document.getElementById("tonic-select");
+    const scaleTypeSelect   = document.getElementById("scale-type-select");
+    const octavesSelect     = document.getElementById("octaves-select");
+    const intervalSelect    = document.getElementById("interval-select");
+    const octavesGroup      = document.getElementById("octaves-group");
+    const intervalGroup     = document.getElementById("interval-group");
+    const bpmSlider         = document.getElementById("bpm-slider");
+    const bpmVal            = document.getElementById("bpm-val");
+    const fsBpmSlider       = document.getElementById("fs-bpm-slider");
+    const fsBpmVal          = document.getElementById("fs-bpm-val");
+    const btnPlay           = document.getElementById("btn-play");
+    const btnStop           = document.getElementById("btn-stop");
+    const btnFsPlay         = document.getElementById("btn-fs-play");
+    const btnFsStop         = document.getElementById("btn-fs-stop");
+    const btnRecord         = document.getElementById("btn-record");
+    const btnPdf            = document.getElementById("btn-pdf");
+    const btnFullscreenMode = document.getElementById("btn-fullscreen-mode");
+    const btnExitFs         = document.getElementById("btn-exit-fs");
+    const recordStatus      = document.getElementById("record-status");
+    const relativeDisplay   = document.getElementById("relative-scale-display");
+    const btnSwitchRelative = document.getElementById("btn-switch-relative");
+    const scaleBadge        = document.getElementById("scale-badge");
+    const printScaleTitle   = document.getElementById("print-scale-title");
+    const noteDisplay       = document.getElementById("current-note-display");
+    const fingerDisplay     = document.getElementById("current-finger-display");
+    const positionDisplay   = document.getElementById("current-position-display");
+    const fingerDot         = document.getElementById("finger-dot");
+    const harmonyTableBody  = document.getElementById("harmony-table-body");
+    const teacherTipsContent= document.getElementById("teacher-tips-content");
+    const chkSuzukiMode     = document.getElementById("chk-suzuki-mode");
+    const suzukiContent     = document.getElementById("suzuki-content");
+    const suzukiPanel       = document.getElementById("suzuki-panel");
+    const btnSuzukiPrev     = document.getElementById("btn-suzuki-prev");
+    const btnSuzukiNext     = document.getElementById("btn-suzuki-next");
+    const suzukiStepIndicatorText = document.getElementById("suzuki-step-indicator-text");
+    const suzukiHistoryContainer  = document.getElementById("suzuki-history-container");
+    const planScaleName    = document.getElementById("plan-scale-name");
+    const planScaleOctaves = document.getElementById("plan-scale-octaves");
+    const planScaleBowing  = document.getElementById("plan-scale-bowing");
+    const planScaleFocus   = document.getElementById("plan-scale-focus");
+    const planTechTitle    = document.getElementById("plan-tech-title");
+    const planTechFocus    = document.getElementById("plan-tech-focus");
+    const techPdfContainer = document.getElementById("tech-pdf-container");
+    const planStudyTitle   = document.getElementById("plan-study-title");
+    const planStudyFocus   = document.getElementById("plan-study-focus");
+    const studyPdfContainer= document.getElementById("study-pdf-container");
+    const planRepTitle     = document.getElementById("plan-rep-title");
+    const planRepExcerpt   = document.getElementById("plan-rep-excerpt");
+    const planRepBars      = document.getElementById("plan-rep-bars");
+    const planRepFocus     = document.getElementById("plan-rep-focus");
+    const repPdfContainer  = document.getElementById("rep-pdf-container");
+    const btnRestoreScale  = document.getElementById("btn-restore-scale");
+    const vexflowPanelTitle= document.getElementById("vexflow-panel-title");
+    const challengeDayNum  = document.getElementById("challenge-day-num");
+    const streakCountDisplay= document.getElementById("streak-count-display");
+    const totalXpDisplay   = document.getElementById("total-xp-display");
+    const btnCompleteDay   = document.getElementById("btn-complete-day");
+    const txtChalPercent   = document.getElementById("txt-chal-percent");
+    const barChalProgress  = document.getElementById("bar-chal-progress");
+    const masteredKeysCount= document.getElementById("mastered-keys-count");
+    const studentRankTitle = document.getElementById("student-rank-title");
+    const sessionsCount    = document.getElementById("sessions-count");
+    const academyPercentText= document.getElementById("academy-percent-text");
+    const barAcademyProgress= document.getElementById("bar-academy-progress");
+
+    // ── GLOBAL DATA ───────────────────────────────────────────
+    let repertoryCatalog = null;
+    let validatedSources = null;
+    let activePracticePlan = null;
+
+    // ── MUSIC THEORY CONSTANTS ────────────────────────────────
+    // Escala cromática com nomes canónicos
+    const CHROMATIC = ["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
+    const SCALE_INTERVALS = {
+        "major":         [2,2,1,2,2,2,1],
+        "minor-natural": [2,1,2,2,1,2,2],
+        "minor-harmonic":[2,1,2,2,1,3,1],
+        "minor-melodic": [2,1,2,2,2,2,1]
+    };
+    const DEGREE_NAMES = {
+        "major":         ["Tónica","Supertónica","Mediante","Subdominante","Dominante","Sobredominante","Sensível"],
+        "minor-natural": ["Tónica","Supertónica","Mediante","Subdominante","Dominante","Sobredominante","Subtónica"],
+        "minor-harmonic":["Tónica","Supertónica","Mediante","Subdominante","Dominante","Sobredominante","Sensível"],
+        "minor-melodic": ["Tónica","Supertónica","Mediante","Subdominante","Dominante","Sobredominante","Sensível"]
+    };
+    const DEGREE_ROMAN = ["I","II","III","IV","V","VI","VII"];
+
+    const keySignatureMap = {
+        "Gmajor":"G","Gminor-natural":"Bb","Abmajor":"Ab","Amajor":"A","Aminor-natural":"C",
+        "Bbmajor":"Bb","Bmajor":"B","Cmajor":"C","Cminor-natural":"Eb","C#major":"C#",
+        "Dmajor":"D","Dminor-natural":"F","Ebmajor":"Eb","Emajor":"E","Fmajor":"F","F#major":"F#"
+    };
+
+    const notesViolinMap = {
+        "G3":  {string:"G",finger:0,pos:"Solta",x:30},
+        "A3":  {string:"G",finger:1,pos:"1ª Pos",x:80},
+        "Bb3": {string:"G",finger:2,pos:"1ª Pos (baixo)",x:110},
+        "B3":  {string:"G",finger:2,pos:"1ª Pos",x:130},
+        "C4":  {string:"G",finger:3,pos:"1ª Pos",x:155},
+        "C#4": {string:"G",finger:3,pos:"1ª Pos (alto)",x:175},
+        "D4":  {string:"D",finger:0,pos:"Solta",x:30},
+        "Eb4": {string:"D",finger:1,pos:"1ª Pos (baixo)",x:55},
+        "E4":  {string:"D",finger:1,pos:"1ª Pos",x:80},
+        "F4":  {string:"D",finger:2,pos:"1ª Pos (baixo)",x:110},
+        "F#4": {string:"D",finger:2,pos:"1ª Pos",x:130},
+        "G4":  {string:"D",finger:3,pos:"1ª Pos",x:155},
+        "Ab4": {string:"D",finger:3,pos:"1ª Pos (alto)",x:175},
+        "A4":  {string:"A",finger:0,pos:"Solta",x:30},
+        "Bb4": {string:"A",finger:1,pos:"1ª Pos (baixo)",x:55},
+        "B4":  {string:"A",finger:1,pos:"1ª Pos",x:80},
+        "C5":  {string:"A",finger:2,pos:"1ª Pos (baixo)",x:110},
+        "C#5": {string:"A",finger:2,pos:"1ª Pos",x:130},
+        "D5":  {string:"A",finger:3,pos:"1ª Pos",x:155},
+        "Eb5": {string:"A",finger:3,pos:"1ª Pos (alto)",x:175},
+        "E5":  {string:"E",finger:0,pos:"Solta",x:30},
+        "F5":  {string:"E",finger:1,pos:"1ª Pos (baixo)",x:55},
+        "F#5": {string:"E",finger:1,pos:"1ª Pos",x:80},
+        "G5":  {string:"E",finger:2,pos:"1ª Pos (baixo)",x:110},
+        "Ab5": {string:"E",finger:2,pos:"1ª Pos",x:130},
+        "A5":  {string:"E",finger:3,pos:"1ª Pos",x:155},
+        "Bb5": {string:"E",finger:3,pos:"1ª Pos (alto)",x:175},
+        "B5":  {string:"E",finger:4,pos:"1ª Pos",x:195}
+    };
+
+    // ── STATE VARIABLES ───────────────────────────────────────
+    let isPlaying        = false;
+    let piano            = null;
+    let synth            = null;
+    let isAudioInit      = false;
+    let activeNotesList  = [];
+    let activeNoteIndex  = 0;
+    let playTimeout      = null;
+    let activePlaybackType = "scale";
+    let suzukiActive     = false;
+    let currentStep      = 1;
+    let suzukiCompletedSteps   = new Set();
+    let suzukiChecklistStates  = {};
+    let isImitationPause = false;
+    let loopStartIdx     = 0;
+    let loopEndIdx       = 0;
+    let challengeDay     = 1;
+    let userXP           = 0;
+    let streakCount      = 0;
+    let completedScalesList = new Set();
+    let challengeStates  = {tecnica:false,escala:false,repertoire:false,bonus:false};
+    let mediaRecorder    = null;
+    let recordedChunks   = [];
+    let isRecording      = false;
+    let practiceHistory  = [];
+
+    // ══════════════════════════════════════════════════════════
+    // ── CORE SCALE GENERATOR (MATEMATICAMENTE PERFEITO) ───────
+    // Gera a escala ascendente + descendente de forma contínua,
+    // SEM saltos de oitava errados. A oitava só sobe quando
+    // a nota passa de B para C (como é a teoria musical real).
+    // ══════════════════════════════════════════════════════════
+    function buildScale(tonic, mode, octaves) {
+        const intervals = SCALE_INTERVALS[mode] || SCALE_INTERVALS["major"];
+        const tonicIdx  = CHROMATIC.indexOf(tonic);
+        if (tonicIdx === -1) return [];
+
+        // Definir oitava de início com base na tónica para violino
+        // Sol (G3), Lá (A3), Si (B3) começam na oitava 3
+        // Dó (C4) em diante começa na oitava 4
+        const startOct = (tonicIdx >= CHROMATIC.indexOf("G")) ? 3 : 4;
+
+        let ascending = [];
+        let chrIdx  = tonicIdx;
+        let octave  = startOct;
+
+        // Ascendente: tónica + 7 graus x octaves
+        for (let o = 0; o < octaves; o++) {
+            for (let i = 0; i < 7; i++) {
+                ascending.push({ name: CHROMATIC[chrIdx], octave, degree: i });
+                // Avança o índice cromático
+                chrIdx += intervals[i];
+                if (chrIdx >= 12) {
+                    chrIdx -= 12;
+                    octave++;  // Subida de oitava REAL: só quando passa de B para C
+                }
+            }
+        }
+        // Nota de topo (oitava acima da tónica)
+        ascending.push({ name: CHROMATIC[chrIdx], octave, degree: 0 });
+
+        // Descendente: inversão sem repetir o topo
+        const descending = [...ascending].reverse().slice(1);
+        return [...ascending, ...descending];
+    }
+
+    // ── FINGERING ENRICHMENT ──────────────────────────────────
+    function enrichWithFingering(notes) {
+        return notes.map(n => {
+            const key = `${n.name}${n.octave}`;
+            const map = notesViolinMap[key];
+            return {
+                ...n,
+                fullName: key,
+                string:   map ? map.string   : "E",
+                finger:   map ? map.finger    : 1,
+                position: map ? map.pos       : "?",
+                x:        map ? map.x         : 80
+            };
+        });
+    }
+
+    // ══════════════════════════════════════════════════════════
+    // ── AUDIO ENGINE (TONE.JS OFFLINE — SEM CDN) ──────────────
+    // ══════════════════════════════════════════════════════════
+    function initAudio() {
+        if (isAudioInit) return;
+
+        // Sintetizador principal (escala)
+        piano = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: "triangle" },
+            envelope:   { attack: 0.02, decay: 0.3, sustain: 0.4, release: 0.8 },
+            volume: -6
+        }).toDestination();
+
+        // Reverb subtil
+        const reverb = new Tone.Reverb({ decay: 1.2, wet: 0.2 }).toDestination();
+        piano.connect(reverb);
+
+        // Sintetizador do drone (pedal harmónico)
+        synth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: "sine" },
+            envelope:   { attack: 0.5, decay: 0.1, sustain: 0.9, release: 1.5 },
+            volume: -22
+        }).toDestination();
+
+        isAudioInit = true;
+    }
+
+    // ── PLAYBACK ENGINE ───────────────────────────────────────
+    async function togglePlayback() {
+        initAudio();
+        if (isPlaying) { stopPlayback(); return; }
+
+        // OBRIGATÓRIO: desbloquear AudioContext no primeiro clique do utilizador
+        await Tone.start();
+
+        isPlaying = true;
+        btnPlay.innerHTML   = `<i class="fa-solid fa-pause"></i> Pausar`;
+        btnFsPlay.innerHTML = `<i class="fa-solid fa-pause"></i> Pausar`;
+        btnStop.disabled    = false;
+        btnFsStop.disabled  = false;
+        updateSuzukiPlaybackUI(true);
+        activeNoteIndex  = 0;
+        isImitationPause = false;
+
+        if (suzukiActive && currentStep === 4 && activePlaybackType === "scale") {
+            setSuzukiLoopRange();
+        }
+        playNextNote();
+    }
+
+    function stopPlayback() {
+        isPlaying = false;
+        if (playTimeout) clearTimeout(playTimeout);
+
+        btnPlay.innerHTML   = `<i class="fa-solid fa-play"></i> Tocar`;
+        btnFsPlay.innerHTML = `<i class="fa-solid fa-play"></i> Tocar`;
+        btnStop.disabled    = true;
+        btnFsStop.disabled  = true;
+
+        if (piano) piano.releaseAll();
+        if (synth)  synth.releaseAll();
+
+        updateSuzukiPlaybackUI(false);
+        removeVisualNoteHighlight();
+        const arrow = document.getElementById("play-arrow");
+        if (arrow) arrow.style.display = "none";
+        if (fingerDot) fingerDot.style.display = "none";
+        if (noteDisplay)     noteDisplay.innerText    = "Nota: ---";
+        if (fingerDisplay)   fingerDisplay.innerText  = "Dedo: -";
+        if (positionDisplay) positionDisplay.innerText= "Posição: -";
+    }
+
+    function playNextNote() {
+        if (!isPlaying) return;
+
+        // Loop Suzuki passo 4
+        if (suzukiActive && currentStep === 4 && activePlaybackType === "scale") {
+            if (activeNoteIndex > loopEndIdx) activeNoteIndex = loopStartIdx;
+        }
+
+        // Fim da sequência
+        if (activeNoteIndex >= activeNotesList.length) {
+            if (activePlaybackType === "scale") {
+                if (suzukiActive && currentStep === 5) recordPracticeCompletion();
+                challengeStates.escala = true;
+                const chkEscala = document.getElementById("chk-chal-escala");
+                if (chkEscala) chkEscala.checked = true;
+                updateAcademyStats();
+            } else if (activePlaybackType === "tecnica") {
+                challengeStates.tecnica = true;
+                const chkTecnica = document.getElementById("chk-chal-tecnica");
+                if (chkTecnica) chkTecnica.checked = true;
+                updateAcademyStats();
+            } else if (activePlaybackType === "repertoire") {
+                challengeStates.repertoire = true;
+                const chkRep = document.getElementById("chk-chal-repertorio");
+                if (chkRep) chkRep.checked = true;
+                updateAcademyStats();
+            }
+            stopPlayback();
+            return;
+        }
+
+        // Pausa de imitação Suzuki passo 3
+        if (suzukiActive && currentStep === 3 && activePlaybackType === "scale"
+            && activeNoteIndex > 0 && activeNoteIndex % 4 === 0 && !isImitationPause) {
+            isImitationPause = true;
+            const bpm = parseInt(bpmSlider.value);
+            const dur = (60 / bpm) * 4 * 1000;
+            showImitationOverlay(true, activeNoteIndex - 4, activeNoteIndex - 1);
+            if (piano) piano.releaseAll();
+            playTimeout = setTimeout(() => {
+                showImitationOverlay(false);
+                isImitationPause = false;
+                playNextNote();
+            }, dur);
+            return;
+        }
+
+        const note = activeNotesList[activeNoteIndex];
+        const bpm  = parseInt(bpmSlider.value);
+        const dur  = 60 / bpm; // segundos
+
+        // Notas para tocar (escala ± intervalo)
+        let toPlay = [`${note.name}${note.octave}`];
+        if (intervalSelect.value !== "none" && activePlaybackType === "scale") {
+            const iv = calcInterval(note, intervalSelect.value);
+            if (iv) toPlay.push(`${iv.name}${iv.octave}`);
+        }
+
+        // Drone de fundo
+        const droneEl = document.getElementById("drone-select");
+        let drone = droneEl ? droneEl.value : "none";
+        if (suzukiActive && currentStep === 4 && drone === "none") drone = "0";
+        if (drone !== "none" && activeNoteIndex % 4 === 0) {
+            const chordNotes = getDroneChord(parseInt(drone));
+            if (synth) { synth.releaseAll(); synth.triggerAttack(chordNotes); }
+        }
+
+        // Tocar nota
+        if (piano) piano.triggerAttackRelease(toPlay, dur * 0.85);
+
+        // Visuais
+        highlightVisualNote(activeNoteIndex);
+        updateViolinNeck(note);
+
+        activeNoteIndex++;
+        playTimeout = setTimeout(playNextNote, dur * 1000);
+    }
+
+    function calcInterval(note, interval) {
+        const semis = {third:4, "3rd":4, fourth:5, "4th":5, fifth:7, "5th":7, sixth:9, "6th":9, eighth:12, "8th":12};
+        const s = semis[interval] || 0;
+        if (!s) return null;
+        const idx = CHROMATIC.indexOf(note.name);
+        if (idx === -1) return null;
+        const newIdx = (idx + s) % 12;
+        const octAdd = Math.floor((idx + s) / 12);
+        return { name: CHROMATIC[newIdx], octave: note.octave + octAdd };
+    }
+
+    function getDroneChord(degreeIdx) {
+        const tonic = tonicSelect.value;
+        const mode  = scaleTypeSelect.value;
+        const ivals = SCALE_INTERVALS[mode] || SCALE_INTERVALS["major"];
+        let root = CHROMATIC.indexOf(tonic);
+        for (let i = 0; i < degreeIdx; i++) root = (root + ivals[i]) % 12;
+        const third = (root + 4) % 12;
+        const fifth  = (root + 7) % 12;
+        return [`${CHROMATIC[root]}3`, `${CHROMATIC[third]}3`, `${CHROMATIC[fifth]}3`];
+    }
+
+    // ══════════════════════════════════════════════════════════
+    // ── VEXFLOW SHEET MUSIC RENDERER ──────────────────────────
+    // Desenha a escala numa única pauta contínua com graus
+    // ══════════════════════════════════════════════════════════
+    function drawSheetMusic(notes) {
+        const staffDiv = document.getElementById("vexflow-staff");
+        staffDiv.innerHTML = "";
+        // Garante fundo branco a toda a hora
+        staffDiv.style.backgroundColor = "#ffffff";
+        staffDiv.style.padding = "16px";
+        staffDiv.style.borderRadius = "8px";
+
+        if (!notes || notes.length === 0) return;
+
+        const tonic   = tonicSelect.value;
+        const mode    = scaleTypeSelect.value;
+        const keySig  = keySignatureMap[`${tonic}${mode}`] || "C";
+        const itvSel  = intervalSelect.value;
+
+        // Largura disponível
+        const containerWidth = staffDiv.parentElement ? staffDiv.parentElement.offsetWidth : 900;
+        const width = Math.max(containerWidth - 40, 600);
+
+        // Quantas notas cabem por linha (pauta)
+        const NOTES_PER_LINE = 8;
+        const chunks = [];
+        for (let i = 0; i < notes.length; i += NOTES_PER_LINE) {
+            chunks.push(notes.slice(i, i + NOTES_PER_LINE));
+        }
+
+        const STAVE_HEIGHT = 180; // espaço entre linhas de pauta (inclui anotações)
+        const totalHeight  = chunks.length * STAVE_HEIGHT + 40;
+
+        const renderer = new Renderer(staffDiv, Renderer.Backends.SVG);
+        renderer.resize(width, totalHeight);
+        const ctx = renderer.getContext();
+        // Fundo branco no SVG
+        ctx.setFillStyle("#ffffff");
+
+        let yOffset = 30;
+
+        chunks.forEach((chunk, chunkIdx) => {
+            const stave = new Stave(10, yOffset, width - 20);
+
+            if (chunkIdx === 0) {
+                stave.addClef("treble").addKeySignature(keySig);
+            } else {
+                stave.addClef("treble");
+            }
+            if (chunkIdx === chunks.length - 1) {
+                stave.setEndBarType(Vex.Flow.Barline.type.DOUBLE);
+            }
+            stave.setContext(ctx).draw();
+
+            const vexNotes = chunk.map((n, localIdx) => {
+                const globalIdx = chunkIdx * NOTES_PER_LINE + localIdx;
+
+                // Chave VexFlow: "g/4", "c#/5", "eb/4" etc.
+                // VexFlow usa notação: letra minúscula + # ou b + "/" + oitava
+                let noteLetter = n.name.toLowerCase()
+                    .replace("#", "#")
+                    .replace("b", "b");  // já está correto
+                let keys = [`${noteLetter}/${n.octave}`];
+
+                // Intervalo paralelo
+                if (itvSel !== "none" && activePlaybackType === "scale") {
+                    const iv = calcInterval(n, itvSel);
+                    if (iv) {
+                        const ivLetter = iv.name.toLowerCase();
+                        keys.push(`${ivLetter}/${iv.octave}`);
+                    }
+                }
+
+                const staveNote = new StaveNote({ clef: "treble", keys, duration: "q" });
+
+                // Acidentais explícitos (quando NÃO fazem parte da armadura)
+                keys.forEach((k, kIdx) => {
+                    const pitch = k.split("/")[0];
+                    if (pitch.includes("#")) {
+                        staveNote.addModifier(new Accidental("#"), kIdx);
+                    } else if (pitch.length > 1 && pitch.endsWith("b")) {
+                        staveNote.addModifier(new Accidental("b"), kIdx);
+                    }
+                });
+
+                // Grau funcional como anotação BAIXO da nota
+                if (activePlaybackType === "scale") {
+                    const degreeNames  = DEGREE_NAMES[mode] || DEGREE_NAMES["major"];
+                    const degLabel     = `${DEGREE_ROMAN[n.degree] || ""}`;
+                    const funcLabel    = degreeNames[n.degree] || "";
+                    const annotation   = new Annotation(`${degLabel} ${funcLabel}`)
+                        .setFont("Arial", 9, "bold")
+                        .setVerticalJustification(Vex.Flow.Annotation.VerticalJustify.BOTTOM);
+                    staveNote.addModifier(annotation, 0);
+                }
+
+                staveNote.setAttribute("id", `note-svg-${globalIdx}`);
+                return staveNote;
+            });
+
+            const voice = new Voice({ num_beats: vexNotes.length, beat_value: 4 });
+            voice.setMode(Voice.Mode.SOFT);
+            voice.addTickables(vexNotes);
+
+            const fmtWidth = chunkIdx === 0 ? (width - 160) : (width - 60);
+            new Formatter().joinVoices([voice]).format([voice], fmtWidth);
+            voice.draw(ctx, stave);
+
+            yOffset += STAVE_HEIGHT;
+        });
+    }
+
+    // ── VISUAL NOTE HIGHLIGHT ─────────────────────────────────
+    function highlightVisualNote(idx) {
+        removeVisualNoteHighlight();
+        const el = document.getElementById(`note-svg-${idx}`);
+        if (el) {
+            el.querySelectorAll("path,rect").forEach(p => p.classList.add("note-highlight-active"));
+        }
+        const arrow = document.getElementById("play-arrow");
+        if (el && arrow) {
+            const r  = el.getBoundingClientRect();
+            const cr = document.getElementById("vexflow-staff").getBoundingClientRect();
+            arrow.style.display = "block";
+            arrow.style.left    = `${r.left - cr.left + r.width / 2 - 8}px`;
+            const lineIdx = Math.floor(idx / 8);
+            arrow.style.top = `${15 + lineIdx * 180}px`;
+        }
+    }
+
+    function removeVisualNoteHighlight() {
+        document.querySelectorAll(".note-highlight-active").forEach(e => e.classList.remove("note-highlight-active"));
+    }
+
+    // ── VIOLIN NECK ───────────────────────────────────────────
+    function updateViolinNeck(note) {
+        if (!note) return;
+        if (noteDisplay)     noteDisplay.innerText    = `Nota: ${note.name}${note.octave}`;
+        if (fingerDisplay)   fingerDisplay.innerText  = `Dedo: ${note.finger === 0 ? "Solta" : note.finger}`;
+        if (positionDisplay) positionDisplay.innerText= `Posição: ${note.position || "?"}`;
+        if (!fingerDot) return;
+        const stringTops = {G:20,D:45,A:70,E:95};
+        fingerDot.style.display = "block";
+        fingerDot.style.top  = `${stringTops[note.string] || 70}px`;
+        fingerDot.style.left = `${note.x || 80}px`;
+    }
+
+    // ── LOAD SCALE INTO STAFF ─────────────────────────────────
+    function loadScaleIntoStaff() {
+        const tonic   = tonicSelect.value;
+        const mode    = scaleTypeSelect.value;
+        const octaves = parseInt(octavesSelect.value) || 1;
+
+        activePlaybackType = "scale";
+        // Gera escala SEMPRE matematicamente correta
+        const raw   = buildScale(tonic, mode, octaves);
+        activeNotesList = enrichWithFingering(raw);
+        drawSheetMusic(activeNotesList);
+    }
+
+    function loadPedagogicUnitIntoStaff(unit, badgeText, type) {
+        stopPlayback();
+        activePlaybackType = type;
+        if (!unit) return;
+
+        const raw = unit.notes.map((noteName, idx) => {
+            // Suporte correto a notas como: F#5, C#5, Eb4, Bb4, G#5, Ab4
+            let name, octave;
+            const lastChar = noteName[noteName.length - 1];
+            octave = parseInt(lastChar);
+            name   = noteName.slice(0, -1); // remove o último caracter (dígito da oitava)
+            return { name, octave, degree: idx % 7, fullName: noteName };
+        });
+
+        activeNotesList = enrichWithFingering(raw);
+        vexflowPanelTitle.innerHTML = `<i class="fa-solid fa-music"></i> Pauta: ${unit.title}`;
+        scaleBadge.innerText = badgeText;
+        btnRestoreScale.style.display = "inline-block";
+        drawSheetMusic(activeNotesList);
+    }
+
+    // ── BPM SLIDERS SYNC ─────────────────────────────────────
+    bpmSlider.addEventListener("input", e => {
+        bpmVal.innerText    = e.target.value;
+        fsBpmSlider.value   = e.target.value;
+        fsBpmVal.innerText  = e.target.value;
+    });
+    fsBpmSlider.addEventListener("input", e => {
+        fsBpmVal.innerText  = e.target.value;
+        bpmSlider.value     = e.target.value;
+        bpmVal.innerText    = e.target.value;
+    });
+
+    // ── CONTROLS ──────────────────────────────────────────────
+    function applyLevelSettings() {
+        const lvl = levelSelect.value;
+        if (lvl === "iniciante") {
+            octavesGroup.style.display = "none";
+            intervalGroup.style.display = "none";
+            octavesSelect.value = "1";
+            intervalSelect.value = "none";
+        } else {
+            octavesGroup.style.display = "block";
+            intervalGroup.style.display = "block";
+        }
+    }
+
+    levelSelect.addEventListener("change",     () => { applyLevelSettings(); updateDashboard(); });
+    tonicSelect.addEventListener("change",     () => updateDashboard());
+    scaleTypeSelect.addEventListener("change", () => updateDashboard());
+    octavesSelect.addEventListener("change",   () => updateDashboard());
+    intervalSelect.addEventListener("change",  () => updateDashboard());
+
+    chkSuzukiMode.addEventListener("change", e => {
+        suzukiActive = e.target.checked;
+        if (suzukiActive) {
+            suzukiContent.style.display = "block";
+            suzukiPanel.style.border    = "1px solid var(--secondary)";
+            changeSuzukiStep(1);
+        } else {
+            suzukiContent.style.display = "none";
+            suzukiPanel.style.border    = "1px solid var(--border-color)";
+            stopPlayback();
+            updateDashboard();
+        }
+    });
+
+    btnPlay.addEventListener("click",   togglePlayback);
+    btnStop.addEventListener("click",   stopPlayback);
+    btnFsPlay.addEventListener("click", togglePlayback);
+    btnFsStop.addEventListener("click", stopPlayback);
+    btnRestoreScale.addEventListener("click", () => { loadScaleIntoStaff(); });
+
+    // ── PRACTICE PLAN CARDS ACTIONS ──────────────────────────
+    const tryGet = id => document.getElementById(id);
+
+    tryGet("btn-tech-view")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const u = activePracticePlan.bows[0] || activePracticePlan.scales[0];
+        if (u) loadPedagogicUnitIntoStaff(u, "Técnica", "tecnica");
+    });
+    tryGet("btn-tech-play")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const u = activePracticePlan.bows[0] || activePracticePlan.scales[0];
+        if (u) { loadPedagogicUnitIntoStaff(u, "Técnica", "tecnica"); togglePlayback(); }
+    });
+    tryGet("btn-study-view")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const u = activePracticePlan.etudes[0];
+        if (u) loadPedagogicUnitIntoStaff(u, "Estudo", "etude");
+    });
+    tryGet("btn-study-play")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const u = activePracticePlan.etudes[0];
+        if (u) { loadPedagogicUnitIntoStaff(u, "Estudo", "etude"); togglePlayback(); }
+    });
+    tryGet("btn-rep-view")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const ex = activePracticePlan.excerpts[0];
+        if (ex) loadPedagogicUnitIntoStaff(ex, "Repertório", "repertoire");
+    });
+    tryGet("btn-rep-play")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const ex = activePracticePlan.excerpts[0];
+        if (ex) { loadPedagogicUnitIntoStaff(ex, "Repertório", "repertoire"); togglePlayback(); }
+    });
+    tryGet("btn-rep-study")?.addEventListener("click", () => {
+        if (!activePracticePlan) return;
+        const ex = activePracticePlan.excerpts[0];
+        if (ex) {
+            loadPedagogicUnitIntoStaff(ex, "Repertório (Lento)", "repertoire");
+            bpmSlider.value = Math.max(40, parseInt(bpmSlider.value) - 15);
+            bpmVal.innerText = bpmSlider.value;
+            togglePlayback();
+        }
+    });
+
+    // ── FULLSCREEN ────────────────────────────────────────────
+    btnFullscreenMode.addEventListener("click", () => {
+        document.body.classList.add("fullscreen-active");
+        setTimeout(() => drawSheetMusic(activeNotesList), 80);
+    });
+    btnExitFs.addEventListener("click", () => {
+        document.body.classList.remove("fullscreen-active");
+        setTimeout(() => drawSheetMusic(activeNotesList), 80);
+    });
+
+    // ── WAV RECORDER ─────────────────────────────────────────
+    btnRecord.addEventListener("click", () => {
+        initAudio();
+        if (isRecording) {
+            isRecording = false;
+            btnRecord.innerHTML = `<i class="fa-solid fa-circle"></i> Gravar WAV`;
+            btnRecord.className = "btn btn-record";
+            recordStatus.innerText = "A processar...";
+            if (mediaRecorder) mediaRecorder.stop();
+        } else {
+            isRecording = true;
+            btnRecord.innerHTML = `<i class="fa-solid fa-square" style="color:white"></i> Parar Gravação`;
+            btnRecord.className = "btn btn-primary";
+            recordStatus.innerText = "A gravar...";
+            recordedChunks = [];
+            const dest = Tone.getContext().createMediaStreamDestination();
+            Tone.getDestination().connect(dest);
+            mediaRecorder = new MediaRecorder(dest.stream);
+            mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, {type:"audio/wav"});
+                const url  = URL.createObjectURL(blob);
+                const a    = Object.assign(document.createElement("a"), {href:url, download:`ViolinLab_${tonicSelect.value}_${scaleTypeSelect.value}.wav`, style:"display:none"});
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); recordStatus.innerText = "WAV exportado!"; }, 100);
+            };
+            mediaRecorder.start();
+        }
+    });
+
+    btnPdf.addEventListener("click", () => window.print());
+
+    // ── DASHBOARD UPDATE ──────────────────────────────────────
+    function updateDashboard() {
+        const key   = tonicSelect.value;
+        const mode  = scaleTypeSelect.value;
+        const level = levelSelect.value;
+
+        activePracticePlan = resolvePracticePlan({ key, mode, studentLevel: level, catalog: repertoryCatalog });
+
+        const modeLabel = {
+            "major":"Maior","minor-natural":"Menor Natural",
+            "minor-harmonic":"Menor Harmónica","minor-melodic":"Menor Melódica"
+        }[mode] || mode;
+
+        if (activePracticePlan) {
+            const pr = activePracticePlan.route;
+            if (level !== "iniciante") octavesSelect.value = pr.octaves;
+            planScaleName.innerText  = `${key} ${modeLabel}`;
+            planScaleOctaves.innerText = `${pr.octaves} Oitava${pr.octaves > 1 ? "s" : ""}`;
+            planScaleBowing.innerText  = pr.bowingPattern;
+            const su = activePracticePlan.scales[0];
+            planScaleFocus.innerText   = su ? su.focus : `Entonação em ${key} ${modeLabel}.`;
+
+            const tu = activePracticePlan.bows[0] || su;
+            if (tu) {
+                planTechTitle.innerText = tu.title;
+                planTechFocus.innerText = tu.focus;
+                techPdfContainer.innerHTML = "";
+                const tp = activePracticePlan.pdfs.find(p => p.bookId === tu.bookId);
+                tp ? renderPdfBadge(tp, techPdfContainer) : renderManualEntryBadge(techPdfContainer);
+            }
+
+            const eu = activePracticePlan.etudes[0];
+            if (eu) {
+                planStudyTitle.innerText = eu.title;
+                planStudyFocus.innerText = eu.focus;
+                studyPdfContainer.innerHTML = "";
+                const sp = activePracticePlan.pdfs.find(p => p.bookId === eu.bookId);
+                sp ? renderPdfBadge(sp, studyPdfContainer) : renderManualEntryBadge(studyPdfContainer);
+            }
+
+            const piece  = activePracticePlan.piece;
+            const excerpt= activePracticePlan.excerpts[0];
+            if (piece && excerpt) {
+                planRepTitle.innerText   = `${piece.title} (${piece.composer})`;
+                planRepExcerpt.innerText = excerpt.title;
+                planRepBars.innerText    = excerpt.bars;
+                planRepFocus.innerText   = excerpt.transferObjective;
+                repPdfContainer.innerHTML = "";
+                const rp = activePracticePlan.pdfs.find(p => p.pieceId === piece.id);
+                rp ? renderPdfBadge(rp, repPdfContainer) : renderManualEntryBadge(repPdfContainer);
+            } else {
+                planRepTitle.innerText   = "Sem Peça em Catálogo";
+                planRepExcerpt.innerText = "-";
+                planRepBars.innerText    = "-";
+                planRepFocus.innerText   = "Nenhuma melodia associada.";
+                repPdfContainer.innerHTML = "";
+            }
+        }
+
+        // Sempre gera a escala correctamente e desenha
+        if (!isPlaying || activePlaybackType === "scale") {
+            loadScaleIntoStaff();
+        }
+
+        vexflowPanelTitle.innerHTML = `<i class="fa-solid fa-music"></i> Pauta Clave de Sol`;
+        scaleBadge.innerText = `${key} ${modeLabel}`;
+        printScaleTitle.innerText = `Escala de ${key} ${modeLabel}`;
+        btnRestoreScale.style.display = "none";
+
+        relativeDisplay.innerText = getRelativeScale(key, mode);
+        updateStudyFundamentals(key, mode);
+        challengeDayNum.innerText = challengeDay;
+
+        const txt_t = tryGet("txt-chal-tecnica");
+        const txt_e = tryGet("txt-chal-escala");
+        const txt_r = tryGet("txt-chal-repertorio");
+        const txt_b = tryGet("txt-chal-bonus");
+        if (txt_t) txt_t.innerText = `Estudar técnica em ${key} ${modeLabel}.`;
+        if (txt_e) txt_e.innerText = `Tocar a escala de ${key} ${modeLabel} a ${bpmSlider.value} BPM.`;
+        if (txt_r) txt_r.innerText = activePracticePlan?.piece ? `Tocar excerto de ${activePracticePlan.piece.title}.` : "Tocar excerto clássico.";
+        if (txt_b) txt_b.innerText = getBonusChallengeText(challengeDay);
+
+        renderSuzukiChecklist();
+        renderHarmonyTable();
+        updateAcademyStats();
+        drawCircleOfFifths();
+    }
+
+    // ── PDF BADGES ────────────────────────────────────────────
+    function renderPdfBadge(pdfEntry, container) {
+        if (!pdfEntry || !container) return;
+        const validation = validatePdfSource(pdfEntry, validatedSources);
+        let badgeClass = "pdf-badge-rejected", statusText = "Restrito", targetUrl = pdfEntry.fallbackUrl || "#";
+        if (validation.status === "approved_embed")          { badgeClass="pdf-badge-embed";       statusText="Embed/Direct";   targetUrl=pdfEntry.pdfUrl; }
+        else if (validation.status === "approved_external_open") { badgeClass="pdf-badge-open";   statusText="IMSLP/Externo";  targetUrl=pdfEntry.sourcePageUrl; }
+        else if (validation.status === "approved_download_only") { badgeClass="pdf-badge-download";statusText="Download";      targetUrl=pdfEntry.pdfUrl; }
+        else if (validation.status === "conditional")        { badgeClass="pdf-badge-conditional"; statusText="Condicional";   targetUrl=pdfEntry.fallbackUrl; }
+        container.innerHTML = `<a href="${targetUrl}" target="_blank" class="pdf-badge ${badgeClass}" style="text-decoration:none;"><i class="fa-solid fa-file-pdf"></i> ${statusText}</a>`;
+    }
+
+    function renderManualEntryBadge(container) {
+        if (!container) return;
+        container.innerHTML = `<span class="pdf-badge pdf-badge-conditional"><i class="fa-solid fa-book-bookmark"></i> Livro Físico</span>`;
+    }
+
+    // ── HARMONY TABLE ─────────────────────────────────────────
+    function renderHarmonyTable() {
+        if (!harmonyTableBody) return;
+        harmonyTableBody.innerHTML = "";
+        const mode = scaleTypeSelect.value;
+        const chordsDesc = mode === "major"
+            ? ["Maior (Tónica)","Menor (Supertónica)","Menor (Mediante)","Maior (Subdominante)","Maior (Dominante)","Menor (Sobredominante)","Diminuto (Sensível)"]
+            : ["Menor (Tónica)","Diminuto (Supertónica)","Maior (Mediante)","Menor (Subdominante)","Menor (Dominante)","Maior (Sobredominante)","Maior (Subtónica)"];
+        for (let i = 0; i < 7; i++) {
+            const chord = getDroneChord(i);
+            const tr = document.createElement("tr");
+            tr.innerHTML = `<td><strong>${DEGREE_ROMAN[i]}</strong></td><td>${chord[0].slice(0,-1)}</td><td>${chordsDesc[i]}</td><td><button class="btn btn-sm btn-secondary btn-play-chord" data-degree="${i}" style="padding:0.2rem 0.5rem;font-size:0.75rem;"><i class="fa-solid fa-volume-high"></i> Ouvir</button></td>`;
+            tr.querySelector(".btn-play-chord").addEventListener("mousedown", e => {
+                initAudio();
+                const deg   = parseInt(e.currentTarget.dataset.degree);
+                const notes = getDroneChord(deg);
+                if (synth) { synth.releaseAll(); synth.triggerAttack(notes); }
+            });
+            tr.querySelector(".btn-play-chord").addEventListener("mouseup",    () => { if (synth) synth.releaseAll(); });
+            tr.querySelector(".btn-play-chord").addEventListener("mouseleave", () => { if (synth) synth.releaseAll(); });
+            harmonyTableBody.appendChild(tr);
+        }
+    }
+
+    // ── STUDY FUNDAMENTALS ────────────────────────────────────
+    function updateStudyFundamentals(key, mode) {
+        const raw       = buildScale(key, mode, 1);
+        const isMinor   = mode.includes("minor");
+        const note1     = raw[0]?.name || key;
+        const note4     = raw[3]?.name || "";
+        const note5     = raw[4]?.name || "";
+        const note7     = raw[6]?.name || "";
+
+        const el = id => tryGet(id);
+        if (el("study-tonic-desc"))      el("study-tonic-desc").innerHTML      = `<strong>Tónica (I Grau):</strong> ${note1} — Resolução e repouso principal.`;
+        if (el("study-subdominant-desc"))el("study-subdominant-desc").innerHTML = `<strong>Subdominante (IV Grau):</strong> ${note4} — Tensão intermédia.`;
+        if (el("study-dominant-desc"))   el("study-dominant-desc").innerHTML   = `<strong>Dominante (V Grau):</strong> ${note5} — Grande tensão que resolve para a tónica.`;
+        if (el("study-leading-desc"))    el("study-leading-desc").innerHTML    = `<strong>${isMinor?"Subtónica":"Sensível"} (VII Grau):</strong> ${note7} — Forte atração para ${note1}.`;
+
+        const tips = {
+            "G":"Sol Maior: tom natural do violino! Corda Sol solta ressoa por simpatia.",
+            "D":"Ré Maior: padrões idênticos nas cordas Ré e Lá. A corda Ré ressoa no Ré superior.",
+            "A":"Lá Maior: introduz C# e G#. 1º dedo baixo, 3º dedo esticado para C#.",
+            "C":"Dó Maior: sem acidentais. Todos os 2os dedos em posição baixa (F, C).",
+            "F":"Fá Maior: tem Bb. O 1º dedo na corda Lá recua para posição baixa.",
+            "E":"Mi Maior: 4 sustenidos. Dedos altos, C# e D# precisam de precisão."
+        };
+        const tip = tips[key] || `Estudo de entonação em ${key}. Verifique postura do arco e flexibilidade do punho.`;
+        if (teacherTipsContent) teacherTipsContent.innerHTML = `<p><i class="fa-solid fa-lightbulb"></i> ${tip}</p>`;
+        if (tryGet("study-practice-guide")) tryGet("study-practice-guide").innerHTML = `<p>${tip}</p>`;
+    }
+
+    // ── CIRCLE OF FIFTHS ──────────────────────────────────────
+    function drawCircleOfFifths() {
+        const container = tryGet("circle-fifths-container");
+        if (!container) return;
+        const ORDER = ["C","G","D","A","E","B","F#","C#","Ab","Eb","Bb","F"];
+        const SVG_SIZE = 200, CENTER = 100, RADIUS = 80;
+        const activeTonic = tonicSelect.value;
+        const activeMode  = scaleTypeSelect.value;
+        let svg = `<svg width="${SVG_SIZE}" height="${SVG_SIZE}" viewBox="0 0 ${SVG_SIZE} ${SVG_SIZE}"><circle cx="${CENTER}" cy="${CENTER}" r="${RADIUS}" fill="none" stroke="var(--border-color)" stroke-width="2"/>`;
+        ORDER.forEach((note, idx) => {
+            const angle  = (idx * 30 - 90) * Math.PI / 180;
+            const x = CENTER + RADIUS * Math.cos(angle);
+            const y = CENTER + RADIUS * Math.sin(angle);
+            const isActive   = note === activeTonic;
+            const isMastered = completedScalesList.has(`${note}${activeMode}`);
+            const fill = isActive ? "var(--primary)" : isMastered ? "var(--success)" : "#8a99ad";
+            const stroke = isActive ? "rgba(124,77,255,0.4)" : isMastered ? "rgba(0,230,118,0.3)" : "none";
+            svg += `<g class="circle-note-node" data-note="${note}" style="cursor:pointer;"><circle cx="${x}" cy="${y}" r="16" fill="rgba(18,22,32,0.9)" stroke="${stroke}" stroke-width="3"/><text x="${x}" y="${y+4}" font-family="Outfit" font-size="10" font-weight="bold" fill="${fill}" text-anchor="middle">${note}</text></g>`;
+        });
+        svg += "</svg>";
+        container.innerHTML = svg;
+        container.querySelectorAll(".circle-note-node").forEach(node => {
+            node.addEventListener("click", e => {
+                tonicSelect.value = e.currentTarget.dataset.note;
+                updateDashboard();
+            });
+        });
+    }
+
+    // ── ACADEMY STATS ─────────────────────────────────────────
+    function updateAcademyStats() {
+        if (totalXpDisplay)     totalXpDisplay.innerText     = `${userXP} XP 🌟`;
+        if (streakCountDisplay) streakCountDisplay.innerText = `${streakCount} Dias 🔥`;
+        if (masteredKeysCount)  masteredKeysCount.innerText  = `${completedScalesList.size} / 12`;
+        if (sessionsCount)      sessionsCount.innerText      = practiceHistory.length;
+
+        let rank = "Recruta da Pauta";
+        if (userXP > 500) rank = "Solista Avançado";
+        else if (userXP > 250) rank = "Líder de Naipe";
+        else if (userXP > 100) rank = "Violinista Suzuki";
+        else if (userXP > 40)  rank = "Diletante Dedicado";
+        if (studentRankTitle) studentRankTitle.innerText = rank;
+
+        const percent = Math.min(100, Math.floor((completedScalesList.size / 12) * 100));
+        if (academyPercentText)   academyPercentText.innerText     = `${percent}%`;
+        if (barAcademyProgress)   barAcademyProgress.style.width   = `${percent}%`;
+
+        let cc = Object.values(challengeStates).filter(Boolean).length;
+        const cp = Math.floor((cc / 4) * 100);
+        if (txtChalPercent)  txtChalPercent.innerText    = `${cp}%`;
+        if (barChalProgress) barChalProgress.style.width = `${cp}%`;
+
+        const main = challengeStates.tecnica && challengeStates.escala && challengeStates.repertoire;
+        if (btnCompleteDay) {
+            btnCompleteDay.disabled   = !main;
+            btnCompleteDay.className  = main ? "btn btn-primary btn-sm" : "btn btn-secondary btn-sm";
+        }
+    }
+
+    btnCompleteDay?.addEventListener("click", () => {
+        const key  = tonicSelect.value;
+        const mode = scaleTypeSelect.value;
+        completedScalesList.add(`${key}${mode}`);
+        userXP     += challengeStates.bonus ? 75 : 50;
+        streakCount++;
+        challengeDay = (challengeDay % 30) + 1;
+        challengeStates = {tecnica:false,escala:false,repertoire:false,bonus:false};
+        ["chk-chal-tecnica","chk-chal-escala","chk-chal-repertorio","chk-chal-bonus"].forEach(id => {
+            const el = tryGet(id); if (el) el.checked = false;
+        });
+        saveProgress();
+        advanceTonicToNextFifth();
+        updateDashboard();
+        alert(`Parabéns! Dia ${challengeDay} concluído. +50 XP!`);
+    });
+
+    function advanceTonicToNextFifth() {
+        const idx = CHROMATIC.indexOf(tonicSelect.value);
+        tonicSelect.value = CHROMATIC[(idx + 7) % 12];
+    }
+
+    // ── SUZUKI METHOD ─────────────────────────────────────────
+    function changeSuzukiStep(stepNum) {
+        currentStep = stepNum;
+        stopPlayback();
+        document.querySelectorAll(".suzuki-step").forEach(el => {
+            el.classList.remove("active");
+            if (suzukiCompletedSteps.has(parseInt(el.dataset.step))) el.classList.add("completed");
+            else el.classList.remove("completed");
+        });
+        const activeEl = document.querySelector(`.suzuki-step[data-step="${stepNum}"]`);
+        if (activeEl) activeEl.classList.add("active");
+        const bar = tryGet("suzuki-progress-bar");
+        if (bar) bar.style.width = `${(stepNum/6)*100}%`;
+        if (suzukiStepIndicatorText) suzukiStepIndicatorText.innerText = `Passo ${stepNum} de 6`;
+        if (btnSuzukiPrev) btnSuzukiPrev.disabled = stepNum === 1;
+        if (btnSuzukiNext) btnSuzukiNext.disabled = stepNum === 6;
+
+        const stepTitle       = tryGet("suzuki-step-title");
+        const stepInstruction = tryGet("suzuki-step-instruction");
+        const actionsDiv      = tryGet("suzuki-actions");
+
+        if (actionsDiv) actionsDiv.innerHTML = "";
+        if (suzukiHistoryContainer) suzukiHistoryContainer.style.display = "none";
+
+        const STEPS = {
+            1:{ t:"Passo 1: Ouvir antes de tocar", i:"Oiça a escala completa para absorver a entonação do tom.", btn:"Ouvir Escala" },
+            2:{ t:"Passo 2: Cantar e Reconhecer Graus", i:"Cante a escala. Os graus I, III, V e VII estão destacados na pauta.", btn:"Cantar com Apoio" },
+            3:{ t:"Passo 3: Imitação Fraseada (Eco)", i:"O sistema toca 4 notas e pausa. Imite no seu violino.", btn:"Iniciar Eco" },
+            4:{ t:"Passo 4: Repetir Pequeno (Loop)", i:"Selecione um trecho difícil e repita em loop.", btn:"Iniciar Repetição" },
+            5:{ t:"Passo 5: Execução Completa", i:"Execute a escala inteira com o sintetizador de referência.", btn:"Tocar Junto" },
+            6:{ t:"Passo 6: Revisão & Histórico", i:"Reveja escalas anteriores e registe o progresso.", btn:null }
+        };
+
+        const s = STEPS[stepNum];
+        if (stepTitle)       stepTitle.innerText       = s.t;
+        if (stepInstruction) stepInstruction.innerText = s.i;
+        if (actionsDiv && s.btn) {
+            if (stepNum === 4) {
+                actionsDiv.innerHTML = `
+                    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                        <button class="btn btn-primary btn-sm" id="btn-suzuki-act"><i class="fa-solid fa-play"></i> ${s.btn}</button>
+                        <span style="font-size:0.8rem;color:var(--text-muted);">Notas de:</span>
+                        <select id="suzuki-loop-start" style="width:70px;padding:0.2rem;"></select>
+                        <span style="font-size:0.8rem;color:var(--text-muted);">a:</span>
+                        <select id="suzuki-loop-end" style="width:70px;padding:0.2rem;"></select>
+                    </div>`;
+                populateSuzukiLoopSelects();
+            } else {
+                actionsDiv.innerHTML = `<button class="btn btn-primary btn-sm" id="btn-suzuki-act"><i class="fa-solid fa-play"></i> ${s.btn}</button>`;
+            }
+        }
+        if (stepNum === 6 && suzukiHistoryContainer) {
+            suzukiHistoryContainer.style.display = "block";
+            renderHistoryTable();
+        }
+
+        const actBtn = tryGet("btn-suzuki-act");
+        if (actBtn) actBtn.addEventListener("click", () => togglePlayback());
+
+        renderSuzukiChecklist();
+    }
+
+    btnSuzukiPrev?.addEventListener("click", () => { if (currentStep > 1) changeSuzukiStep(currentStep - 1); });
+    btnSuzukiNext?.addEventListener("click", () => {
+        if (currentStep < 6) { suzukiCompletedSteps.add(currentStep); changeSuzukiStep(currentStep + 1); saveProgress(); }
+    });
+
+    function populateSuzukiLoopSelects() {
+        const ss = tryGet("suzuki-loop-start");
+        const se = tryGet("suzuki-loop-end");
+        if (!ss || !se) return;
+        ss.innerHTML = se.innerHTML = "";
+        activeNotesList.forEach((n, idx) => {
+            const o1 = new Option(`${idx+1}: ${n.name}${n.octave}`, idx);
+            const o2 = new Option(`${idx+1}: ${n.name}${n.octave}`, idx);
+            ss.appendChild(o1); se.appendChild(o2);
+        });
+        ss.value = 0;
+        se.value = Math.min(3, activeNotesList.length - 1);
+        ss.addEventListener("change", setSuzukiLoopRange);
+        se.addEventListener("change", setSuzukiLoopRange);
+    }
+
+    function setSuzukiLoopRange() {
+        loopStartIdx = parseInt(tryGet("suzuki-loop-start")?.value || 0);
+        loopEndIdx   = parseInt(tryGet("suzuki-loop-end")?.value   || 3);
+        if (loopStartIdx > loopEndIdx) [loopStartIdx, loopEndIdx] = [loopEndIdx, loopStartIdx];
+    }
+
+    function updateSuzukiPlaybackUI(playing) {
+        const btn = tryGet("btn-suzuki-act");
+        if (!btn) return;
+        if (playing) { btn.innerHTML = `<i class="fa-solid fa-pause"></i> Pausar`; btn.className = "btn btn-secondary btn-sm"; }
+        else         { btn.innerHTML = `<i class="fa-solid fa-play"></i> Continuar`; btn.className = "btn btn-primary btn-sm"; }
+    }
+
+    function showImitationOverlay(show, startIdx = 0, endIdx = 0) {
+        const staffDiv = tryGet("vexflow-staff");
+        if (!staffDiv) return;
+        let overlay = tryGet("suzuki-imitation-overlay");
+        if (!overlay) {
+            overlay = Object.assign(document.createElement("div"), {id:"suzuki-imitation-overlay"});
+            Object.assign(overlay.style, {position:"absolute",top:"0",left:"0",width:"100%",height:"100%",background:"rgba(0,229,255,0.08)",display:"flex",justifyContent:"center",alignItems:"center",zIndex:"100",borderRadius:"12px"});
+            overlay.innerHTML = `<div style="background:var(--bg-main);border:2px solid var(--secondary);padding:1rem;border-radius:12px;text-align:center;"><h4 style="color:var(--secondary)"><i class="fa-solid fa-microphone"></i> O seu Eco!</h4><p style="margin:0;font-size:0.8rem;">Imite agora as notas no seu violino...</p></div>`;
+            staffDiv.appendChild(overlay);
+        }
+        overlay.style.display = show ? "flex" : "none";
+    }
+
+    function renderSuzukiChecklist() {
+        const ul = tryGet("suzuki-checklist");
+        if (!ul) return;
+        ul.innerHTML = "";
+        const objectives = {
+            1:[{id:"hear_full",text:"Ouvir a escala completa sem interrupção."},{id:"hear_drone",text:"Identificar a consonância do pedal harmónico."}],
+            2:[{id:"sing_notes",text:"Cantar as notas subindo e descendo."},{id:"degree_tonic",text:"Reconhecer a Sensível (VII) a resolver na Tónica (I)."}],
+            3:[{id:"imitate_eco",text:"Completar com sucesso pelo menos 2 frases em Eco."}],
+            4:[{id:"repeat_loop",text:"Repetir o loop de 4 notas 5 vezes seguidas sem errar."}],
+            5:[{id:"play_tempo",text:"Tocar a escala inteira no andamento definido."},{id:"pitch_tuning",text:"Afinar com o sintetizador de referência."}],
+            6:[{id:"check_history",text:"Arquivar a sessão e registar progresso."}]
+        };
+        const key    = `${tonicSelect.value}_${scaleTypeSelect.value}_step_${currentStep}`;
+        (objectives[currentStep] || []).forEach(item => {
+            const liId    = `${key}_${item.id}`;
+            const checked = suzukiChecklistStates[liId] || false;
+            const li = document.createElement("li");
+            li.style.cssText = "display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;";
+            li.innerHTML = `<input type="checkbox" id="${liId}" ${checked?"checked":""} style="width:auto;cursor:pointer;"><label for="${liId}" style="color:${checked?"var(--text-muted)":"var(--text-main)"};text-decoration:${checked?"line-through":"none"};cursor:pointer;flex:1;">${item.text}</label>`;
+            li.querySelector("input").addEventListener("change", e => {
+                suzukiChecklistStates[liId] = e.target.checked;
+                localStorage.setItem("violin_lab_suzuki_checklist_states", JSON.stringify(suzukiChecklistStates));
+                if (e.target.checked) { userXP += 5; updateAcademyStats(); }
+                renderSuzukiChecklist();
+            });
+            ul.appendChild(li);
+        });
+    }
+
+    // ── HELPERS ───────────────────────────────────────────────
+    function getRelativeScale(key, mode) {
+        const idx = CHROMATIC.indexOf(key);
+        if (mode === "major") return `${CHROMATIC[(idx + 9) % 12]} Menor (m)`;
+        return `${CHROMATIC[(idx + 3) % 12]} Maior`;
+    }
+
+    btnSwitchRelative?.addEventListener("click", () => {
+        const key  = tonicSelect.value;
+        const mode = scaleTypeSelect.value;
+        const idx  = CHROMATIC.indexOf(key);
+        if (mode === "major") {
+            tonicSelect.value      = CHROMATIC[(idx + 9) % 12];
+            scaleTypeSelect.value  = "minor-natural";
+        } else {
+            tonicSelect.value      = CHROMATIC[(idx + 3) % 12];
+            scaleTypeSelect.value  = "major";
+        }
+        updateDashboard();
+    });
+
+    function getBonusChallengeText(day) {
+        const list = [
+            "Pratique com olhos fechados para focar na memória muscular.",
+            "Tocar com máxima pressão do arco sem rachar o som.",
+            "Tocar em pianíssimo extremo na ponta do arco.",
+            "Estudo de ressonância: cordas soltas vibram por simpatia?",
+            "Mantenha postura perfeita por 2 minutos contínuos.",
+            "Tocar a escala inteira sem olhar para o braço esquerdo."
+        ];
+        return list[day % list.length];
+    }
+
+    function recordPracticeCompletion() {
+        practiceHistory.push({ date: new Date().toLocaleDateString("pt-PT"), type: activePlaybackType, scale: `${tonicSelect.value} ${scaleTypeSelect.value}` });
+        saveProgress();
+    }
+
+    function renderHistoryTable() {
+        if (!suzukiHistoryContainer) return;
+        let html = '<table class="harmony-table"><tr><th>Data</th><th>Escala</th></tr>';
+        practiceHistory.slice(-5).forEach(h => { html += `<tr><td>${h.date}</td><td>${h.scale}</td></tr>`; });
+        html += "</table>";
+        suzukiHistoryContainer.innerHTML = html;
+    }
+
+    function loadProgress() {
+        userXP        = parseInt(localStorage.getItem("violin_lab_xp"))      || 0;
+        streakCount   = parseInt(localStorage.getItem("violin_lab_streak"))  || 0;
+        challengeDay  = parseInt(localStorage.getItem("violin_lab_day"))     || 1;
+        const comp    = localStorage.getItem("violin_lab_completed_keys");
+        if (comp) completedScalesList = new Set(JSON.parse(comp));
+        const hist    = localStorage.getItem("violin_lab_history");
+        if (hist) practiceHistory = JSON.parse(hist);
+        const suzCompl= localStorage.getItem("violin_lab_suzuki_completed");
+        if (suzCompl) suzukiCompletedSteps = new Set(JSON.parse(suzCompl));
+        const suzCheck= localStorage.getItem("violin_lab_suzuki_checklist_states");
+        if (suzCheck) suzukiChecklistStates = JSON.parse(suzCheck);
+    }
+
+    function saveProgress() {
+        localStorage.setItem("violin_lab_xp",              userXP);
+        localStorage.setItem("violin_lab_streak",          streakCount);
+        localStorage.setItem("violin_lab_day",             challengeDay);
+        localStorage.setItem("violin_lab_completed_keys",  JSON.stringify([...completedScalesList]));
+        localStorage.setItem("violin_lab_history",         JSON.stringify(practiceHistory));
+    }
+
+    // ── INLINE CATALOG FALLBACK (funciona sem servidor, via file://) ────────
+    const INLINE_CATALOG = {
+        studyBooks: [
+            {id:"sevcik_op1_1",  title:"School of Violin Technics, Op.1 Part 1", composer:"Ševčík",  difficulty:"Iniciante", type:"tecnica"},
+            {id:"kayser_op20",   title:"36 Elementary Studies, Op.20",            composer:"Kayser",  difficulty:"Intermedio",type:"etude"},
+            {id:"kreutzer_42",   title:"42 Studies or Caprices",                  composer:"Kreutzer",difficulty:"Avancado",  type:"etude"},
+            {id:"flesch_scale_system",    title:"Scale System",                   composer:"Flesch",  difficulty:"Avancado",  type:"escala"},
+            {id:"galamian_scale_system",  title:"Contemporary Violin Technique",  composer:"Galamian",difficulty:"Avancado",  type:"escala"},
+            {id:"suzuki_vol1",   title:"Suzuki Violin School, Vol 1",             composer:"Suzuki",  difficulty:"Iniciante", type:"escala"}
+        ],
+        studyUnits: [
+            {id:"sevcik_unit_g_maj", bookId:"sevcik_op1_1",
+             title:"Ševčík Op.1 Ex.17 — Sol Maior",
+             focus:"Fortalecimento do 4º dedo e afinação na 1ª posição.",
+             notes:["G4","A4","B4","C5","D5","E5","F#5","G5","F#5","E5","D5","C5","B4","A4","G4"]},
+            {id:"sevcik_unit_d_maj", bookId:"sevcik_op1_1",
+             title:"Ševčík Op.1 Ex.18 — Ré Maior",
+             focus:"Estudo de terças e quintas na 1ª posição.",
+             notes:["D4","E4","F#4","G4","A4","B4","C#5","D5","C#5","B4","A4","G4","F#4","E4","D4"]},
+            {id:"sevcik_unit_a_maj", bookId:"sevcik_op1_1",
+             title:"Ševčík Op.1 Ex.19 — Lá Maior",
+             focus:"Precisão de C#, F#, G# nas cordas Lá e Mi.",
+             notes:["A4","B4","C#5","D5","E5","F#5","G#5","A5","G#5","F#5","E5","D5","C#5","B4","A4"]},
+            {id:"kayser_unit_g_maj", bookId:"kayser_op20",
+             title:"Kayser Op.20 Estudo Nº 2 — Sol Maior",
+             focus:"Staccato na metade superior do arco.",
+             notes:["G4","B4","D5","G5","F#5","D5","B4","G4","A4","C5","E5","A5","G5","E5","C5","A4","G4"]},
+            {id:"kayser_unit_d_maj", bookId:"kayser_op20",
+             title:"Kayser Op.20 Estudo Nº 5 — Ré Maior",
+             focus:"Cruzes de corda complexos na 1ª posição.",
+             notes:["D4","A4","F#4","D5","A4","F#5","D5","A5","G5","E5","C#5","A4","D4"]},
+            {id:"kayser_unit_a_maj", bookId:"kayser_op20",
+             title:"Kayser Op.20 Estudo Nº 7 — Lá Maior",
+             focus:"Distribuição de arco (Whole Bow / Half Bow).",
+             notes:["A4","E5","C#5","A5","E5","A5","G#5","E5","D5","B4","G#4","E4","A4"]},
+            {id:"flesch_unit_g_maj", bookId:"flesch_scale_system",
+             title:"Flesch — Escala Sol Maior (3 Oitavas)",
+             focus:"Afinação temperada, shifts entre 1ª, 3ª e 5ª posições.",
+             notes:["G3","A3","B3","C4","D4","E4","F#4","G4","A4","B4","C5","D5","E5","F#5","G5","F#5","E5","D5","C5","B4","A4","G4","F#4","E4","D4","C4","B3","A3","G3"]},
+            {id:"suzuki_unit_g_maj", bookId:"suzuki_vol1",
+             title:"Suzuki Vol 1 — Escala de Sol Maior",
+             focus:"Afinação básica na 1ª posição.",
+             notes:["G3","A3","B3","C4","D4","E4","F#4","G4","F#4","E4","D4","C4","B3","A3","G3"]}
+        ],
+        repertoirePieces: [
+            {id:"vivaldi_rv310",  title:"Concerto em Sol Maior RV 310", composer:"Vivaldi", key:"G", mode:"major",         studentLevel:"iniciante", difficultyDescription:"Barroco alegre na 1ª posição."},
+            {id:"handel_hwv371",  title:"Sonata em Ré Maior HWV 371",   composer:"Handel",  key:"D", mode:"major",         studentLevel:"intermedio",difficultyDescription:"Sonata barroca exigindo expressividade."},
+            {id:"vivaldi_rv356",  title:"Concerto em Lá Menor RV 356",  composer:"Vivaldi", key:"A", mode:"minor-natural",  studentLevel:"iniciante", difficultyDescription:"Excelente para staccato e posições na corda E."}
+        ],
+        excerptLinks: [
+            {id:"vivaldi_rv310_exc1", pieceId:"vivaldi_rv310", title:"Tema do Allegro",     bars:"Compassos 1-8",  transferObjective:"Staccato martelado e ressonância da tónica G.",     notes:["G4","B4","D5","G5","F#5","D5","B4","G4","D5","B4","G4"]},
+            {id:"handel_hwv371_exc1", pieceId:"handel_hwv371", title:"Affettuoso — Abertura",bars:"Compassos 1-6",  transferObjective:"Expressividade em notas longas e vibrato controlado.",notes:["D4","A4","F#4","D5","C#5","B4","A4","G4","F#4","E4","D4"]},
+            {id:"vivaldi_rv356_exc1", pieceId:"vivaldi_rv356", title:"Tema Principal",       bars:"Compassos 1-10", transferObjective:"Precisão na corda E e shift para a 3ª posição.",     notes:["A4","C5","E5","A5","G#5","E5","C5","A4","B4","D5","B4","G#4","A4"]}
+        ],
+        scaleRoutes: [
+            {key:"G", mode:"major",        studentLevel:"iniciante", octaves:1, bowingPattern:"2 notas ligadas, 2 separadas",
+             dailyPlan:{scaleUnits:["suzuki_unit_g_maj"],bowUnits:["sevcik_unit_g_maj"],etudeUnits:["kayser_unit_g_maj"],repertoirePieceId:"vivaldi_rv310",excerptIds:["vivaldi_rv310_exc1"]}},
+            {key:"D", mode:"major",        studentLevel:"intermedio",octaves:2, bowingPattern:"4 notas ligadas, 4 marteladas",
+             dailyPlan:{scaleUnits:["sevcik_unit_d_maj"],bowUnits:["sevcik_unit_d_maj"],etudeUnits:["kayser_unit_d_maj"],repertoirePieceId:"handel_hwv371",excerptIds:["handel_hwv371_exc1"]}},
+            {key:"A", mode:"minor-natural",studentLevel:"iniciante", octaves:1, bowingPattern:"Detaché simples no meio do arco",
+             dailyPlan:{scaleUnits:["sevcik_unit_a_maj"],bowUnits:["sevcik_unit_a_maj"],etudeUnits:["kayser_unit_a_maj"],repertoirePieceId:"vivaldi_rv356",excerptIds:["vivaldi_rv356_exc1"]}}
+        ],
+        pdfEntries: [
+            {id:"pdf_sevcik",  bookId:"sevcik_op1_1",  title:"Ševčík Op.1",     composer:"Ševčík",  sourceDomain:"s9.imslp.org",  sourcePageUrl:"https://imslp.org/wiki/School_of_Violin_Technics",   pdfUrl:"https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",    fallbackUrl:"https://imslp.org/wiki/Special:Search/Sevcik_Op1"},
+            {id:"pdf_kayser",  bookId:"kayser_op20",    title:"Kayser Op.20",    composer:"Kayser",  sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/36_Elementary_and_Progressive_Studies,_Op.20_(Kayser)", pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",             fallbackUrl:"https://imslp.org/wiki/Special:Search/Kayser_Op20"},
+            {id:"pdf_vivaldi", pieceId:"vivaldi_rv310", title:"Vivaldi RV 310",  composer:"Vivaldi", sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",     pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",              fallbackUrl:"https://imslp.org/wiki/Special:Search/Vivaldi_RV310"},
+            {id:"pdf_handel",  pieceId:"handel_hwv371", title:"Handel HWV 371",  composer:"Handel",  sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Sonata_in_D_major,_HWV_371_(Handel,_George_Frideric)", pdfUrl:"https://s9.imslp.org/files/imglnks/usimg/9/9f/IMSLP204312-WIMA.8a33-Handel_Sonata_D.pdf",      fallbackUrl:"https://imslp.org/wiki/Special:Search/Handel_HWV371"},
+            {id:"pdf_vivaldi2",pieceId:"vivaldi_rv356", title:"Vivaldi RV 356",  composer:"Vivaldi", sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",     pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",fallbackUrl:"https://imslp.org/wiki/Special:Search/Vivaldi_RV356"},
+            {id:"pdf_flesch",  bookId:"flesch_scale_system",  title:"Flesch Scale System",  composer:"Flesch",  sourceDomain:"violinlab.com", sourcePageUrl:"", pdfUrl:"", fallbackUrl:""},
+            {id:"pdf_suzuki",  bookId:"suzuki_vol1",           title:"Suzuki Vol 1",         composer:"Suzuki",  sourceDomain:"violinlab.com", sourcePageUrl:"", pdfUrl:"", fallbackUrl:""}
+        ]
+    };
+
+    const INLINE_SOURCES = {
+        domains: [
+            {domain:"s9.imslp.org",       status:"approved_download_only", cors_allowed:false, requires_auth:false, description:"CDN IMSLP. Download direto."},
+            {domain:"imslp.simssa.ca",     status:"approved_download_only", cors_allowed:false, requires_auth:false, description:"CDN IMSLP Canadá. Download direto."},
+            {domain:"imslp.org",           status:"approved_external_open", cors_allowed:false, requires_auth:false, description:"IMSLP. Abre em aba externa."},
+            {domain:"archive.org",         status:"approved_embed",         cors_allowed:true,  requires_auth:false, description:"Internet Archive. Embed suportado."},
+            {domain:"raw.githubusercontent.com", status:"approved_embed",  cors_allowed:true,  requires_auth:false, description:"GitHub Raw. CORS suportado."},
+            {domain:"violinlab.com",       status:"rejected_copyright_or_access", cors_allowed:false, requires_auth:true, description:"Obra comercial. Requer livro físico."}
+        ]
+    };
+
+    // ── STARTUP ───────────────────────────────────────────────
+    async function loadValidatorData() {
+        // Tenta carregar do ficheiro; se falhar (file://) usa o catálogo embutido
+        try {
+            const catRes = await fetch("repertoryCatalog.detailed.json");
+            if (catRes.ok) {
+                repertoryCatalog = await catRes.json();
+            } else {
+                throw new Error("HTTP " + catRes.status);
+            }
+            try {
+                const srcRes = await fetch("validatedSources.json");
+                if (srcRes.ok) validatedSources = await srcRes.json();
+            } catch(_) {}
+        } catch(e) {
+            console.info("[HERMES] A usar catálogo embutido (modo offline/file://).");
+            repertoryCatalog = INLINE_CATALOG;
+            validatedSources = INLINE_SOURCES;
+        }
+        loadProgress();
+        updateDashboard();
+    }
+
+    loadValidatorData();
+});
+

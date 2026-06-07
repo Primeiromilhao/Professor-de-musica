@@ -1,13 +1,13 @@
 {
   "studyBooks": [
     { "id": "sevcik_op1_1", "title": "School of Violin Technics, Op.1 Part 1", "composer": "Otakar Ševčík", "difficulty": "Iniciante", "type": "tecnica" },
+    { "id": "sevcik_op9", "title": "Double Stop Preparations, Op.9", "composer": "Otakar Ševčík", "difficulty": "Intermedio", "type": "tecnica" },
     { "id": "kayser_op20", "title": "36 Elementary and Progressive Studies, Op.20", "composer": "Heinrich Ernst Kayser", "difficulty": "Intermedio", "type": "etude" },
     { "id": "kreutzer_42", "title": "42 Studies or Caprices", "composer": "Rodolphe Kreutzer", "difficulty": "Avancado", "type": "etude" },
     { "id": "fiorillo_36", "title": "36 Etudes or Caprices", "composer": "Federigo Fiorillo", "difficulty": "Avancado", "type": "etude" },
     { "id": "flesch_scale_system", "title": "Scale System", "composer": "Carl Flesch", "difficulty": "Avancado", "type": "escala" },
     { "id": "galamian_scale_system", "title": "Contemporary Violin Technique", "composer": "Ivan Galamian", "difficulty": "Avancado", "type": "escala" },
-    { "id": "suzuki_vol1", "title": "Suzuki Violin School, Vol 1", "composer": "Shinichi Suzuki", "difficulty": "Iniciante", "type": "escala" },
-    { "id": "suzuki_vol2", "title": "Suzuki Violin School, Vol 2", "composer": "Shinichi Suzuki", "difficulty": "Iniciante", "type": "escala" }
+    { "id": "suzuki_vol1", "title": "Suzuki Violin School, Vol 1", "composer": "Shinichi Suzuki", "difficulty": "Iniciante", "type": "escala" }
   ],
   "studyUnits": [
     {
@@ -18,18 +18,39 @@
       "notes": ["G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "G5", "F#5", "E5", "D5", "C5", "B4", "A4", "G4"]
     },
     {
+      "id": "sevcik_double_g",
+      "bookId": "sevcik_op9",
+      "title": "Ševčík Op.9 Ex.1 - Terças e Sextas em Sol",
+      "focus": "Afinação e dedilhado de cordas duplas. Dedos 1 e 3, 2 e 4 atuando em pares.",
+      "notes": ["G3-B3", "A3-C4", "B3-D4", "C4-E4", "D4-F#4", "E4-G4", "F#4-A4", "G4-B4", "F#4-A4", "E4-G4", "D4-F#4", "C4-E4", "B3-D4", "A3-C4", "G3-B3"]
+    },
+    {
+      "id": "kreutzer_unit_g_maj",
+      "bookId": "kreutzer_42",
+      "title": "Kreutzer Estudo Nº 35 - Sextas e Oitavas (Sol Maior)",
+      "focus": "Montagem de oitavas paralelas e sextas. Apoio igual nos dois pontos do arco.",
+      "notes": ["G3-E4", "A3-F#4", "B3-G4", "C4-A4", "D4-B4", "E4-C5", "F#4-D5", "G4-E5", "G3-G4", "A3-A4", "B3-B4", "C4-C5", "G3-E4"]
+    },
+    {
+      "id": "fiorillo_unit_g_maj",
+      "bookId": "fiorillo_36",
+      "title": "Fiorillo Estudo Nº 12 - Acordes de 3 e 4 cordas",
+      "focus": "Ataque simultâneo das cordas. Cotovelo direito alinhado para a divisão do peso.",
+      "notes": ["G3-D4-B4", "A3-E4-C5", "B3-F#4-D5", "G3-D4-B4-G5", "B3-F#4-D5", "A3-E4-C5", "G3-D4-B4"]
+    },
+    {
       "id": "sevcik_unit_d_maj",
       "bookId": "sevcik_op1_1",
       "title": "Ševčík Op.1 Part 1 Ex.18 (Ré Maior)",
       "focus": "Estudo de terças e quintas na 1ª posição com cruzamento de cordas rápido.",
-      "notes": ["D4", "F#4", "E4", "G4", "F#4", "A4", "G4", "B4", "A4", "C#5", "B4", "D5", "C#5", "E5", "D5"]
+      "notes": ["D4", "F#4", "E4", "G4", "F#4", "A4", "G4", "B4", "A4", "C#5", "B4", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"]
     },
     {
-      "id": "sevcik_unit_a_maj",
-      "bookId": "sevcik_op1_1",
-      "title": "Ševčík Op.1 Part 1 Ex.19 (Lá Maior)",
-      "focus": "Precisão tonal de sustenidos altos (C#, F#, G#) na corda Lá e Mi.",
-      "notes": ["A4", "B4", "C#5", "D5", "E5", "F#5", "G#5", "A5", "G#5", "F#5", "E5", "D5", "C#5", "B4", "A4"]
+      "id": "sevcik_double_d",
+      "bookId": "sevcik_op9",
+      "title": "Ševčík Op.9 Ex.2 - Terças e Quartas em Ré",
+      "focus": "Afinação e montagem de acordes de Ré. 1º e 2º dedos colados.",
+      "notes": ["D4-F#4", "E4-G4", "F#4-A4", "G4-B4", "A4-C#5", "B4-D5", "A4-C#5", "G4-B4", "F#4-A4", "E4-G4", "D4-F#4"]
     },
     {
       "id": "kayser_unit_g_maj",
@@ -53,24 +74,10 @@
       "notes": ["A4", "E5", "C#5", "A5", "E5", "A5", "G#5", "E5", "D5", "B4", "G#4", "E4", "A4"]
     },
     {
-      "id": "flesch_unit_g_maj",
-      "bookId": "flesch_scale_system",
-      "title": "Flesch - Escala Sol Maior (3 Oitavas)",
-      "focus": "Afinação temperada pura, passagens de posição (shifts) entre 1ª, 3ª e 5ª posições.",
-      "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "B5", "C6", "D6", "E6", "F#6", "G6"]
-    },
-    {
-      "id": "galamian_unit_g_maj",
-      "bookId": "galamian_scale_system",
-      "title": "Galamian - Ritmos de Escala Sol Maior",
-      "focus": "Padrão de aceleração rítmica de Galamian (dupletos, tripletos, quadrupletos).",
-      "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "B5", "G5"]
-    },
-    {
       "id": "suzuki_unit_g_maj",
       "bookId": "suzuki_vol1",
       "title": "Suzuki Vol 1 - Escala de Sol Maior",
-      "focus": "Estudo de afinação básica na 1ª posição com dedilhado padrão 0-1-2-3-4 nas cordas G e D.",
+      "focus": "Estudo de afinação básica na 1ª posição com dedilhado padrão nas cordas G e D.",
       "notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "F#4", "E4", "D4", "C4", "B3", "A3", "G3"]
     }
   ],
@@ -85,6 +92,15 @@
       "difficultyDescription": "Concerto barroco alegre com passagens brilhantes de semicolcheias na 1ª posição."
     },
     {
+      "id": "mozart_k216",
+      "title": "Concerto para Violino nº 3 em Sol Maior K.216",
+      "composer": "W. A. Mozart",
+      "key": "G",
+      "mode": "major",
+      "studentLevel": "avancado",
+      "difficultyDescription": "Fraseado clássico refinado, passagens de semicolcheias brilhantes, saltos expressivos."
+    },
+    {
       "id": "handel_hwv371",
       "title": "Sonata em Ré Maior HWV 371",
       "composer": "G. F. Handel",
@@ -94,6 +110,15 @@
       "difficultyDescription": "Sonata clássica barroca exigindo expressividade nos movimentos lentos e agilidade no Allegro."
     },
     {
+      "id": "bach_chaconne",
+      "title": "Chaconne em Ré Menor (Partita BWV 1004)",
+      "composer": "J. S. Bach",
+      "key": "D",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "difficultyDescription": "O maior teste de polifonia no violino. Exige acordes de 3 e 4 cordas perfeitos e controle tímbrico."
+    },
+    {
       "id": "vivaldi_rv356",
       "title": "Concerto em Lá Menor Op.3 No.6 RV 356",
       "composer": "Antonio Vivaldi",
@@ -101,6 +126,33 @@
       "mode": "minor-natural",
       "studentLevel": "iniciante",
       "difficultyDescription": "Obra pedagógica clássica de violino. Estudo excelente de staccato e posições na corda E."
+    },
+    {
+      "id": "paganini_caprice24",
+      "title": "24 Caprichos Op.1: Capricho Nº 24",
+      "composer": "Niccolò Paganini",
+      "key": "A",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "difficultyDescription": "Variações com pizzicato de mão esquerda, oitavas paralelas, décimas e arpejos velozes."
+    },
+    {
+      "id": "wieniawski_concerto2",
+      "title": "Concerto nº 2 em Ré Menor Op.22",
+      "composer": "Henryk Wieniawski",
+      "key": "D",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "difficultyDescription": "Romantismo virtuoso polaco. Passagens cromáticas velozes, spiccato volante e expressividade."
+    },
+    {
+      "id": "ysaye_sonata3",
+      "title": "Sonata nº 3 'Ballade' Op.27",
+      "composer": "Eugène Ysaÿe",
+      "key": "D",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "difficultyDescription": "Obra-prima impressionista para violino solo. Acordes densos, dinâmicas extremas e rubato expressivo."
     }
   ],
   "excerptLinks": [
@@ -113,6 +165,14 @@
       "notes": ["G4", "B4", "D5", "G5", "F#5", "D5", "B4", "G4", "D5", "B4", "G4", "D4", "G4"]
     },
     {
+      "id": "mozart_k216_exc1",
+      "pieceId": "mozart_k216",
+      "title": "Exposição do Solo (Allegro)",
+      "bars": "Compassos 40-48",
+      "transferObjective": "Leveza clássica no arco, articulação limpa de colcheias e semicolcheias e shifts de posição para a 3ª.",
+      "notes": ["G4", "D5", "B5", "G5", "F#5", "E5", "D5", "C5", "B4", "A4", "G4", "F#4", "G4", "A4", "B4", "C5", "D5"]
+    },
+    {
       "id": "handel_hwv371_exc1",
       "pieceId": "handel_hwv371",
       "title": "Affettuoso - Abertura",
@@ -121,12 +181,44 @@
       "notes": ["D4", "A4", "F#4", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"]
     },
     {
+      "id": "bach_chaconne_exc1",
+      "pieceId": "bach_chaconne",
+      "title": "Tema Principal & Acordes",
+      "bars": "Compassos 1-8",
+      "transferObjective": "Montagem rápida de acordes de 3/4 cordas. Distribuição de peso no calcanhar do arco.",
+      "notes": ["D4-F4-A4-D5", "D4-F4-A4-D5", "C#4-E4-G4-A4", "D4-F4-A4-F5", "E4-G4-C#5-G5", "F4-A4-D5-A5", "F4-Bb4-D5-Bb5", "F4-A4-D5-A5"]
+    },
+    {
+      "id": "paganini_cap24_exc1",
+      "pieceId": "paganini_caprice24",
+      "title": "Tema (Quasi Presto)",
+      "bars": "Variação 1 (Compassos 1-12)",
+      "transferObjective": "Coordenação de arpejos rápidos e cordas duplas dedilhadas com precisão na afinação Lá Menor.",
+      "notes": ["A4", "C5-E5", "B4", "D5-F5", "C5-E5", "A5", "G#5-B5", "E5", "A4", "C5-E5", "B4", "D5-F5", "C5-E5", "A4"]
+    },
+    {
       "id": "vivaldi_rv356_exc1",
       "pieceId": "vivaldi_rv356",
       "title": "Tema Principal do Allegro",
       "bars": "Compassos 1-10",
       "transferObjective": "Precisão tonal na corda E, shift para a 3ª posição e cruzamento rápido de cordas.",
       "notes": ["A4", "C5", "E5", "A5", "G#5", "E5", "C5", "A4", "B4", "D5", "F5", "D5", "B4", "G#4", "A4"]
+    },
+    {
+      "id": "wieniawski_exc1",
+      "pieceId": "wieniawski_concerto2",
+      "title": "Passagem de Semicolcheias do Solo",
+      "bars": "Compassos 70-76",
+      "transferObjective": "Aumento do controlo de arcada detaché na corda Mi com dedilhado veloz cromático.",
+      "notes": ["D4", "F4", "A4", "D5", "E5", "F5", "G#5", "A5", "Bb5", "G5", "E5", "C#5", "D5"]
+    },
+    {
+      "id": "ysaye_exc1",
+      "pieceId": "ysaye_sonata3",
+      "title": "Tema de Abertura (Lento)",
+      "bars": "Compassos 1-5",
+      "transferObjective": "Flexibilidade dos dedos da mão esquerda na montagem de acordes e sonoridade dramática.",
+      "notes": ["D4-F4-A4-D5", "C#4-E4-A4-E5", "D4-F4-A4-F5", "G4-C5-E5-G5", "A4-F5-A5"]
     }
   ],
   "scaleRoutes": [
@@ -145,6 +237,20 @@
       }
     },
     {
+      "key": "G",
+      "mode": "major",
+      "studentLevel": "avancado",
+      "octaves": 3,
+      "bowingPattern": "3 notas ligadas, 3 marteladas",
+      "dailyPlan": {
+        "scaleUnits": ["flesch_unit_g_maj"],
+        "bowUnits": ["fiorillo_unit_g_maj"],
+        "etudeUnits": ["kreutzer_unit_g_maj"],
+        "repertoirePieceId": "mozart_k216",
+        "excerptIds": ["mozart_k216_exc1"]
+      }
+    },
+    {
       "key": "D",
       "mode": "major",
       "studentLevel": "intermedio",
@@ -152,7 +258,7 @@
       "bowingPattern": "4 notas ligadas, 4 marteladas",
       "dailyPlan": {
         "scaleUnits": ["sevcik_unit_d_maj"],
-        "bowUnits": ["sevcik_unit_d_maj"],
+        "bowUnits": ["sevcik_double_d"],
         "etudeUnits": ["kayser_unit_d_maj"],
         "repertoirePieceId": "handel_hwv371",
         "excerptIds": ["handel_hwv371_exc1"]
@@ -170,6 +276,34 @@
         "etudeUnits": ["kayser_unit_a_maj"],
         "repertoirePieceId": "vivaldi_rv356",
         "excerptIds": ["vivaldi_rv356_exc1"]
+      }
+    },
+    {
+      "key": "A",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "octaves": 3,
+      "bowingPattern": "Variações rápidas de arco",
+      "dailyPlan": {
+        "scaleUnits": ["flesch_unit_g_maj"],
+        "bowUnits": ["sevcik_double_g"],
+        "etudeUnits": ["kreutzer_unit_g_maj"],
+        "repertoirePieceId": "paganini_caprice24",
+        "excerptIds": ["paganini_cap24_exc1"]
+      }
+    },
+    {
+      "key": "D",
+      "mode": "minor-natural",
+      "studentLevel": "solista",
+      "octaves": 3,
+      "bowingPattern": "Polifonia densa de arco",
+      "dailyPlan": {
+        "scaleUnits": ["sevcik_unit_d_maj"],
+        "bowUnits": ["sevcik_double_d"],
+        "etudeUnits": ["fiorillo_unit_g_maj"],
+        "repertoirePieceId": "bach_chaconne",
+        "excerptIds": ["bach_chaconne_exc1", "wieniawski_exc1", "ysaye_exc1"]
       }
     }
   ],
@@ -223,36 +357,6 @@
       "sourcePageUrl": "https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",
       "pdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
       "fallbackUrl": "https://imslp.org/wiki/Special:Search/Vivaldi_RV356"
-    },
-    {
-      "id": "pdf_flesch_scale_system",
-      "bookId": "flesch_scale_system",
-      "title": "Flesch Scale System (Manual Entry)",
-      "composer": "Flesch",
-      "sourceDomain": "violinlab.com",
-      "sourcePageUrl": "",
-      "pdfUrl": "",
-      "fallbackUrl": ""
-    },
-    {
-      "id": "pdf_galamian_scale_system",
-      "bookId": "galamian_scale_system",
-      "title": "Galamian Scale System (Manual Entry)",
-      "composer": "Galamian",
-      "sourceDomain": "violinlab.com",
-      "sourcePageUrl": "",
-      "pdfUrl": "",
-      "fallbackUrl": ""
-    },
-    {
-      "id": "pdf_suzuki_vol1",
-      "bookId": "suzuki_vol1",
-      "title": "Suzuki School Vol 1 (Manual Entry)",
-      "composer": "Suzuki",
-      "sourceDomain": "violinlab.com",
-      "sourcePageUrl": "",
-      "pdfUrl": "",
-      "fallbackUrl": ""
     }
   ]
 }

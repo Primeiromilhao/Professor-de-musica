@@ -812,3 +812,47 @@ input[type="range"] {
 }
 
 /* O fundo da App Container não deve ser escuro na área da pauta */
+
+/* Study Guide Panel Styles */
+.study-guide-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.guide-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    transition: var(--transition);
+}
+
+.guide-item:hover {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.guide-item i {
+    color: var(--secondary) !important; /* Force cyan icon color */
+    font-size: 1.1rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+.guide-item strong {
+    color: var(--secondary) !important; /* Force cyan title color */
+    display: inline-block;
+    margin-bottom: 0.2rem;
+}
+
+.guide-item div {
+    color: var(--text-main) !important;
+}
+

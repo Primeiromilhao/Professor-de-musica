@@ -202,16 +202,41 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── FINGERING ENRICHMENT ──────────────────────────────────
     function enrichWithFingering(notes) {
         return notes.map(n => {
-            const key = `${n.name}${n.octave}`;
-            const map = notesViolinMap[key];
-            return {
-                ...n,
-                fullName: key,
-                string:   map ? map.string   : "E",
-                finger:   map ? map.finger    : 1,
-                position: map ? map.pos       : "?",
-                x:        map ? map.x         : 80
-            };
+            if (n.isChord) {
+                const enrichedChordPitches = n.chordPitches.map(pitch => {
+                    const map = notesViolinMap[pitch];
+                    return {
+                        fullName: pitch,
+                        name: pitch.slice(0, -1),
+                        octave: parseInt(pitch.slice(-1)),
+                        string:   map ? map.string   : "E",
+                        finger:   map ? map.finger    : 1,
+                        position: map ? map.pos       : "?",
+                        x:        map ? map.x         : 80
+                    };
+                });
+                const firstMap = enrichedChordPitches[0];
+                return {
+                    ...n,
+                    keys: enrichedChordPitches.map(p => `${p.name.toLowerCase()}/${p.octave}`),
+                    string: firstMap.string,
+                    finger: firstMap.finger,
+                    position: firstMap.position,
+                    x: firstMap.x,
+                    chordNotes: enrichedChordPitches
+                };
+            } else {
+                const key = `${n.name}${n.octave}`;
+                const map = notesViolinMap[key];
+                return {
+                    ...n,
+                    keys: [`${n.name.toLowerCase()}/${n.octave}`],
+                    string:   map ? map.string   : "E",
+                    finger:   map ? map.finger    : 1,
+                    position: map ? map.pos       : "?",
+                    x:        map ? map.x         : 80
+                };
+            }
         });
     }
 
@@ -286,6 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const arrow = document.getElementById("play-arrow");
         if (arrow) arrow.style.display = "none";
         if (fingerDot) fingerDot.style.display = "none";
+        document.querySelectorAll(".violin-neck .dynamic-finger-dot").forEach(el => el.remove());
         if (noteDisplay)     noteDisplay.innerText    = "Nota: ---";
         if (fingerDisplay)   fingerDisplay.innerText  = "Dedo: -";
         if (positionDisplay) positionDisplay.innerText= "Posição: -";
@@ -347,9 +373,15 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (rhythmSel === "semicolcheia") factor = 0.25;
         const dur  = (60 / bpm) * factor; // segundos
 
-        // Notas para tocar (escala ± intervalo)
-        let toPlay = [`${note.name}${note.octave}`];
-        if (intervalSelect.value !== "none" && activePlaybackType === "scale") {
+        // Notas para tocar (escala ± intervalo ou acordes)
+        let toPlay = [];
+        if (note.isChord && note.chordPitches) {
+            toPlay = [...note.chordPitches];
+        } else {
+            toPlay = [`${note.name}${note.octave}`];
+        }
+
+        if (intervalSelect.value !== "none" && activePlaybackType === "scale" && !note.isChord) {
             const iv = calcInterval(note, intervalSelect.value);
             if (iv) toPlay.push(`${iv.name}${iv.octave}`);
         }
@@ -363,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (synth) { synth.releaseAll(); synth.triggerAttack(chordNotes); }
         }
 
-        // Tocar nota
+        // Tocar nota (suporta polifonia real com PolySynth)
         if (piano) piano.triggerAttackRelease(toPlay, dur * 0.85);
 
         // Visuais
@@ -453,19 +485,19 @@ document.addEventListener("DOMContentLoaded", () => {
             const vexNotes = chunk.map((n, localIdx) => {
                 const globalIdx = chunkIdx * NOTES_PER_LINE + localIdx;
 
-                // Chave VexFlow: "g/4", "c#/5", "eb/4" etc.
-                // VexFlow usa notação: letra minúscula + # ou b + "/" + oitava
-                let noteLetter = n.name.toLowerCase()
-                    .replace("#", "#")
-                    .replace("b", "b");  // já está correto
-                let keys = [`${noteLetter}/${n.octave}`];
+                // Use pre-computed keys from enrichWithFingering or fallback
+                let keys = n.keys;
+                if (!keys) {
+                    let noteLetter = n.name.toLowerCase();
+                    keys = [`${noteLetter}/${n.octave}`];
 
-                // Intervalo paralelo
-                if (itvSel !== "none" && activePlaybackType === "scale") {
-                    const iv = calcInterval(n, itvSel);
-                    if (iv) {
-                        const ivLetter = iv.name.toLowerCase();
-                        keys.push(`${ivLetter}/${iv.octave}`);
+                    // Intervalo paralelo
+                    if (itvSel !== "none" && activePlaybackType === "scale") {
+                        const iv = calcInterval(n, itvSel);
+                        if (iv) {
+                            const ivLetter = iv.name.toLowerCase();
+                            keys.push(`${ivLetter}/${iv.octave}`);
+                        }
                     }
                 }
 
@@ -485,14 +517,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Grau funcional como anotação BAIXO da nota
-                if (activePlaybackType === "scale") {
+                // Grau funcional como anotação no TOPO da nota
+                const chkShowDegrees = document.getElementById("chk-show-degrees");
+                const showDegrees = (chkShowDegrees && chkShowDegrees.checked) || (activePlaybackType === "scale");
+                if (showDegrees && n.degree !== undefined) {
                     const degreeNames  = DEGREE_NAMES[mode] || DEGREE_NAMES["major"];
                     const degLabel     = `${DEGREE_ROMAN[n.degree] || ""}`;
                     const funcLabel    = degreeNames[n.degree] || "";
                     const annotation   = new Annotation(`${degLabel} ${funcLabel}`)
                         .setFont("Arial", 9, "bold")
-                        .setVerticalJustification(Vex.Flow.Annotation.VerticalJustify.BOTTOM);
+                        .setVerticalJustification(Vex.Flow.Annotation.VerticalJustify.TOP);
                     staveNote.addModifier(annotation, 0);
                 }
 
@@ -545,14 +579,44 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── VIOLIN NECK ───────────────────────────────────────────
     function updateViolinNeck(note) {
         if (!note) return;
-        if (noteDisplay)     noteDisplay.innerText    = `Nota: ${note.name}${note.octave}`;
-        if (fingerDisplay)   fingerDisplay.innerText  = `Dedo: ${note.finger === 0 ? "Solta" : note.finger}`;
-        if (positionDisplay) positionDisplay.innerText= `Posição: ${note.position || "?"}`;
-        if (!fingerDot) return;
-        const stringTops = {G:20,D:45,A:70,E:95};
-        fingerDot.style.display = "block";
-        fingerDot.style.top  = `${stringTops[note.string] || 70}px`;
-        fingerDot.style.left = `${note.x || 80}px`;
+
+        // Clear existing dynamic dots
+        document.querySelectorAll(".violin-neck .dynamic-finger-dot").forEach(el => el.remove());
+
+        if (note.isChord && note.chordNotes) {
+            // Chord
+            if (noteDisplay)     noteDisplay.innerText    = `Nota: ${note.name}`;
+            const fingers = note.chordNotes.map(n => n.finger === 0 ? "Solta" : n.finger).join("+");
+            const positions = [...new Set(note.chordNotes.map(n => n.position))].join("/");
+            if (fingerDisplay)   fingerDisplay.innerText  = `Dedo: ${fingers}`;
+            if (positionDisplay) positionDisplay.innerText= `Posição: ${positions}`;
+
+            if (!fingerDot) return;
+            fingerDot.style.display = "none"; // Hide main dot
+
+            const stringTops = {G:20,D:45,A:70,E:95};
+            const neck = document.querySelector(".violin-neck");
+            if (neck) {
+                note.chordNotes.forEach(cn => {
+                    const dot = document.createElement("div");
+                    dot.className = "finger-dot dynamic-finger-dot";
+                    dot.style.top = `${stringTops[cn.string] || 70}px`;
+                    dot.style.left = `${cn.x || 80}px`;
+                    dot.style.display = "block";
+                    neck.appendChild(dot);
+                });
+            }
+        } else {
+            // Single note
+            if (noteDisplay)     noteDisplay.innerText    = `Nota: ${note.name}${note.octave}`;
+            if (fingerDisplay)   fingerDisplay.innerText  = `Dedo: ${note.finger === 0 ? "Solta" : note.finger}`;
+            if (positionDisplay) positionDisplay.innerText= `Posição: ${note.position || "?"}`;
+            if (!fingerDot) return;
+            const stringTops = {G:20,D:45,A:70,E:95};
+            fingerDot.style.display = "block";
+            fingerDot.style.top  = `${stringTops[note.string] || 70}px`;
+            fingerDot.style.left = `${note.x || 80}px`;
+        }
     }
 
     // ── LOAD SCALE INTO STAFF ─────────────────────────────────
@@ -585,12 +649,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!unit) return;
 
         const raw = unit.notes.map((noteName, idx) => {
-            // Suporte correto a notas como: F#5, C#5, Eb4, Bb4, G#5, Ab4
-            let name, octave;
-            const lastChar = noteName[noteName.length - 1];
-            octave = parseInt(lastChar);
-            name   = noteName.slice(0, -1); // remove o último caracter (dígito da oitava)
-            return { name, octave, degree: idx % 7, fullName: noteName };
+            if (noteName.includes("-")) {
+                const parts = noteName.split("-");
+                return {
+                    name: noteName,
+                    fullName: noteName,
+                    isChord: true,
+                    chordPitches: parts,
+                    degree: idx % 7
+                };
+            } else {
+                let name, octave;
+                const lastChar = noteName[noteName.length - 1];
+                octave = parseInt(lastChar);
+                name   = noteName.slice(0, -1);
+                return { name, octave, degree: idx % 7, fullName: noteName, isChord: false, chordPitches: [noteName] };
+            }
         });
 
         activeNotesList = enrichWithFingering(raw);
@@ -638,6 +712,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     octavesSelect.addEventListener("change",   () => updateDashboard());
     intervalSelect.addEventListener("change",  () => updateDashboard());
+
+    const chkShowDegrees = document.getElementById("chk-show-degrees");
+    if (chkShowDegrees) {
+        chkShowDegrees.addEventListener("change", () => {
+            drawSheetMusic(activeNotesList);
+        });
+    }
 
     chkSuzukiMode.addEventListener("change", e => {
         suzukiActive = e.target.checked;
@@ -817,7 +898,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnRestoreScale.style.display = "none";
 
         relativeDisplay.innerText = getRelativeScale(key, mode);
-        updateStudyFundamentals(key, mode);
+        updateStudyFundamentals(key, mode, level, activePracticePlan?.route);
         challengeDayNum.innerText = challengeDay;
 
         const txt_t = tryGet("txt-chal-tecnica");
@@ -877,7 +958,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── STUDY FUNDAMENTALS ────────────────────────────────────
-    function updateStudyFundamentals(key, mode) {
+    function getDetailedStudyGuide(key, mode, level, route) {
+        const isMinor = mode.includes("minor");
+        const isAvancadoOrSolista = level === "avancado" || level === "solista";
+        
+        let bowTechniqueHtml = "";
+        let coordHtml = "";
+        let doubleStopHtml = "";
+        
+        const pattern = route ? route.bowingPattern : "2 notas ligadas, 2 separadas";
+        if (pattern.includes("ligadas") && pattern.includes("separadas")) {
+            bowTechniqueHtml = `
+                <strong>Golpe de Arco: Legato + Détaché Misto</strong><br>
+                Use metade do arco para as duas notas ligadas (distribuição lenta e constante) e ative um détaché rápido e enérgico no meio do arco para as duas notas soltas. 
+                Mantenha o braço direito relaxado e o pulso flexível nas transições.
+            `;
+        } else if (pattern.includes("marteladas") || pattern.includes("martelado")) {
+            bowTechniqueHtml = `
+                <strong>Golpe de Arco: Martelé (Martelado)</strong><br>
+                Exige uma mordida limpa no início de cada nota (pressione ligeiramente o indicador sobre o arco, solte a pressão ao puxar). 
+                Pare o arco completamente entre as notas para criar um silêncio nítido. Ótimo para precisão e velocidade.
+            `;
+        } else if (pattern.includes("polifonia") || pattern.includes("acordos") || pattern.includes("acordes")) {
+            bowTechniqueHtml = `
+                <strong>Golpe de Arco: Quebra de Acordes (Polifonia)</strong><br>
+                Para acordes de 3 ou 4 cordas (ex: Bach Chaconne), toque as duas notas inferiores juntas no calcanhar (graves) e imediatamente gire o cotovelo para tocar as duas notas superiores (agudas). 
+                Evite esmagar o som; use velocidade de arco em vez de pressão excessiva.
+            `;
+        } else {
+            bowTechniqueHtml = `
+                <strong>Golpe de Arco: Détaché no Meio do Arco</strong><br>
+                Toque com notas separadas e bem cantadas, usando a seção central do arco. 
+                O som deve ser contínuo e uniforme (pronunciado, mas sem acentos secos), mantendo a pressão constante do indicador.
+            `;
+        }
+        
+        coordHtml = `
+            <strong>Sincronização de Mãos (Coordenação)</strong><br>
+            A mão esquerda deve antecipar a nota seguinte colocada antes da mudança de direção do arco. 
+            Pratique de forma lenta (40-50 BPM), garantindo que os dedos da mão esquerda caiam exatamente no mesmo milésimo de segundo em que o arco muda de direção. 
+            Para arpejos ou saltos largos, prepare o ângulo do cotovelo direito com antecedência.
+        `;
+        
+        if (isAvancadoOrSolista) {
+            doubleStopHtml = `
+                <strong>Estudo de Cordas Duplas e Afinação</strong><br>
+                Ao praticar terças, sextas ou oitavas (Ševčík Op.9 / Kreutzer):
+                <ul>
+                    <li>Toque primeiro cada nota separadamente para conferir a afinação individual.</li>
+                    <li>Toque juntas com peso igual do arco nas duas cordas (ângulo de 45º).</li>
+                    <li>Use o conceito de <i>Notas de Apoio (Anchor Fingers)</i>: mantenha o dedo mais baixo fixo enquanto move o dedo mais alto para estabilizar a mão esquerda.</li>
+                    <li>Ouça os batimentos acústicos (sons de combinação de Tartini); quando perfeitamente afinado, o som ressoa de forma limpa e sem oscilações ásperas.</li>
+                </ul>
+            `;
+        } else {
+            doubleStopHtml = `
+                <strong>Introdução à Condução de Vozes</strong><br>
+                Ainda que esteja na 1ª posição, prepare-se para o estudo de cordas duplas mantendo os dedos da mão esquerda curvados e próximos das cordas. 
+                Ao tocar escalas, deixe a nota anterior soar o máximo de tempo possível (legato de dedos) para criar uma transição ressonante e fluida.
+            `;
+        }
+        
+        return `
+            <div class="study-guide-details">
+                <div class="guide-item"><i class="fa-solid fa-wand-magic-sparkles"></i> <div>${bowTechniqueHtml}</div></div>
+                <div class="guide-item"><i class="fa-solid fa-arrows-spin"></i> <div>${coordHtml}</div></div>
+                <div class="guide-item"><i class="fa-solid fa-layer-group"></i> <div>${doubleStopHtml}</div></div>
+            </div>
+        `;
+    }
+
+    function updateStudyFundamentals(key, mode, level, route) {
         const raw       = buildScale(key, mode, 1);
         const isMinor   = mode.includes("minor");
         const note1     = raw[0]?.name || key;
@@ -901,7 +1052,9 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         const tip = tips[key] || `Estudo de entonação em ${key}. Verifique postura do arco e flexibilidade do punho.`;
         if (teacherTipsContent) teacherTipsContent.innerHTML = `<p><i class="fa-solid fa-lightbulb"></i> ${tip}</p>`;
-        if (tryGet("study-practice-guide")) tryGet("study-practice-guide").innerHTML = `<p>${tip}</p>`;
+        if (tryGet("study-practice-guide")) {
+            tryGet("study-practice-guide").innerHTML = getDetailedStudyGuide(key, mode, level, route);
+        }
     }
 
     // ── CIRCLE OF FIFTHS ──────────────────────────────────────
@@ -1194,73 +1347,364 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── INLINE CATALOG FALLBACK (funciona sem servidor, via file://) ────────
     const INLINE_CATALOG = {
         studyBooks: [
-            {id:"sevcik_op1_1",  title:"School of Violin Technics, Op.1 Part 1", composer:"Ševčík",  difficulty:"Iniciante", type:"tecnica"},
-            {id:"kayser_op20",   title:"36 Elementary Studies, Op.20",            composer:"Kayser",  difficulty:"Intermedio",type:"etude"},
-            {id:"kreutzer_42",   title:"42 Studies or Caprices",                  composer:"Kreutzer",difficulty:"Avancado",  type:"etude"},
-            {id:"flesch_scale_system",    title:"Scale System",                   composer:"Flesch",  difficulty:"Avancado",  type:"escala"},
-            {id:"galamian_scale_system",  title:"Contemporary Violin Technique",  composer:"Galamian",difficulty:"Avancado",  type:"escala"},
-            {id:"suzuki_vol1",   title:"Suzuki Violin School, Vol 1",             composer:"Suzuki",  difficulty:"Iniciante", type:"escala"}
+            { id: "sevcik_op1_1", title: "School of Violin Technics, Op.1 Part 1", composer: "Otakar Ševčík", difficulty: "Iniciante", type: "tecnica" },
+            { id: "sevcik_op9", title: "Double Stop Preparations, Op.9", composer: "Otakar Ševčík", difficulty: "Intermedio", type: "tecnica" },
+            { id: "kayser_op20", title: "36 Elementary and Progressive Studies, Op.20", composer: "Heinrich Ernst Kayser", difficulty: "Intermedio", type: "etude" },
+            { id: "kreutzer_42", title: "42 Studies or Caprices", composer: "Rodolphe Kreutzer", difficulty: "Avancado", type: "etude" },
+            { id: "fiorillo_36", title: "36 Etudes or Caprices", composer: "Federigo Fiorillo", difficulty: "Avancado", type: "etude" },
+            { id: "flesch_scale_system", title: "Scale System", composer: "Carl Flesch", difficulty: "Avancado", type: "escala" },
+            { id: "galamian_scale_system", title: "Contemporary Violin Technique", composer: "Ivan Galamian", difficulty: "Avancado", type: "escala" },
+            { id: "suzuki_vol1", title: "Suzuki Violin School, Vol 1", composer: "Shinichi Suzuki", difficulty: "Iniciante", type: "escala" }
         ],
         studyUnits: [
-            {id:"sevcik_unit_g_maj", bookId:"sevcik_op1_1",
-             title:"Ševčík Op.1 Ex.17 — Sol Maior",
-             focus:"Fortalecimento do 4º dedo e afinação na 1ª posição.",
-             notes:["G4","A4","B4","C5","D5","E5","F#5","G5","F#5","E5","D5","C5","B4","A4","G4"]},
-            {id:"sevcik_unit_d_maj", bookId:"sevcik_op1_1",
-             title:"Ševčík Op.1 Ex.18 — Ré Maior",
-             focus:"Estudo de terças e quintas na 1ª posição.",
-             notes:["D4","E4","F#4","G4","A4","B4","C#5","D5","C#5","B4","A4","G4","F#4","E4","D4"]},
-            {id:"sevcik_unit_a_maj", bookId:"sevcik_op1_1",
-             title:"Ševčík Op.1 Ex.19 — Lá Maior",
-             focus:"Precisão de C#, F#, G# nas cordas Lá e Mi.",
-             notes:["A4","B4","C#5","D5","E5","F#5","G#5","A5","G#5","F#5","E5","D5","C#5","B4","A4"]},
-            {id:"kayser_unit_g_maj", bookId:"kayser_op20",
-             title:"Kayser Op.20 Estudo Nº 2 — Sol Maior",
-             focus:"Staccato na metade superior do arco.",
-             notes:["G4","B4","D5","G5","F#5","D5","B4","G4","A4","C5","E5","A5","G5","E5","C5","A4","G4"]},
-            {id:"kayser_unit_d_maj", bookId:"kayser_op20",
-             title:"Kayser Op.20 Estudo Nº 5 — Ré Maior",
-             focus:"Cruzes de corda complexos na 1ª posição.",
-             notes:["D4","A4","F#4","D5","A4","F#5","D5","A5","G5","E5","C#5","A4","D4"]},
-            {id:"kayser_unit_a_maj", bookId:"kayser_op20",
-             title:"Kayser Op.20 Estudo Nº 7 — Lá Maior",
-             focus:"Distribuição de arco (Whole Bow / Half Bow).",
-             notes:["A4","E5","C#5","A5","E5","A5","G#5","E5","D5","B4","G#4","E4","A4"]},
-            {id:"flesch_unit_g_maj", bookId:"flesch_scale_system",
-             title:"Flesch — Escala Sol Maior (3 Oitavas)",
-             focus:"Afinação temperada, shifts entre 1ª, 3ª e 5ª posições.",
-             notes:["G3","A3","B3","C4","D4","E4","F#4","G4","A4","B4","C5","D5","E5","F#5","G5","F#5","E5","D5","C5","B4","A4","G4","F#4","E4","D4","C4","B3","A3","G3"]},
-            {id:"suzuki_unit_g_maj", bookId:"suzuki_vol1",
-             title:"Suzuki Vol 1 — Escala de Sol Maior",
-             focus:"Afinação básica na 1ª posição.",
-             notes:["G3","A3","B3","C4","D4","E4","F#4","G4","F#4","E4","D4","C4","B3","A3","G3"]}
+            {
+                id: "sevcik_unit_g_maj",
+                bookId: "sevcik_op1_1",
+                title: "Ševčík Op.1 Part 1 Ex.17 (Sol Maior)",
+                focus: "Fortalecimento do 4º dedo, flexibilidade do punho no arco e afinação na primeira posição.",
+                notes: ["G4", "A4", "B4", "C5", "D5", "E5", "F#5", "G5", "A5", "G5", "F#5", "E5", "D5", "C5", "B4", "A4", "G4"]
+            },
+            {
+                id: "sevcik_double_g",
+                bookId: "sevcik_op9",
+                title: "Ševčík Op.9 Ex.1 - Terças e Sextas em Sol",
+                focus: "Afinação e dedilhado de cordas duplas. Dedos 1 e 3, 2 e 4 atuando em pares.",
+                notes: ["G3-B3", "A3-C4", "B3-D4", "C4-E4", "D4-F#4", "E4-G4", "F#4-A4", "G4-B4", "F#4-A4", "E4-G4", "D4-F#4", "C4-E4", "B3-D4", "A3-C4", "G3-B3"]
+            },
+            {
+                id: "kreutzer_unit_g_maj",
+                bookId: "kreutzer_42",
+                title: "Kreutzer Estudo Nº 35 - Sextas e Oitavas (Sol Maior)",
+                focus: "Montagem de oitavas paralelas e sextas. Apoio igual nos dois pontos do arco.",
+                notes: ["G3-E4", "A3-F#4", "B3-G4", "C4-A4", "D4-B4", "E4-C5", "F#4-D5", "G4-E5", "G3-G4", "A3-A4", "B3-B4", "C4-C5", "G3-E4"]
+            },
+            {
+                id: "fiorillo_unit_g_maj",
+                bookId: "fiorillo_36",
+                title: "Fiorillo Estudo Nº 12 - Acordes de 3 e 4 cordas",
+                focus: "Ataque simultâneo das cordas. Cotovelo direito alinhado para a divisão do peso.",
+                notes: ["G3-D4-B4", "A3-E4-C5", "B3-F#4-D5", "G3-D4-B4-G5", "B3-F#4-D5", "A3-E4-C5", "G3-D4-B4"]
+            },
+            {
+                id: "sevcik_unit_d_maj",
+                bookId: "sevcik_op1_1",
+                title: "Ševčík Op.1 Part 1 Ex.18 (Ré Maior)",
+                focus: "Estudo de terças e quintas na 1ª posição com cruzamento de cordas rápido.",
+                notes: ["D4", "F#4", "E4", "G4", "F#4", "A4", "G4", "B4", "A4", "C#5", "B4", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"]
+            },
+            {
+                id: "sevcik_double_d",
+                bookId: "sevcik_op9",
+                title: "Ševčík Op.9 Ex.2 - Terças e Quartas em Ré",
+                focus: "Afinação e montagem de acordes de Ré. 1º e 2º dedos colados.",
+                notes: ["D4-F#4", "E4-G4", "F#4-A4", "G4-B4", "A4-C#5", "B4-D5", "A4-C#5", "G4-B4", "F#4-A4", "E4-G4", "D4-F#4"]
+            },
+            {
+                id: "kayser_unit_g_maj",
+                bookId: "kayser_op20",
+                title: "Kayser Op.20 Estudo Nº 2 (Sol Maior)",
+                focus: "Desenvolvimento do staccato na metade superior do arco, transição ágil de corda.",
+                notes: ["G4", "B4", "D5", "G5", "F#5", "D5", "B4", "G4", "A4", "C5", "E5", "A5", "G5", "E5", "C5", "A4"]
+            },
+            {
+                id: "kayser_unit_d_maj",
+                bookId: "kayser_op20",
+                title: "Kayser Op.20 Estudo Nº 5 (Ré Maior)",
+                focus: "Cruzes de corda complexos, mantendo dedilhado firme na primeira posição.",
+                notes: ["D4", "A4", "F#4", "D5", "A4", "F#5", "D5", "A5", "G5", "E5", "C#5", "A4", "D4"]
+            },
+            {
+                id: "kayser_unit_a_maj",
+                bookId: "kayser_op20",
+                title: "Kayser Op.20 Estudo Nº 7 (Lá Maior)",
+                focus: "Distribuição de arco (Whole Bow / Half Bow) com ligaduras amplas.",
+                notes: ["A4", "E5", "C#5", "A5", "E5", "A5", "G#5", "E5", "D5", "B4", "G#4", "E4", "A4"]
+            },
+            {
+                id: "suzuki_unit_g_maj",
+                bookId: "suzuki_vol1",
+                title: "Suzuki Vol 1 - Escala de Sol Maior",
+                focus: "Estudo de afinação básica na 1ª posição com dedilhado padrão nas cordas G e D.",
+                notes: ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4", "F#4", "E4", "D4", "C4", "B3", "A3", "G3"]
+            }
         ],
         repertoirePieces: [
-            {id:"vivaldi_rv310",  title:"Concerto em Sol Maior RV 310", composer:"Vivaldi", key:"G", mode:"major",         studentLevel:"iniciante", difficultyDescription:"Barroco alegre na 1ª posição."},
-            {id:"handel_hwv371",  title:"Sonata em Ré Maior HWV 371",   composer:"Handel",  key:"D", mode:"major",         studentLevel:"intermedio",difficultyDescription:"Sonata barroca exigindo expressividade."},
-            {id:"vivaldi_rv356",  title:"Concerto em Lá Menor RV 356",  composer:"Vivaldi", key:"A", mode:"minor-natural",  studentLevel:"iniciante", difficultyDescription:"Excelente para staccato e posições na corda E."}
+            {
+                id: "vivaldi_rv310",
+                title: "Concerto em Sol Maior Op.3 No.3 RV 310",
+                composer: "Antonio Vivaldi",
+                key: "G",
+                mode: "major",
+                studentLevel: "iniciante",
+                difficultyDescription: "Concerto barroco alegre com passagens brilhantes de semicolcheias na 1ª posição."
+            },
+            {
+                id: "mozart_k216",
+                title: "Concerto para Violino nº 3 em Sol Maior K.216",
+                composer: "W. A. Mozart",
+                key: "G",
+                mode: "major",
+                studentLevel: "avancado",
+                difficultyDescription: "Fraseado clássico refinado, passagens de semicolcheias brilhantes, saltos expressivos."
+            },
+            {
+                id: "handel_hwv371",
+                title: "Sonata em Ré Maior HWV 371",
+                composer: "G. F. Handel",
+                key: "D",
+                mode: "major",
+                studentLevel: "intermedio",
+                difficultyDescription: "Sonata clássica barroca exigindo expressividade nos movimentos lentos e agilidade no Allegro."
+            },
+            {
+                id: "bach_chaconne",
+                title: "Chaconne em Ré Menor (Partita BWV 1004)",
+                composer: "J. S. Bach",
+                key: "D",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                difficultyDescription: "O maior teste de polifonia no violino. Exige acordes de 3 e 4 cordas perfeitos e controle tímbrico."
+            },
+            {
+                id: "vivaldi_rv356",
+                title: "Concerto em Lá Menor Op.3 No.6 RV 356",
+                composer: "Antonio Vivaldi",
+                key: "A",
+                mode: "minor-natural",
+                studentLevel: "iniciante",
+                difficultyDescription: "Obra pedagógica clássica de violino. Estudo excelente de staccato e posições na corda E."
+            },
+            {
+                id: "paganini_caprice24",
+                title: "24 Caprichos Op.1: Capricho Nº 24",
+                composer: "Niccolò Paganini",
+                key: "A",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                difficultyDescription: "Variações com pizzicato de mão esquerda, oitavas paralelas, décimas e arpejos velozes."
+            },
+            {
+                id: "wieniawski_concerto2",
+                title: "Concerto nº 2 em Ré Menor Op.22",
+                composer: "Henryk Wieniawski",
+                key: "D",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                difficultyDescription: "Romantismo virtuoso polaco. Passagens cromáticas velozes, spiccato volante e expressividade."
+            },
+            {
+                id: "ysaye_sonata3",
+                title: "Sonata nº 3 'Ballade' Op.27",
+                composer: "Eugène Ysaÿe",
+                key: "D",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                difficultyDescription: "Obra-prima impressionista para violino solo. Acordes densos, dinâmicas extremas e rubato expressivo."
+            }
         ],
         excerptLinks: [
-            {id:"vivaldi_rv310_exc1", pieceId:"vivaldi_rv310", title:"Tema do Allegro",     bars:"Compassos 1-8",  transferObjective:"Staccato martelado e ressonância da tónica G.",     notes:["G4","B4","D5","G5","F#5","D5","B4","G4","D5","B4","G4"]},
-            {id:"handel_hwv371_exc1", pieceId:"handel_hwv371", title:"Affettuoso — Abertura",bars:"Compassos 1-6",  transferObjective:"Expressividade em notas longas e vibrato controlado.",notes:["D4","A4","F#4","D5","C#5","B4","A4","G4","F#4","E4","D4"]},
-            {id:"vivaldi_rv356_exc1", pieceId:"vivaldi_rv356", title:"Tema Principal",       bars:"Compassos 1-10", transferObjective:"Precisão na corda E e shift para a 3ª posição.",     notes:["A4","C5","E5","A5","G#5","E5","C5","A4","B4","D5","B4","G#4","A4"]}
+            {
+                id: "vivaldi_rv310_exc1",
+                pieceId: "vivaldi_rv310",
+                title: "Tema do Allegro Inicial",
+                bars: "Compassos 1-8",
+                transferObjective: "Controle do staccato martelado na metade superior do arco e ressonância da tónica G nas cordas soltas.",
+                notes: ["G4", "B4", "D5", "G5", "F#5", "D5", "B4", "G4", "D5", "B4", "G4", "D4", "G4"]
+            },
+            {
+                id: "mozart_k216_exc1",
+                pieceId: "mozart_k216",
+                title: "Exposição do Solo (Allegro)",
+                bars: "Compassos 40-48",
+                transferObjective: "Leveza clássica no arco, articulação limpa de colcheias e semicolcheias e shifts de posição para a 3ª.",
+                notes: ["G4", "D5", "B5", "G5", "F#5", "E5", "D5", "C5", "B4", "A4", "G4", "F#4", "G4", "A4", "B4", "C5", "D5"]
+            },
+            {
+                id: "handel_hwv371_exc1",
+                pieceId: "handel_hwv371",
+                title: "Affettuoso - Abertura",
+                bars: "Compassos 1-6",
+                transferObjective: "Expressividade em notas longas, vibrato controlado e passagens suaves de arco na corda Ré e Lá.",
+                notes: ["D4", "A4", "F#4", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"]
+            },
+            {
+                id: "bach_chaconne_exc1",
+                pieceId: "bach_chaconne",
+                title: "Tema Principal & Acordes",
+                bars: "Compassos 1-8",
+                transferObjective: "Montagem rápida de acordes de 3/4 cordas. Distribuição de peso no calcanhar do arco.",
+                notes: ["D4-F4-A4-D5", "D4-F4-A4-D5", "C#4-E4-G4-A4", "D4-F4-A4-F5", "E4-G4-C#5-G5", "F4-A4-D5-A5", "F4-Bb4-D5-Bb5", "F4-A4-D5-A5"]
+            },
+            {
+                id: "paganini_cap24_exc1",
+                pieceId: "paganini_caprice24",
+                title: "Tema (Quasi Presto)",
+                bars: "Variação 1 (Compassos 1-12)",
+                transferObjective: "Coordenação de arpejos rápidos e cordas duplas dedilhadas com precisão na afinação Lá Menor.",
+                notes: ["A4", "C5-E5", "B4", "D5-F5", "C5-E5", "A5", "G#5-B5", "E5", "A4", "C5-E5", "B4", "D5-F5", "C5-E5", "A4"]
+            },
+            {
+                id: "vivaldi_rv356_exc1",
+                pieceId: "vivaldi_rv356",
+                title: "Tema Principal do Allegro",
+                bars: "Compassos 1-10",
+                transferObjective: "Precisão tonal na corda E, shift para a 3ª posição e cruzamento rápido de cordas.",
+                notes: ["A4", "C5", "E5", "A5", "G#5", "E5", "C5", "A4", "B4", "D5", "F5", "D5", "B4", "G#4", "A4"]
+            },
+            {
+                id: "wieniawski_exc1",
+                pieceId: "wieniawski_concerto2",
+                title: "Passagem de Semicolcheias do Solo",
+                bars: "Compassos 70-76",
+                transferObjective: "Aumento do controlo de arcada detaché na corda Mi com dedilhado veloz cromático.",
+                notes: ["D4", "F4", "A4", "D5", "E5", "F5", "G#5", "A5", "Bb5", "G5", "E5", "C#5", "D5"]
+            },
+            {
+                id: "ysaye_exc1",
+                pieceId: "ysaye_sonata3",
+                title: "Tema de Abertura (Lento)",
+                bars: "Compassos 1-5",
+                transferObjective: "Flexibilidade dos dedos da mão esquerda na montagem de acordes e sonoridade dramática.",
+                notes: ["D4-F4-A4-D5", "C#4-E4-A4-E5", "D4-F4-A4-F5", "G4-C5-E5-G5", "A4-F5-A5"]
+            }
         ],
         scaleRoutes: [
-            {key:"G", mode:"major",        studentLevel:"iniciante", octaves:1, bowingPattern:"2 notas ligadas, 2 separadas",
-             dailyPlan:{scaleUnits:["suzuki_unit_g_maj"],bowUnits:["sevcik_unit_g_maj"],etudeUnits:["kayser_unit_g_maj"],repertoirePieceId:"vivaldi_rv310",excerptIds:["vivaldi_rv310_exc1"]}},
-            {key:"D", mode:"major",        studentLevel:"intermedio",octaves:2, bowingPattern:"4 notas ligadas, 4 marteladas",
-             dailyPlan:{scaleUnits:["sevcik_unit_d_maj"],bowUnits:["sevcik_unit_d_maj"],etudeUnits:["kayser_unit_d_maj"],repertoirePieceId:"handel_hwv371",excerptIds:["handel_hwv371_exc1"]}},
-            {key:"A", mode:"minor-natural",studentLevel:"iniciante", octaves:1, bowingPattern:"Detaché simples no meio do arco",
-             dailyPlan:{scaleUnits:["sevcik_unit_a_maj"],bowUnits:["sevcik_unit_a_maj"],etudeUnits:["kayser_unit_a_maj"],repertoirePieceId:"vivaldi_rv356",excerptIds:["vivaldi_rv356_exc1"]}}
+            {
+                key: "G",
+                mode: "major",
+                studentLevel: "iniciante",
+                octaves: 1,
+                bowingPattern: "2 notas ligadas, 2 separadas",
+                dailyPlan: {
+                    scaleUnits: ["suzuki_unit_g_maj"],
+                    bowUnits: ["sevcik_unit_g_maj"],
+                    etudeUnits: ["kayser_unit_g_maj"],
+                    repertoirePieceId: "vivaldi_rv310",
+                    excerptIds: ["vivaldi_rv310_exc1"]
+                }
+            },
+            {
+                key: "G",
+                mode: "major",
+                studentLevel: "avancado",
+                octaves: 3,
+                bowingPattern: "3 notas ligadas, 3 marteladas",
+                dailyPlan: {
+                    scaleUnits: ["flesch_unit_g_maj"],
+                    bowUnits: ["fiorillo_unit_g_maj"],
+                    etudeUnits: ["kreutzer_unit_g_maj"],
+                    repertoirePieceId: "mozart_k216",
+                    excerptIds: ["mozart_k216_exc1"]
+                }
+            },
+            {
+                key: "D",
+                mode: "major",
+                studentLevel: "intermedio",
+                octaves: 2,
+                bowingPattern: "4 notas ligadas, 4 marteladas",
+                dailyPlan: {
+                    scaleUnits: ["sevcik_unit_d_maj"],
+                    bowUnits: ["sevcik_double_d"],
+                    etudeUnits: ["kayser_unit_d_maj"],
+                    repertoirePieceId: "handel_hwv371",
+                    excerptIds: ["handel_hwv371_exc1"]
+                }
+            },
+            {
+                key: "A",
+                mode: "minor-natural",
+                studentLevel: "iniciante",
+                octaves: 1,
+                bowingPattern: "Detaché simples no meio do arco",
+                dailyPlan: {
+                    scaleUnits: ["sevcik_unit_a_maj"],
+                    bowUnits: ["sevcik_unit_a_maj"],
+                    etudeUnits: ["kayser_unit_a_maj"],
+                    repertoirePieceId: "vivaldi_rv356",
+                    excerptIds: ["vivaldi_rv356_exc1"]
+                }
+            },
+            {
+                key: "A",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                octaves: 3,
+                bowingPattern: "Variações rápidas de arco",
+                dailyPlan: {
+                    scaleUnits: ["flesch_unit_g_maj"],
+                    bowUnits: ["sevcik_double_g"],
+                    etudeUnits: ["kreutzer_unit_g_maj"],
+                    repertoirePieceId: "paganini_caprice24",
+                    excerptIds: ["paganini_cap24_exc1"]
+                }
+            },
+            {
+                key: "D",
+                mode: "minor-natural",
+                studentLevel: "solista",
+                octaves: 3,
+                bowingPattern: "Polifonia densa de arco",
+                dailyPlan: {
+                    scaleUnits: ["sevcik_unit_d_maj"],
+                    bowUnits: ["sevcik_double_d"],
+                    etudeUnits: ["fiorillo_unit_g_maj"],
+                    repertoirePieceId: "bach_chaconne",
+                    excerptIds: ["bach_chaconne_exc1", "wieniawski_exc1", "ysaye_exc1"]
+                }
+            }
         ],
         pdfEntries: [
-            {id:"pdf_sevcik",  bookId:"sevcik_op1_1",  title:"Ševčík Op.1",     composer:"Ševčík",  sourceDomain:"s9.imslp.org",  sourcePageUrl:"https://imslp.org/wiki/School_of_Violin_Technics",   pdfUrl:"https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",    fallbackUrl:"https://imslp.org/wiki/Special:Search/Sevcik_Op1"},
-            {id:"pdf_kayser",  bookId:"kayser_op20",    title:"Kayser Op.20",    composer:"Kayser",  sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/36_Elementary_and_Progressive_Studies,_Op.20_(Kayser)", pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",             fallbackUrl:"https://imslp.org/wiki/Special:Search/Kayser_Op20"},
-            {id:"pdf_vivaldi", pieceId:"vivaldi_rv310", title:"Vivaldi RV 310",  composer:"Vivaldi", sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",     pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",              fallbackUrl:"https://imslp.org/wiki/Special:Search/Vivaldi_RV310"},
-            {id:"pdf_handel",  pieceId:"handel_hwv371", title:"Handel HWV 371",  composer:"Handel",  sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Sonata_in_D_major,_HWV_371_(Handel,_George_Frideric)", pdfUrl:"https://s9.imslp.org/files/imglnks/usimg/9/9f/IMSLP204312-WIMA.8a33-Handel_Sonata_D.pdf",      fallbackUrl:"https://imslp.org/wiki/Special:Search/Handel_HWV371"},
-            {id:"pdf_vivaldi2",pieceId:"vivaldi_rv356", title:"Vivaldi RV 356",  composer:"Vivaldi", sourceDomain:"imslp.org",     sourcePageUrl:"https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",     pdfUrl:"https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",fallbackUrl:"https://imslp.org/wiki/Special:Search/Vivaldi_RV356"},
-            {id:"pdf_flesch",  bookId:"flesch_scale_system",  title:"Flesch Scale System",  composer:"Flesch",  sourceDomain:"violinlab.com", sourcePageUrl:"", pdfUrl:"", fallbackUrl:""},
-            {id:"pdf_suzuki",  bookId:"suzuki_vol1",           title:"Suzuki Vol 1",         composer:"Suzuki",  sourceDomain:"violinlab.com", sourcePageUrl:"", pdfUrl:"", fallbackUrl:""}
+            {
+                id: "pdf_sevcik_op1_1",
+                bookId: "sevcik_op1_1",
+                title: "Ševčík School of Violin Technics Op.1 Book 1",
+                composer: "Ševčík",
+                sourceDomain: "s9.imslp.org",
+                sourcePageUrl: "https://imslp.org/wiki/School_of_Violin_Technics_(%C5%A0ev%C4%8D%C3%ADk,_Otakar)",
+                pdfUrl: "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                fallbackUrl: "https://imslp.org/wiki/Special:Search/Sevcik_Op1_Book1"
+            },
+            {
+                id: "pdf_kayser_op20",
+                bookId: "kayser_op20",
+                title: "Kayser 36 Elementary Studies Op.20",
+                composer: "Kayser",
+                sourceDomain: "imslp.org",
+                sourcePageUrl: "https://imslp.org/wiki/36_Elementary_and_Progressive_Studies,_Op.20_(Kayser,_Heinrich_Ernst)",
+                pdfUrl: "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                fallbackUrl: "https://imslp.org/wiki/Special:Search/Kayser_Op20"
+            },
+            {
+                id: "pdf_vivaldi_rv310",
+                pieceId: "vivaldi_rv310",
+                title: "Vivaldi Concerto em Sol Maior RV 310",
+                composer: "Vivaldi",
+                sourceDomain: "imslp.org",
+                sourcePageUrl: "https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",
+                pdfUrl: "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+                fallbackUrl: "https://imslp.org/wiki/Special:Search/Vivaldi_RV310"
+            },
+            {
+                id: "pdf_handel_hwv371",
+                pieceId: "handel_hwv371",
+                title: "Handel Sonata em Ré Maior HWV 371",
+                composer: "Handel",
+                sourceDomain: "imslp.org",
+                sourcePageUrl: "https://imslp.org/wiki/Violin_Sonata_in_D_major,_HWV_371_(Handel,_George_Frideric)",
+                pdfUrl: "https://s9.imslp.org/files/imglnks/usimg/9/9f/IMSLP204312-WIMA.8a33-Handel_Sonata_D.pdf",
+                fallbackUrl: "https://imslp.org/wiki/Special:Search/Handel_Sonata_HWV371"
+            },
+            {
+                id: "pdf_vivaldi_rv356",
+                pieceId: "vivaldi_rv356",
+                title: "Vivaldi Concerto em Lá Menor RV 356",
+                composer: "Vivaldi",
+                sourceDomain: "imslp.org",
+                sourcePageUrl: "https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",
+                pdfUrl: "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+                fallbackUrl: "https://imslp.org/wiki/Special:Search/Vivaldi_RV356"
+            }
         ]
     };
 

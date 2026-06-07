@@ -1043,12 +1043,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (el("study-leading-desc"))    el("study-leading-desc").innerHTML    = `<strong>${isMinor?"Subtónica":"Sensível"} (VII Grau):</strong> ${note7} — Forte atração para ${note1}.`;
 
         const tips = {
-            "G":"Sol Maior: tom natural do violino! Corda Sol solta ressoa por simpatia.",
-            "D":"Ré Maior: padrões idênticos nas cordas Ré e Lá. A corda Ré ressoa no Ré superior.",
-            "A":"Lá Maior: introduz C# e G#. 1º dedo baixo, 3º dedo esticado para C#.",
-            "C":"Dó Maior: sem acidentais. Todos os 2os dedos em posição baixa (F, C).",
-            "F":"Fá Maior: tem Bb. O 1º dedo na corda Lá recua para posição baixa.",
-            "E":"Mi Maior: 4 sustenidos. Dedos altos, C# e D# precisam de precisão."
+            "G": "Sol Maior: tom natural do violino! Corda Sol solta ressoa por simpatia.",
+            "Ab": "Lá Bemol Maior: 4 bemóis. Atenção ao 1º dedo recuado (Ab, Db) e afinação estreita de semitons.",
+            "A": "Lá Maior: introduz C#, F# e G#. Dedos 1 e 2 afastados nas cordas Ré e Lá.",
+            "Bb": "Si Bemol Maior: 2 bemóis (Bb, Eb). O 2º dedo colado no 1º dedo na corda Lá e Mi.",
+            "B": "Si Maior: 5 sustenidos. Posições de dedilhado alto. Atenção ao A# e D# (dedos esticados).",
+            "C": "Dó Maior: sem acidentais. Todos os 2ºs dedos em posição baixa (Fá, Dó) na 1ª posição.",
+            "C#": "Dó Sustenido Maior: 7 sustenidos. Dedilhado de semitons agudos, dedos altos.",
+            "D": "Ré Maior: padrões idênticos nas cordas Ré e Lá. A corda Ré ressoa no Ré superior por simpatia.",
+            "Eb": "Mi Bemol Maior: 3 bemóis (Bb, Eb, Ab). Recue o 1º dedo (Fá natural) na corda Mi e use 2º dedo baixo.",
+            "E": "Mi Maior: 4 sustenidos. Dedos altos na pestana e afinação exata do D# com o 4º dedo.",
+            "F": "Fá Maior: tem 1 bemol (Bb). O 1º dedo na corda Lá e Mi recua para a posição baixa.",
+            "F#": "Fá Sustenido Maior: 6 sustenidos. Afinação precisa com semitons elevados e controle posicional."
         };
         const tip = tips[key] || `Estudo de entonação em ${key}. Verifique postura do arco e flexibilidade do punho.`;
         if (teacherTipsContent) teacherTipsContent.innerHTML = `<p><i class="fa-solid fa-lightbulb"></i> ${tip}</p>`;
@@ -1348,8 +1354,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const INLINE_CATALOG = {
         studyBooks: [
             { id: "sevcik_op1_1", title: "School of Violin Technics, Op.1 Part 1", composer: "Otakar Ševčík", difficulty: "Iniciante", type: "tecnica" },
+            { id: "sevcik_op2", title: "School of Bowing Technics, Op.2", composer: "Otakar Ševčík", difficulty: "Iniciante", type: "tecnica" },
+            { id: "sevcik_op3", title: "Shifting (Mudanças de Posição), Op.3", composer: "Otakar Ševčík", difficulty: "Intermedio", type: "tecnica" },
+            { id: "sevcik_op7", title: "Preparatory Trill Studies, Op.7", composer: "Otakar Ševčík", difficulty: "Solista", type: "tecnica" },
+            { id: "sevcik_op8", title: "Shifting (Mudança de Posição), Op.8", composer: "Otakar Ševčík", difficulty: "Intermedio", type: "tecnica" },
             { id: "sevcik_op9", title: "Double Stop Preparations, Op.9", composer: "Otakar Ševčík", difficulty: "Intermedio", type: "tecnica" },
             { id: "kayser_op20", title: "36 Elementary and Progressive Studies, Op.20", composer: "Heinrich Ernst Kayser", difficulty: "Intermedio", type: "etude" },
+            { id: "wohlfahrt_op45", title: "60 Studies, Op.45", composer: "Franz Wohlfahrt", difficulty: "Iniciante", type: "etude" },
+            { id: "dont_op35", title: "24 Studies and Caprices, Op.35", composer: "Jakob Dont", difficulty: "Solista", type: "etude" },
             { id: "kreutzer_42", title: "42 Studies or Caprices", composer: "Rodolphe Kreutzer", difficulty: "Avancado", type: "etude" },
             { id: "fiorillo_36", title: "36 Etudes or Caprices", composer: "Federigo Fiorillo", difficulty: "Avancado", type: "etude" },
             { id: "flesch_scale_system", title: "Scale System", composer: "Carl Flesch", difficulty: "Avancado", type: "escala" },

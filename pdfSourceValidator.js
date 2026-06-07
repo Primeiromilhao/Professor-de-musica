@@ -26,14 +26,19 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
   // Enriquecer técnica com o sevcikDb global se disponível
   let bows = [];
   if (typeof sevcikDb !== "undefined" && sevcikDb[key]) {
-    const s = sevcikDb[key];
-    bows = [{
-      id: s.id,
-      bookId: "sevcik_op1_1",
-      title: s.title,
-      focus: s.foco || s.focus,
-      notes: s.notes
-    }];
+    const list = sevcikDb[key];
+    const s = Array.isArray(list) 
+      ? (list.find(item => item.level.toLowerCase() === studentLevel.toLowerCase()) || list[0])
+      : list;
+    if (s) {
+      bows = [{
+        id: s.id,
+        bookId: s.bookId || "sevcik_op1_1",
+        title: s.title,
+        focus: s.foco || s.focus,
+        notes: s.notes
+      }];
+    }
   } else {
     bows = units(route.dailyPlan.bowUnits);
   }
@@ -94,6 +99,26 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
 }
 
 /**
+ * Gera sequências de cordas duplas (terças, sextas ou oitavas) baseadas nas notas de uma escala.
+ */
+function generateDoubleStopNotes(scaleNotes, intervalType) {
+  let diff = 2; // padrão 3ª (terças)
+  if (intervalType === "6th") diff = 5;
+  if (intervalType === "8th") diff = 7;
+  
+  let doubleStops = [];
+  // Gera subida
+  for (let i = 0; i < scaleNotes.length - diff; i++) {
+    doubleStops.push(`${scaleNotes[i]}-${scaleNotes[i + diff]}`);
+  }
+  // Gera descida
+  for (let i = scaleNotes.length - diff - 1; i >= 0; i--) {
+    doubleStops.push(`${scaleNotes[i]}-${scaleNotes[i + diff]}`);
+  }
+  return doubleStops;
+}
+
+/**
  * Gera um plano pedagógico alternativo dinamicamente quando a rota exata não existe no JSON.
  */
 function generatePedagogicFallback(key, mode, studentLevel, catalog) {
@@ -101,52 +126,129 @@ function generatePedagogicFallback(key, mode, studentLevel, catalog) {
   const octaves = studentLevel === "iniciante" ? 1 : (studentLevel === "intermedio" ? 2 : 3);
   
   // Cria unidades virtuais transpostas
-  const fallbackScaleId = `fallback_scale_${key}`;
-  const fallbackBowId = `fallback_bow_${key}`;
-  const fallbackEtudeId = `fallback_etude_${key}`;
-  const fallbackPieceId = `fallback_piece_${key}`;
-  const fallbackExcerptId = `fallback_excerpt_${key}`;
+  const fallbackScaleId = `fallback_scale_${key}_${studentLevel}`;
+  const fallbackBowId = `fallback_bow_${key}_${studentLevel}`;
+  const fallbackEtudeId = `fallback_etude_${key}_${studentLevel}`;
+  const fallbackPieceId = `fallback_piece_${key}_${studentLevel}`;
+  const fallbackExcerptId = `fallback_excerpt_${key}_${studentLevel}`;
 
-  // Se já não estiverem no catalog, injetamos unidades genéricas transpostas para o tom
+  // Configuração inteligente de livros e focos
+  let scaleBookId = "suzuki_vol1";
+  let scaleTitle = `Suzuki - Escala de ${key} ${isMinor ? "Menor" : "Maior"}`;
+  let scaleFocus = `Estudo de afinação em ${key} ${isMinor ? "Menor" : "Maior"} com foco no dedilhado na 1ª posição.`;
+  
+  if (studentLevel === "intermedio") {
+    scaleBookId = "sevcik_op1_1";
+    scaleTitle = `Ševčík - Escala de ${key} ${isMinor ? "Menor" : "Maior"}`;
+    scaleFocus = `Estudo posicional (1ª a 3ª posição) na escala de ${key} para entonação.`;
+  } else if (studentLevel === "avancado") {
+    scaleBookId = "flesch_scale_system";
+    scaleTitle = `Carl Flesch - Sistema de Escalas em ${key} ${isMinor ? "Menor" : "Maior"}`;
+    scaleFocus = `Sistema de 3 oitavas de Carl Flesch em ${key} com dedilhado de mudanças.`;
+  } else if (studentLevel === "solista") {
+    scaleBookId = "galamian_scale_system";
+    scaleTitle = `Ivan Galamian - Escala Contemporânea de ${key} ${isMinor ? "Menor" : "Maior"}`;
+    scaleFocus = `Padrões de ritmo e aceleração de arco de Ivan Galamian em ${key} (3/4 oitavas).`;
+  }
+
+  // Se já não estiverem no catalog, injetamos
   if (!catalog.studyUnits.find(u => u.id === fallbackScaleId)) {
     catalog.studyUnits.push({
       id: fallbackScaleId,
-      bookId: studentLevel === "iniciante" ? "suzuki_vol1" : "flesch_scale_system",
-      title: `${studentLevel === "iniciante" ? "Suzuki" : "Flesch"} - Escala de ${key} ${isMinor ? "Menor" : "Maior"}`,
-      focus: `Estudo de afinação em ${key} ${isMinor ? "Menor" : "Maior"} com foco no dedilhado e estabilidade tonal.`,
+      bookId: scaleBookId,
+      title: scaleTitle,
+      focus: scaleFocus,
       notes: generateMajorScaleNotes(key, mode, octaves)
     });
+  }
+
+  // Técnica (Ševčík)
+  let bowBookId = "sevcik_op1_1";
+  let bowTitle = `Ševčík Op.1 Part 1 - Técnica em ${key}`;
+  let bowFocus = `Distribuição uniforme e articulação de dedos em ${key}.`;
+  let bowNotes = generateMajorScaleNotes(key, mode, 1).slice(0, 8);
+
+  if (studentLevel === "iniciante") {
+    bowBookId = "sevcik_op2";
+    bowTitle = `Ševčík Op.2 - Técnica de Arco em ${key}`;
+    bowFocus = `Padrões rítmicos de détaché e ligadura na primeira posição.`;
+  } else if (studentLevel === "intermedio") {
+    bowBookId = "sevcik_op8";
+    bowTitle = `Ševčík Op.8 - Mudança de Posição em ${key}`;
+    bowFocus = `Deslizar o polegar de forma fluida durante as mudanças.`;
+    bowNotes = generateMajorScaleNotes(key, mode, 2).slice(0, 12);
+  } else if (studentLevel === "avancado") {
+    bowBookId = "sevcik_op9";
+    bowTitle = `Ševčík Op.9 - Preparação de Cordas Duplas em ${key}`;
+    bowFocus = `Montagem de terças e sextas paralelas em ${key}.`;
+    bowNotes = generateDoubleStopNotes(generateMajorScaleNotes(key, mode, 1), "3rd");
+  } else if (studentLevel === "solista") {
+    bowBookId = "sevcik_op7";
+    bowTitle = `Ševčík Op.7 - Estudos de Trinado em ${key}`;
+    bowFocus = `Articulação rápida de dedos sob a tonalidade de ${key}.`;
+    bowNotes = generateMajorScaleNotes(key, mode, 2).slice(0, 16);
   }
 
   if (!catalog.studyUnits.find(u => u.id === fallbackBowId)) {
     catalog.studyUnits.push({
       id: fallbackBowId,
-      bookId: "sevcik_op1_1",
-      title: `Ševčík Op.1 - Exercício em ${key}`,
-      focus: `Dedilhados de agilidade e padrões de arco adaptados em ${key}.`,
-      notes: generateMajorScaleNotes(key, mode, 1).slice(0, 8)
+      bookId: bowBookId,
+      title: bowTitle,
+      focus: bowFocus,
+      notes: bowNotes
     });
+  }
+
+  // Estudos (Etudes)
+  let etudeBookId = "kayser_op20";
+  let etudeTitle = `Kayser Op.20 - Estudo em ${key}`;
+  let etudeFocus = "Padrões rítmicos e distribuição de arco transpostos.";
+  let etudeNotes = generateMajorScaleNotes(key, mode, 1).slice(0, 16);
+
+  if (studentLevel === "iniciante") {
+    etudeBookId = "wohlfahrt_op45";
+    etudeTitle = `Wohlfahrt Op.45 - Estudo em ${key}`;
+    etudeFocus = `Desenvolvimento da afinação básica e força na corda Sol.`;
+  } else if (studentLevel === "intermedio") {
+    etudeBookId = "kayser_op20";
+    etudeTitle = `Kayser Op.20 - Estudo em ${key}`;
+    etudeFocus = `Desenvolvimento do spiccato, staccato e cruzamento de cordas.`;
+  } else if (studentLevel === "avancado") {
+    etudeBookId = "kreutzer_42";
+    etudeTitle = `Kreutzer Estudo - Agilidade em ${key}`;
+    etudeFocus = `Técnica avançada de Rodolphe Kreutzer para flexibilidade de arco e dedos.`;
+    etudeNotes = generateDoubleStopNotes(generateMajorScaleNotes(key, mode, 1), "6th");
+  } else if (studentLevel === "solista") {
+    etudeBookId = "dont_op35";
+    etudeTitle = `Jakob Dont Op.35 - Capricho em ${key}`;
+    etudeFocus = `Estudos de oitavas paralelas e posições elevadas.`;
+    etudeNotes = generateDoubleStopNotes(generateMajorScaleNotes(key, mode, 1), "8th");
   }
 
   if (!catalog.studyUnits.find(u => u.id === fallbackEtudeId)) {
     catalog.studyUnits.push({
       id: fallbackEtudeId,
-      bookId: "kayser_op20",
-      title: `Kayser Op.20 - Estudo Transposto para ${key}`,
-      focus: "Padrões rítmicos e distribuição de arco transpostos para a tonalidade ativa.",
-      notes: generateMajorScaleNotes(key, mode, 1).slice(0, 16)
+      bookId: etudeBookId,
+      title: etudeTitle,
+      focus: etudeFocus,
+      notes: etudeNotes
     });
   }
+
+  // Peça de Repertório
+  const repPiece = (typeof repertoireDb !== "undefined" && repertoireDb[key])
+    ? (repertoireDb[key].find(item => item.level.toLowerCase() === studentLevel.toLowerCase()) || repertoireDb[key][0])
+    : null;
 
   if (!catalog.repertoirePieces.find(p => p.id === fallbackPieceId)) {
     catalog.repertoirePieces.push({
       id: fallbackPieceId,
-      title: `Tema Clássico em ${key} ${isMinor ? "Menor" : "Maior"}`,
-      composer: "Bach/Suzuki",
+      title: repPiece ? repPiece.obra : `Tema Clássico em ${key} ${isMinor ? "Menor" : "Maior"}`,
+      composer: repPiece ? repPiece.composer : "Bach/Suzuki",
       key: key,
       mode: mode,
       studentLevel: studentLevel,
-      difficultyDescription: `Estudo clássico adaptado para consolidar a tonalidade de ${key}.`
+      difficultyDescription: repPiece ? repPiece.dificuldade : `Estudo clássico adaptado para consolidar a tonalidade de ${key}.`
     });
   }
 
@@ -154,19 +256,24 @@ function generatePedagogicFallback(key, mode, studentLevel, catalog) {
     catalog.excerptLinks.push({
       id: fallbackExcerptId,
       pieceId: fallbackPieceId,
-      title: "Tema do Minueto",
-      bars: "Compassos 1-8",
-      transferObjective: "Coordenação dinâmica e articulação tonal limpa na tónica ativa.",
-      notes: generateMajorScaleNotes(key, mode, 1)
+      title: "Excerto Célebre",
+      bars: "Tema Principal",
+      transferObjective: repPiece ? repPiece.dificuldade : "Articulação e entonação na tónica ativa.",
+      notes: repPiece ? repPiece.notes : generateMajorScaleNotes(key, mode, 1)
     });
   }
+
+  let finalBowing = "Detaché simples";
+  if (studentLevel === "intermedio") finalBowing = "4 notas ligadas, 4 marteladas";
+  else if (studentLevel === "avancado") finalBowing = "3 notas ligadas, 3 marteladas / Cordas Duplas";
+  else if (studentLevel === "solista") finalBowing = "Polifonia / Quebra de Acordes";
 
   return {
     key,
     mode,
     studentLevel,
     octaves,
-    bowingPattern: "Detaché simples / Martelado",
+    bowingPattern: finalBowing,
     dailyPlan: {
       scaleUnits: [fallbackScaleId],
       bowUnits: [fallbackBowId],

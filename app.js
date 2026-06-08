@@ -427,6 +427,67 @@ document.addEventListener("DOMContentLoaded", () => {
         return [...ascending, ...descending];
     }
 
+    function getAscendingScale(tonic, mode, octaves) {
+        const intervals = SCALE_INTERVALS[mode] || SCALE_INTERVALS["major"];
+        const tonicIdx  = CHROMATIC.indexOf(tonic);
+        if (tonicIdx === -1) return [];
+
+        const startOct = (tonicIdx >= CHROMATIC.indexOf("G")) ? 3 : 4;
+
+        let ascending = [];
+        let chrIdx  = tonicIdx;
+        let octave  = startOct;
+
+        for (let o = 0; o < octaves; o++) {
+            for (let i = 0; i < 7; i++) {
+                ascending.push({ name: CHROMATIC[chrIdx], octave, degree: i });
+                chrIdx += intervals[i];
+                if (chrIdx >= 12) {
+                    chrIdx -= 12;
+                    octave++;
+                }
+            }
+        }
+        ascending.push({ name: CHROMATIC[chrIdx], octave, degree: 0 });
+        return ascending;
+    }
+
+    function buildArpeggioFromDegrees(ascendingScale, targetDegrees, sectionName) {
+        let arpAscending = ascendingScale.filter(n => targetDegrees.includes(n.degree));
+        const startDegree = targetDegrees[0];
+        const startIdx = arpAscending.findIndex(n => n.degree === startDegree);
+        if (startIdx !== -1) {
+            arpAscending = arpAscending.slice(startIdx);
+        }
+        if (arpAscending.length === 0) return [];
+
+        const arpDescending = [...arpAscending].reverse().slice(1);
+        const combined = [...arpAscending, ...arpDescending];
+        return combined.map(n => ({ ...n, section: sectionName }));
+    }
+
+    function generateArpeggiosForLevel(ascendingScale, mode, level) {
+        let activeLevelGroup = level;
+        if (activeLevelGroup === "solista") activeLevelGroup = "avancado";
+
+        if (activeLevelGroup === "iniciante") {
+            return buildArpeggioFromDegrees(ascendingScale, [0, 2, 4], "Arpejo da Tónica");
+        } else if (activeLevelGroup === "intermedio") {
+            const tonicArp = buildArpeggioFromDegrees(ascendingScale, [0, 2, 4], "Arpejo da Tónica");
+            const dominantArp = mode === "major"
+                ? buildArpeggioFromDegrees(ascendingScale, [4, 6, 1, 3], "Arpejo da Dominante (7ª)")
+                : buildArpeggioFromDegrees(ascendingScale, [6, 1, 3, 5], "Arpejo da Dominante (Diminuta)");
+            return [...tonicArp, ...dominantArp];
+        } else {
+            const tonicArp = buildArpeggioFromDegrees(ascendingScale, [0, 2, 4], "Arpejo da Tónica");
+            const subdominantArp = buildArpeggioFromDegrees(ascendingScale, [3, 5, 0], "Arpejo da Subdominante");
+            const dominantArp = mode === "major"
+                ? buildArpeggioFromDegrees(ascendingScale, [4, 6, 1, 3], "Arpejo da Dominante (7ª)")
+                : buildArpeggioFromDegrees(ascendingScale, [6, 1, 3, 5], "Arpejo da Dominante (Diminuta)");
+            return [...tonicArp, ...subdominantArp, ...dominantArp];
+        }
+    }
+
     // ── FINGERING ENRICHMENT ──────────────────────────────────
     function enrichWithFingering(notes) {
         return notes.map(n => {
@@ -708,10 +769,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Quantas notas cabem por linha (pauta)
         const NOTES_PER_LINE = 8;
+        
+        // Agrupar notas por secção
+        const sections = [];
+        let currentSection = null;
+        notes.forEach(n => {
+            const secName = n.section || "Escala";
+            if (!currentSection || currentSection.title !== secName) {
+                currentSection = { title: secName, notes: [] };
+                sections.push(currentSection);
+            }
+            currentSection.notes.push(n);
+        });
+
+        // Dividir cada secção em blocos (chunks) separadamente
         const chunks = [];
-        for (let i = 0; i < notes.length; i += NOTES_PER_LINE) {
-            chunks.push(notes.slice(i, i + NOTES_PER_LINE));
-        }
+        sections.forEach(sec => {
+            const secNotes = sec.notes;
+            for (let i = 0; i < secNotes.length; i += NOTES_PER_LINE) {
+                const chunk = secNotes.slice(i, i + NOTES_PER_LINE);
+                if (i === 0) {
+                    chunk[0].isSectionStart = true;
+                    chunk[0].sectionTitle = sec.title;
+                }
+                if (i + NOTES_PER_LINE >= secNotes.length) {
+                    chunk[chunk.length - 1].isSectionEnd = true;
+                }
+                chunks.push(chunk);
+            }
+        });
 
         const STAVE_HEIGHT = 180; // espaço entre linhas de pauta (inclui anotações)
         const totalHeight  = chunks.length * STAVE_HEIGHT + 40;
@@ -722,23 +808,31 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fundo branco no SVG
         ctx.setFillStyle("#ffffff");
 
-        let yOffset = 30;
+        let yOffset = 40;
 
         chunks.forEach((chunk, chunkIdx) => {
             const stave = new Stave(10, yOffset, width - 20);
 
-            if (chunkIdx === 0) {
+            const isSecStart = chunk[0].isSectionStart;
+            if (isSecStart || chunkIdx === 0) {
                 stave.addClef("treble").addKeySignature(keySig);
             } else {
                 stave.addClef("treble");
             }
-            if (chunkIdx === chunks.length - 1) {
+            const isSecEnd = chunk[chunk.length - 1].isSectionEnd;
+            if (isSecEnd || chunkIdx === chunks.length - 1) {
                 stave.setEndBarType(Vex.Flow.Barline.type.DOUBLE);
             }
             stave.setContext(ctx).draw();
 
+            if (isSecStart && chunk[0].sectionTitle) {
+                ctx.setFont("Arial", 12, "bold italic");
+                ctx.setFillStyle("#7c4dff");
+                ctx.fillText(chunk[0].sectionTitle, 15, yOffset - 10);
+            }
+
             const vexNotes = chunk.map((n, localIdx) => {
-                const globalIdx = chunkIdx * NOTES_PER_LINE + localIdx;
+                const globalIdx = notes.indexOf(n);
 
                 // Use pre-computed keys from enrichWithFingering or fallback
                 let keys = n.keys;
@@ -793,7 +887,7 @@ document.addEventListener("DOMContentLoaded", () => {
             voice.setMode(Voice.Mode.SOFT);
             voice.addTickables(vexNotes);
 
-            const fmtWidth = chunkIdx === 0 ? (width - 160) : (width - 60);
+            const fmtWidth = (isSecStart || chunkIdx === 0) ? (width - 160) : (width - 60);
             new Formatter().joinVoices([voice]).format([voice], fmtWidth);
             voice.draw(ctx, stave);
 
@@ -874,15 +968,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ── LOAD SCALE INTO STAFF ─────────────────────────────────
     function loadScaleIntoStaff() {
         const tonic   = tonicSelect.value;
         const mode    = scaleTypeSelect.value;
         const octaves = parseInt(octavesSelect.value) || 1;
+        const level   = levelSelect.value;
+        const practiceMode = document.getElementById("practice-mode-select")?.value || "both";
 
         activePlaybackType = "scale";
-        // Gera escala SEMPRE matematicamente correta
-        const raw   = buildScale(tonic, mode, octaves);
+
+        let raw = [];
+        if (practiceMode === "scale") {
+            raw = buildScale(tonic, mode, octaves).map(n => ({ ...n, section: "Escala" }));
+        } else if (practiceMode === "arpeggio") {
+            const ascending = getAscendingScale(tonic, mode, octaves);
+            raw = generateArpeggiosForLevel(ascending, mode, level);
+        } else {
+            // both
+            const scaleNotes = buildScale(tonic, mode, octaves).map(n => ({ ...n, section: "Escala" }));
+            const ascending = getAscendingScale(tonic, mode, octaves);
+            const arpNotes = generateArpeggiosForLevel(ascending, mode, level);
+            raw = [...scaleNotes, ...arpNotes];
+        }
+
         activeNotesList = enrichWithFingering(raw);
         drawSheetMusic(activeNotesList);
 
@@ -891,11 +999,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "major":"Maior","minor-natural":"Menor Natural",
             "minor-harmonic":"Menor Harmónica","minor-melodic":"Melódica"
         }[mode] || mode;
-        scaleBadge.innerText = `${tonic} ${modeLabel}`;
+
+        let badgeText = `${tonic} ${modeLabel}`;
+        if (practiceMode === "arpeggio") badgeText += " (Arpejos)";
+        else if (practiceMode === "both") badgeText += " (Escala + Arpejos)";
+        scaleBadge.innerText = badgeText;
 
         if (btnRestoreScaleStaff) btnRestoreScaleStaff.style.display = "none";
         const staffContentLabel = document.getElementById("staff-content-label");
-        if (staffContentLabel) staffContentLabel.innerText = "Escala Principal";
+        if (staffContentLabel) {
+            if (practiceMode === "scale") staffContentLabel.innerText = "Escala Principal";
+            else if (practiceMode === "arpeggio") staffContentLabel.innerText = "Arpejos Principais";
+            else staffContentLabel.innerText = "Escala & Arpejos";
+        }
     }
 
     function loadPedagogicUnitIntoStaff(unit, badgeText, type) {
@@ -961,6 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
     levelSelect.addEventListener("change",     () => { applyLevelSettings(); updateDashboard(); });
     tonicSelect.addEventListener("change",     () => updateDashboard());
     scaleTypeSelect.addEventListener("change", () => updateDashboard());
+    document.getElementById("practice-mode-select")?.addEventListener("change", () => updateDashboard());
     rhythmDivisionSelect?.addEventListener("change", () => {
         drawSheetMusic(activeNotesList);
         updateDashboard();

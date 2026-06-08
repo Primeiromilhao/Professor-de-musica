@@ -73,22 +73,22 @@ function getDailyChallengeForTonic(tonic, type, level, day) {
 
     if (day <= 5) {
         sevcikTask = `Executar ${sevcikEx} a um andamento lento (55 BPM) focando no som limpo.`;
-        scaleTask = `Ouvir a escala de ${scaleName} (${scaleSystem}) e marcar os objetivos de afinação.`;
+        scaleTask = `Ouvir a escala de ${scaleName} e os seus arpejos (${scaleSystem}) e marcar os objetivos de afinação.`;
         repTask = `Visualizar a pauta do excerto clássico desta tonalidade no nível ${level}.`;
         bonusTask = "Verificar se as cordas soltas vibram por simpatia nas notas de apoio.";
     } else if (day <= 12) {
         sevcikTask = `Praticar ${sevcikEx} a 65 BPM com ligaduras ou padrões de arco mistos.`;
-        scaleTask = `Cantar os graus I, III e V de ${scaleName} e tocar a escala de forma articulada.`;
+        scaleTask = `Cantar os graus I, III e V de ${scaleName} e tocar a escala e os arpejos de forma articulada.`;
         repTask = `Estudar os primeiros compassos do excerto clássico no nível correspondente.`;
         bonusTask = "Tocar à frente do espelho para monitorizar a curvatura dos dedos e relaxamento.";
     } else if (day <= 20) {
         sevcikTask = `Subir o andamento de ${sevcikEx} para 75 BPM, refinando a afinação.`;
-        scaleTask = `Executar a escala completa (${scaleSystem}) com metrônomo e pedal de fundo.`;
+        scaleTask = `Executar a escala completa e os arpejos (${scaleSystem}) com metrônomo e pedal de fundo.`;
         repTask = `Estudar as partes mais difíceis do excerto clássico, limpando passagens de posição.`;
         bonusTask = "Fazer 1 minuto de respiração profunda e alongamento antes de iniciar a prática.";
     } else {
         sevcikTask = `Dominar ${sevcikEx} a 85 BPM mantendo a afinação e sincronia impecável.`;
-        scaleTask = `Tocar a escala em loop (${scaleSystem}) por 2 minutos seguidos no tempo.`;
+        scaleTask = `Tocar a escala e os arpejos em loop (${scaleSystem}) por 2 minutos seguidos no tempo.`;
         repTask = `Executar o excerto clássico completo desta tonalidade e nível no tempo correto.`;
         bonusTask = "Gravar o excerto em WAV e analisar os pontos de afinação de terças, sextas ou oitavas.";
     }

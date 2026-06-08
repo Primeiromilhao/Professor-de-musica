@@ -96,6 +96,213 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const DEGREE_ROMAN = ["I","II","III","IV","V","VI","VII"];
 
+    const CONCERTO_DATABASE = {
+        "iniciante": {
+            "vivaldi_a": {
+                "title": "Concerto em Lá Menor, RV 356",
+                "composer": "Antonio Vivaldi",
+                "weeks": {
+                    "1": {
+                        "focus": "Tema do Allegro Inicial (Compassos 1-15)",
+                        "justification": "O staccato enérgico e o tempo firme de Ševčík Op. 2 preparam a clareza e a pulsação precisas exigidas no tema principal."
+                    },
+                    "2": {
+                        "focus": "Transições de Cordas na 1ª Posição",
+                        "justification": "A alternância rápida entre a corda Lá e Mi requer que o pulso direito esteja relaxado. Use o pedal de Lá menor para verificar a afinação."
+                    },
+                    "3": {
+                        "focus": "Estudo de Dinâmica no Adagio (Largo)",
+                        "justification": "O movimento lento exige legato longo sustentando a nota. O uso de notas longas ajuda a manter um tom de violino ressonante."
+                    },
+                    "4": {
+                        "focus": "Presto - Finalização do Terceiro Movimento",
+                        "justification": "Agilidade de dedos no tempo rápido. O metrônomo diário de 60 a 80 BPM dará a estabilidade rítmica para finalizar a peça."
+                    }
+                }
+            },
+            "seitz_5": {
+                "title": "Concerto de Estudante Nº 5 em Ré Maior, Op. 22",
+                "composer": "Fritz Seitz",
+                "weeks": {
+                    "1": {
+                        "focus": "Entrada Solo em Ré Maior",
+                        "justification": "A escala de Ré Maior garante o posicionamento correto do 2º dedo baixo na corda Lá. O Ševčík ajuda a estabilizar o ataque de arco no calcanhar."
+                    },
+                    "2": {
+                        "focus": "Terças e Cordas Duplas Fáceis",
+                        "justification": "A introdução à condução de vozes e o treino com pedal de tónica facilitam a afinação dupla ao tocar duas cordas simultâneas."
+                    },
+                    "3": {
+                        "focus": "Semicolcheias com Ligaduras",
+                        "justification": "Sincronização de dedos com ligaduras de duas notas. O estudo diário de agilidade no plano ajuda a evitar tensões na mão esquerda."
+                    },
+                    "4": {
+                        "focus": "Presto - Andamento Alegre Final",
+                        "justification": "Destaque para o detaché rápido na ponta do arco. Pratique de forma lenta (50 BPM) antes de acelerar."
+                    }
+                }
+            },
+            "rieding_35": {
+                "title": "Concerto em Si Menor, Op. 35",
+                "composer": "Oskar Rieding",
+                "weeks": {
+                    "1": {
+                        "focus": "Tema Principal Expressivo",
+                        "justification": "Exige uma sonoridade cantada e expressiva na 1ª posição. O uso do pedal em Si Menor ajuda a afinar o 2º dedo colado no 1º dedo na corda Ré."
+                    },
+                    "2": {
+                        "focus": "Saltos de Intervalo de 4ª e 5ª",
+                        "justification": "Os saltos entre as cordas Ré e Lá exigem controle do ângulo do cotovelo direito. A prática das lições de arco previne ruídos nas mudanças."
+                    },
+                    "3": {
+                        "focus": "Secção em Si Maior (Luminosa)",
+                        "justification": "A transição de Si Menor para Si Maior introduz sustenidos adicionais (D#, G#). A escala com apoio do pedal auxilia a ajustar estes dedos altos."
+                    },
+                    "4": {
+                        "focus": "Allegro Moderato Final",
+                        "justification": "Controle do ritmo com colcheias e semicolcheias alternadas. O metrônomo ajuda a manter a pulsação constante."
+                    }
+                }
+            }
+        },
+        "intermedio": {
+            "accolay_a": {
+                "title": "Concerto em Lá Menor",
+                "composer": "Jean-Baptiste Accolay",
+                "weeks": {
+                    "1": {
+                        "focus": "Abertura Dramática e Legato",
+                        "justification": "O tema romântico exige legato expressivo na corda Sol e Lá. A escala de 2 oitavas limpa e o pedal ativo facilitam a afinação nos shifts para a 3ª posição."
+                    },
+                    "2": {
+                        "focus": "Arpejos e Mudanças Rápidas",
+                        "justification": "A passagem de arpejos na corda Mi exige shifts suaves (Ševčík Op. 8). Mantenha o polegar relaxado."
+                    },
+                    "3": {
+                        "focus": "Secção Cantabile em Dó Maior",
+                        "justification": "Treino de vibrato contínuo e projeção de som em notas longas. A dinâmica expressiva dá o caráter lírico exigido."
+                    },
+                    "4": {
+                        "focus": "Final Presto e Staccato",
+                        "justification": "Dedilhado veloz na corda Mi e staccato na metade superior do arco. Use metrônomo lento a médio para garantir clareza técnica."
+                    }
+                }
+            },
+            "vivaldi_g": {
+                "title": "Concerto em Sol Maior, RV 310",
+                "composer": "Antonio Vivaldi",
+                "weeks": {
+                    "1": {
+                        "focus": "Tema do Allegro Inicial",
+                        "justification": "Articulação rápida de semicolcheias na corda Ré e Lá. O tempo dinâmico do Ševčík Op. 2 prepara a agilidade e sincronia."
+                    },
+                    "2": {
+                        "focus": "Transições de Posição (1ª a 3ª)",
+                        "justification": "Os shifts para a 3ª posição na corda Lá e Mi devem ser limpos. Use as notas de apoio para guiar a mão."
+                    },
+                    "3": {
+                        "focus": "Largo - Sustentação de Arco",
+                        "justification": "Legato longo e expressivo. O pedal harmônico ativo ajuda a monitorizar a afinação pura das notas longas."
+                    },
+                    "4": {
+                        "focus": "Terceiro Movimento (Allegro Giga)",
+                        "justification": "Mudanças rápidas de corda em ritmo de giga. O cotovelo direito flexível previne fadiga muscular nas mudanças de plano."
+                    }
+                }
+            },
+            "rieding_21": {
+                "title": "Concerto em Mi Menor, Op. 21",
+                "composer": "Oskar Rieding",
+                "weeks": {
+                    "1": {
+                        "focus": "Primeiro Tema Melancólico",
+                        "justification": "A afinação precisa de Mi menor melódica é estabilizada com o pedal ativo. O legato longo apoia o caráter lírico."
+                    },
+                    "2": {
+                        "focus": "Agilidade de Dedos na 1ª e 3ª Posição",
+                        "justification": "Os exercícios de Ševčík Op. 8 garantem a precisão do slide para a terceira posição nos picos de dinâmica."
+                    },
+                    "3": {
+                        "focus": "Saltos de Corda e Mudança de Posição",
+                        "justification": "O alinhamento prévio do cotovelo direito com Ševčík Op. 3 previne notas falsas nas mudanças rápidas de plano."
+                    },
+                    "4": {
+                        "focus": "Finale Rápido (Allegro)",
+                        "justification": "Desenvolvimento do spiccato leve. A prática diária com metrônomo lento a médio prepara a coordenação final."
+                    }
+                }
+            }
+        },
+        "avancado": {
+            "mendelssohn_e": {
+                "title": "Concerto em Mi Menor, Op. 64",
+                "composer": "Felix Mendelssohn",
+                "weeks": {
+                    "1": {
+                        "focus": "Primeiro Tema Solo (Allegro muito appassionato)",
+                        "justification": "A melodia inicial começa no registro médio e sobe para o superagudo. O estudo da escala de 4 oitavas de Mi Menor e os shifts precisos para a 5ª e 7ª posições na corda Mi garantem a entonação."
+                    },
+                    "2": {
+                        "focus": "Segundo Tema em Sol Maior (Cantabile)",
+                        "justification": "Controle absoluto da velocidade do arco para notas longas sobre o pedal de Sol Maior, com vibrato contínuo e som lírico."
+                    },
+                    "3": {
+                        "focus": "Desenvolvimento e Passagens Virtuosas",
+                        "justification": "Arpejos rápidos em semicolcheias com mudanças de corda complexas. O estudo de agilidade e as lições de Fiorillo preparam o braço direito para transições rápidas de plano."
+                    },
+                    "4": {
+                        "focus": "Cadência de Virtuosismo (Arpejos Ricochet)",
+                        "justification": "A famosa cadência com arpejos ricochet em cordas duplas. O estudo avançado de oitavas e sextas na semana dá a força e flexibilidade necessárias."
+                    }
+                }
+            },
+            "bruch_g": {
+                "title": "Concerto em Sol Menor, Op. 26",
+                "composer": "Max Bruch",
+                "weeks": {
+                    "1": {
+                        "focus": "Ataque Inicial com Cordas Duplas",
+                        "justification": "Ataque dramático com acordes de cordas duplas. O alinhamento de 45º do arco e o peso estável (Ševčík Op. 9) são cruciais para a projeção sem trastejar."
+                    },
+                    "2": {
+                        "focus": "Adagio - Cantabile Sublime",
+                        "justification": "Fraseado lírico expressivo de grande amplitude dinâmica. A afinação em Mi Bemol/Lá Bemol é refinada usando o pedal de sustentação contínuo."
+                    },
+                    "3": {
+                        "focus": "Passagens de Oitavas Paralelas",
+                        "justification": "Shifts rápidos de oitavas paralelas (dedos 1-4) na corda Lá e Mi. O treino de oitavas com ancoragem do primeiro dedo fornece estabilidade."
+                    },
+                    "4": {
+                        "focus": "Finale - Tema Enérgico (Allegro energico)",
+                        "justification": "Uso de cordas duplas rítmicas e spiccato forte. O plano semanal de golpes de arco prepara o pulso para a resposta rápida do arco."
+                    }
+                }
+            },
+            "mozart_3": {
+                "title": "Concerto para Violino nº 3 em Sol Maior, K. 216",
+                "composer": "W. A. Mozart",
+                "weeks": {
+                    "1": {
+                        "focus": "Primeiro Tema Solo (Allegro)",
+                        "justification": "Mozart exige elegância clássica. A escala de 3 oitavas limpa e o staccato leve do Ševčík preparam a leveza e clareza de arco necessárias."
+                    },
+                    "2": {
+                        "focus": "Apogiaturas e Ornamentação",
+                        "justification": "O estudo de flexibilidade da mão esquerda e os trinados de preparação facilitam a agilidade do 2º e 3º dedos nos ornamentos mozartianos."
+                    },
+                    "3": {
+                        "focus": "Adagio - Cantabile Expressivo",
+                        "justification": "Mudanças de posição para a 3ª e 5ª posições na corda Ré e Lá. O vibrato contínuo e sustentado com apoio do pedal no fundo garante a expressividade do tema."
+                    },
+                    "4": {
+                        "focus": "Rondeau - Alternância de Tempos",
+                        "justification": "Sincronização rítmica nas passagens rápidas e mudanças de caráter (do clássico ao folclórico). O metrônomo rigoroso na prática semanal resolve as quebras de andamento."
+                    }
+                }
+            }
+        }
+    };
+
     const keySignatureMap = {
         "Gmajor":"G","Gminor-natural":"Bb","Abmajor":"Ab","Amajor":"A","Aminor-natural":"C",
         "Bbmajor":"Bb","Bmajor":"B","Cmajor":"C","Cminor-natural":"Eb","C#major":"C#",
@@ -282,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
         synth = new Tone.PolySynth(Tone.Synth, {
             oscillator: { type: "sine" },
             envelope:   { attack: 0.5, decay: 0.1, sustain: 0.9, release: 1.5 },
-            volume: -22
+            volume: -12
         }).toDestination();
 
         isAudioInit = true;
@@ -313,9 +520,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Iniciar pedal de sustentação contínuo (se selecionado)
         const droneSelect = document.getElementById("drone-select");
         if (droneSelect && droneSelect.value !== "none") {
-            startDroneAudio(parseInt(droneSelect.value));
+            await startDroneAudio(parseInt(droneSelect.value));
         } else if (activeDroneDegree !== null) {
-            startDroneAudio(activeDroneDegree);
+            await startDroneAudio(activeDroneDegree);
         }
         playNextNote();
     }
@@ -764,22 +971,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners para o Mixer de Áudio e Drone Select
     const droneSelect = document.getElementById("drone-select");
     if (droneSelect) {
-        droneSelect.addEventListener("change", e => {
+        droneSelect.addEventListener("change", async e => {
             const val = e.target.value;
             if (val === "none") {
                 stopDroneAudio();
             } else {
-                startDroneAudio(parseInt(val));
+                await startDroneAudio(parseInt(val));
             }
         });
     }
 
     const chkMutePedal = document.getElementById("chk-mute-pedal");
     if (chkMutePedal) {
-        chkMutePedal.addEventListener("change", e => {
+        chkMutePedal.addEventListener("change", async e => {
             if (e.target.checked) {
                 if (activeDroneDegree !== null) {
-                    startDroneAudio(activeDroneDegree);
+                    await startDroneAudio(activeDroneDegree);
                 }
             } else {
                 if (synth) synth.releaseAll();
@@ -797,6 +1004,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-rebuild-weekly-plan")?.addEventListener("click", () => {
         generateWeeklyPlan();
         alert("Plano semanal recalculado para a escala e nível ativos!");
+    });
+
+    document.getElementById("weekly-concerto-select")?.addEventListener("change", () => {
+        generateWeeklyPlan();
+    });
+
+    document.getElementById("weekly-week-select")?.addEventListener("change", () => {
+        generateWeeklyPlan();
     });
 
     const chkShowDegrees = document.getElementById("chk-show-degrees");
@@ -937,11 +1152,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function populateConcertoOptions() {
+        const levelSelect = document.getElementById("level-select");
+        const concertoSelect = document.getElementById("weekly-concerto-select");
+        if (!levelSelect || !concertoSelect) return;
+
+        let level = levelSelect.value;
+        if (level === "solista") level = "avancado";
+
+        concertoSelect.innerHTML = "";
+
+        const levelData = CONCERTO_DATABASE[level];
+        if (levelData) {
+            Object.keys(levelData).forEach(key => {
+                const opt = document.createElement("option");
+                opt.value = key;
+                opt.innerText = `${levelData[key].title} (${levelData[key].composer})`;
+                concertoSelect.appendChild(opt);
+            });
+        } else {
+            const opt = document.createElement("option");
+            opt.value = "none";
+            opt.innerText = "Sem concerto sugerido";
+            concertoSelect.appendChild(opt);
+        }
+    }
+
     // ── DASHBOARD UPDATE ──────────────────────────────────────
     function updateDashboard() {
         const key   = tonicSelect.value;
         const mode  = scaleTypeSelect.value;
         const level = levelSelect.value;
+
+        if (level !== lastLevel) {
+            populateConcertoOptions();
+        }
 
         activePracticePlan = resolvePracticePlan({ key, mode, studentLevel: level, catalog: repertoryCatalog });
 
@@ -1049,8 +1294,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── SUSTAINED DRONE AUDIO FUNCTIONS ───────────────────────
     let activeDroneDegree = null;
 
-    function startDroneAudio(degree) {
+    async function startDroneAudio(degree) {
         initAudio();
+        await Tone.start();
         const mutePedal = document.getElementById("chk-mute-pedal")?.checked === false;
         
         if (synth) synth.releaseAll();
@@ -1086,11 +1332,11 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePedalButtonsUI();
     }
 
-    function toggleDroneAudio(degree) {
+    async function toggleDroneAudio(degree) {
         if (activeDroneDegree === degree) {
             stopDroneAudio();
         } else {
-            startDroneAudio(degree);
+            await startDroneAudio(degree);
         }
     }
 
@@ -1126,9 +1372,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const chord = getDroneChord(i);
             const tr = document.createElement("tr");
             tr.innerHTML = `<td><strong>${DEGREE_ROMAN[i]}</strong></td><td>${chord[0].slice(0,-1)}</td><td>${chordsDesc[i]}</td><td><button class="btn btn-sm btn-secondary btn-play-chord" data-degree="${i}" style="padding:0.2rem 0.5rem;font-size:0.75rem;"><i class="fa-solid fa-volume-high"></i> Ouvir</button></td>`;
-            tr.querySelector(".btn-play-chord").addEventListener("click", e => {
+            tr.querySelector(".btn-play-chord").addEventListener("click", async e => {
                 const deg = parseInt(e.currentTarget.dataset.degree);
-                toggleDroneAudio(deg);
+                await toggleDroneAudio(deg);
             });
             harmonyTableBody.appendChild(tr);
         }
@@ -1277,7 +1523,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let techBookLeft = "Ševčík Op. 1 Part 1";
         let techBookRight = "Ševčík Op. 2 (Arcadas)";
         let etudeBook = "Wohlfahrt Op. 45";
-        let pieceName = activePracticePlan?.piece ? `${activePracticePlan.piece.title} (${activePracticePlan.piece.composer})` : `Concerto em ${key} ${modeLabel}`;
         let doubleStopType = "Segundas";
 
         if (level === "intermedio") {
@@ -1286,56 +1531,75 @@ document.addEventListener("DOMContentLoaded", () => {
             techBookRight = "Ševčík Op. 3 (Arco)";
             etudeBook = "Kayser Op. 20";
             doubleStopType = "Terças / Quartas";
-        } else if (level === "avancado") {
+        } else if (level === "avancado" || level === "solista") {
             scaleBook = "Carl Flesch (Sistema de Escalas)";
             techBookLeft = "Ševčík Op. 9 (Cordas Duplas)";
             techBookRight = "Fiorillo 36 Estudos";
             etudeBook = "Kreutzer 42 Estudos";
             doubleStopType = "Sextas / Oitavas";
-        } else if (level === "solista") {
-            scaleBook = "Ivan Galamian (Contemporânea)";
-            techBookLeft = "Ševčík Op. 1 Part 4 (Oitavas)";
-            techBookRight = "Paganini Caprichos";
-            etudeBook = "Jakob Dont Op. 35";
-            doubleStopType = "Décimas / Polifonia";
         }
 
+        // Recuperar o concerto e semana do roteiro
+        const concertoSelect = document.getElementById("weekly-concerto-select");
+        const weekSelect = document.getElementById("weekly-week-select");
+        let selectedConcertoKey = concertoSelect?.value;
+        let selectedWeekKey = weekSelect?.value || "1";
+
+        let activeLevelGroup = level;
+        if (activeLevelGroup === "solista") activeLevelGroup = "avancado";
+
+        const levelData = CONCERTO_DATABASE[activeLevelGroup];
+        let chosenConcerto = null;
+        if (levelData && selectedConcertoKey) {
+            chosenConcerto = levelData[selectedConcertoKey];
+        }
+        if (!chosenConcerto && levelData) {
+            const firstKey = Object.keys(levelData)[0];
+            chosenConcerto = levelData[firstKey];
+            selectedConcertoKey = firstKey;
+        }
+
+        let pieceName = chosenConcerto ? `${chosenConcerto.title} (${chosenConcerto.composer})` : `Concerto em ${key} ${modeLabel}`;
+        let weekInfo = chosenConcerto ? chosenConcerto.weeks[selectedWeekKey] : null;
+        let weekFocusText = weekInfo ? weekInfo.focus : "Desenvolvimento Técnico";
+
+        // Ajustar Roteiro Diário
         const days = [
             { name: "Segunda-Feira", time: 45, focus: "Articulação e Legato", 
               bow: `10 min: ${techBookRight} - Detaché e ligaduras uniformes.`, 
               left: `10 min: ${techBookLeft} - Flexibilidade e postura.`, 
               scale: `10 min: ${scaleBook} em ${key} ${modeLabel} - 1 oitava bem cantada.`, 
-              piece: `15 min: Estudo de ${etudeBook} - Leitura de notas lentas.` },
+              piece: `15 min: Estudo de ${etudeBook} - Leitura lenta com foco em: ${weekFocusText}.` },
             { name: "Terça-Feira", time: 45, focus: "Agilidade de Dedos (Esquerda)", 
               bow: `10 min: Velocidade de arco no meio do arco.`, 
               left: `10 min: ${techBookLeft} - Força e queda vertical dos dedos.`, 
               scale: `10 min: ${scaleBook} com ligaduras de 2 notas.`, 
-              piece: `15 min: Repertório: ${pieceName} - Compassos 1-4.` },
+              piece: `15 min: Concerto: ${pieceName} - Praticar compassos/detalhes de: ${weekFocusText}.` },
             { name: "Quarta-Feira", time: 50, focus: "Cordas Duplas e Afinação", 
               bow: `10 min: Ângulo de arco plano (45º) tocando duas cordas.`, 
               left: `15 min: ${techBookLeft} - Preparação de dedos duplos (${doubleStopType}).`, 
-              scale: `10 min: Escala em ${key} com pedal de tónica ativo no fundo.`, 
-              piece: `15 min: ${etudeBook} - Sincronização em tempo médio.` },
+              scale: `10 min: Escala em ${key} com pedal de tónica ativo no fundo para afinação pura.`, 
+              piece: `15 min: ${etudeBook} - Sincronização e fluidez técnica para o concerto.` },
             { name: "Quinta-Feira", time: 45, focus: "Arcadas Curtas (Martelé/Spiccato)", 
               bow: `10 min: ${techBookRight} - Martelé com pausas e pressão firme.`, 
               left: `10 min: Extensão do 4º dedo para afinação alta.`, 
               scale: `10 min: ${scaleBook} em staccato curto.`, 
-              piece: `15 min: ${pieceName} - Compassos 5-8.` },
+              piece: `15 min: Concerto: ${pieceName} - Foco técnico spiccato/martelé na secção: ${weekFocusText}.` },
             { name: "Sexta-Feira", time: 50, focus: "Expressividade e Vibrato", 
-              bow: `10 min: Controle de volume (crescendo / decrescendo).`, 
-              left: `15 min: Dedos de apoio (Anchor) e vibrato em notas longas.`, 
+              bow: `10 min: Controle de volume (crescendo / decrescendo) nas frases.`, 
+              left: `15 min: Dedos de apoio (Anchor) e vibrato contínuo em notas longas.`, 
               scale: `10 min: ${scaleBook} em legato lento de 4 notas por arco.`, 
-              piece: `15 min: ${pieceName} - Juntar as partes de forma contínua.` },
+              piece: `15 min: Concerto: ${pieceName} - Cantabile expressivo em: ${weekFocusText}.` },
             { name: "Sábado", time: 60, focus: "Performance e Gravação", 
               bow: `15 min: Aquecimento completo com variações de arco da semana.`, 
-              left: `10 min: Revisão de trechos técnicos difíceis.`, 
+              left: `10 min: Revisão de trechos técnicos difíceis do concerto.`, 
               scale: `15 min: Tocar a escala com metrônomo no tempo ideal.`, 
-              piece: `20 min: Gravar em WAV a peça ${pieceName} e avaliar afinação.` },
+              piece: `20 min: Gravar em WAV o trecho de ${pieceName} (foco: ${weekFocusText}) e auto-avaliar.` },
             { name: "Domingo", time: 30, focus: "Auto-Avaliação e Leitura", 
               bow: `10 min: Prática de leitura à primeira vista livre.`, 
-              left: `10 min: Alongamentos e relaxamento muscular da mão.`, 
+              left: `10 min: Alongamentos e relaxamento muscular da mão e braços.`, 
               scale: `10 min: Prática livre no Círculo de Quintas.`, 
-              piece: `Marcar conquistas e planejar próxima tonalidade.` }
+              piece: `Marcar conquistas da semana de ${pieceName} e planejar a próxima fase.` }
         ];
 
         container.innerHTML = "";
@@ -1374,6 +1638,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
             container.appendChild(card);
         });
+
+        // Bloco de Foco no Concerto Semanal
+        const focusBox = document.getElementById("weekly-concerto-focus-box");
+        if (focusBox) {
+            if (chosenConcerto && weekInfo) {
+                focusBox.style.display = "block";
+                focusBox.innerHTML = `
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-graduation-cap"></i> Foco Semanal no Concerto: ${chosenConcerto.title}
+                    </h3>
+                    <p style="font-size: 0.85rem; margin: 0 0 0.5rem 0; color: var(--text-main);">
+                        <strong>Compositor:</strong> ${chosenConcerto.composer} | <strong>Semana:</strong> ${selectedWeekKey}
+                    </p>
+                    <div style="background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 8px; border-left: 3px solid var(--secondary); font-size: 0.8rem; line-height: 1.4;">
+                        <p style="margin: 0 0 0.25rem 0; color: var(--text-main); font-weight: 600;">
+                            <i class="fa-solid fa-star"></i> Secção de Estudo: ${weekInfo.focus}
+                        </p>
+                        <p style="margin: 0; color: var(--text-muted);">
+                            <strong>Justificação Pedagógica:</strong> ${weekInfo.justification}
+                        </p>
+                    </div>
+                `;
+            } else {
+                focusBox.style.display = "none";
+            }
+        }
     }
 
     // ── CIRCLE OF FIFTHS ──────────────────────────────────────

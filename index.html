@@ -638,9 +638,18 @@
                     <section class="panel weekly-plan-panel" id="weekly-plan-panel" style="margin-top:0 !important; background:none; border:none; box-shadow:none; padding:0;">
                         <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
                             <h2 class="panel-title" style="margin: 0; border:none; padding-bottom:0;"><i class="fa-solid fa-calendar-days"></i> Plano de Estudo Semanal (Professor Online)</h2>
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 <span class="badge" id="weekly-plan-dates" style="background: var(--primary);">Carregando plano...</span>
-                                <button id="btn-rebuild-weekly-plan" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-arrows-rotate"></i> Regenerar Plano</button>
+                                <select id="weekly-concerto-select" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.75rem; height: 30px; display: inline-block; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-main);">
+                                    <!-- Injetado dinamicamente -->
+                                </select>
+                                <select id="weekly-week-select" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.75rem; height: 30px; display: inline-block; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-main);">
+                                    <option value="1" selected>Semana 1: Entrada/Tema Principal</option>
+                                    <option value="2">Semana 2: Cantabile/Transição</option>
+                                    <option value="3">Semana 3: Desenvolvimento/Técnica</option>
+                                    <option value="4">Semana 4: Cadência/Final</option>
+                                </select>
+                                <button id="btn-rebuild-weekly-plan" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; height: 30px;"><i class="fa-solid fa-arrows-rotate"></i> Regenerar</button>
                             </div>
                         </div>
                         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 1.25rem 0; line-height: 1.4;">
@@ -648,6 +657,10 @@
                         </p>
                         <div class="weekly-plan-grid" id="weekly-plan-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
                             <!-- Gerado dinamicamente via JS -->
+                        </div>
+                        <!-- Bloco de Foco no Concerto Semanal -->
+                        <div id="weekly-concerto-focus-box" style="margin-top: 1.5rem; background: rgba(124, 77, 255, 0.08); border: 1px solid rgba(124, 77, 255, 0.2); border-radius: 12px; padding: 1.25rem;">
+                            <!-- Dinamicamente preenchido por JS -->
                         </div>
                     </section>
                 </div>

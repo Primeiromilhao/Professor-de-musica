@@ -88,6 +88,16 @@
                     <button id="btn-restore-scale-staff" class="btn btn-sm" title="Voltar à escala principal" style="display:none; background: rgba(124,77,255,0.12); border: 1px solid rgba(124,77,255,0.3); color: var(--primary); padding: 0.3rem 0.75rem;">
                         <i class="fa-solid fa-rotate-left"></i> Escala
                     </button>
+                    <!-- Seletor de Opção de Dedilhado -->
+                    <div id="fingering-option-group" style="display: none; align-items: center; gap: 0.35rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">Dedilhado:</span>
+                        <select id="fingering-option-select" style="width: auto; padding: 0.15rem 0.35rem; font-size: 0.75rem; height: 26px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-main);">
+                            <option value="1" selected>Opção 1 (Recomendado)</option>
+                            <option value="2">Opção 2 (Alternativa)</option>
+                            <option value="3">Opção 3 (Avançado)</option>
+                            <option value="none">Sem Dedilhado</option>
+                        </select>
+                    </div>
                     <!-- Label do conteúdo atual -->
                     <span id="staff-content-label" style="font-size: 0.75rem; color: var(--text-muted); margin-left: auto; font-style: italic;"></span>
                 </div>

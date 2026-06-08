@@ -104,19 +104,66 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Tema do Allegro Inicial (Compassos 1-15)",
-                        "justification": "O staccato enérgico e o tempo firme de Ševčík Op. 2 preparam a clareza e a pulsação precisas exigidas no tema principal."
+                        "justification": "O staccato enérgico e o tempo firme de Ševčík Op. 2 preparam a clareza e a pulsação precisas exigidas no tema principal.",
+                        "suggestedEtude": "Wohlfahrt Op. 45 Nº 3",
+                        "etudeFocus": "Leitura de notas lentas e uniformidade de arco.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP20716-PMLP48100-Wohlfahrt_Op45_Book_1.pdf",
+                        "notes": [
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "4 [A]", "3": "0 [E]" } },
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "A4-E5", isChord: true, chordPitches: ["A4", "E5"], hasTuningRef: true, fingerOptions: { "1": "0 [E] / Ref [A]", "2": "4 [A] / Ref [A]", "3": "0 [E]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "2 [A]", "2": "0 (3ª Pos) [A]", "3": "2 [A]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Transições de Cordas na 1ª Posição",
-                        "justification": "A alternância rápida entre a corda Lá e Mi requer que o pulso direito esteja relaxado. Use o pedal de Lá menor para verificar a afinação."
+                        "justification": "A alternância rápida entre a corda Lá e Mi requer que o pulso direito esteja relaxado. Use o pedal de Lá menor para verificar a afinação.",
+                        "suggestedEtude": "Ševčík Op. 2 Ex. 5",
+                        "etudeFocus": "Passagem de cordas e flexibilidade de pulso direito.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/6/6b/IMSLP21590-PMLP48659-Sevcik_Op2_Book1.pdf",
+                        "notes": [
+                            { name: "E", octave: 4, fingerOptions: { "1": "1 [D]", "2": "1 [D]", "3": "1 [D]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "4 [A]", "3": "0 [E]" } },
+                            { name: "D4-D5", isChord: true, chordPitches: ["D4", "D5"], hasTuningRef: true, fingerOptions: { "1": "3 [A] / Ref [D]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Estudo de Dinâmica no Adagio (Largo)",
-                        "justification": "O movimento lento exige legato longo sustentando a nota. O uso de notas longas ajuda a manter um tom de violino ressonante."
+                        "justification": "O movimento lento exige legato longo sustentando a nota. O uso de notas longas ajuda a manter um tom de violino ressonante.",
+                        "suggestedEtude": "Wohlfahrt Op. 45 Nº 10",
+                        "etudeFocus": "Distribuição de arco lento e controle de intensidade sonora.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP20716-PMLP48100-Wohlfahrt_Op45_Book_1.pdf",
+                        "notes": [
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "4 [A]", "3": "0 [E]" } },
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "2 [A]", "3": "2 [A]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 4, fingerOptions: { "1": "1 [D]", "2": "1 [D]", "3": "1 [D]" } },
+                            { name: "A3-A4", isChord: true, chordPitches: ["A3", "A4"], hasTuningRef: true, fingerOptions: { "1": "1 [A] / Ref [G]", "2": "1 [A]", "3": "1 [A]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Presto - Finalização do Terceiro Movimento",
-                        "justification": "Agilidade de dedos no tempo rápido. O metrônomo diário de 60 a 80 BPM dará a estabilidade rítmica para finalizar a peça."
+                        "justification": "Agilidade de dedos no tempo rápido. O metrônomo diário de 60 a 80 BPM dará a estabilidade rítmica para finalizar a peça.",
+                        "suggestedEtude": "Ševčík Op. 1 Part 1 Ex. 7",
+                        "etudeFocus": "Coordenação de dedos da mão esquerda em andamento rápido.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/5/5b/IMSLP521404-PMLP46200-Vivaldi_RV356_PianoScore.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                        "notes": [
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "4 [A]", "3": "0 [E]" } },
+                            { name: "A", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "A4-A5", isChord: true, chordPitches: ["A4", "A5"], hasTuningRef: true, fingerOptions: { "1": "3 [E] / Ref [A]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } }
+                        ]
                     }
                 }
             },
@@ -126,19 +173,69 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Entrada Solo em Ré Maior",
-                        "justification": "A escala de Ré Maior garante o posicionamento correto do 2º dedo baixo na corda Lá. O Ševčík ajuda a estabilizar o ataque de arco no calcanhar."
+                        "justification": "A escala de Ré Maior garante o posicionamento correto do 2º dedo baixo na corda Lá. O Ševčík ajuda a estabilizar o ataque de arco no calcanhar.",
+                        "suggestedEtude": "Wohlfahrt Op. 45 Nº 5",
+                        "etudeFocus": "Afinação em tons com sustenidos e spiccato leve.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/1a/IMSLP30614-PMLP67540-Seitz_Op22_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP20716-PMLP48100-Wohlfahrt_Op45_Book_1.pdf",
+                        "notes": [
+                            { name: "D", octave: 4, fingerOptions: { "1": "0 [D]", "2": "0 [D]", "3": "0 [D]" } },
+                            { name: "F#", octave: 4, fingerOptions: { "1": "2 [D]", "2": "2 [D]", "3": "2 [D]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "0 [A]", "2": "4 [D]", "3": "0 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "A4-D5", isChord: true, chordPitches: ["A4", "D5"], hasTuningRef: true, fingerOptions: { "1": "3 [A] / Ref [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "1 [A]", "3": "1 [A]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "0 [A]", "2": "0 [A]", "3": "0 [A]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Terças e Cordas Duplas Fáceis",
-                        "justification": "A introdução à condução de vozes e o treino com pedal de tónica facilitam a afinação dupla ao tocar duas cordas simultâneas."
+                        "justification": "A introdução à condução de vozes e o treino com pedal de tónica facilitam a afinação dupla ao tocar duas cordas simultâneas.",
+                        "suggestedEtude": "Ševčík Op. 9 Ex. 1",
+                        "etudeFocus": "Preparação da mão esquerda para acordes de duas cordas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/1a/IMSLP30614-PMLP67540-Seitz_Op22_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP22880-PMLP48663-Sevcik_Op9.pdf",
+                        "notes": [
+                            { name: "F#", octave: 4, fingerOptions: { "1": "2 [D]", "2": "2 [D]", "3": "2 [D]" } },
+                            { name: "A", octave: 4, fingerOptions: { "1": "0 [A]", "2": "4 [D]", "3": "0 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "2 [E]", "3": "2 [E]" } },
+                            { name: "D4-F#5", isChord: true, chordPitches: ["D4", "F#5"], hasTuningRef: true, fingerOptions: { "1": "2 [E] / Ref [D]", "2": "2 [E]", "3": "2 [E]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "1 [E]", "2": "4 [A]", "3": "1 [E]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Semicolcheias com Ligaduras",
-                        "justification": "Sincronização de dedos com ligaduras de duas notas. O estudo diário de agilidade no plano ajuda a evitar tensões na mão esquerda."
+                        "justification": "Sincronização de dedos com ligaduras de duas notas. O estudo diário de agilidade no plano ajuda a evitar tensões na mão esquerda.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 2",
+                        "etudeFocus": "Uniformidade na distribuição do arco em semicolcheias ligadas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/1a/IMSLP30614-PMLP67540-Seitz_Op22_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "A", octave: 4, fingerOptions: { "1": "0 [A]", "2": "0 [A]", "3": "0 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "0 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "0 [E]", "3": "2 [E]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "1 [E]", "2": "4 [A]", "3": "1 [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Presto - Andamento Alegre Final",
-                        "justification": "Destaque para o detaché rápido na ponta do arco. Pratique de forma lenta (50 BPM) antes de acelerar."
+                        "justification": "Destaque para o detaché rápido na ponta do arco. Pratique de forma lenta (50 BPM) antes de acelerar.",
+                        "suggestedEtude": "Ševčík Op. 2 Ex. 2",
+                        "etudeFocus": "Independência dos golpes de arco na metade superior.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/1a/IMSLP30614-PMLP67540-Seitz_Op22_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/6/6b/IMSLP21590-PMLP48659-Sevcik_Op2_Book1.pdf",
+                        "notes": [
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "1 [E]", "2": "2 (3ª Pos) [A]", "3": "1 [E]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "3 (3ª Pos) [A]", "3": "2 [E]" } },
+                            { name: "A", octave: 5, fingerOptions: { "1": "4 [E]", "2": "1 (5ª Pos) [E]", "3": "4 [E]" } },
+                            { name: "D4-D5", isChord: true, chordPitches: ["D4", "D5"], hasTuningRef: true, fingerOptions: { "1": "3 [A] / Ref [D]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "1 [A]", "3": "1 [A]" } }
+                        ]
                     }
                 }
             },
@@ -148,19 +245,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Tema Principal Expressivo",
-                        "justification": "Exige uma sonoridade cantada e expressiva na 1ª posição. O uso do pedal em Si Menor ajuda a afinar o 2º dedo colado no 1º dedo na corda Ré."
+                        "justification": "Exige uma sonoridade cantada e expressiva na 1ª posição. O uso do pedal em Si Menor ajuda a afinar o 2º dedo colado no 1º dedo na corda Ré.",
+                        "suggestedEtude": "Wohlfahrt Op. 45 Nº 1",
+                        "etudeFocus": "Produção de som estável em notas longas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/5/58/IMSLP31940-PMLP70034-Rieding_Op35_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP20716-PMLP48100-Wohlfahrt_Op45_Book_1.pdf",
+                        "notes": [
+                            { name: "B", octave: 3, fingerOptions: { "1": "2 [G]", "2": "2 [G]", "3": "2 [G]" } },
+                            { name: "D", octave: 4, fingerOptions: { "1": "0 [D]", "2": "0 [D]", "3": "0 [D]" } },
+                            { name: "F#", octave: 4, fingerOptions: { "1": "2 [D]", "2": "2 [D]", "3": "2 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "F#4-B4", isChord: true, chordPitches: ["F#4", "B4"], hasTuningRef: true, fingerOptions: { "1": "1 [A] / Ref [D]", "2": "3 [D]", "3": "1 [A]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Saltos de Intervalo de 4ª e 5ª",
-                        "justification": "Os saltos entre as cordas Ré e Lá exigem controle do ângulo do cotovelo direito. A prática das lições de arco previne ruídos nas mudanças."
+                        "justification": "Os saltos entre as cordas Ré e Lá exigem controle do ângulo do cotovelo direito. A prática das lições de arco previne ruídos nas mudanças.",
+                        "suggestedEtude": "Ševčík Op. 2 Ex. 3",
+                        "etudeFocus": "Mudanças de cordas limpas sem ruídos secundários.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/5/58/IMSLP31940-PMLP70034-Rieding_Op35_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/6/6b/IMSLP21590-PMLP48659-Sevcik_Op2_Book1.pdf",
+                        "notes": [
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "C#", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "2 (3ª Pos) [A]", "3": "0 [E]" } },
+                            { name: "D4-D5", isChord: true, chordPitches: ["D4", "D5"], hasTuningRef: true, fingerOptions: { "1": "3 [A] / Ref [D]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Secção em Si Maior (Luminosa)",
-                        "justification": "A transição de Si Menor para Si Maior introduz sustenidos adicionais (D#, G#). A escala com apoio do pedal auxilia a ajustar estes dedos altos."
+                        "justification": "A transição de Si Menor para Si Maior introduz sustenidos adicionais (D#, G#). A escala com apoio do pedal auxilia a ajustar estes dedos altos.",
+                        "suggestedEtude": "Wohlfahrt Op. 45 Nº 7",
+                        "etudeFocus": "Flexibilidade dos dedos esquerdos ao alternar sustenidos.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/5/58/IMSLP31940-PMLP70034-Rieding_Op35_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP20716-PMLP48100-Wohlfahrt_Op45_Book_1.pdf",
+                        "notes": [
+                            { name: "F#", octave: 4, fingerOptions: { "1": "2 [D]", "2": "2 [D]", "3": "2 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "3 (3ª Pos) [A]", "3": "2 [E]" } },
+                            { name: "D4-D5", isChord: true, chordPitches: ["D4", "D5"], hasTuningRef: true, fingerOptions: { "1": "3 [A] / Ref [D]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Allegro Moderato Final",
-                        "justification": "Controle do ritmo com colcheias e semicolcheias alternadas. O metrônomo ajuda a manter a pulsação constante."
+                        "justification": "Controle do ritmo com colcheias e semicolcheias alternadas. O metrônomo ajuda a manter a pulsação constante.",
+                        "suggestedEtude": "Ševčík Op. 2 Ex. 7",
+                        "etudeFocus": "Detaché rápido e spiccato na ponta.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/5/58/IMSLP31940-PMLP70034-Rieding_Op35_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/6/6b/IMSLP21590-PMLP48659-Sevcik_Op2_Book1.pdf",
+                        "notes": [
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "F#", octave: 5, fingerOptions: { "1": "2 [E]", "2": "3 (3ª Pos) [A]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "1 (7ª Pos) [E]", "3": "4 [E]" } },
+                            { name: "F#4-B5", isChord: true, chordPitches: ["F#4", "B5"], hasTuningRef: true, fingerOptions: { "1": "4 [E] / Ref [D]", "2": "1 (7ª Pos) [E]", "3": "4 [E]" } }
+                        ]
                     }
                 }
             }
@@ -172,19 +313,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Abertura Dramática e Legato",
-                        "justification": "O tema romântico exige legato expressivo na corda Sol e Lá. A escala de 2 oitavas limpa e o pedal ativo facilitam a afinação nos shifts para a 3ª posição."
+                        "justification": "O tema romântico exige legato expressivo na corda Sol e Lá. A escala de 2 oitavas limpa e o pedal ativo facilitam a afinação nos shifts para a 3ª posição.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 13",
+                        "etudeFocus": "Shifts e passagens rápidas para a terceira posição.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/7/7b/IMSLP51206-PMLP71813-Accolay_Concerto_No_1.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "A", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "1 (3ª Pos) [A]", "3": "0 [E]" } },
+                            { name: "A", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "E5-A5", isChord: true, chordPitches: ["E5", "A5"], hasTuningRef: true, fingerOptions: { "1": "3 [E] / Ref [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Arpejos e Mudanças Rápidas",
-                        "justification": "A passagem de arpejos na corda Mi exige shifts suaves (Ševčík Op. 8). Mantenha o polegar relaxado."
+                        "justification": "A passagem de arpejos na corda Mi exige shifts suaves (Ševčík Op. 8). Mantenha o polegar relaxado.",
+                        "suggestedEtude": "Ševčík Op. 8 Ex. 1",
+                        "etudeFocus": "Deslizamento preciso do polegar para manter a afinação pós-shift.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/7/7b/IMSLP51206-PMLP71813-Accolay_Concerto_No_1.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/e/e0/IMSLP21593-PMLP48662-Sevcik_Op8.pdf",
+                        "notes": [
+                            { name: "C", octave: 5, fingerOptions: { "1": "2 [A]", "2": "4 [D]", "3": "2 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "1 (3ª Pos) [A]", "3": "0 [E]" } },
+                            { name: "A", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "C", octave: 6, fingerOptions: { "1": "1 (3ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "A4-C6", isChord: true, chordPitches: ["A4", "C6"], hasTuningRef: true, fingerOptions: { "1": "1 (3ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Secção Cantabile em Dó Maior",
-                        "justification": "Treino de vibrato contínuo e projeção de som em notas longas. A dinâmica expressiva dá o caráter lírico exigido."
+                        "justification": "Treino de vibrato contínuo e projeção de som em notas longas. A dinâmica expressiva dá o caráter lírico exigido.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 22",
+                        "etudeFocus": "Vibrato e fluidez de arco em frases românticas lentas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/7/7b/IMSLP51206-PMLP71813-Accolay_Concerto_No_1.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "E", octave: 5, fingerOptions: { "1": "0 [E]", "2": "1 (3ª Pos) [A]", "3": "0 [E]" } },
+                            { name: "A", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "C", octave: 6, fingerOptions: { "1": "1 (3ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "E", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "2 (5ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "A4-E6", isChord: true, chordPitches: ["A4", "E6"], hasTuningRef: true, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "2 (5ª Pos) [E]", "3": "1 (5ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Final Presto e Staccato",
-                        "justification": "Dedilhado veloz na corda Mi e staccato na metade superior do arco. Use metrônomo lento a médio para garantir clareza técnica."
+                        "justification": "Dedilhado veloz na corda Mi e staccato na metade superior do arco. Use metrônomo lento a médio para garantir clareza técnica.",
+                        "suggestedEtude": "Ševčík Op. 3 Ex. 2",
+                        "etudeFocus": "Articulação rápida de arco staccato no meio superior.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/7/7b/IMSLP51206-PMLP71813-Accolay_Concerto_No_1.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                        "notes": [
+                            { name: "A", octave: 5, fingerOptions: { "1": "3 [E]", "2": "1 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "C", octave: 6, fingerOptions: { "1": "1 (3ª Pos) [E]", "2": "2 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "E", octave: 6, fingerOptions: { "1": "3 (3ª Pos) [E]", "2": "1 (5ª Pos) [E]", "3": "3 (3ª Pos) [E]" } },
+                            { name: "A", octave: 6, fingerOptions: { "1": "1 (7ª Pos) [E]", "2": "3 (7ª Pos) [E]", "3": "1 (7ª Pos) [E]" } },
+                            { name: "A4-A6", isChord: true, chordPitches: ["A4", "A6"], hasTuningRef: true, fingerOptions: { "1": "1 (7ª Pos) [E]", "2": "3 (7ª Pos) [E]", "3": "1 (7ª Pos) [E]" } }
+                        ]
                     }
                 }
             },
@@ -194,19 +379,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Tema do Allegro Inicial",
-                        "justification": "Articulação rápida de semicolcheias na corda Ré e Lá. O tempo dinâmico do Ševčík Op. 2 prepara a agilidade e sincronia."
+                        "justification": "Articulação rápida de semicolcheias na corda Ré e Lá. O tempo dinâmico do Ševčík Op. 2 prepara a agilidade e sincronia.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 11",
+                        "etudeFocus": "Semicolcheias contínuas em détaché rápido.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "G", octave: 4, fingerOptions: { "1": "3 [D]", "2": "3 [D]", "3": "3 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "2 [E]", "3": "2 [E]" } },
+                            { name: "D4-G5", isChord: true, chordPitches: ["D4", "G5"], hasTuningRef: true, fingerOptions: { "1": "2 [E] / Ref [D]", "2": "2 [E]", "3": "2 [E]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Transições de Posição (1ª a 3ª)",
-                        "justification": "Os shifts para a 3ª posição na corda Lá e Mi devem ser limpos. Use as notas de apoio para guiar a mão."
+                        "justification": "Os shifts para a 3ª posição na corda Lá e Mi devem ser limpos. Use as notas de apoio para guiar a mão.",
+                        "suggestedEtude": "Ševčík Op. 8 Ex. 2",
+                        "etudeFocus": "Transição precisa entre 1ª e 3ª posições.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/e/e0/IMSLP21593-PMLP48662-Sevcik_Op8.pdf",
+                        "notes": [
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "G4-B5", isChord: true, chordPitches: ["G4", "B5"], hasTuningRef: true, fingerOptions: { "1": "4 [E] / Ref [G]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Largo - Sustentação de Arco",
-                        "justification": "Legato longo e expressivo. O pedal harmônico ativo ajuda a monitorizar a afinação pura das notas longas."
+                        "justification": "Legato longo e expressivo. O pedal harmônico ativo ajuda a monitorizar a afinação pura das notas longas.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 14",
+                        "etudeFocus": "Notas longas com vibrato em cantabile expressivo.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "2 (5ª Pos) [E]", "2": "1 (5ª Pos) [E]", "3": "3 (3ª Pos) [E]" } },
+                            { name: "D4-D6", isChord: true, chordPitches: ["D4", "D6"], hasTuningRef: true, fingerOptions: { "1": "2 (5ª Pos) [E]", "2": "1 (5ª Pos) [E]", "3": "3 (3ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Terceiro Movimento (Allegro Giga)",
-                        "justification": "Mudanças rápidas de corda em ritmo de giga. O cotovelo direito flexível previne fadiga muscular nas mudanças de plano."
+                        "justification": "Mudanças rápidas de corda em ritmo de giga. O cotovelo direito flexível previne fadiga muscular nas mudanças de plano.",
+                        "suggestedEtude": "Ševčík Op. 3 Ex. 5",
+                        "etudeFocus": "Pulo de cordas cruzadas com agilidade no braço direito.",
+                        "piecePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/30/IMSLP01683-Vivaldi_-_RV310.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                        "notes": [
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "G4-G6", isChord: true, chordPitches: ["G4", "G6"], hasTuningRef: true, fingerOptions: { "1": "3 (5ª Pos) [E] / Ref [G]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } }
+                        ]
                     }
                 }
             },
@@ -216,43 +445,131 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Primeiro Tema Melancólico",
-                        "justification": "A afinação precisa de Mi menor melódica é estabilizada com o pedal ativo. O legato longo apoia o caráter lírico."
+                        "justification": "A afinação precisa de Mi menor melódica é estabilizada com o pedal ativo. O legato longo apoia o caráter lírico.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 8",
+                        "etudeFocus": "Sustentação expressiva e dinâmica em legato lento.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/19/IMSLP110321-PMLP224219-Rieding_Concertino_Op21_vn.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "E", octave: 4, fingerOptions: { "1": "1 [D]", "2": "1 [D]", "3": "1 [D]" } },
+                            { name: "G", octave: 4, fingerOptions: { "1": "3 [D]", "2": "3 [D]", "3": "3 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "4 [A]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G4-E5", isChord: true, chordPitches: ["G4", "E5"], hasTuningRef: true, fingerOptions: { "1": "4 [A] / Ref [D]", "2": "0 [E]", "3": "4 [A]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Agilidade de Dedos na 1ª e 3ª Posição",
-                        "justification": "Os exercícios de Ševčík Op. 8 garantem a precisão do slide para a terceira posição nos picos de dinâmica."
+                        "justification": "Os exercícios de Ševčík Op. 8 garantem a precisão do slide para a terceira posição nos picos de dinâmica.",
+                        "suggestedEtude": "Ševčík Op. 8 Ex. 3",
+                        "etudeFocus": "Deslizamento de dedos com estabilidade e afinamento puro.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/19/IMSLP110321-PMLP224219-Rieding_Concertino_Op21_vn.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/e/e0/IMSLP21593-PMLP48662-Sevcik_Op8.pdf",
+                        "notes": [
+                            { name: "G", octave: 4, fingerOptions: { "1": "3 [D]", "2": "3 [D]", "3": "3 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "4 [A]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "D4-G5", isChord: true, chordPitches: ["D4", "G5"], hasTuningRef: true, fingerOptions: { "1": "2 [E] / Ref [D]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Saltos de Corda e Mudança de Posição",
-                        "justification": "O alinhamento prévio do cotovelo direito com Ševčík Op. 3 previne notas falsas nas mudanças rápidas de plano."
+                        "justification": "O alinhamento prévio do cotovelo direito com Ševčík Op. 3 previne notas falsas nas mudanças rápidas de plano.",
+                        "suggestedEtude": "Kayser Op. 20 Nº 12",
+                        "etudeFocus": "Coordenação de spiccato cruzando cordas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/19/IMSLP110321-PMLP224219-Rieding_Concertino_Op21_vn.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/0/07/IMSLP17642-Kayser_Op20_1-12.pdf",
+                        "notes": [
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "4 [A]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "E4-B5", isChord: true, chordPitches: ["E4", "B5"], hasTuningRef: true, fingerOptions: { "1": "4 [E] / Ref [D]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Finale Rápido (Allegro)",
-                        "justification": "Desenvolvimento do spiccato leve. A prática diária com metrônomo lento a médio prepara a coordenação final."
+                        "justification": "Desenvolvimento do spiccato leve. A prática diária com metrônomo lento a médio prepara a coordenação final.",
+                        "suggestedEtude": "Ševčík Op. 3 Ex. 4",
+                        "etudeFocus": "Spiccato rápido no ponto de equilíbrio do arco.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/1/19/IMSLP110321-PMLP224219-Rieding_Concertino_Op21_vn.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                        "notes": [
+                            { name: "E", octave: 5, fingerOptions: { "1": "4 [A]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "E", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "A4-E6", isChord: true, chordPitches: ["A4", "E6"], hasTuningRef: true, fingerOptions: { "1": "1 (5ª Pos) [E] / Ref [A]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } }
+                        ]
                     }
                 }
-            }
-        },
-        "avancado": {
+            },
             "mendelssohn_e": {
                 "title": "Concerto em Mi Menor, Op. 64",
                 "composer": "Felix Mendelssohn",
                 "weeks": {
                     "1": {
-                        "focus": "Primeiro Tema Solo (Allegro muito appassionato)",
-                        "justification": "A melodia inicial começa no registro médio e sobe para o superagudo. O estudo da escala de 4 oitavas de Mi Menor e os shifts precisos para a 5ª e 7ª posições na corda Mi garantem a entonação."
+                        "focus": "Primeiro Tema Solo (Allegro muito)",
+                        "justification": "A melodia inicial começa no registro médio e sobe para o superagudo. O estudo da escala de 4 oitavas de Mi Menor e os shifts precisos para a 5ª e 7ª posições na corda Mi garantem a entonação.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 8",
+                        "etudeFocus": "Shifts e precisão de afinação em posições altas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/b5/IMSLP50125-PMLP03099-Mendelssohn_Op64_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "E", octave: 4, fingerOptions: { "1": "1 [D]", "2": "1 [D]", "3": "1 [D]" } },
+                            { name: "G", octave: 4, fingerOptions: { "1": "3 [D]", "2": "3 [D]", "3": "3 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "E", octave: 5, fingerOptions: { "1": "4 [A]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G4-E5", isChord: true, chordPitches: ["G4", "E5"], hasTuningRef: true, fingerOptions: { "1": "4 [A] / Ref [D]", "2": "0 [E]", "3": "4 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Segundo Tema em Sol Maior (Cantabile)",
-                        "justification": "Controle absoluto da velocidade do arco para notas longas sobre o pedal de Sol Maior, com vibrato contínuo e som lírico."
+                        "justification": "Controle absoluto da velocidade do arco para notas longas sobre o pedal de Sol Maior, com vibrato contínuo e som lírico.",
+                        "suggestedEtude": "Fiorillo 36 Caprichos Nº 3",
+                        "etudeFocus": "Vibrato constante, legato longo e expressivo.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/b5/IMSLP50125-PMLP03099-Mendelssohn_Op64_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cf/IMSLP20718-PMLP48102-Fiorillo_36_Caprices.pdf",
+                        "notes": [
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "D4-G6", isChord: true, chordPitches: ["D4", "G6"], hasTuningRef: true, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Desenvolvimento e Passagens Virtuosas",
-                        "justification": "Arpejos rápidos em semicolcheias com mudanças de corda complexas. O estudo de agilidade e as lições de Fiorillo preparam o braço direito para transições rápidas de plano."
+                        "justification": "Arpejos rápidos em semicolcheias com mudanças de corda complexas. O estudo de agilidade e as lições de Fiorillo preparam o braço direito para transições rápidas de plano.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 12",
+                        "etudeFocus": "Arpejos rápidos e contínuos cruzando 4 cordas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/b5/IMSLP50125-PMLP03099-Mendelssohn_Op64_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "E", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "B", octave: 6, fingerOptions: { "1": "2 (7ª Pos) [E]", "2": "3 (7ª Pos) [E]", "3": "2 (7ª Pos) [E]" } },
+                            { name: "E4-B6", isChord: true, chordPitches: ["E4", "B6"], hasTuningRef: true, fingerOptions: { "1": "2 (7ª Pos) [E]", "2": "3 (7ª Pos) [E]", "3": "2 (7ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Cadência de Virtuosismo (Arpejos Ricochet)",
-                        "justification": "A famosa cadência com arpejos ricochet em cordas duplas. O estudo avançado de oitavas e sextas na semana dá a força e flexibilidade necessárias."
+                        "justification": "A famosa cadência com arpejos ricochet em cordas duplas. O estudo avançado de oitavas e sextas na semana dá a força e flexibilidade necessárias.",
+                        "suggestedEtude": "Ševčík Op. 1 Part 4 Ex. 5",
+                        "etudeFocus": "Oitavas paralelas e ricochet rápido.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/b5/IMSLP50125-PMLP03099-Mendelssohn_Op64_ViolinSolo.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/b/ba/IMSLP21589-PMLP48658-Sevcik_Op1_Book1.pdf",
+                        "notes": [
+                            { name: "E", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "B", octave: 6, fingerOptions: { "1": "2 (7ª Pos) [E]", "2": "3 (7ª Pos) [E]", "3": "2 (7ª Pos) [E]" } },
+                            { name: "E", octave: 7, fingerOptions: { "1": "1 (10ª Pos) [E]", "2": "4 (7ª Pos) [E]", "3": "1 (10ª Pos) [E]" } },
+                            { name: "A4-E7", isChord: true, chordPitches: ["A4", "E7"], hasTuningRef: true, fingerOptions: { "1": "1 (10ª Pos) [E] / Ref [A]", "2": "4 (7ª Pos) [E]", "3": "1 (10ª Pos) [E]" } }
+                        ]
                     }
                 }
             },
@@ -262,19 +579,61 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Ataque Inicial com Cordas Duplas",
-                        "justification": "Ataque dramático com acordes de cordas duplas. O alinhamento de 45º do arco e o peso estável (Ševčík Op. 9) são cruciais para a projeção sem trastejar."
+                        "justification": "Ataque dramático com acordes de cordas duplas. O alinhamento de 45º do arco e o peso estável (Ševčík Op. 9) são cruciais para a projeção sem trastejar.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 15",
+                        "etudeFocus": "Estudo de terças e cordas duplas estáveis.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/ca/IMSLP499423-PMLP3256-Bruch_Op_26_Violin_Solo_Schirmer_1920.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "G3-D4", isChord: true, chordPitches: ["G3", "D4"], fingerOptions: { "1": "0+0 [G+D]", "2": "0+0", "3": "0+0" } },
+                            { name: "G4-D5", isChord: true, chordPitches: ["G4", "D5"], fingerOptions: { "1": "3+3 [D+A]", "2": "1+1 (3ª Pos)", "3": "3+3" } },
+                            { name: "G4-G5", isChord: true, chordPitches: ["G4", "G5"], hasTuningRef: true, fingerOptions: { "1": "3+2 [D+E]", "2": "1+1 (3ª Pos)", "3": "3+2" } }
+                        ]
                     },
                     "2": {
                         "focus": "Adagio - Cantabile Sublime",
-                        "justification": "Fraseado lírico expressivo de grande amplitude dinâmica. A afinação em Mi Bemol/Lá Bemol é refinada usando o pedal de sustentação contínuo."
+                        "justification": "Fraseado lírico expressivo de grande amplitude dinâmica. A afinação em Mi Bemol/Lá Bemol é refinada usando o pedal de sustentação contínuo.",
+                        "suggestedEtude": "Fiorillo 36 Caprichos Nº 5",
+                        "etudeFocus": "Lirismo romântico e fraseado amplo.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/ca/IMSLP499423-PMLP3256-Bruch_Op_26_Violin_Solo_Schirmer_1920.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cf/IMSLP20718-PMLP48102-Fiorillo_36_Caprices.pdf",
+                        "notes": [
+                            { name: "Bb", octave: 4, fingerOptions: { "1": "1 [A]", "2": "1 [A]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "Bb", octave: 5, fingerOptions: { "1": "3 [E]", "2": "2 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "D4-Bb5", isChord: true, chordPitches: ["D4", "Bb5"], hasTuningRef: true, fingerOptions: { "1": "3 [E] / Ref [D]", "2": "2 (3ª Pos) [E]", "3": "3 [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Passagens de Oitavas Paralelas",
-                        "justification": "Shifts rápidos de oitavas paralelas (dedos 1-4) na corda Lá e Mi. O treino de oitavas com ancoragem do primeiro dedo fornece estabilidade."
+                        "justification": "Shifts rápidos de oitavas paralelas (dedos 1-4) na corda Lá e Mi. O treino de oitavas com ancoragem do primeiro dedo fornece estabilidade.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 22",
+                        "etudeFocus": "Oitavas paralelas com shifts limpos.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/ca/IMSLP499423-PMLP3256-Bruch_Op_26_Violin_Solo_Schirmer_1920.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "Bb", octave: 5, fingerOptions: { "1": "3 [E]", "2": "2 (3ª Pos) [E]", "3": "3 [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "D4-G6", isChord: true, chordPitches: ["D4", "G6"], hasTuningRef: true, fingerOptions: { "1": "3 (5ª Pos) [E] / Ref [D]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Finale - Tema Enérgico (Allegro energico)",
-                        "justification": "Uso de cordas duplas rítmicas e spiccato forte. O plano semanal de golpes de arco prepara o pulso para a resposta rápida do arco."
+                        "justification": "Uso de cordas duplas rítmicas e spiccato forte. O plano semanal de golpes de arco prepara o pulso para a resposta rápida do arco.",
+                        "suggestedEtude": "Ševčík Op. 9 Ex. 8",
+                        "etudeFocus": "Estudo avançado de terças e sextas rápidas rítmicas.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/ca/IMSLP499423-PMLP3256-Bruch_Op_26_Violin_Solo_Schirmer_1920.pdf",
+                        "etudePdfUrl": "https://imslp.simssa.ca/files/imglnks/usimg/3/36/IMSLP22880-PMLP48663-Sevcik_Op9.pdf",
+                        "notes": [
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "Bb", octave: 6, fingerOptions: { "1": "4 (5ª Pos) [E]", "2": "2 (10ª Pos) [E]", "3": "4 (5ª Pos) [E]" } },
+                            { name: "D", octave: 7, fingerOptions: { "1": "1 (10ª Pos) [E]", "2": "4 (7ª Pos) [E]", "3": "1 (10ª Pos) [E]" } },
+                            { name: "A4-D7", isChord: true, chordPitches: ["A4", "D7"], hasTuningRef: true, fingerOptions: { "1": "1 (10ª Pos) [E] / Ref [A]", "2": "4 (7ª Pos) [E]", "3": "1 (10ª Pos) [E]" } }
+                        ]
                     }
                 }
             },
@@ -284,19 +643,65 @@ document.addEventListener("DOMContentLoaded", () => {
                 "weeks": {
                     "1": {
                         "focus": "Primeiro Tema Solo (Allegro)",
-                        "justification": "Mozart exige elegância clássica. A escala de 3 oitavas limpa e o staccato leve do Ševčík preparam a leveza e clareza de arco necessárias."
+                        "justification": "Mozart exige elegância clássica. A escala de 3 oitavas limpa e o staccato leve do Ševčík preparam a leveza e clareza de arco necessárias.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 2",
+                        "etudeFocus": "Clareza rítmica em staccato e detaché clássico.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/2/20/IMSLP50337-PMLP16075-Mozart_Violin_Concerto_No_3_K216_Violin.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "G", octave: 4, fingerOptions: { "1": "3 [D]", "2": "3 [D]", "3": "3 [D]" } },
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "D4-G5", isChord: true, chordPitches: ["D4", "G5"], hasTuningRef: true, fingerOptions: { "1": "2 [E] / Ref [D]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } }
+                        ]
                     },
                     "2": {
                         "focus": "Apogiaturas e Ornamentação",
-                        "justification": "O estudo de flexibilidade da mão esquerda e os trinados de preparação facilitam a agilidade do 2º e 3º dedos nos ornamentos mozartianos."
+                        "justification": "O estudo de flexibilidade da mão esquerda e os trinados de preparação facilitam a agilidade do 2º e 3º dedos nos ornamentos mozartianos.",
+                        "suggestedEtude": "Fiorillo 36 Caprichos Nº 12",
+                        "etudeFocus": "Trinados e articulação rápida de dedos.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/2/20/IMSLP50337-PMLP16075-Mozart_Violin_Concerto_No_3_K216_Violin.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cf/IMSLP20718-PMLP48102-Fiorillo_36_Caprices.pdf",
+                        "notes": [
+                            { name: "B", octave: 4, fingerOptions: { "1": "1 [A]", "2": "3 [D]", "3": "1 [A]" } },
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "G4-B5", isChord: true, chordPitches: ["G4", "B5"], hasTuningRef: true, fingerOptions: { "1": "4 [E] / Ref [G]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } }
+                        ]
                     },
                     "3": {
                         "focus": "Adagio - Cantabile Expressivo",
-                        "justification": "Mudanças de posição para a 3ª e 5ª posições na corda Ré e Lá. O vibrato contínuo e sustentado com apoio do pedal no fundo garante a expressividade do tema."
+                        "justification": "Mudanças de posição para a 3ª e 5ª posições na corda Ré e Lá. O vibrato contínuo e sustentado com apoio do pedal no fundo garante a expressividade do tema.",
+                        "suggestedEtude": "Kreutzer 42 Estudos Nº 14",
+                        "etudeFocus": "Legato lento expressivo com vibrato.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/2/20/IMSLP50337-PMLP16075-Mozart_Violin_Concerto_No_3_K216_Violin.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cb/IMSLP499424-PMLP3206-Kreutzer_42_Etudes_Schirmer_Singer_1923.pdf",
+                        "notes": [
+                            { name: "D", octave: 5, fingerOptions: { "1": "3 [A]", "2": "1 (3ª Pos) [A]", "3": "3 [A]" } },
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "2 (5ª Pos) [E]", "2": "1 (5ª Pos) [E]", "3": "3 (3ª Pos) [E]" } },
+                            { name: "D4-D6", isChord: true, chordPitches: ["D4", "D6"], hasTuningRef: true, fingerOptions: { "1": "2 (5ª Pos) [E] / Ref [D]", "2": "1 (5ª Pos) [E]", "3": "3 (3ª Pos) [E]" } }
+                        ]
                     },
                     "4": {
                         "focus": "Rondeau - Alternância de Tempos",
-                        "justification": "Sincronização rítmica nas passagens rápidas e mudanças de caráter (do clássico ao folclórico). O metrônomo rigoroso na prática semanal resolve as quebras de andamento."
+                        "justification": "Sincronização rítmica nas passagens rápidas e mudanças de caráter (do clássico ao folclórico). O metrônomo rigoroso na prática semanal resolve as quebras de andamento.",
+                        "suggestedEtude": "Fiorillo 36 Caprichos Nº 18",
+                        "etudeFocus": "Agilidade e variações rítmicas com leveza.",
+                        "piecePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/2/20/IMSLP50337-PMLP16075-Mozart_Violin_Concerto_No_3_K216_Violin.pdf",
+                        "etudePdfUrl": "https://s9.imslp.org/files/imglnks/usimg/c/cf/IMSLP20718-PMLP48102-Fiorillo_36_Caprices.pdf",
+                        "notes": [
+                            { name: "G", octave: 5, fingerOptions: { "1": "2 [E]", "2": "1 (3ª Pos) [E]", "3": "2 [E]" } },
+                            { name: "B", octave: 5, fingerOptions: { "1": "4 [E]", "2": "3 (3ª Pos) [E]", "3": "1 (3ª Pos) [E]" } },
+                            { name: "D", octave: 6, fingerOptions: { "1": "1 (5ª Pos) [E]", "2": "3 (3ª Pos) [E]", "3": "1 (5ª Pos) [E]" } },
+                            { name: "G", octave: 6, fingerOptions: { "1": "3 (5ª Pos) [E]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } },
+                            { name: "G4-G6", isChord: true, chordPitches: ["G4", "G6"], hasTuningRef: true, fingerOptions: { "1": "3 (5ª Pos) [E] / Ref [G]", "2": "1 (10ª Pos) [E]", "3": "3 (5ª Pos) [E]" } }
+                        ]
                     }
                 }
             }
@@ -880,6 +1285,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     staveNote.addModifier(annotation, 0);
                 }
 
+                // Dedilhado interativo (se não for escala)
+                if (activePlaybackType !== "scale") {
+                    const fingeringOptionSelect = document.getElementById("fingering-option-select");
+                    const activeOption = fingeringOptionSelect ? fingeringOptionSelect.value : "1";
+                    if (activeOption !== "none") {
+                        let fingerLabel = "";
+                        if (n.fingerOptions && n.fingerOptions[activeOption]) {
+                            fingerLabel = n.fingerOptions[activeOption];
+                        } else {
+                            // Fallback para propriedades básicas
+                            const finger = n.finger !== undefined ? n.finger : "";
+                            const posText = n.position && n.position !== "?" ? ` (${n.position}ª Pos)` : "";
+                            const strText = n.string ? ` [${n.string}]` : "";
+                            fingerLabel = `${finger}${posText}${strText}`.trim();
+                        }
+                        if (fingerLabel) {
+                            const annotation = new Annotation(fingerLabel)
+                                .setFont("Arial", 8, "bold")
+                                .setVerticalJustification(Vex.Flow.Annotation.VerticalJustify.TOP);
+                            staveNote.addModifier(annotation, 0);
+                        }
+                    }
+                }
+
                 staveNote.setAttribute("id", `note-svg-${globalIdx}`);
                 return staveNote;
             });
@@ -899,6 +1328,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 const beams = Vex.Flow.Beam.generateBeams(vexNotes);
                 beams.forEach(b => b.setContext(ctx).draw());
             }
+
+            // Desenhar conexões de afinação tracejadas para notas com afinamento
+            chunk.forEach((n, localIdx) => {
+                if (n.hasTuningRef === true) {
+                    const sNote = vexNotes[localIdx];
+                    if (sNote && typeof sNote.getYs === "function" && typeof sNote.getAbsoluteX === "function") {
+                        const ys = sNote.getYs();
+                        const x = sNote.getAbsoluteX();
+                        if (ys && ys.length >= 2) {
+                            const y1 = ys[0];
+                            const y2 = ys[ys.length - 1];
+                            ctx.save();
+                            ctx.setStrokeStyle("#7c4dff"); // Roxo elegante para afinamento
+                            ctx.setLineWidth(1.5);
+                            ctx.beginPath();
+                            ctx.setLineDash([3, 3]);
+                            ctx.moveTo(x, y1);
+                            ctx.lineTo(x, y2);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    }
+                }
+            });
 
             yOffset += STAVE_HEIGHT;
         });
@@ -1013,6 +1466,8 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (practiceMode === "arpeggio") staffContentLabel.innerText = "Arpejos Principais";
             else staffContentLabel.innerText = "Escala & Arpejos";
         }
+        const fingeringGroup = document.getElementById("fingering-option-group");
+        if (fingeringGroup) fingeringGroup.style.display = "none";
     }
 
     function loadPedagogicUnitIntoStaff(unit, badgeText, type) {
@@ -1046,6 +1501,38 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btnRestoreScaleStaff) btnRestoreScaleStaff.style.display = "inline-block";
         const staffContentLabel = document.getElementById("staff-content-label");
         if (staffContentLabel) staffContentLabel.innerText = `A praticar: ${unit.title}`;
+
+        const fingeringGroup = document.getElementById("fingering-option-group");
+        if (fingeringGroup) fingeringGroup.style.display = "none";
+
+        drawSheetMusic(activeNotesList);
+    }
+
+    function loadConcertoExcerptIntoStaff(weekInfo, pieceName) {
+        stopPlayback();
+        activePlaybackType = "repertoire";
+        if (!weekInfo || !weekInfo.notes) return;
+
+        // Process notes with enrichWithFingering to get keys and chord layouts
+        activeNotesList = enrichWithFingering(weekInfo.notes);
+
+        vexflowPanelTitle.innerHTML = `<i class="fa-solid fa-music"></i> Pauta: Excerto de Concerto`;
+        scaleBadge.innerText = pieceName;
+        
+        btnRestoreScale.style.display = "inline-block";
+        if (btnRestoreScaleStaff) btnRestoreScaleStaff.style.display = "inline-block";
+
+        const staffContentLabel = document.getElementById("staff-content-label");
+        if (staffContentLabel) {
+            staffContentLabel.innerText = `A praticar: Excerto (${weekInfo.focus})`;
+        }
+
+        // Show the fingering option selector group
+        const fingeringGroup = document.getElementById("fingering-option-group");
+        if (fingeringGroup) {
+            fingeringGroup.style.display = "flex";
+        }
+
         drawSheetMusic(activeNotesList);
     }
 
@@ -1136,6 +1623,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (chkShowDegrees) {
         chkShowDegrees.addEventListener("change", () => {
             drawSheetMusic(activeNotesList);
+        });
+    }
+
+    const fingeringOptionSelect = document.getElementById("fingering-option-select");
+    if (fingeringOptionSelect) {
+        fingeringOptionSelect.addEventListener("change", () => {
+            if (activeNotesList && activeNotesList.length > 0) {
+                drawSheetMusic(activeNotesList);
+            }
         });
     }
 
@@ -1762,6 +2258,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if (focusBox) {
             if (chosenConcerto && weekInfo) {
                 focusBox.style.display = "block";
+                
+                let buttonsHtml = '';
+                if (weekInfo.piecePdfUrl) {
+                    buttonsHtml += `
+                        <a href="${weekInfo.piecePdfUrl}" target="_blank" class="btn btn-sm" style="background: rgba(124, 77, 255, 0.15); border: 1px solid var(--primary); color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; transition: background 0.2s;">
+                            <i class="fa-solid fa-file-pdf"></i> PDF Concerto
+                        </a>
+                    `;
+                }
+                if (weekInfo.etudePdfUrl) {
+                    buttonsHtml += `
+                        <a href="${weekInfo.etudePdfUrl}" target="_blank" class="btn btn-sm" style="background: rgba(0, 184, 212, 0.15); border: 1px solid var(--secondary); color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; transition: background 0.2s;">
+                            <i class="fa-solid fa-file-pdf"></i> PDF Estudo
+                        </a>
+                    `;
+                }
+                buttonsHtml += `
+                    <button id="btn-load-excerpt" class="btn btn-sm btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; transition: background 0.2s;">
+                        <i class="fa-solid fa-music"></i> Estudar Excerto na Pauta
+                    </button>
+                `;
+
                 focusBox.innerHTML = `
                     <h3 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem;">
                         <i class="fa-solid fa-graduation-cap"></i> Foco Semanal no Concerto: ${chosenConcerto.title}
@@ -1769,15 +2287,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p style="font-size: 0.85rem; margin: 0 0 0.5rem 0; color: var(--text-main);">
                         <strong>Compositor:</strong> ${chosenConcerto.composer} | <strong>Semana:</strong> ${selectedWeekKey}
                     </p>
-                    <div style="background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 8px; border-left: 3px solid var(--secondary); font-size: 0.8rem; line-height: 1.4;">
-                        <p style="margin: 0 0 0.25rem 0; color: var(--text-main); font-weight: 600;">
-                            <i class="fa-solid fa-star"></i> Secção de Estudo: ${weekInfo.focus}
-                        </p>
-                        <p style="margin: 0; color: var(--text-muted);">
-                            <strong>Justificação Pedagógica:</strong> ${weekInfo.justification}
-                        </p>
+                    <div style="background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 8px; border-left: 3px solid var(--secondary); font-size: 0.8rem; line-height: 1.4; display: flex; flex-direction: column; gap: 0.6rem;">
+                        <div>
+                            <p style="margin: 0 0 0.25rem 0; color: var(--text-main); font-weight: 600;">
+                                <i class="fa-solid fa-star" style="color: var(--primary);"></i> Secção de Estudo: ${weekInfo.focus}
+                            </p>
+                            <p style="margin: 0; color: var(--text-muted);">
+                                <strong>Justificação Pedagógica:</strong> ${weekInfo.justification}
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.5rem;">
+                            <p style="margin: 0 0 0.25rem 0; color: var(--text-main); font-weight: 600;">
+                                <i class="fa-solid fa-book-open" style="color: var(--secondary);"></i> Estudo Técnico Sugerido: ${weekInfo.suggestedEtude || 'Nenhum'}
+                            </p>
+                            <p style="margin: 0; color: var(--text-muted);">
+                                <strong>Foco do Estudo:</strong> ${weekInfo.etudeFocus || 'Nenhum'}
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                        ${buttonsHtml}
                     </div>
                 `;
+
+                // Adicionar o click event para carregar o excerto na pauta
+                const btnLoadExcerpt = document.getElementById("btn-load-excerpt");
+                if (btnLoadExcerpt) {
+                    btnLoadExcerpt.addEventListener("click", () => {
+                        const weeklyPlanModal = document.getElementById("weekly-plan-modal");
+                        if (weeklyPlanModal) {
+                            weeklyPlanModal.classList.remove("open");
+                        }
+                        loadConcertoExcerptIntoStaff(weekInfo, pieceName);
+                    });
+                }
             } else {
                 focusBox.style.display = "none";
             }

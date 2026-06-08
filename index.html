@@ -119,11 +119,16 @@
                 
                 <div class="control-group">
                     <label for="level-select">Nível do Aluno</label>
-                    <select id="level-select">
-                        <option value="iniciante" selected>Iniciante</option>
-                        <option value="intermedio">Intermédio</option>
-                        <option value="avancado">Avançado</option>
-                    </select>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <select id="level-select" style="flex: 1;">
+                            <option value="iniciante" selected>Iniciante</option>
+                            <option value="intermedio">Intermédio</option>
+                            <option value="avancado">Avançado</option>
+                        </select>
+                        <button id="btn-open-weekly-plan" class="btn btn-secondary" style="white-space: nowrap; padding: 0 0.75rem;" title="Ver Roteiro Semanal">
+                            <i class="fa-solid fa-calendar-days"></i> Roteiro Semanal
+                        </button>
+                    </div>
                 </div>
 
                 <div class="control-group">
@@ -626,22 +631,27 @@
                 </div>
             </section>
 
-            <!-- Módulo de Plano de Estudo Semanal (Professor Online) -->
-            <section class="panel weekly-plan-panel no-print" id="weekly-plan-panel" style="grid-column: 1 / -1;">
-                <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-                    <h2 class="panel-title" style="margin: 0;"><i class="fa-solid fa-calendar-days"></i> Plano de Estudo Semanal (Professor Online)</h2>
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        <span class="badge" id="weekly-plan-dates" style="background: var(--primary);">Carregando plano...</span>
-                        <button id="btn-rebuild-weekly-plan" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-arrows-rotate"></i> Regenerar Plano</button>
-                    </div>
+            <!-- Modal de Plano de Estudo Semanal (Professor Online) -->
+            <div id="weekly-plan-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <button class="modal-close-btn" id="btn-close-weekly-plan" title="Fechar"><i class="fa-solid fa-xmark"></i></button>
+                    <section class="panel weekly-plan-panel" id="weekly-plan-panel" style="margin-top:0 !important; background:none; border:none; box-shadow:none; padding:0;">
+                        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                            <h2 class="panel-title" style="margin: 0; border:none; padding-bottom:0;"><i class="fa-solid fa-calendar-days"></i> Plano de Estudo Semanal (Professor Online)</h2>
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <span class="badge" id="weekly-plan-dates" style="background: var(--primary);">Carregando plano...</span>
+                                <button id="btn-rebuild-weekly-plan" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="fa-solid fa-arrows-rotate"></i> Regenerar Plano</button>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 1.25rem 0; line-height: 1.4;">
+                            Este plano divide o seu tempo diário de prática de forma equilibrada entre golpes de arco (mão direita), técnica de mão esquerda, escalas/afinação com cordas duplas e repertório real. É atualizado automaticamente aos domingos à noite ou clicando em Regenerar. Marque os dias concluídos para acompanhar o seu progresso.
+                        </p>
+                        <div class="weekly-plan-grid" id="weekly-plan-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                            <!-- Gerado dinamicamente via JS -->
+                        </div>
+                    </section>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 1.25rem 0; line-height: 1.4;">
-                    Este plano divide o seu tempo diário de prática de forma equilibrada entre golpes de arco (mão direita), técnica de mão esquerda, escalas/afinação com cordas duplas e repertório real. É atualizado automaticamente aos domingos à noite ou clicando em Regenerar. Marque os dias concluídos para acompanhar o seu progresso.
-                </p>
-                <div class="weekly-plan-grid" id="weekly-plan-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-                    <!-- Gerado dinamicamente via JS -->
-                </div>
-            </section>
+            </div>
         </main>
     </div>
     

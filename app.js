@@ -130,11 +130,32 @@ document.addEventListener("DOMContentLoaded", () => {
         "Ab5": {string:"E",finger:2,pos:"1ª Pos",x:130},
         "A5":  {string:"E",finger:3,pos:"1ª Pos",x:155},
         "Bb5": {string:"E",finger:3,pos:"1ª Pos (alto)",x:175},
-        "B5":  {string:"E",finger:4,pos:"1ª Pos",x:195}
+        "B5":  {string:"E",finger:4,pos:"1ª Pos",x:195},
+        "C6":  {string:"E",finger:1,pos:"3ª Pos",x:110},
+        "C#6": {string:"E",finger:2,pos:"3ª Pos",x:130},
+        "D6":  {string:"E",finger:3,pos:"3ª Pos",x:155},
+        "Eb6": {string:"E",finger:3,pos:"3ª Pos",x:175},
+        "E6":  {string:"E",finger:1,pos:"5ª Pos",x:80},
+        "F6":  {string:"E",finger:1,pos:"5ª Pos",x:100},
+        "F#6": {string:"E",finger:2,pos:"5ª Pos",x:120},
+        "G6":  {string:"E",finger:3,pos:"5ª Pos",x:140},
+        "Ab6": {string:"E",finger:3,pos:"5ª Pos",x:160},
+        "A6":  {string:"E",finger:1,pos:"7ª Pos",x:80},
+        "Bb6": {string:"E",finger:1,pos:"7ª Pos",x:100},
+        "B6":  {string:"E",finger:2,pos:"7ª Pos",x:120},
+        "C7":  {string:"E",finger:3,pos:"7ª Pos",x:140},
+        "C#7": {string:"E",finger:3,pos:"7ª Pos",x:160},
+        "D7":  {string:"E",finger:4,pos:"7ª Pos",x:180},
+        "Eb7": {string:"E",finger:4,pos:"7ª Pos",x:190},
+        "E7":  {string:"E",finger:1,pos:"10ª Pos",x:80},
+        "F7":  {string:"E",finger:2,pos:"10ª Pos",x:110},
+        "F#7": {string:"E",finger:3,pos:"10ª Pos",x:140},
+        "G7":  {string:"E",finger:4,pos:"10ª Pos",x:170}
     };
 
     // ── STATE VARIABLES ───────────────────────────────────────
     let isPlaying        = false;
+    let lastLevel        = null;
     let piano            = null;
     let synth            = null;
     let isAudioInit      = false;
@@ -893,6 +914,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnPdf.addEventListener("click", () => window.print());
 
+    // -- MODAL PLANO SEMANAL --
+    const btnOpenWeeklyPlan = document.getElementById("btn-open-weekly-plan");
+    const btnCloseWeeklyPlan = document.getElementById("btn-close-weekly-plan");
+    const weeklyPlanModal = document.getElementById("weekly-plan-modal");
+    if (btnOpenWeeklyPlan && weeklyPlanModal) {
+        btnOpenWeeklyPlan.addEventListener("click", () => {
+            generateWeeklyPlan();
+            weeklyPlanModal.classList.add("open");
+        });
+    }
+    if (btnCloseWeeklyPlan && weeklyPlanModal) {
+        btnCloseWeeklyPlan.addEventListener("click", () => {
+            weeklyPlanModal.classList.remove("open");
+        });
+    }
+    if (weeklyPlanModal) {
+        weeklyPlanModal.addEventListener("click", e => {
+            if (e.target === weeklyPlanModal) {
+                weeklyPlanModal.classList.remove("open");
+            }
+        });
+    }
+
     // ── DASHBOARD UPDATE ──────────────────────────────────────
     function updateDashboard() {
         const key   = tonicSelect.value;
@@ -908,7 +952,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (activePracticePlan) {
             const pr = activePracticePlan.route;
-            if (level !== "iniciante") octavesSelect.value = pr.octaves;
+            if (level !== "iniciante" && level !== lastLevel) {
+                octavesSelect.value = pr.octaves;
+            }
+            lastLevel = level;
             planScaleName.innerText  = `${key} ${modeLabel}`;
             planScaleOctaves.innerText = `${pr.octaves} Oitava${pr.octaves > 1 ? "s" : ""}`;
             planScaleBowing.innerText  = pr.bowingPattern;

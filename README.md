@@ -20,7 +20,7 @@ Basta abrir o ficheiro `index.html` no browser — funciona 100% offline.
 
 ## 🌐 Acesso Online
 
-Disponível em: **https://primeiromilhao.github.io/Professor-de-Violino/**
+Disponível em: **https://primeiromilhao.github.io/Professor-de-musica/**
 
 ## 📚 Métodos Pedagógicos
 

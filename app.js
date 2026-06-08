@@ -666,8 +666,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (chkRep) chkRep.checked = true;
                 updateAcademyStats();
             }
-            if (activePlaybackType === "scale") { stopPlaybackPreserveDrone(); } else { stopPlayback(); }
-            return;
+            
+            // Loop infinito: reinicia o índice da sequência de notas
+            activeNoteIndex = 0;
         }
 
         // Pausa de imitação Suzuki passo 3

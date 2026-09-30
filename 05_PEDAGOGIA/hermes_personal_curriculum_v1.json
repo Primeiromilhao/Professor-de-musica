@@ -1,0 +1,26 @@
+{
+  "version":"1.0",
+  "student_profile":"intermédio com objetivo de avançar até repertório de concerto",
+  "principle":"crescimento técnico antes de exigir repertório de alta dificuldade",
+  "phases":[
+    {"id":"P1","name":"Independência dos dedos","focus":["coordenação dos dedos","regularidade","afinação básica"],"methods":["Ševčík Op.1","Ševčík Op.3","Wohlfahrt Op.45","Kayser Op.20"],"daily":"blocos curtos e conscientes; sem repetição mecânica"},
+    {"id":"P2","name":"Afinação","focus":["escala","intervalos","estabilidade","ouvido interno"],"methods":["Ševčík Op.8","Flesch Scale System"],"tools":["drone","metrónomo","microfone quando disponível"]},
+    {"id":"P3","name":"Mão direita e arco","focus":["distribuição","detaché","martelé","spiccato","mudança de corda"],"methods":["Ševčík Op.2","Kreutzer"],"video":"obrigatório quando houver referência gratuita adequada"},
+    {"id":"P4","name":"Mudanças de posição","focus":["segurança","antecipação","afinação na chegada"],"methods":["Ševčík Op.1 livros 2-3","Ševčík Op.8","Kreutzer"]},
+    {"id":"P5","name":"Cordas duplas","focus":["independência","afinação simultânea","preparação de mão"],"methods":["Ševčík Op.1 livro 4","Ševčík Op.9","Kreutzer","Fiorillo"]},
+    {"id":"P6","name":"Virtuosismo","focus":["velocidade controlada","articulação","resistência","integração"],"methods":["Fiorillo","Dont Op.35","Kreutzer","Flesch"]},
+    {"id":"P7","name":"Repertório de concerto","focus":["Mendelssohn","Bach","Mozart","Paganini"],"rule":"cada concerto é dividido em sessões e trechos críticos; o método é escolhido pelo problema técnico"}
+  ],
+  "session_model":{
+    "duration_target":"30 minutos por bloco",
+    "sequence":["aquecimento técnico","competência do dia","estudo de método","trecho de repertório","avaliação curta"],
+    "video_reference":"cada lição de método deve procurar vídeo gratuito de execução",
+    "language":"português primeiro"
+  },
+  "mastery":{
+    "dimensions":["afinação","ritmo","coordenação","arco","posição","articulação","som","musicalidade"],
+    "consistency_sessions":3,
+    "minimum_target":0.80,
+    "rule":"não desbloquear por velocidade isolada; consolidar qualidade antes de aumentar BPM"
+  }
+}

@@ -87,6 +87,20 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
     (p.pieceId && p.pieceId === route.dailyPlan.repertoirePieceId)
   );
 
+  // Integração CVC: o repertório pode diagnosticar a competência necessária sem alterar a rota existente.
+  let cvc = null;
+  let cvcScale = null;
+  if (typeof HERMES_CVC !== "undefined") {
+    const source = excerpts[0] || piece || { title: route?.key, difficultyDescription: route?.bowingPattern };
+    cvc = HERMES_CVC.reverseFromRepertoire(source, {
+      key,
+      profile: { level: studentLevel }
+    });
+    const scaleCompetencies = ["CVC_POSTURA","CVC_AFINACAO","CVC_INDEPENDENCIA","CVC_ARCO","CVC_COORDENACAO"];
+    if ((route?.octaves || 1) > 1) scaleCompetencies.push("CVC_MUDANCA_POSICAO");
+    cvcScale = scaleCompetencies.map(id => HERMES_CVC.chooseCompetency(id,{level:studentLevel,competencies:{}})).filter(Boolean);
+  }
+
   return {
     route,
     scales: units(route.dailyPlan.scaleUnits),
@@ -94,7 +108,9 @@ function resolvePracticePlan({ key, mode, studentLevel, catalog }) {
     etudes: units(route.dailyPlan.etudeUnits),
     piece,
     excerpts,
-    pdfs
+    pdfs,
+    cvc,
+    cvcScale
   };
 }
 
@@ -141,7 +157,7 @@ function generatePedagogicFallback(key, mode, studentLevel, catalog) {
     scaleBookId = "sevcik_op1_1";
     scaleTitle = `Ševčík - Escala de ${key} ${isMinor ? "Menor" : "Maior"}`;
     scaleFocus = `Estudo posicional (1ª a 3ª posição) na escala de ${key} para entonação.`;
-  } else if (studentLevel === "avancado") {
+  } else if (studentLevel === "avancado" || studentLevel === "pre_solista") {
     scaleBookId = "flesch_scale_system";
     scaleTitle = `Carl Flesch - Sistema de Escalas em ${key} ${isMinor ? "Menor" : "Maior"}`;
     scaleFocus = `Sistema de 3 oitavas de Carl Flesch em ${key} com dedilhado de mudanças.`;
@@ -177,10 +193,10 @@ function generatePedagogicFallback(key, mode, studentLevel, catalog) {
     bowTitle = `Ševčík Op.8 - Mudança de Posição em ${key}`;
     bowFocus = `Deslizar o polegar de forma fluida durante as mudanças.`;
     bowNotes = generateMajorScaleNotes(key, mode, 2).slice(0, 12);
-  } else if (studentLevel === "avancado") {
-    bowBookId = "sevcik_op9";
-    bowTitle = `Ševčík Op.9 - Preparação de Cordas Duplas em ${key}`;
-    bowFocus = `Montagem de terças e sextas paralelas em ${key}.`;
+  } else if (studentLevel === "avancado" || studentLevel === "pre_solista") {
+    bowBookId = studentLevel === "pre_solista" ? "dont_op35" : "sevcik_op9";
+    bowTitle = studentLevel === "pre_solista" ? `Dont Op.35 - Virtuosidade em ${key}` : `Ševčík Op.9 - Preparação de Cordas Duplas em ${key}`;
+    bowFocus = studentLevel === "pre_solista" ? `Virtuosidade, coordenação e segurança em passagens de concerto.` : `Montagem de terças e sextas paralelas em ${key}.`;
     bowNotes = generateDoubleStopNotes(generateMajorScaleNotes(key, mode, 1), "3rd");
   } else if (studentLevel === "solista") {
     bowBookId = "sevcik_op7";
@@ -213,10 +229,10 @@ function generatePedagogicFallback(key, mode, studentLevel, catalog) {
     etudeBookId = "kayser_op20";
     etudeTitle = `Kayser Op.20 - Estudo em ${key}`;
     etudeFocus = `Desenvolvimento do spiccato, staccato e cruzamento de cordas.`;
-  } else if (studentLevel === "avancado") {
-    etudeBookId = "kreutzer_42";
-    etudeTitle = `Kreutzer Estudo - Agilidade em ${key}`;
-    etudeFocus = `Técnica avançada de Rodolphe Kreutzer para flexibilidade de arco e dedos.`;
+  } else if (studentLevel === "avancado" || studentLevel === "pre_solista") {
+    etudeBookId = studentLevel === "pre_solista" ? "dont_op35" : "kreutzer_42";
+    etudeTitle = studentLevel === "pre_solista" ? `Dont Op.35 - Estudo de concerto em ${key}` : `Kreutzer Estudo - Agilidade em ${key}`;
+    etudeFocus = studentLevel === "pre_solista" ? `Integração de virtuosidade, mudanças e articulação para repertório avançado.` : `Técnica avançada de Rodolphe Kreutzer para flexibilidade de arco e dedos.`;
     etudeNotes = generateDoubleStopNotes(generateMajorScaleNotes(key, mode, 1), "6th");
   } else if (studentLevel === "solista") {
     etudeBookId = "dont_op35";

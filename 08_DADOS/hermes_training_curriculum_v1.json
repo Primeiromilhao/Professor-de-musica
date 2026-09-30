@@ -1,0 +1,236 @@
+{
+  "version": "1.0",
+  "model": "HERMES — duas camadas de formação",
+  "rule": "TECNICA_OBRIGATORIA + REPERTORIO_DE_ESCOLHA",
+  "technicalCurriculum": {
+    "mandatory": true,
+    "progression": "prerequisite-gated",
+    "dailySessionMinutes": 30,
+    "levels": {
+      "iniciante": {
+        "focus": [
+          "postura e equilíbrio corporal",
+          "formação da mão esquerda",
+          "coordenação básica arco/mão esquerda",
+          "afinação em 1ª posição",
+          "ritmo e pulsação"
+        ],
+        "methods": [
+          "Wohlfahrt Op.45",
+          "Ševčík Op.1",
+          "Ševčík Op.2"
+        ],
+        "scales": "1-2 oitavas",
+        "doubleStops": "introdução"
+      },
+      "intermedio": {
+        "focus": [
+          "independência dos dedos",
+          "mudanças de posição",
+          "afinação em 2-3 oitavas",
+          "distribuição e velocidade do arco",
+          "legato e détaché",
+          "cordas duplas básicas",
+          "arpejos"
+        ],
+        "methods": [
+          "Ševčík Op.1",
+          "Ševčík Op.8",
+          "Ševčík Op.9",
+          "Kreutzer",
+          "Kayser",
+          "Fiorillo"
+        ],
+        "scales": "2-3 oitavas",
+        "doubleStops": "progressivo"
+      },
+      "avancado": {
+        "focus": [
+          "3 oitavas estáveis",
+          "mudanças rápidas",
+          "cordas duplas",
+          "acordes",
+          "spiccato/martelé/ricochet",
+          "resistência",
+          "musicalidade aplicada"
+        ],
+        "methods": [
+          "Flesch",
+          "Kreutzer",
+          "Fiorillo",
+          "Dont Op.35",
+          "Ševčík"
+        ],
+        "scales": "3 oitavas",
+        "doubleStops": "obrigatório"
+      },
+      "pre_solista": {
+        "focus": [
+          "virtuosidade controlada",
+          "afinação avançada",
+          "cordas duplas/triplas/quádruplas",
+          "velocidade",
+          "projeção sonora",
+          "interpretação"
+        ],
+        "methods": [
+          "Flesch",
+          "Dont Op.35",
+          "Fiorillo",
+          "Ševčík"
+        ],
+        "scales": "3 oitavas + arpejos",
+        "doubleStops": "avançado"
+      },
+      "solista": {
+        "focus": [
+          "integração técnica-musical",
+          "virtuosidade de concerto",
+          "resistência de programa",
+          "refinamento interpretativo",
+          "preparação para Paganini"
+        ],
+        "methods": [
+          "Dont",
+          "Fiorillo",
+          "Flesch",
+          "Paganini"
+        ],
+        "scales": "3 oitavas + arpejos",
+        "doubleStops": "domínio"
+      }
+    }
+  },
+  "concertCatalog": {
+    "selectionByLevel": {
+      "iniciante": [
+        "Vivaldi RV356",
+        "Rieding Op.35"
+      ],
+      "jovem": [
+        "Vivaldi RV356",
+        "Rieding Op.35",
+        "Accolay Nº1",
+        "Küchler Op.15"
+      ],
+      "intermedio": [
+        "Mozart Nº3",
+        "Mozart Nº4",
+        "Viotti Nº22",
+        "Bruch Nº1"
+      ],
+      "avancado": [
+        "Mendelssohn Op.64",
+        "Bruch Op.26",
+        "Lalo Symphonie Espagnole",
+        "Wieniawski Nº2"
+      ],
+      "pre_solista": [
+        "Tchaikovsky Op.35",
+        "Sibelius Op.47",
+        "Wieniawski Nº1",
+        "Brahms Op.77"
+      ],
+      "solista": [
+        "Paganini Nº1",
+        "Paganini Nº5",
+        "Ernst",
+        "Sibelius Op.47"
+      ]
+    },
+    "ecosystemTemplate": {
+      "defaultView": "trechos",
+      "fullScoreByDefault": false,
+      "requiredBlocks": [
+        "obra",
+        "movimento",
+        "sessões",
+        "trechos críticos",
+        "competências",
+        "pré-requisitos",
+        "exercícios técnicos",
+        "métodos",
+        "vídeos de execução",
+        "dicas pedagógicas",
+        "prática",
+        "avaliação"
+      ],
+      "teacherLayer": "Quando houver material público verificável, anexar referências de Bosísio, Baldini, Micheletti e Cármelo ao concerto/trecho. Não inventar falas.",
+      "excerptRule": "Mostrar apenas os trechos críticos da sessão; partitura integral fica disponível por link."
+    }
+  },
+  "complementaryMaterials": {
+    "purpose": "links leves para material externo; não copiar arquivos para o aplicativo",
+    "teachers": [
+      {
+        "teacher": "Paulo Bosísio",
+        "priority": 1,
+        "items": [
+          {
+            "title": "Relacionamentos — exercícios para aquecimento da mão esquerda",
+            "type": "pesquisa acadêmica / PDF aberto",
+            "url": "https://repositorio.ufba.br/bitstream/ri/27663/1/TCF%20FINAL_THAIS_CORRIGIDO%20impressa%CC%83o.pdf"
+          },
+          {
+            "title": "Palestra — Método de Violino para Iniciantes",
+            "type": "aula/palestra",
+            "url": "https://musica.ufmg.br/blog/2021/03/22/palestra-sobre-o-metodo-de-violino-para-iniciantes-uma-visao-moderna-com-informacoes-para-professores-e-a-didatica-de-cordas-friccionadas/"
+          },
+          {
+            "title": "Método de Violino para Iniciantes — referência editorial",
+            "type": "material de método",
+            "url": "https://www.musimed.com.br/partituras/cordas/violino/metodo-de-violino-para-iniciantes-uma-visao-moderna-com-informacao-para-professores-85031-p155879"
+          }
+        ]
+      },
+      {
+        "teacher": "Emmanuele Baldini",
+        "priority": 2,
+        "items": [
+          {
+            "title": "Masterclass no Conservatório de Tatuí",
+            "type": "masterclass / registro público",
+            "url": "https://www.diariodetatui.com/2014/11/spalla-da-osesp-ministra-masterclass-no.html"
+          },
+          {
+            "title": "Programa de masterclasses de violino",
+            "type": "masterclass / referência",
+            "url": "https://www.sustenidos.org.br/wp-content/uploads/2022/12/RA2021_pr2_versao_cel.pdf"
+          }
+        ]
+      },
+      {
+        "teacher": "Cláudio Micheletti",
+        "priority": 3,
+        "items": [
+          {
+            "title": "Masterclass de Violino — Baccarelli",
+            "type": "vídeo",
+            "url": "https://www.youtube.com/watch?v=IyWBaicVixQ"
+          },
+          {
+            "title": "Masterclass de Violino — Fundação das Artes",
+            "type": "masterclass / registro",
+            "url": "https://livrozilla.com/doc/746507/festival-de-m%C3%BAsica-da-fun-ival-de-m%C3%BAsica-da-funda%C3%A7%C3%A3o-das-"
+          }
+        ]
+      },
+      {
+        "teacher": "Cármelo de los Santos",
+        "priority": 4,
+        "items": [
+          {
+            "title": "Master Class — Conservatório de Tatuí",
+            "type": "masterclass / vídeo",
+            "url": "https://www.conservatoriodetatui.org.br/programacao/master-class-de-violino-com-carmelo-de-los-santos/"
+          },
+          {
+            "title": "Site oficial — vídeos e atividades",
+            "type": "site do professor",
+            "url": "https://carmeloviolin.com/"
+          }
+        ]
+      }
+    ]
+  }
+}

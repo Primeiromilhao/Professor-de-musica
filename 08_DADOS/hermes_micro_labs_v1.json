@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "2.0",
+  "principle": "Cada laboratório ensina conceito → ouvido → gesto → método de apoio → aplicação musical → verificação.",
+  "labs": [
+    {
+      "id": "harmonicos",
+      "title": "Harmônicos",
+      "methodLinks": [
+        "SEVCIK_OP9",
+        "SEVCIK_OP15",
+        "SEVCIK_OP16"
+      ],
+      "sections": [
+        {
+          "title": "Base",
+          "text": "Um harmônico nasce quando a corda vibra em segmentos. O dedo leve toca um nó; não se aperta como uma nota normal."
+        },
+        {
+          "title": "Naturais",
+          "text": "A corda permanece aberta e o dedo leve seleciona um nó da série harmônica. O HERMES começa pela oitava da corda e progride para outros parciais conforme a necessidade."
+        },
+        {
+          "title": "Artificiais",
+          "text": "Um dedo produz a nota-base e outro toca levemente o ponto harmônico. O intervalo concreto entre os dedos depende do parcial e da nota escrita; o HERMES mostra a combinação da passagem em vez de impor uma fórmula única."
+        },
+        {
+          "title": "Estudo",
+          "text": "Nota-base → localização do nó → toque leve → arco → sustentação → repetição → transferência para repertório."
+        }
+      ]
+    },
+    {
+      "id": "oitavas",
+      "title": "Oitavas",
+      "methodLinks": [
+        "SEVCIK_OP1",
+        "SEVCIK_OP8",
+        "FLESCH_SCALE"
+      ],
+      "sections": [
+        {
+          "title": "Quem é a referência?",
+          "text": "Para afinação inicial, normalmente a nota inferior funciona como fundamento acústico e a superior é afinada em relação a ela. Mas a função musical pode fazer a nota superior ser a voz principal. O HERMES separa referência de afinação de função melódica."
+        },
+        {
+          "title": "O que ouvir",
+          "text": "Primeiro a unidade do intervalo; depois a nota estrutural; depois a relação entre as duas vozes. Não procurar apenas duas notas corretas: procurar uma única identidade sonora de oitava."
+        },
+        {
+          "title": "Sombra",
+          "text": "A nota que funciona como sombra depende do contexto. Em exercício de afinação, a inferior costuma ser a referência. Em uma passagem melódica, a superior pode ser a voz que precisa projetar."
+        },
+        {
+          "title": "Estudo",
+          "text": "Tocar inferior isolada → superior isolada → juntas → ouvir batimento/estabilidade → repetir sem olhar para a mão → aplicar na frase."
+        }
+      ]
+    },
+    {
+      "id": "tercas",
+      "title": "Terças",
+      "methodLinks": [
+        "SEVCIK_OP1",
+        "KREUTZER_42",
+        "FLESCH_SCALE"
+      ],
+      "sections": [
+        {
+          "title": "Qual nota é importante?",
+          "text": "Não existe regra universal de 'a de cima' ou 'a de baixo'. Primeiro identificar a função harmônica e qual voz conduz a frase. Para afinação, uma voz serve de referência e a outra é ajustada; para musicalidade, a voz estrutural pode ser a superior ou inferior."
+        },
+        {
+          "title": "O ouvido",
+          "text": "A terça é sensível ao contexto tonal. O aluno deve ouvir a relação do intervalo e também o acorde em que ele está inserido, não apenas a distância mecânica entre dedos."
+        },
+        {
+          "title": "Estudo",
+          "text": "Separar vozes → cantar a voz estrutural → tocar a outra contra ela → juntar → transportar para outras tonalidades → aplicar no trecho real."
+        }
+      ]
+    },
+    {
+      "id": "acordes_quatro_notas",
+      "title": "Acordes de quatro notas",
+      "methodLinks": [
+        "SEVCIK_OP14",
+        "SEVCIK_OP1",
+        "BACH_CHACONNE"
+      ],
+      "sections": [
+        {
+          "title": "A regra não é 'sempre de baixo'",
+          "text": "O sentido do ataque depende de vozes, baixo, nota superior, harmonia, duração, direção da frase, articulação, acústica e convenção estilística. O HERMES deve explicar a decisão no trecho concreto."
+        },
+        {
+          "title": "Baixo → cima",
+          "text": "Quando a base harmônica e a sustentação das vozes superiores pedem esse gesto, o arco pode iniciar no baixo e atravessar as notas até a voz superior."
+        },
+        {
+          "title": "Cima → baixo",
+          "text": "Quando a voz superior ou o gesto melódico precisa aparecer primeiro, o ataque pode ser pensado a partir de cima, conforme a escrita e a prática estilística da passagem."
+        },
+        {
+          "title": "Bach Chaconne",
+          "text": "Na Chaconne, o estudo deve perguntar: qual voz é estrutural aqui? qual nota é o baixo? onde está a direção da frase? qual nota deve permanecer audível? qual é a função harmônica? Só então escolher a direção do acorde."
+        },
+        {
+          "title": "Laboratório",
+          "text": "Tocar as duas direções lentamente, ouvir qual voz fica dominante e comparar com a intenção musical. A decisão final é documentada como análise da passagem, não como uma regra universal."
+        }
+      ]
+    },
+    {
+      "id": "ornamentacao",
+      "title": "Ornamentação",
+      "methodLinks": [
+        "SEVCIK_OP1",
+        "KREUTZER_42",
+        "FIORILLO_36"
+      ],
+      "sections": [
+        {
+          "title": "Superior e inferior",
+          "text": "Primeiro identificar a nota principal e a direção do ornamento. Uma appoggiatura/nota de graça superior e uma inferior não têm necessariamente a mesma função expressiva."
+        },
+        {
+          "title": "Começar por cima ou por baixo?",
+          "text": "O HERMES não ensinará uma ordem fixa. A direção depende do símbolo, da fonte, do período, da função harmônica, da resolução e da tradição interpretativa documentada."
+        },
+        {
+          "title": "Mozart K.525 — II movimento",
+          "text": "Ao estudar ornamentação, separar a linha do primeiro violino da resposta/apoio do baixo e perceber onde o ornamento aumenta tensão e onde resolve. O objetivo é ouvir pergunta, resposta e harmonia, não apenas executar pequenas notas."
+        },
+        {
+          "title": "Estudo",
+          "text": "Linha sem ornamento → harmonia → cantar ornamento → executar lento → variar ritmo → integrar à pulsação → tocar no estilo."
+        }
+      ]
+    },
+    {
+      "id": "arco_articulacoes",
+      "title": "Articulações do arco",
+      "methodLinks": [
+        "SEVCIK_OP2",
+        "SEVCIK_OP3",
+        "SEVCIK_OP16"
+      ],
+      "sections": [
+        {
+          "title": "Détaché",
+          "text": "Som contínuo e separado, com controle de distribuição, contato e mudança de corda. Primeiro estabilidade; depois velocidade."
+        },
+        {
+          "title": "Staccato",
+          "text": "Ataques separados e controlados. O HERMES observa regularidade sonora e não confunde staccato com spiccato."
+        },
+        {
+          "title": "Spiccato",
+          "text": "O arco deixa a corda de forma controlada. Antes da peça, estabilizar o gesto, a regularidade dos ataques e a recuperação do arco."
+        },
+        {
+          "title": "Transferência",
+          "text": "Exercício isolado → padrão Ševčík → trecho lento → trecho musical → andamento. Se a articulação colapsar na peça, regressar à etapa anterior."
+        }
+      ]
+    }
+  ],
+  "methodIndex": {
+    "SEVCIK_OP1": "Ševčík Op.1 — mão esquerda, semitons, independência, posições e relações entre dedos.",
+    "SEVCIK_OP8": "Ševčík Op.8 — mudanças de posição e preparação de padrões móveis.",
+    "SEVCIK_OP9": "Ševčík Op.9 — preparação de double-stopping e afinação de combinações.",
+    "SEVCIK_OP14": "Ševčík Op.14 — acordes e combinações de cordas.",
+    "SEVCIK_OP15": "Ševčík Op.15 — harmônicos/flageolets e pizzicato.",
+    "SEVCIK_OP16": "Ševčík Op.16 — integração de recursos técnicos e aplicação musical.",
+    "KREUTZER_42": "Kreutzer 42 — estudos selecionados conforme a competência; não estudar mecanicamente em ordem.",
+    "FIORILLO_36": "Fiorillo 36 — estudo de articulação, frase, afinação e coordenação conforme a necessidade.",
+    "FLESCH_SCALE": "Flesch — sistema de escalas, intervalos, arpejos e afinação.",
+    "BACH_CHACONNE": "Bach Chaconne — aplicação de vozes, acordes, harmonia, direção e polifonia.",
+    "SEVCIK_OP2": "Ševčík Op.2 — fundamento de golpes de arco, contato, distribuição e coordenação da mão direita.",
+    "SEVCIK_OP3": "Ševčík Op.3 — variações e coordenação aplicadas à organização técnica."
+  }
+}

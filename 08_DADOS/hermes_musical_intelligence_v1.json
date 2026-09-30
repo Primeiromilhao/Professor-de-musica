@@ -1,0 +1,29 @@
+{
+  "schemaVersion":"1.0",
+  "purpose":"Camada musical do HERMES: teoria, ouvido interno, contexto, performance e lacunas.",
+  "principles":{
+    "uncertaintyNeverBecomesError":true,
+    "cleanScore":true,
+    "contextBeforeJudgement":true,
+    "onlyRelevantKnowledge":true,
+    "localFirst":true
+  },
+  "informationLabels":["DOCUMENTADO","INTERPRETAÇÃO","TRADIÇÃO","CURIOSIDADE","HIPÓTESE"],
+  "performanceContexts":{
+    "solo":"Construir referência interna sem depender do acompanhamento.",
+    "piano":"Ouvir relação vertical, harmônicos, sustentação e afinação relativa.",
+    "playback":"Não confiar no volume sintético; manter referência interna e projeção acústica.",
+    "orchestra":"Ouvir baixo, vozes-guia, respostas, entradas e afinação relacional do conjunto."
+  },
+  "analysisLayers":[
+    "tonalidade","harmonia","notas_estruturais","notas_de_tensao","baixo",
+    "vozes_importantes","frase","direcao","o_que_ouvir","contexto_historico",
+    "tecnica","interpretacao","contexto_de_performance"
+  ],
+  "gapLearning":{
+    "enabled":true,
+    "rule":"Quando uma competência necessária não estiver dominada, criar uma microaula antes de exigir a aplicação.",
+    "flow":["identificar_lacuna","explicar","demonstrar","praticar","aplicar_na_obra","verificar"],
+    "exampleTopics":["harmonicos","oitavas","pizzicato","spiccato","mudanca_de_posicao","afinação","ritmo","arco"]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version":"1.0",
+  "language_priority":"pt-BR/PT",
+  "selection_rule":"professores indicados pelo utilizador primeiro; depois professores de referência encontrados; depois qualquer fonte útil em português; estrangeiros apenas quando necessário",
+  "required_for_method_study":true,
+  "required_for_technique_study":true,
+  "video_types":["execução da lição","masterclass","explicação técnica","exemplo de arco","exemplo de afinação"],
+  "teachers":[
+    {"name":"Paulo Bosísio","priority":1,"status":"base","language":"pt-BR","notes":"referência principal para fundamentos e construção técnica"},
+    {"name":"Emmanuele Baldini","priority":2,"status":"base","language":"pt-BR","notes":"referência principal para técnica e repertório"},
+    {"name":"Cláudio Micheletti","priority":3,"status":"base","language":"pt-BR","notes":"referência principal para técnica, repertório e preparação"},
+    {"name":"Cármelo de los Santos","priority":4,"status":"base","language":"pt-BR","notes":"referência para conteúdos avançados quando a competência exigir"},
+    {"name":"Davi Graton","priority":5,"status":"reserva","language":"pt-BR","notes":"professor e violinista; usar quando houver material diretamente útil"},
+    {"name":"Cláudio Cruz","priority":6,"status":"reserva","language":"pt-BR","notes":"conteúdo avançado; não prioritário para fundamentos"},
+    {"name":"Elisa Fukuda","priority":7,"status":"reserva","language":"pt-BR","notes":"conteúdo avançado; usar conforme a competência"},
+    {"name":"Daniel Guedes","priority":8,"status":"reserva","language":"pt-BR","notes":"conteúdo técnico avançado; usar quando pertinente"},
+    {"name":"Bernardo Bessler","priority":9,"status":"reserva","language":"pt-BR","notes":"conteúdo gratuito; usar conforme a lição"},
+    {"name":"Jean de Oliveira","priority":null,"status":"removido_da_prioridade","language":"pt-BR","notes":"não usar como referência padrão"}
+  ],
+  "verification":"cada vídeo precisa ser verificado quanto a idioma, correspondência com a lição e disponibilidade gratuita",
+  "never_paywall":"não recomendar curso pago como vídeo de referência"
+}

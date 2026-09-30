@@ -1,0 +1,29 @@
+{
+  "version":"1.0",
+  "principle":"Os métodos são redes pedagógicas: selecionar famílias de exercícios pela competência e pelo problema, relacionar exercícios e só avançar quando houver evidência de controlo.",
+  "sources":[
+    {"title":"Otakar Ševčík's Opus 1: The Basis of Modern Violin Pedagogy","url":"https://123deta.com/document/y4wr695v-otakar-s%CB%87ev%CB%87c-opus-the-basis-modern-violin-pedagogy.html","type":"academic"},
+    {"title":"Ševčík Op.1","url":"https://imslp.org/wiki/School_of_Violin_Technique%2C_Op.1_%28%C5%A0ev%C4%8D%C3%ADk%2C_Otakar%29","type":"primary_source"}
+  ],
+  "methodRules":{
+    "SEVCIK_OP1":{"mode":"family","rule":"Não percorrer 1-42 cegamente. Trabalhar grupos ligados por posição, padrão, arco, mudança ou cordas duplas; repetir o princípio noutras cordas/posições e transferir para música.","progression":["fundação","família relacionada","variação","transferência","consolidação"]},
+    "SEVCIK_OP2":{"mode":"family","rule":"Selecionar golpes de arco e variantes conforme a necessidade; mudar distribuição, região e articulação sem transformar o método numa fila rígida."},
+    "KREUTZER_42":{"mode":"diagnostic_sequence","rule":"Escolher estudos por conteúdo técnico e dificuldade; agrupar por arco, articulação, trilos, cordas duplas e afinação."},
+    "FIORILLO_36":{"mode":"progressive_selection","rule":"Selecionar caprichos por técnica musical e repertório; trabalhar variações de arco, articulação, afinação e fraseado."},
+    "DONT_OP35":{"mode":"advanced_preparation","rule":"Exigir pré-requisitos; usar exercícios preparatórios e variações antes de acelerar o estudo."},
+    "MAZAS":{"mode":"progressive_selection","rule":"Usar a progressão dos volumes, mas selecionar estudos dentro da faixa conforme competência e repertório."},
+    "KAYSER_OP20":{"mode":"progressive_selection","rule":"Construir base antes de Kreutzer; selecionar estudos pela coordenação, afinação, arco e mudanças."},
+    "WOHLFAHRT_OP45":{"mode":"progressive_selection","rule":"Base inicial; manter progressão simples, mas permitir repetição e retorno conforme diagnóstico."},
+    "FLESCH_SCALE":{"mode":"system","rule":"Escala é mapa técnico: tonalidade, arpejo, intervalos, articulações e afinação são selecionados conforme repertório."}
+  },
+  "sevcikFamilies":[
+    {"id":"S1","name":"Semitons e independência","books":["SEVCIK_OP1"],"exercises":["P1:1-4"],"competencies":["CVC_INDEPENDENCIA","CVC_AFINACAO"],"next":["S2","S3"],"transfer":"escalas e peças em 1ª posição"},
+    {"id":"S2","name":"Padrões rítmicos e coordenação","books":["SEVCIK_OP1"],"exercises":["P1:5-9"],"competencies":["CVC_INDEPENDENCIA","CVC_COORDENACAO"],"next":["S4"],"transfer":"passagens de colcheias/semicolcheias"},
+    {"id":"S3","name":"Cruzamento de cordas","books":["SEVCIK_OP1"],"exercises":["P1:10-11"],"competencies":["CVC_ARCO","CVC_COORDENACAO"],"next":["S5"],"transfer":"détaché e string crossings"},
+    {"id":"S4","name":"Escalas e intervalos","books":["SEVCIK_OP1","SEVCIK_OP8"],"exercises":["P1:12-15","Op8:selecionados"],"competencies":["CVC_ESCALAS","CVC_AFINACAO"],"next":["S6"],"transfer":"escalas e arpejos"},
+    {"id":"S5","name":"Posições e mudanças","books":["SEVCIK_OP1","SEVCIK_OP8"],"exercises":["P2:1-5","P2:12+","Op8:selecionados"],"competencies":["CVC_MUDANCA_POSICAO","CVC_AFINACAO"],"next":["S7"],"transfer":"passagens com shifts"},
+    {"id":"S6","name":"Arpejos e padrões móveis","books":["SEVCIK_OP1","SEVCIK_OP3"],"exercises":["P2:6-8","P2:17+","Op3:selecionados"],"competencies":["CVC_ARPEJOS","CVC_COORDENACAO"],"next":["S7"],"transfer":"arpejos de concerto"},
+    {"id":"S7","name":"Cordas duplas e acordes","books":["SEVCIK_OP1","SEVCIK_OP7","SEVCIK_OP9"],"exercises":["P4:relacionados","Op7/9:selecionados"],"competencies":["CVC_CORDAS_DUPLAS","CVC_EXTENSOES"],"next":["S8"],"transfer":"Bach, acordes e passagens de concerto"},
+    {"id":"S8","name":"Integração e transferência","books":["SEVCIK_OP1","SEVCIK_OP2","SEVCIK_OP8","SEVCIK_OP9"],"exercises":["variações selecionadas"],"competencies":["CVC_COORDENACAO","CVC_MUSICALIDADE"],"next":[],"transfer":"repertório real"}
+  ]
+}

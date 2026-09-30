@@ -1,0 +1,19 @@
+{
+  "version":"1.0",
+  "purpose":"mapear técnica -> estudo -> competência -> repertório",
+  "free_policy":"usar apenas material gratuito e legalmente verificável",
+  "methods":[
+    {"id":"SEVCIK_OP1","author":"Otakar Ševčík","work":"School of Violin Technique Op.1","books":4,"focus":["independência","posição","mudanças de posição","cordas duplas"],"source":"https://imslp.org/wiki/School_of_Violin_Technique,_Op.1_(Ševčík,_Otakar)"},
+    {"id":"KREUTZER_42","author":"Rodolphe Kreutzer","work":"42 Études ou caprices","studies":42,"focus":["arco","articulação","afinação","mudanças","cordas duplas"],"source":"https://imslp.org/wiki/42_Études_ou_caprices_(Kreutzer,_Rodolphe)"},
+    {"id":"FIORILLO_36","author":"Federigo Fiorillo","work":"36 Caprices Op.3","studies":36,"focus":["articulação","arco","posição","virtuosismo"],"source":"https://imslp.org/wiki/36_Caprices_for_Violin,_Op.3_(Fiorillo,_Federigo)"},
+    {"id":"DONT_OP35","author":"Jakob Dont","work":"24 Etudes or Caprices Op.35","studies":24,"focus":["virtuosismo","posição","arco","coordenação"],"source":"https://imslp.org/wiki/24_Etudes_or_Caprices,_Op.35_(Dont,_Jakob)"},
+    {"id":"FLESCH_SCALE","author":"Carl Flesch","work":"Das Skalensystem","focus":["escalas","arpejos","afinação","três oitavas"],"source":"https://imslp.org/wiki/Das_Skalensystem_(Flesch,_Carl)"},
+    {"id":"KAYSER_OP20","author":"Heinrich Ernst Kayser","work":"36 Violin Studies Op.20","studies":36,"focus":["base técnica","afinação","posição","preparação Kreutzer"],"source":"https://imslp.org/wiki/36_Violin_Studies,_Op.20_(Kayser,_Heinrich_Ernst)"},
+    {"id":"WOHLFAHRT_OP45","author":"Franz Wohlfahrt","work":"60 Studies Op.45","studies":60,"focus":["base","primeira posição","posições 1-3"],"source":"https://imslp.org/wiki/Sixty_Studies_for_the_Violin,_Op.45_(Wohlfahrt,_Franz)"},
+    {"id":"MAZAS","author":"Jacques Féréol Mazas","work":"Études spéciales Op.36","focus":["estudo progressivo","arco","posição"],"source":"IMSLP a localizar e verificar"}
+  ],
+  "route_rule":"não estudar um método inteiro por ordem automática; selecionar estudos pela competência necessária ao repertório",
+  "video_rule":"cada estudo prescrito deve tentar receber um vídeo gratuito de execução, preferencialmente em português",
+  "assessment_rule":"uma lição só conta como consolidada após desempenho consistente em sessões repetidas",
+  "next_mapping":"ligar cada estudo a competências e aos trechos de Mendelssohn, Bach, Mozart e Paganini"
+}

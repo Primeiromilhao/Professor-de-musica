@@ -1,0 +1,30 @@
+{
+  "version":"1.0",
+  "title":"HERMES — currículo baseado em escolas e conservatórios",
+  "principle":"Combinar estruturas documentadas e adaptá-las ao estudo individual.",
+  "sources":[
+    {"model":"Suzuki","source":"Suzuki Association of the Americas","evidence":"progressão por livros/unidades, sequência, repertório, audição, técnica, prática e avaliação","url":"https://suzukiassociation.org/teachers/violin/"},
+    {"model":"Escola Russa","source":"Oxford Academic — The Russian Violin School / Yankelevich","evidence":"técnica, exercícios, afinação, vibrato, dedilhados, arcos, seleção e trabalho de repertório","url":"https://academic.oup.com/book/8731"},
+    {"model":"Escola Francesa/Conservatório","source":"Conservatoire de Paris","evidence":"estudos e escalas + repertório de vários estilos + formação artística e teórica","url":"https://www.conservatoiredeparis.fr/en/curriculum/violin"},
+    {"model":"Conservatório","source":"Eastman Community Music School","evidence":"seis níveis, standards, escalas, métodos/estudos, repertório e exames/júris","url":"https://www.esm.rochester.edu/community/faq/student-curriculum/violin/"},
+    {"model":"Alto rendimento","source":"Yehudi Menuhin School","evidence":"formação individualizada, prática supervisionada, repertório/exercícios selecionados e avaliações periódicas","url":"https://www.menuhinschool.co.uk/studying-here/studying-music"}
+  ],
+  "design_rules":[
+    "técnica obrigatória e progressiva",
+    "escala/arpejo ligados à competência e ao repertório",
+    "método escolhido por problema técnico, não por ordem cega",
+    "repertório organizado por nível e pré-requisitos",
+    "obra -> movimento -> sessão -> trechos críticos",
+    "cada sessão recebe pacote de preparação técnica",
+    "avaliação por competência e consistência",
+    "repertório só é desbloqueado quando os pré-requisitos permitem"
+  ],
+  "hermes_levels":{
+    "1_fundacao":{"core":["postura","afinação básica","ritmo","leitura","coordenação","arco básico"],"scales":"1-2 oitavas","methods":["Wohlfahrt","Ševčík Op.1 Book 1","Ševčík Op.2"],"repertoire_role":"peças simples e primeiros concertos"},
+    "2_construcao":{"core":["independência dos dedos","mudanças iniciais","1ª-3ª posição","legato","détaché","arpejos"],"scales":"2 oitavas e entrada em 3 oitavas","methods":["Ševčík Op.1","Ševčík Op.2","Kayser","Mazas Book 1","Wohlfahrt Book 2","Kreutzer inicial"],"repertoire_role":"concertos estudantis e sonatas acessíveis"},
+    "3_intermedio":{"core":["mudanças de posição","afinação em 3 oitavas","velocidade do arco","cordas duplas básicas","articulação"],"scales":"3 oitavas","methods":["Kreutzer","Mazas","Ševčík Op.8","Ševčík Op.9","Fiorillo"],"repertoire_role":"Bach, Mozart, Viotti, concertos intermédios"},
+    "4_avancado":{"core":["3 oitavas estáveis","spiccato","martelé","mudanças rápidas","cordas duplas","acordes","resistência"],"scales":"3 oitavas + arpejos","methods":["Flesch","Kreutzer","Fiorillo","Ševčík","Dont Op.35"],"repertoire_role":"Mendelssohn, Bruch, Lalo e equivalentes"},
+    "5_pre_solista":{"core":["virtuosidade controlada","cordas duplas/triplas/quádruplas","projeção","velocidade","refinamento"],"scales":"3 oitavas + arpejos + padrões","methods":["Flesch","Dont Op.35","Fiorillo","Ševčík avançado"],"repertoire_role":"Tchaikovsky, Sibelius, Wieniawski, Brahms"},
+    "6_solista":{"core":["integração técnica-musical","virtuosidade","resistência de programa","interpretação"],"scales":"3 oitavas completas + arpejos + cordas duplas","methods":["Flesch","Dont","Fiorillo","Rode/Gaviniés quando apropriado"],"repertoire_role":"Paganini e grande repertório de concerto"}
+  }
+}

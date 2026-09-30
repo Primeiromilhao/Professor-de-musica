@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "title": "HERMES — Formação Inicial de Violino",
+  "principle": "Começar pela base e avançar apenas quando as competências forem demonstradas.",
+  "studentMode": "diagnostico_real",
+  "levels": [
+    {
+      "id": "L1",
+      "name": "Fundação",
+      "technique": ["Ševčík Op.1 Livro 1", "Ševčík Op.2 selecionado", "Wohlfahrt Op.45 Livro 1"],
+      "scales": ["1 oitava", "2 oitavas progressivamente"],
+      "competencies": ["postura", "afinação", "ritmo", "détaché", "legato", "mudança de corda", "leitura"],
+      "repertoire": ["peças curtas e estudos preparatórios"]
+    },
+    {
+      "id": "L2",
+      "name": "Primeiros Concertos",
+      "technique": ["Ševčík Op.1", "Ševčík Op.2", "Wohlfahrt Op.45"],
+      "scales": ["2 oitavas"],
+      "competencies": ["coordenação", "articulação", "distribuição de arco", "fraseado básico"],
+      "repertoire": ["Rieding Op.35", "Rieding Op.34", "Seitz — concertos didáticos selecionados"]
+    },
+    {
+      "id": "L3",
+      "name": "Vivaldi e Consolidação",
+      "technique": ["Ševčík Op.1 selecionado", "Ševčík Op.2 selecionado", "Kayser", "Wohlfahrt"],
+      "scales": ["2 oitavas estáveis", "entrada gradual em 3 oitavas"],
+      "competencies": ["afinação estável", "détaché", "legato", "articulação barroca", "coordenação", "musicalidade"],
+      "repertoire": ["Vivaldi RV 356 em Lá menor", "outros Vivaldi adequados após diagnóstico"]
+    },
+    {
+      "id": "L4",
+      "name": "Transição para Intermédio",
+      "technique": ["Kreutzer selecionado", "Mazas selecionado", "Ševčík Op.8", "Ševčík Op.9"],
+      "scales": ["3 oitavas"],
+      "competencies": ["mudança de posição", "arpejos", "afinação em 3 oitavas", "articulação", "resistência"],
+      "repertoire": ["Vivaldi mais exigente", "Haydn em Sol maior Hob.VIIa:4", "Accolay selecionado"]
+    }
+  ],
+  "progressionRule": {
+    "doNotAssumeLevel": true,
+    "evaluateBeforePromotion": true,
+    "masteryMinimum": 0.8,
+    "consistencySessions": 3,
+    "allowRegression": true
+  },
+  "audioAssessment": {
+    "enabledFromStart": true,
+    "firstMetrics": ["pitch_cents", "pitch_stability", "voiced_time"],
+    "nextMetrics": ["rhythm", "onset", "note_duration", "tempo_stability"],
+    "laterMetrics": ["bow_related_proxy", "articulation", "passage_accuracy", "musical_phrase"],
+    "privacy": "local_only"
+  }
+}

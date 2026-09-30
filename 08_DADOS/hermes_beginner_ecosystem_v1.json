@@ -1,0 +1,43 @@
+{
+  "version":"1.0",
+  "principle":"O concerto Ã© um ecossistema: obra completa -> movimentos -> sessÃµes -> passagens -> competÃªncias -> prÃ©-requisitos -> mÃ©todos -> aplicaÃ§Ã£o -> avaliaÃ§Ã£o.",
+  "levels":[
+    {"id":"L1","name":"FundaÃ§Ã£o","repertoire":["WOHLFAHRT_OP45","SEVCIK_OP1","SEVCIK_OP2"],"promotion":"consistÃªncia mÃ­nima 80% em 3 sessÃµes"},
+    {"id":"L2","name":"Primeiros Concertos","repertoire":["RIEDING_OP35","RIEDING_OP36","SEITZ_OP22"],"promotion":"afinaÃ§Ã£o, ritmo, arco e leitura consistentes"},
+    {"id":"L3","name":"Vivaldi e ConsolidaÃ§Ã£o","repertoire":["VIVALDI_RV356","VIVALDI_RV310"],"promotion":"2 oitavas estÃ¡veis e aplicaÃ§Ã£o musical consistente"},
+    {"id":"L4","name":"TransiÃ§Ã£o para IntermÃ©dio","repertoire":["HAYDN_HOB_VIIA4","ACCOLAY_SELECTED"],"promotion":"3 oitavas, mudanÃ§as de posiÃ§Ã£o e articulaÃ§Ã£o estÃ¡veis"}
+  ],
+  "concertos":[
+    {"id":"RIEDING_OP35","title":"Concerto nÂº 2 em Si menor, Op.35","composer":"Oskar Rieding","level":"L2","key":"B minor","positions":"1Âª-3Âª","source":"https://imslp.org/wiki/Violin_Concerto_No.2%2C_Op.35_(Rieding%2C_Oskar)","sessions":[
+      {"id":"R35-A","movement":"I Allegro moderato","bars":"abertura","competencies":["CVC_AFINACAO","CVC_ARCO","CVC_COORDENACAO"],"methods":["WOHLFAHRT_OP45","SEVCIK_OP1","SEVCIK_OP2"],"purpose":"ataque limpo, afinaÃ§Ã£o e coordenaÃ§Ã£o em primeira posiÃ§Ã£o"},
+      {"id":"R35-B","movement":"II Andante","bars":"tema inicial","competencies":["CVC_ARCO","CVC_MUSICALIDADE"],"methods":["WOHLFAHRT_OP45","SEVCIK_OP2"],"purpose":"legato, distribuiÃ§Ã£o de arco e fraseado"},
+      {"id":"R35-C","movement":"III Allegro moderato","bars":"tema e transiÃ§Ãµes","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE"],"methods":["SEVCIK_OP1","KAYSER_OP20"],"purpose":"coordenaÃ§Ã£o e velocidade controlada"}
+    ]},
+    {"id":"RIEDING_OP36","title":"Concerto nÂº 3 em RÃ© maior, Op.36","composer":"Oskar Rieding","level":"L2","key":"D major","positions":"1Âª posiÃ§Ã£o","source":"https://imslp.org/wiki/List_of_works_by_Oskar_Rieding","sessions":[
+      {"id":"R36-A","movement":"I Allegro","bars":"entrada do solo","competencies":["CVC_AFINACAO","CVC_ARCO"],"methods":["SEVCIK_OP1","SEVCIK_OP2","WOHLFAHRT_OP45"],"purpose":"clareza de articulaÃ§Ã£o e afinaÃ§Ã£o em RÃ© maior"},
+      {"id":"R36-B","movement":"II Andante","bars":"tema","competencies":["CVC_ARCO","CVC_MUSICALIDADE"],"methods":["SEVCIK_OP2","WOHLFAHRT_OP45"],"purpose":"som, legato e frase"},
+      {"id":"R36-C","movement":"III Allegro","bars":"passagens rÃ¡pidas","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE"],"methods":["SEVCIK_OP1","KAYSER_OP20"],"purpose":"coordenaÃ§Ã£o sem perder afinaÃ§Ã£o"}
+    ]},
+    {"id":"SEITZ_OP22","title":"Concerto de Estudante nÂº 5 em RÃ© maior, Op.22","composer":"Friedrich Seitz","level":"L2","key":"D major","positions":"1Âª posiÃ§Ã£o","source":"https://imslp.org/wiki/Student_Concerto_No.5%2C_Op.22_(Seitz%2C_Friedrich)","sessions":[
+      {"id":"S22-A","movement":"I","bars":"tema","competencies":["CVC_ARCO","CVC_AFINACAO"],"methods":["WOHLFAHRT_OP45","SEVCIK_OP2"],"purpose":"dÃ©tachÃ© e afinaÃ§Ã£o"},
+      {"id":"S22-B","movement":"II","bars":"tema cantabile","competencies":["CVC_ARCO","CVC_MUSICALIDADE"],"methods":["SEVCIK_OP2","WOHLFAHRT_OP45"],"purpose":"legato e fraseado"},
+      {"id":"S22-C","movement":"III","bars":"passagem final","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE"],"methods":["SEVCIK_OP1","KAYSER_OP20"],"purpose":"agilidade controlada"}
+    ]},
+    {"id":"VIVALDI_RV356","title":"Concerto em LÃ¡ menor, Op.3 nÂº6, RV 356","composer":"Antonio Vivaldi","level":"L3","key":"A minor","positions":"1Âª-3Âª conforme ediÃ§Ã£o","source":"https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)","sessions":[
+      {"id":"V356-A","movement":"I Allegro","bars":"tema/entrada do solo","competencies":["CVC_ARCO","CVC_AFINACAO","CVC_COORDENACAO"],"methods":["SEVCIK_OP1","SEVCIK_OP2","WOHLFAHRT_OP45"],"purpose":"dÃ©tachÃ© claro, semitons e coordenaÃ§Ã£o"},
+      {"id":"V356-B","movement":"II Largo","bars":"tema cantabile","competencies":["CVC_ARCO","CVC_MUSICALIDADE","CVC_AFINACAO"],"methods":["SEVCIK_OP2","FLESCH_SCALE"],"purpose":"sustentaÃ§Ã£o, afinaÃ§Ã£o e fraseado barroco"},
+      {"id":"V356-C","movement":"III Presto","bars":"tema e sequÃªncias","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE","CVC_AFINACAO"],"methods":["SEVCIK_OP1","KAYSER_OP20"],"purpose":"velocidade sÃ³ depois de estabilidade"},
+      {"id":"V356-D","movement":"IntegraÃ§Ã£o","bars":"passagens crÃ­ticas do concerto","competencies":["CVC_AFINACAO","CVC_ARCO","CVC_COORDENACAO"],"methods":["SEVCIK_OP1","SEVCIK_OP2","FLESCH_SCALE"],"purpose":"transferir tÃ©cnica para a passagem real"}
+    ]},
+    {"id":"VIVALDI_RV310","title":"Concerto em Sol maior, Op.3 nÂº3, RV 310","composer":"Antonio Vivaldi","level":"L3","key":"G major","positions":"1Âª posiÃ§Ã£o + diagnÃ³stico","source":"https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)","sessions":[
+      {"id":"V310-A","movement":"I Allegro","bars":"tema","competencies":["CVC_ARCO","CVC_COORDENACAO"],"methods":["SEVCIK_OP2","SEVCIK_OP1"],"purpose":"articulaÃ§Ã£o e cruzamento de cordas"},
+      {"id":"V310-B","movement":"II Largo","bars":"tema","competencies":["CVC_MUSICALIDADE","CVC_ARCO"],"methods":["SEVCIK_OP2"],"purpose":"som e frase"},
+      {"id":"V310-C","movement":"III Allegro","bars":"passagens rÃ¡pidas","competencies":["CVC_VELOCIDADE","CVC_COORDENACAO"],"methods":["SEVCIK_OP1","KAYSER_OP20"],"purpose":"velocidade construÃ­da"}
+    ]},
+    {"id":"HAYDN_HOB_VIIA4","title":"Concerto para Violino em Sol maior, Hob.VIIa:4","composer":"Joseph Haydn / atribuiÃ§Ã£o histÃ³rica discutida","level":"L4","key":"G major","positions":"1Âª-3Âª+","source":"https://imslp.org/wiki/Violin_Concerto_in_G_major,_Hob.VIIa:4*_(Haydn,_Joseph)","sessions":[
+      {"id":"H4-A","movement":"I Allegro moderato","bars":"tema/entrada","competencies":["CVC_ARCO","CVC_AFINACAO","CVC_MUDANCA_POSICAO"],"methods":["KREUTZER_42","SEVCIK_OP1","SEVCIK_OP8"],"purpose":"articulaÃ§Ã£o clÃ¡ssica e mudanÃ§as limpas"},
+      {"id":"H4-B","movement":"II Adagio","bars":"tema","competencies":["CVC_MUSICALIDADE","CVC_ARCO","CVC_AFINACAO"],"methods":["KREUTZER_42","FLESCH_SCALE"],"purpose":"som, afinaÃ§Ã£o e frase clÃ¡ssico"},
+      {"id":"H4-C","movement":"III Allegro","bars":"passagens rÃ¡pidas","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE","CVC_MUDANCA_POSICAO"],"methods":["KREUTZER_42","SEVCIK_OP8"],"purpose":"coordenaÃ§Ã£o e posiÃ§Ã£o"}
+    ]}
+  ]
+}

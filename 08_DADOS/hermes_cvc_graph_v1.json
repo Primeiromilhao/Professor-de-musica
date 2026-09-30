@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0",
+  "title": "HERMES CVC — Grafo Central de Formação Técnica",
+  "role": "arquitetura invisível; não é uma rotina rígida",
+  "cycle": ["diagnosticar","identificar_competencia","preparar","treinar","aplicar","medir","corrigir","transferir","consolidar"],
+  "masteryStages": [
+    {"id":"exposicao","label":"Exposição"},
+    {"id":"compreensao","label":"Compreensão"},
+    {"id":"lenta","label":"Execução lenta"},
+    {"id":"controlada","label":"Execução controlada"},
+    {"id":"musical","label":"Execução musical"},
+    {"id":"transferencia","label":"Transferência"},
+    {"id":"automatizacao","label":"Automatização"},
+    {"id":"dominio","label":"Domínio"}
+  ],
+  "sessionProfiles": {
+    "30": {"default":[5,8,7,10],"adaptive":true},
+    "urgent_repertoire": {"default":[5,5,15,5],"adaptive":true},
+    "micro": {"default":[3,7,15,5],"adaptive":true}
+  },
+  "domains": [
+    "postura","mao_esquerda","mao_direita","coordenacao","afinacao",
+    "mudanca_posicao","extensoes","articulacao","velocidade","golpes_arco",
+    "mudanca_corda","acordes","escalas","arpejos","padroes_digitais",
+    "independencia_dedos","preparacao_passagens","resistencia","precisao","musicalidade"
+  ],  "competencies": [
+    {
+      "id":"CVC_AFINACAO","label":"Afinação","domain":"afinacao",
+      "prerequisites":["CVC_POSTURA","CVC_INDEPENDENCIA"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP8","SEVCIK_OP11"],
+      "complementary":["FLESCH_SCALE","KREUTZER_42"],
+      "applications":["escalas","arpejos","Bach","Mozart","Mendelssohn"],
+      "evidence":["estabilidade de pitch","intervalos","afinação em mudança de posição"]
+    },
+    {
+      "id":"CVC_MUDANCA_POSICAO","label":"Mudança de posição","domain":"mudanca_posicao",
+      "prerequisites":["CVC_AFINACAO","CVC_INDEPENDENCIA"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP8"],
+      "complementary":["KREUTZER_42","FLESCH_SCALE"],
+      "applications":["escalas_3_oitavas","Mendelssohn","Mozart","Wieniawski"],
+      "evidence":["preparação","antecipação","chegada afinada","relaxamento"]
+    },
+    {
+      "id":"CVC_INDEPENDENCIA","label":"Independência dos dedos","domain":"independencia_dedos",
+      "prerequisites":["CVC_POSTURA"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP3","SEVCIK_OP7"],
+      "complementary":["WOHLFAHRT_OP45","KAYSER_OP20"],
+      "applications":["escalas","passagens rápidas","ornamentação"],
+      "evidence":["regularidade","dedos próximos","coordenação"]
+    },
+    {
+      "id":"CVC_ARCO","label":"Controle do arco","domain":"golpes_arco",
+      "prerequisites":["CVC_POSTURA"],
+      "sevcik":["SEVCIK_OP2","SEVCIK_OP3"],
+      "complementary":["KREUTZER_42","FIORILLO_36"],
+      "applications":["detache","martele","spiccato","fraseado"],
+      "evidence":["ponto de contacto","velocidade","pressão","distribuição"]
+    },
+    {
+      "id":"CVC_COORDENACAO","label":"Coordenação esquerda-direita","domain":"coordenacao",
+      "prerequisites":["CVC_INDEPENDENCIA","CVC_ARCO"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP2","SEVCIK_OP3"],
+      "complementary":["KREUTZER_42","MAZAS"],
+      "applications":["escalas","semicolcheias","concerto"],
+      "evidence":["sincronização","ataque limpo","continuidade"]
+    },    {
+      "id":"CVC_EXTENSOES","label":"Extensões e formas da mão","domain":"extensoes",
+      "prerequisites":["CVC_INDEPENDENCIA","CVC_AFINACAO"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP9"],
+      "complementary":["KREUTZER_42","FIORILLO_36"],
+      "applications":["cordas duplas","passagens cromáticas","Mendelssohn"],
+      "evidence":["forma da mão","relaxamento","distância dos dedos"]
+    },
+    {
+      "id":"CVC_CORDAS_DUPLAS","label":"Cordas duplas e acordes","domain":"acordes",
+      "prerequisites":["CVC_AFINACAO","CVC_EXTENSOES","CVC_ARCO"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP7","SEVCIK_OP9"],
+      "complementary":["KREUTZER_42","FIORILLO_36","DONT_OP35","FLESCH_SCALE"],
+      "applications":["Bach","Paganini","Brahms","Wieniawski"],
+      "evidence":["afinação simultânea","equilíbrio","preparação da mão","voz superior"]
+    },
+    {
+      "id":"CVC_VELOCIDADE","label":"Velocidade controlada","domain":"velocidade",
+      "prerequisites":["CVC_COORDENACAO","CVC_AFINACAO"],
+      "sevcik":["SEVCIK_OP1","SEVCIK_OP3","SEVCIK_OP7"],
+      "complementary":["KREUTZER_42","FIORILLO_36","DONT_OP35"],
+      "applications":["passagens rápidas","Paganini","Wieniawski","Mendelssohn"],
+      "evidence":["clareza","relaxamento","estabilidade rítmica","sem tensão"]
+    },
+    {
+      "id":"CVC_ESCALAS","label":"Escalas como mapa técnico","domain":"escalas",
+      "prerequisites":["CVC_AFINACAO","CVC_COORDENACAO"],
+      "sevcik":["SEVCIK_OP8","SEVCIK_OP11"],
+      "complementary":["FLESCH_SCALE"],
+      "applications":["todo repertório tonal","mudanças","arpejos"],
+      "evidence":["afinação","dedilhado","mudança","homogeneidade do arco"]
+    },
+    {
+      "id":"CVC_ARPEJOS","label":"Arpejos","domain":"arpejos",
+      "prerequisites":["CVC_ESCALAS","CVC_MUDANCA_POSICAO"],
+      "sevcik":["SEVCIK_OP13"],
+      "complementary":["FLESCH_SCALE","DONT_OP35"],
+      "applications":["concertos","cadências","Paganini"],
+      "evidence":["mapa harmónico","mudança","antecipação","precisão"]
+    },
+    {
+      "id":"CVC_MUSICALIDADE","label":"Musicalidade aplicada","domain":"musicalidade",
+      "prerequisites":["CVC_COORDENACAO","CVC_AFINACAO","CVC_ARCO"],
+      "sevcik":["SEVCIK_OP16"],
+      "complementary":["BACH","KREUTZER_42","FIORILLO_36"],
+      "applications":["fraseado","dinâmica","estilo","performance"],
+      "evidence":["frase","direção","som","articulação estilística"]
+    },
+    {
+      "id":"CVC_POSTURA","label":"Postura e equilíbrio","domain":"postura",
+      "prerequisites":[],
+      "sevcik":["SEVCIK_OP6","SEVCIK_OP1"],
+      "complementary":["WOHLFAHRT_OP45"],
+      "applications":["toda prática"],
+      "evidence":["equilíbrio","relaxamento","liberdade de movimento"]
+    }
+  ],  "problems": [
+    {"id":"problema_afinação","label":"Afinação instável","competencies":["CVC_AFINACAO","CVC_ESCALAS"],"keywords":["afinação","pitch","semitom","nota falsa"]},
+    {"id":"problema_shift","label":"Mudança de posição insegura","competencies":["CVC_MUDANCA_POSICAO","CVC_AFINACAO"],"keywords":["shift","posição","chegada","deslize"]},
+    {"id":"problema_arco","label":"Arco inconsistente","competencies":["CVC_ARCO","CVC_COORDENACAO"],"keywords":["arco","detaché","spiccato","martelé","distribuição"]},
+    {"id":"problema_rapidez","label":"Passagem rápida não estabiliza","competencies":["CVC_VELOCIDADE","CVC_COORDENACAO"],"keywords":["rápida","semicolcheia","velocidade","limpeza"]},
+    {"id":"problema_duplas","label":"Cordas duplas/acordes instáveis","competencies":["CVC_CORDAS_DUPLAS","CVC_EXTENSOES"],"keywords":["cordas duplas","acorde","oitavas","sextas","terças"]},
+    {"id":"problema_coordenacao","label":"Mãos não sincronizam","competencies":["CVC_COORDENACAO","CVC_INDEPENDENCIA"],"keywords":["sincronização","coordenação","ataque"]},
+    {"id":"problema_musical","label":"Técnica funciona mas a frase não comunica","competencies":["CVC_MUSICALIDADE","CVC_ARCO"],"keywords":["fraseado","musicalidade","dinâmica","som","timbre"]}
+  ],  "routing": {
+    "directionForward":"competencia -> preparação -> Ševčík -> complemento -> aplicação -> avaliação",
+    "directionReverse":"repertório -> problema -> competência -> preparação -> Ševčík -> retorno ao repertório",
+    "antiRobot":[
+      "nunca prescrever exercício sem motivo",
+      "mostrar pelo menos uma aplicação musical",
+      "oferecer alternativa quando houver mais de um método adequado",
+      "reduzir ou regressar se a competência falhar na transferência",
+      "não aumentar BPM por velocidade isolada"
+    ]
+  },
+  "levels": {
+    "iniciante":{"maxOctaves":1,"preferred":["SEVCIK_OP6","SEVCIK_OP1","WOHLFAHRT_OP45"]},
+    "intermedio":{"maxOctaves":2,"preferred":["SEVCIK_OP1","SEVCIK_OP2","SEVCIK_OP8","KAYSER_OP20","KREUTZER_42"]},
+    "avancado":{"maxOctaves":3,"preferred":["SEVCIK_OP2","SEVCIK_OP8","SEVCIK_OP9","KREUTZER_42","FIORILLO_36","FLESCH_SCALE"]},
+    "pre_solista":{"maxOctaves":3,"preferred":["SEVCIK_OP1","SEVCIK_OP8","SEVCIK_OP9","SEVCIK_OP11","DONT_OP35","FLESCH_SCALE"]},
+    "solista":{"maxOctaves":3,"preferred":["SEVCIK_OP7","SEVCIK_OP9","SEVCIK_OP11","SEVCIK_OP16","DONT_OP35","FLESCH_SCALE"]}
+  },  "repertoireSignals": [
+    {"pattern":"mudança","competencies":["CVC_MUDANCA_POSICAO"]},
+    {"pattern":"posição","competencies":["CVC_MUDANCA_POSICAO"]},
+    {"pattern":"afinação","competencies":["CVC_AFINACAO"]},
+    {"pattern":"arco","competencies":["CVC_ARCO"]},
+    {"pattern":"spiccato","competencies":["CVC_ARCO","CVC_COORDENACAO"]},
+    {"pattern":"cordas duplas","competencies":["CVC_CORDAS_DUPLAS"]},
+    {"pattern":"acordes","competencies":["CVC_CORDAS_DUPLAS"]},
+    {"pattern":"semicolcheias","competencies":["CVC_VELOCIDADE","CVC_COORDENACAO"]},
+    {"pattern":"arpejos","competencies":["CVC_ARPEJOS"]},
+    {"pattern":"fraseado","competencies":["CVC_MUSICALIDADE"]}
+  ]
+}

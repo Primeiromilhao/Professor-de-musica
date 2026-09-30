@@ -1,0 +1,19 @@
+{
+  "version":"1.0",
+  "policy":"fonte pública não significa automaticamente domínio público",
+  "score_sources":[
+    {"name":"IMSLP / Petrucci","priority":1,"type":"partituras","status":"confirmed"},
+    {"name":"El Atril","priority":2,"type":"partituras","status":"confirmed"},
+    {"name":"MCB","priority":3,"type":"partituras","status":"needs_url_confirmation"},
+    {"name":"outros bancos indicados pelo utilizador","priority":4,"type":"partituras","status":"pending"}
+  ],
+  "license_fields":["work_status","edition_status","source_url","edition","publisher","year","rights_note","internal_use"],
+  "rule":"só marcar public_domain quando a obra e a edição estiverem verificadas",
+  "omr":"Audiveris pode converter scans para MusicXML; reconhecimento exige revisão humana",
+  "video_sources":[
+    {"name":"YouTube","type":"vídeo público gratuito","api":"não usar API paga"},
+    {"name":"sites institucionais","type":"masterclasses/videoaulas","api":"não necessária"}
+  ],
+  "ai_policy":"usar ferramentas locais/open-source quando uma IA for necessária; DSP determinístico para avaliação musical",
+  "network_policy":"pesquisa pública pode ser usada para descobrir fontes; o núcleo pedagógico permanece local"
+}

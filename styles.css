@@ -80,6 +80,17 @@ h1, h2, h3, h4, select, button {
     margin-top: 0.3rem;
 }
 
+/* HERMES Progression Path */
+.hermes-path-steps{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:.65rem;margin:1rem 0;overflow-x:auto}
+.hermes-path-step{position:relative;padding:1rem .75rem;border:1px solid var(--border-color);border-radius:12px;background:rgba(255,255,255,.025);min-width:120px}
+.hermes-path-step .step-num{font-size:.7rem;color:var(--text-muted);display:block;margin-bottom:.25rem}
+.hermes-path-step .step-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem}
+.hermes-path-step.locked{opacity:.45;filter:saturate(.4)}
+.hermes-path-step.current{border-color:var(--secondary);box-shadow:0 0 0 1px var(--secondary-glow)}
+.hermes-path-step.destination{border-color:var(--primary)}
+.hermes-path-status{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--border-color);padding-top:.8rem;font-size:.85rem}
+@media(max-width:900px){.hermes-path-steps{grid-template-columns:repeat(6,150px)}}
+
 /* Dashboard Grid */
 .dashboard-grid {
     display: grid;
@@ -1065,3 +1076,9 @@ input[type="range"] {
 
 
 
+
+.hermes-school-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:1rem 0}
+.hermes-school-grid>div{display:flex;flex-direction:column;gap:.2rem;padding:.75rem;border:1px solid var(--border-color);border-radius:10px;background:rgba(255,255,255,.03)}
+.hermes-school-grid strong{font-size:.85rem;color:var(--text-main)}
+.hermes-school-grid span{font-size:.75rem;color:var(--text-muted)}
+@media(max-width:800px){.hermes-school-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

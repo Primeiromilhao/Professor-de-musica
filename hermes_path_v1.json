@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "title": "HERMES Violin Lab — Caminho Progressivo",
+  "direction": "base_para_topo",
+  "principle": "Paganini é destino curricular, não ponto de partida.",
+  "gates": {
+    "masteryMinimum": 0.80,
+    "consistencySessions": 3,
+    "allowSkip": false
+  },
+  "levels": [
+    {
+      "id": "L1_fundacao",
+      "label": "Fundação",
+      "goal": "Som, postura, afinação básica, ritmo e arco.",
+      "methods": ["Suzuki Vol. 1", "Wohlfahrt Op. 45", "Ševčík Op. 1"],
+      "positions": [1],
+      "scaleOctaves": 1,
+      "requires": [],
+      "repertoire": ["Seitz", "Rieding", "Vivaldi pedagógico"]
+    },
+    {
+      "id": "L2_construcao",
+      "label": "Construção Técnica",
+      "goal": "Coordenação, mudanças de corda, articulação e 2ª/3ª posições.",
+      "methods": ["Ševčík Op. 2", "Ševčík Op. 3", "Kayser Op. 20"],
+      "positions": [1, 2, 3],
+      "scaleOctaves": 2,
+      "requires": ["L1_fundacao"],
+      "repertoire": ["Handel", "Vivaldi", "Bach iniciante/intermédio"]
+    },
+    {
+      "id": "L3_intermedio",
+      "label": "Intermédio",
+      "goal": "Mudanças de posição limpas, vibrato, legato, spiccato e afinação relativa.",
+      "methods": ["Ševčík Op. 8", "Ševčík Op. 9", "Kayser Op. 20"],
+      "positions": [1, 2, 3, 4],
+      "scaleOctaves": 2,
+      "requires": ["L2_construcao"],
+      "repertoire": ["Bach", "Mozart", "Fiorillo inicial"]
+    },
+    {
+      "id": "L4_avancado",
+      "label": "Avançado",
+      "goal": "Domínio de 3 oitavas, posições altas, golpes de arco avançados e cordas duplas.",
+      "methods": ["Kreutzer 42", "Fiorillo 36", "Carl Flesch", "Galamian"],
+      "positions": [1, 2, 3, 4, 5, 6, 7],
+      "scaleOctaves": 3,
+      "requires": ["L3_intermedio"],
+      "repertoire": ["Mozart", "Bach Sonatas/Partitas", "repertório de audição"]
+    },
+    {
+      "id": "L5_pre_solista",
+      "label": "Pré-Solista",
+      "goal": "Polifonia, oitavas, décimas, acordes, velocidade e resistência.",
+      "methods": ["Dont Op. 35", "Kreutzer", "Fiorillo", "Flesch", "Galamian"],
+      "positions": [1, 2, 3, 4, 5, 6, 7],
+      "scaleOctaves": 3,
+      "requires": ["L4_avancado"],
+      "repertoire": ["Bach Chaconne", "Ysaÿe", "Wieniawski"]
+    },
+    {
+      "id": "L6_paganini",
+      "label": "Destino Paganini",
+      "goal": "Virtuosismo integrado e preparação específica para os Caprichos.",
+      "methods": ["Dont Op. 35", "Kreutzer", "Fiorillo", "Flesch", "Galamian"],
+      "positions": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "scaleOctaves": 3,
+      "requires": ["L5_pre_solista"],
+      "repertoire": ["Paganini 24 Caprichos Op. 1"]
+    }
+  ],
+  "assessment": {
+    "dimensions": ["afinação", "ritmo", "som", "arco", "mão_esquerda", "mudança_de_posição", "coordenação", "musicalidade", "consistência"],
+    "rule": "Só desbloqueia o próximo nível quando a competência necessária estiver demonstrada nos dados de prática."
+  }
+}

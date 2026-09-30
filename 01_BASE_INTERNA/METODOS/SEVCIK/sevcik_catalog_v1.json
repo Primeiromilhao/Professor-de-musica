@@ -1,0 +1,21 @@
+{
+  "version":"1.0",
+  "author":"Otakar Ševčík",
+  "principle":"catalogar por competência, não apenas por número de opus",
+  "works":[
+    {"opus":"Op.1","title":"School of Violin Technique","parts":4,"focus":["primeira posição","segunda a sétima posições","mudanças","cordas duplas"]},
+    {"opus":"Op.2","title":"School of Bowing Technique","parts":6,"focus":["braço direito","divisão do arco","detaché","staccato","pulso","flexibilidade"]},
+    {"opus":"Op.3","title":"40 Variations","focus":["coordenação","variação","técnica integrada"]},
+    {"opus":"Op.6","title":"Violin School for Beginners / Half Tone System","parts":7,"focus":["base","sistema de semitons","afinação"]},
+    {"opus":"Op.7","title":"Violin Studies – Preparation for Trill Exercises and Development in Double Stopping","focus":["trinados","cordas duplas"]},
+    {"opus":"Op.8","title":"Changes of Position and Preparatory Scale Studies","exercises":59,"focus":["mudanças de posição","escalas","três oitavas"]},
+    {"opus":"Op.9","title":"Preparatory Exercises in Double-Stopping","focus":["segundas","terças","quartas","sextas","oitavas","décimas","harmónicos"]},
+    {"opus":"Op.11","title":"School of Intonation on a Harmonic Basis","parts":14,"focus":["afinação","harmónicos"]},
+    {"opus":"Op.12","title":"School of Double Stopping","status":"manuscript","focus":["cordas duplas"]},
+    {"opus":"Op.13","title":"School of Arpeggios and Modulations","status":"manuscript","focus":["arpejos","modulações"]},
+    {"opus":"Op.14","title":"School of Chords","status":"manuscript","focus":["acordes","cordas múltiplas"]},
+    {"opus":"Op.15","title":"School of Flageolets and Pizzicatos","status":"manuscript","focus":["harmónicos","pizzicato"]}
+  ],
+  "source":"https://imslp.org/wiki/List_of_works_by_Otakar_Ševčík",
+  "rule":"não assumir que um manuscrito ou edição moderna é gratuito; verificar a fonte específica"
+}

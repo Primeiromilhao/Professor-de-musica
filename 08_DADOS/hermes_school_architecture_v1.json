@@ -1,0 +1,20 @@
+{
+  "version":"1.0",
+  "project":"HERMES Violin Lab",
+  "scope":"base interna privada",
+  "principle":"HERMES constrói o violinista para o repertório; não é apenas uma biblioteca.",
+  "flow":"obra -> movimento -> sessão -> trecho -> competência -> pré-requisito -> método -> vídeo -> prática -> avaliação",
+  "free_only":true,
+  "paid_api":false,
+  "cloud_ai_required":false,
+  "video_policy":"priorizar vídeo gratuito em português; procurar professor prioritário antes de outras fontes",
+  "score_policy":"priorizar obra/edição em domínio público; verificar edição e direitos separadamente",
+  "storage_policy":"cada recurso fica na pasta correspondente ao seu tipo",
+  "student_first":"a primeira implementação será otimizada para a evolução do utilizador",
+  "competencies":["independência dos dedos","afinação","ritmo","sincronização","distribuição do arco","mudanças de posição","vibrato","spiccato","detache","martele","cordas duplas","cordas triplas","cordas quádruplas","escalas","arpejos","resistência","musicalidade"],
+  "method_route":["Sevcik","Kreutzer","Fiorillo","Dont","Flesch","Kayser","Mazas","Wohlfahrt","outros"],
+  "levels":["fundação","construção técnica","intermédio","avançado","pré-solista","destino Paganini"],
+  "evaluation":"não usar nota global; validar competências por repetição consistente",
+  "offline_first":true,
+  "external_services":"somente fontes públicas/gratuitas; nenhuma API paga"
+}

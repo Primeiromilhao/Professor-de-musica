@@ -1,0 +1,13 @@
+.hermes-formation-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}.hermes-formation-tab{border:1px solid var(--border-color);background:rgba(255,255,255,.04);color:var(--text-main);padding:.65rem .9rem;border-radius:9px;cursor:pointer}.hermes-formation-tab.active{background:var(--primary);color:#fff}.hermes-formation-note{padding:.8rem 1rem;margin-bottom:1rem;border-left:3px solid var(--secondary);background:rgba(0,229,255,.05);color:var(--text-muted)}.hermes-formation-card{padding:1rem;border:1px solid var(--border-color);border-radius:12px;background:rgba(255,255,255,.035)}.hermes-formation-card h3{margin:.1rem 0 .5rem}.hermes-formation-card p{margin:.25rem 0;color:var(--text-muted);font-size:.9rem}.hermes-resource{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border-color)}.hermes-resource a{color:var(--secondary);text-decoration:none}.hermes-resource small{color:var(--text-muted)}
+/* HERMES CVC layer */
+.hermes-cvc-intro{margin:.25rem 0 1rem;color:var(--text-muted);line-height:1.5}
+.hermes-cvc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.hermes-cvc-card{padding:1rem;border:1px solid var(--border-color);border-radius:12px;background:rgba(255,255,255,.025);min-height:150px}
+.hermes-cvc-card select{width:100%;margin:.65rem 0}
+.hermes-cvc-card button{margin-top:.25rem}
+.cvc-chain{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.7rem 0}
+.cvc-chain span{padding:.3rem .5rem;border-radius:7px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.2);font-size:.78rem}
+.cvc-chain b{opacity:.55}
+.cvc-evidence{font-size:.8rem;color:var(--text-muted);margin:.45rem 0}
+.cvc-regress{border-left:3px solid var(--warning);padding-left:.65rem}
+@media(max-width:900px){.hermes-cvc-grid{grid-template-columns:1fr}.hermes-cvc-card{min-height:0}}

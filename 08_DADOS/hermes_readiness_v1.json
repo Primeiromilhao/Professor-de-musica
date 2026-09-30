@@ -1,0 +1,42 @@
+{
+  "schemaVersion":"1.0",
+  "title":"HERMES — Prova de Prontidão por Obra",
+  "principle":"A obra é livre; a prova mede a prontidão e torna visíveis as lacunas antes do estudo.",
+  "decision":"Nunca bloquear por imposição. Oferecer Preparar ou Liberar estudo.",
+  "confidence":"O resultado atual é diagnóstico pedagógico, não uma nota artística definitiva.",
+  "works":[
+    {"id":"RIEDING_OP35","title":"Rieding Op.35","key":"Si menor","level":"L2","requirements":[
+      {"id":"scale","label":"Escala","task":"Si menor, 2 oitavas, lenta e depois ligada","competencies":["CVC_ESCALAS","CVC_AFINACAO"],"sevcik":["SEVCIK_OP8","SEVCIK_OP11"]},
+      {"id":"bow","label":"Arco","task":"Détaché regular em quatro cordas, som contínuo","competencies":["CVC_ARCO"],"sevcik":["SEVCIK_OP2"]},
+      {"id":"coord","label":"Coordenação","task":"Passagem curta em andamento confortável","competencies":["CVC_COORDENACAO"],"sevcik":["SEVCIK_OP1","SEVCIK_OP3"]}
+    ]},
+    {"id":"VIVALDI_RV356","title":"Vivaldi RV 356","key":"Lá menor","level":"L3","requirements":[
+      {"id":"scale","label":"Escala","task":"Lá menor, 2 oitavas + arpejo","competencies":["CVC_ESCALAS","CVC_ARPEJOS","CVC_AFINACAO"],"sevcik":["SEVCIK_OP8","SEVCIK_OP11","SEVCIK_OP13"]},
+      {"id":"bow","label":"Articulação","task":"Détaché barroco claro e cruzamento de cordas","competencies":["CVC_ARCO","CVC_COORDENACAO"],"sevcik":["SEVCIK_OP2"]},
+      {"id":"speed","label":"Velocidade","task":"Sequência curta de semicolcheias sem acelerar","competencies":["CVC_VELOCIDADE"],"sevcik":["SEVCIK_OP1","SEVCIK_OP3"]}
+    ]},
+    {"id":"HAYDN_HOB_VIIA4","title":"Haydn G maior Hob.VIIa:4","key":"Sol maior","level":"L4","requirements":[
+      {"id":"scale","label":"Escala","task":"Sol maior, 3 oitavas + arpejo, mudanças controladas","competencies":["CVC_ESCALAS","CVC_MUDANCA_POSICAO","CVC_ARPEJOS"],"sevcik":["SEVCIK_OP8","SEVCIK_OP13"]},
+      {"id":"bow","label":"Arco clássico","task":"Détaché e ataques limpos, sem perder continuidade","competencies":["CVC_ARCO","CVC_COORDENACAO"],"sevcik":["SEVCIK_OP2","SEVCIK_OP3"]},
+      {"id":"shift","label":"Mudança","task":"Mudanças de posição lentas e afinadas","competencies":["CVC_MUDANCA_POSICAO","CVC_AFINACAO"],"sevcik":["SEVCIK_OP1","SEVCIK_OP8"]}
+    ]},
+    {"id":"BEETHOVEN_OP61","title":"Beethoven — Concerto para Violino, Op.61","key":"Ré maior","level":"avançado","requirements":[
+      {"id":"scale","label":"Mapa tonal","task":"Ré maior e Ré menor, 3 oitavas + arpejos; depois tonalidades relacionadas ao trecho escolhido","competencies":["CVC_ESCALAS","CVC_ARPEJOS","CVC_AFINACAO"],"sevcik":["SEVCIK_OP8","SEVCIK_OP11","SEVCIK_OP13"]},
+      {"id":"shift","label":"Posições","task":"Mudanças de posição controladas, com chegada afinada","competencies":["CVC_MUDANCA_POSICAO","CVC_AFINACAO"],"sevcik":["SEVCIK_OP1","SEVCIK_OP8"]},
+      {"id":"bow","label":"Arco","task":"Détaché, legato e articulações do trecho diagnóstico","competencies":["CVC_ARCO"],"sevcik":["SEVCIK_OP2","SEVCIK_OP3"]},
+      {"id":"coord","label":"Coordenação","task":"Passagem rápida em andamento confortável, sem sacrificar clareza","competencies":["CVC_COORDENACAO","CVC_VELOCIDADE"],"sevcik":["SEVCIK_OP1","SEVCIK_OP3"]},
+      {"id":"double","label":"Cordas duplas","task":"Intervalos/acordes presentes no trecho escolhido, lentamente e afinados","competencies":["CVC_CORDAS_DUPLAS","CVC_EXTENSOES"],"sevcik":["SEVCIK_OP1","SEVCIK_OP7","SEVCIK_OP9"]}
+    ]},
+    {"id":"MENDELSSOHN_OP64","title":"Mendelssohn — Concerto Op.64","key":"Mi menor","level":"avançado","requirements":[
+      {"id":"scale","label":"Escala","task":"Mi menor, 3 oitavas + arpejos","competencies":["CVC_ESCALAS","CVC_ARPEJOS","CVC_AFINACAO"],"sevcik":["SEVCIK_OP8","SEVCIK_OP11","SEVCIK_OP13"]},
+      {"id":"shift","label":"Posições","task":"Mudanças de posição do trecho diagnóstico, lentas e afinadas","competencies":["CVC_MUDANCA_POSICAO"],"sevcik":["SEVCIK_OP1","SEVCIK_OP8"]},
+      {"id":"speed","label":"Velocidade","task":"Figura rápida em andamento confortável, aumentando somente após estabilidade","competencies":["CVC_VELOCIDADE","CVC_COORDENACAO"],"sevcik":["SEVCIK_OP1","SEVCIK_OP3"]},
+      {"id":"double","label":"Cordas duplas","task":"Cordas duplas/intervalos do trecho diagnóstico","competencies":["CVC_CORDAS_DUPLAS","CVC_EXTENSOES"],"sevcik":["SEVCIK_OP1","SEVCIK_OP9"]}
+    ]},
+    {"id":"BACH_CHACONNE","title":"Bach — Chaconne","key":"Ré menor","level":"pré-solista","requirements":[
+      {"id":"scale","label":"Afinação e mapa","task":"Ré menor, arpejo e padrões de intervalos","competencies":["CVC_ESCALAS","CVC_AFINACAO","CVC_ARPEJOS"],"sevcik":["SEVCIK_OP8","SEVCIK_OP11","SEVCIK_OP13"]},
+      {"id":"double","label":"Cordas duplas","task":"Intervalos e acordes lentamente, ouvindo as vozes","competencies":["CVC_CORDAS_DUPLAS","CVC_EXTENSOES"],"sevcik":["SEVCIK_OP1","SEVCIK_OP7","SEVCIK_OP9","SEVCIK_OP14"]},
+      {"id":"bow","label":"Arco e articulação","task":"Ataques, sustentação e distribuição de arco no trecho escolhido","competencies":["CVC_ARCO","CVC_MUSICALIDADE"],"sevcik":["SEVCIK_OP2","SEVCIK_OP16"]}
+    ]}
+  ]
+}

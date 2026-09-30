@@ -79,6 +79,105 @@ document.addEventListener("DOMContentLoaded", () => {
     let validatedSources = null;
     let activePracticePlan = null;
 
+    // ── HERMES PATH: progressão obrigatória da base até Paganini ──
+    let hermesPath = null;
+    const HERMES_PATH_FILE = 'hermes_path_v1.json';
+    const HERMES_PROGRESS_KEY = 'hermes_progress_v1';
+
+    async function loadHermesPath() {
+        try {
+            const response = await fetch(HERMES_PATH_FILE, { cache: 'no-store' });
+            hermesPath = await response.json();
+        } catch (err) {
+            console.warn('HERMES Path offline: usando fallback local.', err);
+            hermesPath = { levels: [], gates: { masteryMinimum: 0.80, consistencySessions: 3 } };
+        }
+        renderHermesPath();
+    }
+
+    function getHermesProgress() {
+        try { return JSON.parse(localStorage.getItem(HERMES_PROGRESS_KEY) || '{}'); }
+        catch (_) { return {}; }
+    }
+
+    function hermesStageIndex() {
+        if (!hermesPath?.levels?.length) return 0;
+        const progress = getHermesProgress();
+        let index = 0;
+        hermesPath.levels.forEach((level, i) => {
+            if (i > 0 && progress[level.id]?.unlocked === true) index = i;
+        });
+        return index;
+    }
+
+    function renderHermesPath() {
+        const container = document.getElementById('hermes-path-steps');
+        const current = document.getElementById('hermes-current-stage');
+        const status = document.getElementById('hermes-gate-status');
+        if (!container || !hermesPath?.levels?.length) return;
+        const active = hermesStageIndex();
+        container.innerHTML = hermesPath.levels.map((level, i) => {
+            const cls = i === active ? 'current' : (i > active ? 'locked' : '');
+            const dest = i === hermesPath.levels.length - 1 ? ' destination' : '';
+            return `<div class="hermes-path-step ${cls}${dest}" data-level="${level.id}">
+                <span class="step-num">ETAPA ${i + 1}</span>
+                <span class="step-title">${level.label}</span>
+            </div>`;
+        }).join('');
+        current.textContent = hermesPath.levels[active].label;
+        status.textContent = active === hermesPath.levels.length - 1
+            ? 'Destino curricular: Paganini'
+            : `Pré-requis: concluir ${hermesPath.levels[active + 1].label} só depois desta etapa`;
+    }
+
+    loadHermesPath();
+
+    // ── HERMES FORMAÇÃO: técnica obrigatória + repertório de escolha ──
+    let hermesTraining = null;
+    async function loadHermesTraining() {
+        try {
+            const response = await fetch('08_DADOS/hermes_training_curriculum_v1.json', { cache: 'no-store' });
+            hermesTraining = await response.json();
+        } catch (err) { console.warn('HERMES Training offline.', err); return; }
+        renderHermesFormation('technical');
+    }
+    function renderHermesFormation(tab) {
+        const root = document.getElementById('hermes-formation-cards');
+        if (!root || !hermesTraining) return;
+        document.querySelectorAll('.hermes-formation-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.formationTab === tab));
+        const levels = hermesTraining.technicalCurriculum.levels || {};
+        if (tab === 'technical') {
+            const selected = levelSelect?.value || 'iniciante';
+            const data = levels[selected] || levels.iniciante;
+            root.innerHTML = '<div class="hermes-formation-card"><h3>' + selected.toUpperCase() + '</h3><p><strong>Obrigatório:</strong> esta rota não é escolhida pelo aluno.</p><p><strong>Competências:</strong> ' + data.focus.join(' · ') + '</p><p><strong>Métodos:</strong> ' + data.methods.join(' · ') + '</p><p><strong>Escalas:</strong> ' + data.scales + '</p><p><strong>Cordas duplas:</strong> ' + data.doubleStops + '</p></div>';
+        } else if (tab === 'concerts') {
+            const db = (typeof CONCERTO_DATABASE !== 'undefined') ? CONCERTO_DATABASE : {};
+            const catalog = Object.keys(db).length ? db : (hermesTraining.concertCatalog.selectionByLevel || {});
+            root.innerHTML = Object.entries(catalog).map(([level, concerts]) => {
+                const entries = Object.entries(concerts);
+                return '<div class="hermes-formation-card"><h3>' + level.replace('_',' ') + '</h3>' +
+                    entries.map(([key,c]) => '<button class="btn btn-secondary btn-sm hermes-concert-choice" data-concerto-key="' + key + '" data-concerto-level="' + level + '" style="margin:.2rem">' + (c.title || c) + (c.composer ? ' — ' + c.composer : '') + '</button>').join('') +
+                    '<p>Ecossistema: sessões → trechos críticos → competências → pré-requisitos → exercícios → métodos → vídeos → avaliação.</p></div>';
+            }).join('');
+            root.querySelectorAll('.hermes-concert-choice').forEach(btn => btn.addEventListener('click', () => {
+                const key = btn.dataset.concertoKey;
+                const select = document.getElementById('weekly-concerto-select');
+                if (select && select.querySelector('option[value="' + key + '"]')) {
+                    select.value = key;
+                    select.dispatchEvent(new Event('change', { bubbles:true }));
+                }
+                const status = document.getElementById('hermes-school-status');
+                if (status) status.textContent = 'Ecossistema carregado: ' + btn.textContent.trim();
+            }));
+        } else {
+            const teachers = hermesTraining.complementaryMaterials.teachers || [];
+            root.innerHTML = teachers.map(t => '<div class="hermes-formation-card"><h3>' + t.teacher + '</h3>' + t.items.map(i => '<div class="hermes-resource"><div><strong>' + i.title + '</strong><br><small>' + i.type + '</small></div><a href="' + i.url + '" target="_blank" rel="noopener">Abrir material ↗</a></div>').join('') + '</div>').join('');
+        }
+    }
+    document.querySelectorAll('.hermes-formation-tab').forEach(btn => btn.addEventListener('click', () => renderHermesFormation(btn.dataset.formationTab)));
+    levelSelect?.addEventListener('change', () => { const active = document.querySelector('.hermes-formation-tab.active')?.dataset.formationTab; if (active === 'technical') renderHermesFormation('technical'); });
+    loadHermesTraining();
+
     // ── MUSIC THEORY CONSTANTS ────────────────────────────────
     // Escala cromática com nomes canónicos
     const CHROMATIC = ["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
@@ -941,10 +1040,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isAudioInit) return;
 
         // Sintetizador principal (escala)
+        // Referência de afinação: som simples e estável, sem tentar imitar um violino.
+        // O objetivo é servir de ouvido-guia enquanto o aluno toca.
         piano = new Tone.PolySynth(Tone.Synth, {
-            oscillator: { type: "triangle" },
-            envelope:   { attack: 0.02, decay: 0.3, sustain: 0.4, release: 0.8 },
-            volume: -6
+            oscillator: { type: "sine" },
+            envelope:   { attack: 0.01, decay: 0.18, sustain: 0.55, release: 0.55 },
+            volume: -8
         }).toDestination();
 
         // Reverb subtil
@@ -1422,6 +1523,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    const RELATIVE_SCALE_MAP = {
+        majorToMinor: {C:"A", G:"E", D:"B", A:"F#", E:"C#", B:"G#", F:"D", Bb:"G", Eb:"C", Ab:"F"},
+        minorToMajor: {A:"C", E:"G", B:"D", "F#":"A", "C#":"E", "G#":"B", D:"F", G:"Bb", C:"Eb", F:"Ab"}
+    };
+
+    function getRelativeScaleInfo(tonic, mode) {
+        const isMinor = mode.startsWith("minor");
+        const map = isMinor ? RELATIVE_SCALE_MAP.minorToMajor : RELATIVE_SCALE_MAP.majorToMinor;
+        const relative = map[tonic];
+        if (!relative || !CHROMATIC.includes(relative)) return null;
+        return {
+            tonic: relative,
+            mode: isMinor ? "major" : "minor-natural",
+            label: relative + " " + (isMinor ? "Maior" : "Menor Natural")
+        };
+    }
+
+    function updateRelativeScaleUI() {
+        const info = getRelativeScaleInfo(tonicSelect.value, scaleTypeSelect.value);
+        if (relativeDisplay) relativeDisplay.innerText = info ? info.label : "Relativa não disponível nesta grafia";
+        if (btnSwitchRelative) {
+            btnSwitchRelative.disabled = !info;
+            btnSwitchRelative.title = info ? "Mudar para " + info.label : "Escolha uma tonalidade com relativa suportada";
+        }
+    }
+
+    function switchToRelativeScale() {
+        const info = getRelativeScaleInfo(tonicSelect.value, scaleTypeSelect.value);
+        if (!info) return;
+        stopPlayback();
+        tonicSelect.value = info.tonic;
+        scaleTypeSelect.value = info.mode;
+        updateRelativeScaleUI();
+        updateDashboard();
+    }
+
     function loadScaleIntoStaff() {
         const tonic   = tonicSelect.value;
         const mode    = scaleTypeSelect.value;
@@ -1563,8 +1700,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     levelSelect.addEventListener("change",     () => { applyLevelSettings(); updateDashboard(); });
-    tonicSelect.addEventListener("change",     () => updateDashboard());
-    scaleTypeSelect.addEventListener("change", () => updateDashboard());
+    tonicSelect.addEventListener("change",     () => { updateRelativeScaleUI(); updateDashboard(); });
+    scaleTypeSelect.addEventListener("change", () => { updateRelativeScaleUI(); updateDashboard(); });
+    btnSwitchRelative?.addEventListener("click", switchToRelativeScale);
     document.getElementById("practice-mode-select")?.addEventListener("change", () => updateDashboard());
     rhythmDivisionSelect?.addEventListener("change", () => {
         drawSheetMusic(activeNotesList);
@@ -1772,7 +1910,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!levelSelect || !concertoSelect) return;
 
         let level = levelSelect.value;
-        if (level === "solista") level = "avancado";
+        if (level === "pre_solista" || level === "solista") level = "avancado";
 
         concertoSelect.innerHTML = "";
 
@@ -1797,6 +1935,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const key   = tonicSelect.value;
         const mode  = scaleTypeSelect.value;
         const level = levelSelect.value;
+        updateRelativeScaleUI();
 
         if (level !== lastLevel) {
             populateConcertoOptions();

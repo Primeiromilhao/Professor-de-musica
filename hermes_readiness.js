@@ -1,0 +1,47 @@
+/* HERMES Readiness v1 — prova de prontidão por obra; livre decisão do aluno */
+(function(){
+"use strict";
+const DATA="08_DADOS/hermes_readiness_v1.json";
+let db=null,state={work:null,index:0,tests:[],stream:null,ctx:null,analyser:null,raf:0,running:false,started:0,metrics:null};
+const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+async function load(){try{const r=await fetch(DATA,{cache:"no-store"});if(r.ok)db=await r.json();}catch(e){}}
+function ensure(){if(document.getElementById("hermes-readiness"))return;
+const p=document.createElement("div");p.id="hermes-readiness";p.innerHTML='<div class="hr-card"><div class="hr-head"><div><span class="hr-badge">PROVA DE PRONTIDÃO · MICROFONE LOCAL</span><h2 id="hr-title">Prontidão para a obra</h2><p class="hr-sub" id="hr-sub">O HERMES mede competências necessárias antes do estudo.</p></div><button class="hr-close" id="hr-close">Fechar</button></div><div id="hr-tests" class="hr-grid"></div><div id="hr-live"></div><div class="hr-controls"><button id="hr-start" class="hr-btn hr-primary">🎙️ Fazer teste</button><button id="hr-stop" class="hr-btn hr-danger" disabled>⏹ Parar</button></div><div id="hr-result"></div></div>';document.body.appendChild(p);
+p.querySelector("#hr-close").onclick=close;p.querySelector("#hr-start").onclick=start;p.querySelector("#hr-stop").onclick=stop;}
+function find(id){
+ const w=db?.works?.find(x=>x.id===id); if(w)return w;
+ const titles={SEITZ_OP22:"Seitz Op.22 nº 5",RIEDING_OP36:"Rieding Op.36"};
+ const title=titles[id]||String(id).replaceAll("_"," ");
+ return {id,title,key:"a definir pelo trecho",level:"diagnóstico",requirements:[
+  {id:"scale",label:"Escala relacionada",task:"Escala e arpejo da tonalidade principal do trecho, lentamente e com afinação estável",competencies:["CVC_ESCALAS","CVC_AFINACAO"],sevcik:["SEVCIK_OP8","SEVCIK_OP11"]},
+  {id:"bow",label:"Arco/articulação",task:"Golpe de arco principal do trecho, procurando continuidade e ataques limpos",competencies:["CVC_ARCO","CVC_COORDENACAO"],sevcik:["SEVCIK_OP2","SEVCIK_OP3"]},
+  {id:"tech",label:"Competência técnica",task:"Passagem curta representativa em andamento confortável, sem sacrificar precisão",competencies:["CVC_COORDENACAO","CVC_VELOCIDADE"],sevcik:["SEVCIK_OP1","SEVCIK_OP3"]}
+ ]};
+}
+function open(id){if(!db)return;ensure();state={work:find(id)||db.works[0],index:0,tests:[],stream:null,ctx:null,analyser:null,raf:0,running:false,started:0,metrics:null};render();document.getElementById("hermes-readiness").classList.add("open");}
+function close(){state.stream?.getTracks().forEach(t=>t.stop());state.ctx?.close();cancelAnimationFrame(state.raf);document.getElementById("hermes-readiness")?.classList.remove("open");}
+function render(){const w=state.work;document.getElementById("hr-title").textContent="Prontidão: "+w.title;document.getElementById("hr-sub").textContent="A prova não bloqueia a obra. Ela mostra o que já está preparado e o que merece treino antes da transferência.";
+document.getElementById("hr-tests").innerHTML=w.requirements.map((t,i)=>'<div class="hr-test '+(i===state.index?'active':'')+'"><h4>'+(i+1)+". "+esc(t.label)+'</h4><p>'+esc(t.task)+'</p><p><strong>Base:</strong> '+esc(t.sevcik.join(" · "))+'</p><p class="hr-state">'+(state.tests[i]?("Resultado: "+Math.round(state.tests[i].score*100)+"%"):i===state.index?"Próximo teste":"Aguardando")+"</p></div>").join("");}
+function pitch(buf,sr){let rms=Math.sqrt(buf.reduce((a,x)=>a+x*x,0)/buf.length);if(rms<.012)return null;let best=0,bc=0,min=Math.floor(sr/1400),max=Math.min(Math.floor(sr/100),buf.length-2);for(let lag=min;lag<=max;lag++){let s=0,n=0;for(let i=0;i<buf.length-lag;i+=2){s+=buf[i]*buf[i+lag];n++;}let c=s/n;if(c>bc){bc=c;best=lag;}}return best&&bc>.001?sr/best:null;}
+function frame(){if(!state.running)return;const b=new Float32Array(state.analyser.fftSize);state.analyser.getFloatTimeDomainData(b);const hz=pitch(b,state.ctx.sampleRate);if(hz)state.metrics.pitches.push(hz);state.metrics.frames++;document.getElementById("hr-live").innerHTML='<p>🎙️ '+(hz?hz.toFixed(1)+" Hz":"Aguardando som…")+' · teste '+(state.index+1)+'/'+state.work.requirements.length+'</p>';state.raf=requestAnimationFrame(frame);}
+async function start(){if(state.running||!state.work)return;try{state.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});state.ctx=new(window.AudioContext||window.webkitAudioContext)();await state.ctx.resume();const src=state.ctx.createMediaStreamSource(state.stream);state.analyser=state.ctx.createAnalyser();state.analyser.fftSize=4096;src.connect(state.analyser);state.metrics={frames:0,pitches:[]};state.started=performance.now();state.running=true;document.getElementById("hr-start").disabled=true;document.getElementById("hr-stop").disabled=false;frame();}catch(e){document.getElementById("hr-live").textContent="Microfone indisponível: "+e.message;}}
+function analyze(){const m=state.metrics||{frames:0,pitches:[]};const voiced=m.pitches.length/Math.max(1,m.frames);let stability=0;if(m.pitches.length>3){let ds=[];for(let i=1;i<m.pitches.length;i++)ds.push(Math.abs(1200*Math.log2(m.pitches[i]/m.pitches[i-1])));ds.sort((a,b)=>a-b);const med=ds[Math.floor(ds.length/2)]||0;stability=Math.max(0,Math.min(1,1-med/120));}const duration=(performance.now()-state.started)/1000;return{duration:+duration.toFixed(1),voiced:+voiced.toFixed(3),stability:+stability.toFixed(3),score:+(voiced*.45+stability*.55).toFixed(3)};}
+async function stop(){if(!state.running)return;state.running=false;cancelAnimationFrame(state.raf);state.stream?.getTracks().forEach(t=>t.stop());state.ctx?.close();const result=analyze();state.tests[state.index]=result;document.getElementById("hr-start").disabled=false;document.getElementById("hr-stop").disabled=true;state.index++;render();if(state.index<state.work.requirements.length){document.getElementById("hr-live").innerHTML='<p>Teste guardado. Próximo: <strong>'+esc(state.work.requirements[state.index].label)+'</strong>.</p>';}else finish();}
+function finish(){const avg=state.tests.reduce((a,x)=>a+x.score,0)/state.tests.length;const strong=avg>=.82,ready=avg>=.68;const weak=state.tests.map((x,i)=>({x,i})).sort((a,b)=>a.x.score-b.x.score)[0];const t=state.work.requirements[weak.i];document.getElementById("hr-result").innerHTML='<div class="hr-result"><h3>'+ (strong?"🟢 Prontidão demonstrada":ready?"🟡 Pronto para estudar com foco":"🔴 Preparação recomendada antes da transferência")+'</h3><p><strong>Índice técnico mensurável atual:</strong> '+Math.round(avg*100)+'%</p><p><strong>Principal ponto de atenção:</strong> '+esc(t.label)+' — '+esc(t.task)+'</p><div class="hr-meter"><i style="width:'+Math.round(avg*100)+'%"></i></div><p class="hr-note">Esta versão mede principalmente presença, pitch e estabilidade. Não transforma incerteza acústica em erro e ainda não substitui análise completa de ritmo, onset, duração, articulação e partitura.</p><div class="hr-choice"><button class="hr-btn hr-primary" id="hr-prepare">Preparar antes de estudar</button><button class="hr-btn hr-secondary" id="hr-release">Liberar estudo mesmo assim</button></div></div>';
+document.getElementById("hr-prepare").onclick=()=>prepare(t);document.getElementById("hr-release").onclick=()=>release();}
+function prepare(t){
+ document.getElementById("hr-result").innerHTML='<div class="hr-result"><h3>🧭 Preparação Ševčík</h3><p>O HERMES vai tratar primeiro de <strong>'+esc(t.label)+'</strong>.</p><p><strong>Competências:</strong> '+esc(t.competencies.join(" · "))+'</p><p><strong>Base principal:</strong> '+esc(t.sevcik.join(" · "))+'</p><p>Faça o estudo isolado. Depois volte aqui e repita a prova para verificar a transferência.</p><div class="hr-choice"><button class="hr-btn hr-primary" id="hr-lab">Abrir laboratório</button><button class="hr-btn hr-secondary" id="hr-retest">Repetir prova</button></div></div>';
+ const labMap={"Arco":"arco_articulacoes","Articulação":"arco_articulacoes","Cordas duplas":"oitavas","Escala":"oitavas","Mudança":"oitavas","Velocidade":"arco_articulacoes"};
+ const lab=Object.keys(labMap).find(k=>String(t.label).includes(k));
+ document.getElementById("hr-lab").onclick=()=>{if(window.HERMES_MICRO_LABS)window.HERMES_MICRO_LABS.open(lab?labMap[lab]:"harmonicos");};
+ document.getElementById("hr-retest").onclick=()=>{state.index=0;state.tests=[];document.getElementById("hr-result").innerHTML="";render();};
+}
+function release(){
+ const avg=state.tests.reduce((a,x)=>a+x.score,0)/state.tests.length;
+ localStorage.setItem("hermes_release_"+state.work.id,JSON.stringify({date:new Date().toISOString(),score:avg,conscious:true}));
+ document.getElementById("hr-result").innerHTML='<div class="hr-result"><h3>🔓 Estudo liberado</h3><p>Você escolheu estudar mesmo com lacunas identificadas.</p><p>O diagnóstico permanece associado à obra. O HERMES voltará a essa competência quando ela aparecer no repertório.</p><button class="hr-btn hr-primary" id="hr-enter-work">Entrar no estudo</button></div>';
+ document.getElementById("hr-enter-work").onclick=()=>{window.dispatchEvent(new CustomEvent("hermes:work-released",{detail:{work:state.work,tests:state.tests}}));close();};
+}
+window.HERMES_READINESS={open,close};
+load();
+})();

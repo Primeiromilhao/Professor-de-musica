@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "Banco pedagógico de partituras, sessões, trechos críticos, pré-requisitos e avaliações do HERMES.",
+  "architecture": {
+    "score": "obra completa apenas como referência estrutural",
+    "sessions": "unidades pedagógicas do estudo",
+    "excerpts": "trechos curtos que o aluno realmente pratica",
+    "competencies": "habilidades técnicas/musicais associadas",
+    "prerequisites": "escalas, arpejos, cordas duplas/triplas/quádruplas e estudos necessários",
+    "assessment": "dados captados pelo microfone e métricas de execução"
+  },
+  "levels": [
+    {"id":"iniciante","label":"Iniciante"},
+    {"id":"intermedio","label":"Intermédio"},
+    {"id":"avancado","label":"Avançado"},
+    {"id":"pre_solista","label":"Pré-Solista"},
+    {"id":"solista","label":"Solista"}
+  ],
+  "competencies": [
+    "afinação",
+    "ritmo",
+    "sincronização_mao_esquerda_arco",
+    "qualidade_do_som",
+    "distribuicao_de_arco",
+    "mudanca_de_posicao",
+    "vibrato",
+    "spiccato",
+    "detache",
+    "martelé",
+    "cordas_duplas",
+    "cordas_triplas",
+    "cordas_quadruplas",
+    "arpejos",
+    "escalas_3_oitavas",
+    "resistencia",
+    "musicalidade"
+  ],
+  "sourcePolicy": {
+    "prefer": ["IMSLP", "Internet Archive", "bibliotecas digitais públicas"],
+    "record": "fonte, edição, compositor, domínio/licença e URL",
+    "copyrightRule": "não presumir que toda edição moderna é domínio público só porque a obra é antiga"
+  },
+  "works": [
+    {
+      "id": "mendelssohn_op64",
+      "composer": "Felix Mendelssohn",
+      "title": "Concerto para Violino em Mi menor, Op. 64",
+      "instrument": "violin",
+      "level": "avancado",
+      "destinationLevel": "pre_solista",
+      "source": {
+        "provider": "IMSLP",
+        "url": "https://imslp.org/wiki/Violin_Concerto%2C_Op.64_(Mendelssohn%2C_Felix)",
+        "publicDomainWork": true
+      },
+      "studyPolicy": {
+        "showFullScoreByDefault": false,
+        "startWithSessions": true,
+        "showExcerptOnly": true,
+        "requirePrerequisites": true
+      },
+      "movements": [
+        {
+          "id": "mvt1",
+          "title": "I. Allegro molto appassionato",
+          "sessions": [
+            {
+              "id": "mvt1_session_A",
+              "label": "Sessão A — Fundação técnica do movimento",
+              "mappingStatus": "needs_score_mapping",
+              "focus": [
+                "fraseado e articulação inicial",
+                "afinação e relações intervalares",
+                "coordenação mão esquerda/arco",
+                "padrões rápidos que exigem subdivisão rítmica"
+              ],
+              "prerequisites": [
+                {"type":"scale","item":"Mi menor","requirement":"3 oitavas"},
+                {"type":"arpeggio","item":"Mi menor","requirement":"3 oitavas"},
+                {"type":"study","book":"Kreutzer 42 Estudos","purpose":"articulação e coordenação"},
+                {"type":"study","book":"Fiorillo 36 Caprices","purpose":"clareza e controle"},
+                {"type":"study","book":"Dont Op.35","purpose":"preparação virtuosística quando aplicável"}
+              ],
+              "lesson": {
+                "theory": "Identificar a função musical de cada padrão antes de acelerar.",
+                "practice": "Separar ritmo, afinação, articulação e arco antes da execução integral.",
+                "transfer": "Aplicar o mesmo padrão técnico ao trecho do concerto."
+              }
+            },
+            {
+              "id": "mvt1_session_B",
+              "label": "Sessão B — Mudanças de posição e linhas rápidas",
+              "mappingStatus": "needs_score_mapping",
+              "focus": [
+                "shifts",
+                "coordenação em velocidade",
+                "estabilidade da mão esquerda"
+              ],
+              "prerequisites": [
+                {"type":"scale","item":"Mi menor","requirement":"3 oitavas com mudanças de posição"},
+                {"type":"study","book":"Ševčík Op.8","purpose":"mudanças de posição"},
+                {"type":"study","book":"Kreutzer 42 Estudos","purpose":"coordenação"}
+              ]
+            },
+            {
+              "id": "mvt1_session_C",
+              "label": "Sessão C — Cordas duplas e extensão",
+              "mappingStatus": "needs_score_mapping",
+              "focus": [
+                "intervalos simultâneos",
+                "extensões",
+                "afinação relativa"
+              ],
+              "prerequisites": [
+                {"type":"double_stop","item":"terças","requirement":"2 oitavas"},
+                {"type":"double_stop","item":"sextas","requirement":"2 oitavas"},
+                {"type":"study","book":"Ševčík Op.9","purpose":"preparação de cordas duplas"},
+                {"type":"study","book":"Kreutzer 42 Estudos","purpose":"afinação de intervalos"}
+              ]
+            },
+            {
+              "id": "mvt1_session_D",
+              "label": "Sessão D — Velocidade, resistência e integração",
+              "mappingStatus": "needs_score_mapping",
+              "focus": [
+                "andamento",
+                "resistência",
+                "consistência",
+                "integração musical"
+              ],
+              "prerequisites": [
+                {"type":"scale","item":"Mi menor","requirement":"3 oitavas em variações de arco"},
+                {"type":"arpeggio","item":"Mi menor","requirement":"3 oitavas"},
+                {"type":"study","book":"Fiorillo 36 Caprices","purpose":"velocidade e clareza"},
+                {"type":"study","book":"Dont Op.35","purpose":"resistência e virtuosismo"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "assessmentModel": {
+    "phase1": {
+      "name": "Microfone",
+      "metrics": [
+        "pitch_error_cents",
+        "note_onset_error_ms",
+        "rhythmic_stability",
+        "note_duration_error",
+        "silence_control",
+        "dynamic_consistency",
+        "pitch_stability"
+      ],
+      "technology": [
+        "Web Audio API",
+        "YIN/pYIN ou autocorrelation",
+        "onset detection",
+        "RMS/dynamic envelope"
+      ]
+    },
+    "phase2": {
+      "name": "Partitura + execução",
+      "rule": "Comparar a sequência esperada de notas e eventos da partitura com a sequência detectada pelo microfone."
+    },
+    "phase3": {
+      "name": "Domínio",
+      "rule": "Uma competência é marcada como consolidada apenas após execuções consistentes em sessões diferentes."
+    }
+  }
+}

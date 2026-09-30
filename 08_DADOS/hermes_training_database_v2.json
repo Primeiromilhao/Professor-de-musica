@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "2.0",
+  "principle": "Ševčík é a primeira rota de apoio. Outros métodos entram depois, como reforço específico. Cada trecho crítico deve apontar para uma lição técnica e retornar ao trecho.",
+  "levels": [
+    {
+      "id": "L1",
+      "name": "Iniciante — Fundação",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B1",
+          "label": "Ševčík Op.1 — Livro 1",
+          "role": "base",
+          "status": "missing_pdf",
+          "source": "https://imslp.org/wiki/School_of_Violin_Technique,_Op.1_(Ševčík,_Otakar)"
+        },
+        {
+          "id": "SEVCIK_OP2_P1",
+          "label": "Ševčík Op.2 — Parte 1",
+          "role": "base_arco",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op2_Book1.pdf",
+          "source": "https://imslp.org/wiki/School_of_Bowing_Technique,_Op.2_(Ševčík,_Otakar)"
+        },
+        {
+          "id": "WOHLFAHRT_OP45_B1",
+          "label": "Wohlfahrt Op.45 — Livro 1",
+          "role": "complementar",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/WOHLFAHRT/Wohlfahrt_Op45_Book1.pdf",
+          "source": "https://imslp.org/wiki/60_Studies_for_the_Violin,_Op.45_(Wohlfahrt,_Franz)"
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "Iniciante — Primeiros Concertos",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B1",
+          "label": "Ševčík Op.1 — Livro 1",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP2_P1",
+          "label": "Ševčík Op.2 — Parte 1",
+          "role": "base_arco"
+        },
+        {
+          "id": "SEVCIK_OP2_P2",
+          "label": "Ševčík Op.2 — Parte 2",
+          "role": "base_arco",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op2_Book2.pdf"
+        },
+        {
+          "id": "WOHLFAHRT_OP45_B1",
+          "label": "Wohlfahrt Op.45 — Livro 1",
+          "role": "complementar"
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "Intermédio inicial — Vivaldi",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B2",
+          "label": "Ševčík Op.1 — Livro 2",
+          "role": "base_posicoes",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book2.pdf"
+        },
+        {
+          "id": "SEVCIK_OP1_B3",
+          "label": "Ševčík Op.1 — Livro 3",
+          "role": "base_mudancas",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book3.pdf"
+        },
+        {
+          "id": "SEVCIK_OP2_P1",
+          "label": "Ševčík Op.2 — Parte 1",
+          "role": "base_arco"
+        },
+        {
+          "id": "SEVCIK_OP2_P2",
+          "label": "Ševčík Op.2 — Parte 2",
+          "role": "base_arco"
+        },
+        {
+          "id": "KAYSER_OP20",
+          "label": "Kayser Op.20",
+          "role": "complementar",
+          "source": "https://imslp.org/wiki/36_Violin_Studies,_Op.20_(Kayser,_Heinrich_Ernst)"
+        },
+        {
+          "id": "WOHLFAHRT_OP45_B1",
+          "label": "Wohlfahrt Op.45 — Livro 1",
+          "role": "complementar"
+        }
+      ]
+    },
+    {
+      "id": "L4",
+      "name": "Intermédio — Transição",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B2",
+          "label": "Ševčík Op.1 — Livro 2",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP1_B3",
+          "label": "Ševčík Op.1 — Livro 3",
+          "role": "base_mudancas"
+        },
+        {
+          "id": "SEVCIK_OP1_B4",
+          "label": "Ševčík Op.1 — Livro 4",
+          "role": "base_cordas_duplas",
+          "status": "local_pdf",
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book4.pdf"
+        },
+        {
+          "id": "SEVCIK_OP2_P2",
+          "label": "Ševčík Op.2 — Parte 2",
+          "role": "base_arco"
+        },
+        {
+          "id": "SEVCIK_OP2_P3",
+          "label": "Ševčík Op.2 — Parte 3",
+          "role": "base_arco",
+          "status": "missing_pdf"
+        },
+        {
+          "id": "SEVCIK_OP8",
+          "label": "Ševčík Op.8",
+          "role": "base_mudancas"
+        },
+        {
+          "id": "SEVCIK_OP9",
+          "label": "Ševčík Op.9",
+          "role": "base_cordas_duplas"
+        },
+        {
+          "id": "KREUTZER_42",
+          "label": "Kreutzer 42",
+          "role": "segunda_opcao",
+          "source": "https://imslp.org/wiki/42_%C3%89tudes_ou_caprices_(Kreutzer,_Rodolphe)"
+        },
+        {
+          "id": "MAZAS_OP36",
+          "label": "Mazas Op.36",
+          "role": "segunda_opcao"
+        }
+      ]
+    },
+    {
+      "id": "L5",
+      "name": "Avançado",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B3",
+          "label": "Ševčík Op.1 — Livro 3",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP1_B4",
+          "label": "Ševčík Op.1 — Livro 4",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP2_P3",
+          "label": "Ševčík Op.2 — Parte 3",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP9",
+          "label": "Ševčík Op.9",
+          "role": "base_cordas_duplas"
+        },
+        {
+          "id": "KREUTZER_42",
+          "label": "Kreutzer 42",
+          "role": "segunda_opcao"
+        },
+        {
+          "id": "FIORILLO_36",
+          "label": "Fiorillo Op.3",
+          "role": "segunda_opcao",
+          "source": "https://imslp.org/wiki/36_Caprices_for_Violin,_Op.3_(Fiorillo,_Federigo)"
+        },
+        {
+          "id": "DONT_OP35",
+          "label": "Dont Op.35",
+          "role": "segunda_opcao",
+          "source": "https://imslp.org/wiki/24_Etudes_or_Caprices,_Op.35_(Dont,_Jakob)"
+        },
+        {
+          "id": "FLESCH_SCALE",
+          "label": "Flesch — Das Skalensystem",
+          "role": "complementar"
+        }
+      ]
+    },
+    {
+      "id": "L6",
+      "name": "Pré-solista / Solista",
+      "methods": [
+        {
+          "id": "SEVCIK_OP1_B4",
+          "label": "Ševčík Op.1 — Livro 4",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP9",
+          "label": "Ševčík Op.9",
+          "role": "base"
+        },
+        {
+          "id": "SEVCIK_OP11",
+          "label": "Ševčík Op.11",
+          "role": "base_afinacao"
+        },
+        {
+          "id": "SEVCIK_OP14",
+          "label": "Ševčík Op.14",
+          "role": "base_acordes"
+        },
+        {
+          "id": "KREUTZER_42",
+          "label": "Kreutzer 42",
+          "role": "segunda_opcao"
+        },
+        {
+          "id": "FIORILLO_36",
+          "label": "Fiorillo Op.3",
+          "role": "segunda_opcao"
+        },
+        {
+          "id": "DONT_OP35",
+          "label": "Dont Op.35",
+          "role": "segunda_opcao"
+        },
+        {
+          "id": "FLESCH_SCALE",
+          "label": "Flesch — Das Skalensystem",
+          "role": "complementar"
+        }
+      ]
+    }
+  ],
+  "concerts": [
+    {
+      "id": "RIEDING_OP35",
+      "title": "Rieding Op.35 — Concerto nº 2 em Si menor",
+      "level": "L2",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.2,_Op.35_(Rieding,_Oskar)",
+      "sessions": [
+        {
+          "id": "R35-A",
+          "title": "I — Entrada e tema",
+          "focus": "Ataque limpo + afinação + coordenação",
+          "critical": "Entrada do solo e primeira frase",
+          "problems": [
+            "afinação",
+            "arco",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B1",
+              "lesson": "Livro 1 — exercícios de primeira posição / independência",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — controle do arco e articulação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Livro 1 — estudo equivalente de primeira posição",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "R35-B",
+          "title": "II — Tema cantabile",
+          "focus": "Legato + distribuição de arco + fraseado",
+          "critical": "Tema inicial",
+          "problems": [
+            "arco",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — continuidade e distribuição do arco",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Estudo de legato / primeira posição",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "R35-C",
+          "title": "III — Passagem rápida",
+          "focus": "Coordenação + velocidade controlada",
+          "critical": "Tema e transições rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B1",
+              "lesson": "Livro 1 — padrões de independência e coordenação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Estudo de coordenação em primeira posição",
+              "page": null,
+              "verified": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SEITZ_OP22",
+      "title": "Seitz Op.22 nº5 — Concerto de Estudante",
+      "level": "L2",
+      "source": "https://imslp.org/wiki/Student_Concerto_No.5,_Op.22_(Seitz,_Friedrich)",
+      "sessions": [
+        {
+          "id": "S22-A",
+          "title": "I — Tema",
+          "focus": "Détaché + afinação",
+          "critical": "Tema/entrada do solo",
+          "problems": [
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — détaché e divisão do arco",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP1_B1",
+              "lesson": "Livro 1 — estabilidade da mão esquerda",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "S22-B",
+          "title": "II — Cantabile",
+          "focus": "Legato + frase",
+          "critical": "Tema cantabile",
+          "problems": [
+            "arco",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — legato e continuidade",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Estudo complementar de legato",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "S22-C",
+          "title": "III — Final",
+          "focus": "Agilidade + coordenação",
+          "critical": "Passagem final",
+          "problems": [
+            "velocidade",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B1",
+              "lesson": "Livro 1 — coordenação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Estudo complementar",
+              "page": null,
+              "verified": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VIVALDI_RV356",
+      "title": "Vivaldi RV356 — Concerto em Lá menor",
+      "level": "L3",
+      "source": "https://imslp.org/wiki/Violin_Concerto_in_A_minor,_RV_356_(Vivaldi,_Antonio)",
+      "sessions": [
+        {
+          "id": "V356-A",
+          "title": "I — Allegro",
+          "focus": "Détaché claro + semitons + coordenação",
+          "critical": "Entrada do solo e sequência inicial",
+          "problems": [
+            "arco",
+            "afinação",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — articulação/détaché",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP1_B2",
+              "lesson": "Livro 2 — posições",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "KAYSER_OP20",
+              "lesson": "Estudo complementar de coordenação",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "V356-B",
+          "title": "II — Largo",
+          "focus": "Sustentação + afinação + frase barroca",
+          "critical": "Tema cantabile",
+          "problems": [
+            "arco",
+            "afinação",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Parte 1 — sustentação e continuidade",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP1_B2",
+              "lesson": "Livro 2 — afinação/posição",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "V356-C",
+          "title": "III — Presto",
+          "focus": "Velocidade depois da estabilidade",
+          "critical": "Tema e sequências rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B2",
+              "lesson": "Livro 2 — padrões de posição",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KAYSER_OP20",
+              "lesson": "Estudo complementar de velocidade controlada",
+              "page": null,
+              "verified": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HAYDN_HOB_VIIA4",
+      "title": "Haydn Hob.VIIa:4 — Concerto em Sol maior",
+      "level": "L4",
+      "source": "https://imslp.org/wiki/Violin_Concerto_in_G_major,_Hob.VIIa:4*_(Haydn,_Joseph)",
+      "sessions": [
+        {
+          "id": "H4-A",
+          "title": "I — Tema",
+          "focus": "Articulação clássica + afinação + posição",
+          "critical": "Entrada/tema",
+          "problems": [
+            "arco",
+            "afinação",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P2",
+              "lesson": "Parte 2 — articulação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP1_B3",
+              "lesson": "Livro 3 — mudança de posição",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Estudo selecionado após CVC",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "H4-B",
+          "title": "II — Adagio",
+          "focus": "Som + afinação + frase",
+          "critical": "Tema",
+          "problems": [
+            "arco",
+            "afinação",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P2",
+              "lesson": "Parte 2 — controle do arco",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Afinação e referência tonal",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "H4-C",
+          "title": "III — Allegro",
+          "focus": "Coordenação + velocidade + posições",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B3",
+              "lesson": "Livro 3 — mudanças de posição",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP2_P2",
+              "lesson": "Parte 2 — articulação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Estudo complementar",
+              "page": null,
+              "verified": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "methodFiles": {
+    "SEVCIK_OP1_B2": {
+      "file": "methods/Sevcik_Op1_Book2.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\SEVCIK\\Sevcik_Op1_Book2.pdf"
+    },
+    "SEVCIK_OP1_B3": {
+      "file": "methods/Sevcik_Op1_Book3.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\SEVCIK\\Sevcik_Op1_Book3.pdf"
+    },
+    "SEVCIK_OP1_B4": {
+      "file": "methods/Sevcik_Op1_Book4.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\SEVCIK\\Sevcik_Op1_Book4.pdf"
+    },
+    "SEVCIK_OP2_P1": {
+      "file": "methods/Sevcik_Op2_Part1.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\SEVCIK\\Sevcik_Op2_Book1.pdf"
+    },
+    "SEVCIK_OP2_P2": {
+      "file": "methods/Sevcik_Op2_Part2.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\SEVCIK\\Sevcik_Op2_Book2.pdf"
+    },
+    "WOHLFAHRT_OP45_B1": {
+      "file": "methods/Wohlfahrt_Op45_Book1.pdf",
+      "local": "F:\\HERMES_Violin_Acervo\\METODOS\\WOHLFAHRT\\Wohlfahrt_Op45_Book1.pdf"
+    }
+  }
+}

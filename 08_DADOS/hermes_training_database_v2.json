@@ -271,9 +271,10 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP1_B1",
-              "lesson": "Livro 1 — exercícios de primeira posição / independência",
-              "page": null,
-              "verified": false
+              "lesson": "Exercício 1 — primeira posição / independência dos dedos",
+              "page": 1,
+              "verified": true,
+              "lessonId": "OP1B1_01"
             },
             {
               "priority": "2ª opção",
@@ -304,10 +305,11 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Parte 1 — nº 4: long tones / sustentação e distribuição do arco",
-              "page": null,
-              "verified": false,
-              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital"
+              "lesson": "Exercício 4 — Study in Half-Notes, 75 variações",
+              "page": 5,
+              "verified": true,
+              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
+              "lessonId": "OP2P1_04"
             },
             {
               "priority": "2ª opção",
@@ -331,9 +333,10 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP1_B1",
-              "lesson": "Livro 1 — padrões de independência e coordenação",
-              "page": null,
-              "verified": false
+              "lesson": "Exercício 3 — coordenação na primeira posição",
+              "page": 3,
+              "verified": true,
+              "lessonId": "OP1B1_03"
             },
             {
               "priority": "2ª opção",
@@ -365,10 +368,11 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Parte 1 — nº 6: détaché; usar as variações como trabalho dirigido",
-              "page": null,
-              "verified": false,
-              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital"
+              "lesson": "Exercício 6 — Study in Eighth-notes, 214 variações",
+              "page": 15,
+              "verified": true,
+              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
+              "lessonId": "OP2P1_06"
             },
             {
               "priority": "2ª opção",
@@ -392,9 +396,10 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Parte 1 — legato e continuidade",
-              "page": null,
-              "verified": false
+              "lesson": "Exercício 4 — sustentação e divisão do arco",
+              "page": 5,
+              "verified": true,
+              "lessonId": "OP2P1_04"
             },
             {
               "priority": "2ª opção",
@@ -418,9 +423,10 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP1_B1",
-              "lesson": "Livro 1 — coordenação",
-              "page": null,
-              "verified": false
+              "lesson": "Exercício 2 — coordenação na primeira posição",
+              "page": 2,
+              "verified": true,
+              "lessonId": "OP1B1_02"
             },
             {
               "priority": "2ª opção",
@@ -453,10 +459,11 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Parte 1 — nº 6: détaché e variações; depois transferência para o trecho",
-              "page": null,
-              "verified": false,
-              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital"
+              "lesson": "Exercício 6 — Study in Eighth-notes, 214 variações",
+              "page": 15,
+              "verified": true,
+              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
+              "lessonId": "OP2P1_06"
             },
             {
               "priority": "2ª opção",
@@ -488,9 +495,10 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Parte 1 — sustentação e continuidade",
-              "page": null,
-              "verified": false
+              "lesson": "Exercício 4 — sustentação e divisão do arco",
+              "page": 5,
+              "verified": true,
+              "lessonId": "OP2P1_04"
             },
             {
               "priority": "2ª opção",
@@ -660,6 +668,107 @@
     "WOHLFAHRT_OP45_B1": {
       "file": "methods/Wohlfahrt_Op45_Book1.pdf",
       "local": "F:\\HERMES_Violin_Acervo\\METODOS\\WOHLFAHRT\\Wohlfahrt_Op45_Book1.pdf"
+    }
+  },
+  "lessonLinkPolicy": {
+    "openOnlyExactLesson": true,
+    "neverOpenWholeMethod": true,
+    "showPagePreview": true,
+    "pageAnchorIsPdfPage": true,
+    "unverifiedLessonCannotBeLinked": true
+  },
+  "methodLessons": {
+    "SEVCIK_OP1_B1": {
+      "label": "Ševčík Op.1 — Livro 1",
+      "source": "https://www.el-atril.com/partituras/Sevcik/School_of_Violin_Technique_Op1_Book1.pdf",
+      "lessons": [
+        {
+          "id": "OP1B1_01",
+          "exercise": "Exercício 1",
+          "page": 1,
+          "pageEnd": 2,
+          "verified": true,
+          "description": "Exercícios de dedos na primeira posição; repetir cada compasso lentamente/rápido, détaché e legato."
+        },
+        {
+          "id": "OP1B1_02",
+          "exercise": "Exercício 2",
+          "page": 2,
+          "verified": true,
+          "description": "Exercício de primeira posição com padrão seguinte ao nº 1."
+        },
+        {
+          "id": "OP1B1_03",
+          "exercise": "Exercício 3",
+          "page": 3,
+          "verified": true,
+          "description": "Exercício de primeira posição."
+        },
+        {
+          "id": "OP1B1_04",
+          "exercise": "Exercício 4",
+          "page": 4,
+          "verified": true,
+          "description": "Exercício de primeira posição."
+        },
+        {
+          "id": "OP1B1_05",
+          "exercise": "Exercício 5",
+          "page": 5,
+          "verified": true,
+          "description": "Exercício de primeira posição."
+        }
+      ]
+    },
+    "SEVCIK_OP2_P1": {
+      "label": "Ševčík Op.2 — Parte 1",
+      "source": "https://ks4.imslp.info/files/imglnks/usimg/f/fa/IMSLP54472-PMLP45683-Sevcik,_Otakar_-_The_bowing_school._op._2_(Violin)._Book_1.pdf",
+      "lessons": [
+        {
+          "id": "OP2P1_01",
+          "exercise": "Exercício 1",
+          "page": 1,
+          "verified": true,
+          "description": "How to Hold the Bow."
+        },
+        {
+          "id": "OP2P1_02",
+          "exercise": "Exercício 2",
+          "page": 1,
+          "verified": true,
+          "description": "How to Guide the Bow."
+        },
+        {
+          "id": "OP2P1_03",
+          "exercise": "Exercício 3",
+          "page": 2,
+          "verified": true,
+          "description": "Whole notes with 57 variations."
+        },
+        {
+          "id": "OP2P1_04",
+          "exercise": "Exercício 4",
+          "page": 5,
+          "verified": true,
+          "description": "Half-notes with 75 variations."
+        },
+        {
+          "id": "OP2P1_05",
+          "exercise": "Exercício 5",
+          "page": 7,
+          "pageEnd": 14,
+          "verified": true,
+          "description": "Détaché and springing bow; quarter-notes with 260 variations."
+        },
+        {
+          "id": "OP2P1_06",
+          "exercise": "Exercício 6",
+          "page": 15,
+          "pageEnd": 20,
+          "verified": true,
+          "description": "Eighth-notes with 214 bowing variations."
+        }
+      ]
     }
   }
 }

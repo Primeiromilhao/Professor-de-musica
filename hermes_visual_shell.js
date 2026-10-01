@@ -5,7 +5,7 @@ function build(){
 if(document.getElementById("hermes-v1-shell"))return;
 document.body.classList.add("hermes-v1");
 const shell=document.createElement("div");shell.id="hermes-v1-shell";shell.className="hermes-v1-shell";
-shell.innerHTML='<aside class="hv-sidebar"><div class="hv-brand">HERMES<span>Violin Lab · Escola de Violino</span></div><div class="hv-profile"><div class="hv-avatar">♬</div><strong>Meu percurso</strong><small>Diagnóstico real · progresso por competência</small></div><nav class="hv-nav"><button class="active" data-view="home">⌂ Início</button><button data-view="formation">◈ Formação</button><button data-view="concerts">♫ Concertos</button><button data-view="assessment">◉ Avaliação</button><button data-view="labs">✦ Laboratório</button></nav><div class="hv-side-note">Técnica, teoria, ouvido interno e performance são trabalhados juntos.</div></aside>'+
+shell.innerHTML='<aside class="hv-sidebar"><div class="hv-brand">HERMES<span>Violin Lab · Escola de Violino</span></div><div class="hv-profile"><div class="hv-avatar">H</div><strong>Meu percurso</strong><small>Diagnóstico real · progresso por competência</small></div><nav class="hv-nav"><button class="active" data-view="home">Início</button><button data-view="studies">Estudos</button><button data-view="formation">Formação</button><button data-view="concerts">Concertos</button><button data-view="assessment">Avaliação</button><button data-view="labs">Laboratório</button></nav><div class="hv-side-note">Técnica, teoria, ouvido interno e performance são trabalhados juntos.</div></aside>'+
 '<main class="hv-main"><div class="hv-top"><div><h1>Professor de Violino</h1><p>Da fundação à formação de músico completo.</p></div><div class="hv-status"><i class="hv-dot"></i> Sistema local</div></div>'+
 '<section class="hv-hero"><h2>Hoje no HERMES</h2><p id="hv-today">Começamos pela avaliação de nivelamento. O HERMES não parte do nível declarado; parte do que você demonstra.</p></section>'+
 '<div class="hv-work"><section class="hv-score"><div class="hv-score-head"><strong>Partitura de trabalho</strong><span class="hv-pill">Trecho da sessão</span></div><div class="hv-score-placeholder"><div><b>Partitura limpa</b><br><span>Os pontos de análise ficam discretos. Clique neles para abrir harmonia, história, ouvido interno, técnica e interpretação.</span><br><button class="hv-action" id="hv-open-analysis">Abrir análise musical</button></div></div></section>'+
@@ -26,7 +26,8 @@ const t=document.getElementById("hv-today");
 const m={home:"Começamos pela avaliação de nivelamento. O HERMES não parte do nível declarado; parte do que você demonstra.",formation:"Competência → preparação → método → aplicação → avaliação. Se faltar uma técnica, primeiro vem a microaula.",repertoire:"A obra permanece no centro. Cada trecho pode abrir sua análise harmônica, histórica, auditiva, técnica e interpretativa.",assessment:"A avaliação mede evidências. Se o sinal não for confiável, o HERMES não transforma a dúvida em erro.",labs:"Técnicas isoladas: aprender o conceito, ouvir o resultado, praticar e depois transferir para o repertório."};
 if(t)t.textContent=m[view]||m.home;
 document.querySelectorAll(".hv-nav button").forEach(x=>x.classList.toggle("active",x.dataset.view===view));
-if(view==="labs")window.HERMES_MICRO_LABS?.open("harmonicos");
+if(view==="labs")window.HERMES_MICRO_LABS?.openCatalog();
+if(view==="studies")window.HERMES_TRAINING_UI?.openStudies();
 if(view==="formation")window.HERMES_TRAINING_UI?.open();
 if(view==="concerts")window.HERMES_TRAINING_UI?.openConcerts();
 }
@@ -38,3 +39,5 @@ document.addEventListener("hermes:work-released",e=>{
  const t=document.getElementById("hv-today");if(t)t.textContent="Estudo liberado: "+w.title+". O diagnóstico continua associado à obra e será retomado durante a transferência para os trechos."; 
  const s=document.querySelector(".hv-score-placeholder span");if(s)s.textContent="Obra liberada para estudo. O HERMES mantém os requisitos diagnosticados como foco da sessão."; 
 });
+
+

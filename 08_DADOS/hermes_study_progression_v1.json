@@ -1,0 +1,507 @@
+{
+  "schemaVersion": "1.0",
+  "title": "HERMES - Progressao Tecnica por Nivel",
+  "principle": "O concerto nao define sozinho o nivel. O aluno precisa consolidar uma base tecnica minima antes de avancar; depois mantem um nucleo de manutencao enquanto desenvolve repertorio.",
+  "levels": [
+    {
+      "id": "L1",
+      "name": "Iniciante",
+      "goal": "Construir a base para entrar nos primeiros concertos com controle de postura, afinacao, ritmo, arco e leitura.",
+      "minimumExit": "Executa escalas de 1-2 oitavas, arpejos basicos, independencia dos dedos, mudancas elementares, detache/legato/staccato basicos e primeiros estudos de cordas duplas com estabilidade.",
+      "scale": {
+        "octaves": "1-2",
+        "families": [
+          "maiores",
+          "menores simples",
+          "arpejos tonicos"
+        ],
+        "system": "Galamian/Flesch simplificado + aplicacoes Sevcik",
+        "bowings": [
+          "detache",
+          "2 ligadas",
+          "4 ligadas",
+          "ritmos simples"
+        ]
+      },
+      "leftHand": [
+        "independencia dos dedos",
+        "padroes de dedos",
+        "semitons",
+        "extensao basica",
+        "afinacao em 1a-3a posicao",
+        "mudanca 1a-3a"
+      ],
+      "doubleStops": [
+        "corda solta + dedo",
+        "tercas preparatorias simples",
+        "quartas preparatorias simples",
+        "oitavas somente como introducao"
+      ],
+      "rightHand": [
+        "postura do arco",
+        "distribuicao",
+        "detache",
+        "legato",
+        "martelé introdutorio",
+        "staccato simples",
+        "cruzamento de cordas"
+      ],
+      "sevcik": [
+        "Op.1 Livro 1",
+        "Op.2 Livro 1",
+        "Op.3 selecionado"
+      ],
+      "complements": [
+        "Wohlfahrt Op.45",
+        "Kayser inicial",
+        "Galamian/Flesch - escalas introdutorias"
+      ],
+      "chapters": [
+        {
+          "chapter": 1,
+          "area": "Escalas e arpejos",
+          "target": "1-2 oitavas",
+          "base": "Galamian/Flesch introdutorio + Sevcik"
+        },
+        {
+          "chapter": 2,
+          "area": "Mao esquerda",
+          "target": "independencia, semitons, extensoes",
+          "base": "Sevcik Op.1 L1"
+        },
+        {
+          "chapter": 3,
+          "area": "Cordas duplas",
+          "target": "preparacao, tercas e quartas simples",
+          "base": "Sevcik Op.1 L4/Op.9 quando indicado"
+        },
+        {
+          "chapter": 4,
+          "area": "Arco",
+          "target": "detache, legato, martele, staccato simples",
+          "base": "Sevcik Op.2 P1"
+        },
+        {
+          "chapter": 5,
+          "area": "Mudancas",
+          "target": "1a-3a posicao",
+          "base": "Sevcik Op.1 selecionado"
+        },
+        {
+          "chapter": 6,
+          "area": "Estudos",
+          "target": "leitura e coordenacao",
+          "base": "Wohlfahrt/Kayser"
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "Intermediario",
+      "goal": "Passar da fundacao para dominio de posicoes, 2-3 oitavas, articulacao e cordas duplas funcionais.",
+      "minimumExit": "Executa escalas maiores/menores de 2-3 oitavas, arpejos, mudancas ate posicoes medias, cordas duplas de tercas/quartas/sextas em nivel preparatorio, golpes variados e estudos com autonomia.",
+      "scale": {
+        "octaves": "2-3",
+        "families": [
+          "maiores",
+          "menores natural/harmonica/melodica",
+          "arpejos tonicos/dominantes/diminutos"
+        ],
+        "system": "Galamian + Flesch progressivo + Sevcik",
+        "bowings": [
+          "2/4/8/varios grupos",
+          "ritmos",
+          "acentos",
+          "cruzamentos"
+        ]
+      },
+      "leftHand": [
+        "independencia avancada",
+        "padroes cromaticos",
+        "extensoes",
+        "posicoes 1-5",
+        "mudancas 1-3-5",
+        "vibrato funcional"
+      ],
+      "doubleStops": [
+        "tercas",
+        "quartas",
+        "sextas",
+        "oitavas preparatorias",
+        "acordes de 3 notas"
+      ],
+      "rightHand": [
+        "detache controlado",
+        "martelé",
+        "staccato",
+        "spiccato inicial",
+        "sautille preparatorio",
+        "legato em mudancas de corda"
+      ],
+      "sevcik": [
+        "Op.1 Livros 2-3",
+        "Op.2 Partes 1-3",
+        "Op.8",
+        "Op.9 selecionado"
+      ],
+      "complements": [
+        "Kayser",
+        "Mazas",
+        "Kreutzer selecionado",
+        "Galamian",
+        "Flesch"
+      ],
+      "chapters": [
+        {
+          "chapter": 1,
+          "area": "Escalas e arpejos",
+          "target": "2-3 oitavas",
+          "base": "Galamian + Flesch progressivo + Sevcik"
+        },
+        {
+          "chapter": 2,
+          "area": "Mao esquerda",
+          "target": "posicoes 1-5 e mudancas",
+          "base": "Sevcik Op.1 L2-L3"
+        },
+        {
+          "chapter": 3,
+          "area": "Cordas duplas",
+          "target": "tercas, quartas, sextas, oitavas preparatorias",
+          "base": "Sevcik Op.9 + cadernos HERMES"
+        },
+        {
+          "chapter": 4,
+          "area": "Arco",
+          "target": "detache, martele, staccato, spiccato inicial",
+          "base": "Sevcik Op.2 P1-P3"
+        },
+        {
+          "chapter": 5,
+          "area": "Vibrato",
+          "target": "vibrato funcional e controle",
+          "base": "estudo aplicado"
+        },
+        {
+          "chapter": 6,
+          "area": "Estudos",
+          "target": "etudes progressivos",
+          "base": "Kayser/Mazas/Kreutzer selecionado"
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "Avancado",
+      "goal": "Consolidar tecnica de concerto, velocidade, posicoes altas, cordas duplas e golpes avancados.",
+      "minimumExit": "Domina escalas de 3 oitavas em varias tonalidades, arpejos completos, cordas duplas estruturadas, posicoes altas, mudancas rapidas, articulacoes avancadas e leitura tecnica.",
+      "scale": {
+        "octaves": "3",
+        "families": [
+          "maiores",
+          "3 formas de menores",
+          "arpejos de 7 acordes",
+          "cromatica",
+          "tons inteiros quando pertinente"
+        ],
+        "system": "Galamian + Flesch completo + Sevcik",
+        "bowings": [
+          "variacoes Galamian",
+          "ritmos complexos",
+          "acentuacao",
+          "velocidade",
+          "distribuicao por regioes"
+        ]
+      },
+      "leftHand": [
+        "posicoes 1-7",
+        "mudancas rapidas",
+        "extensoes",
+        "independencia em alta posicao",
+        "trilos",
+        "harmonicos",
+        "pizzicato de mao esquerda"
+      ],
+      "doubleStops": [
+        "tercas completas",
+        "quartas",
+        "sextas",
+        "oitavas",
+        "oitavas dedilhadas",
+        "decimas",
+        "acordes 3-4 notas"
+      ],
+      "rightHand": [
+        "spiccato",
+        "sautille",
+        "ricochet",
+        "staccato para cima",
+        "staccato para baixo",
+        "martelé rapido",
+        "legato complexo",
+        "cordas multiplas"
+      ],
+      "sevcik": [
+        "Op.1 Livros 3-4",
+        "Op.2 Partes 2-6",
+        "Op.3",
+        "Op.8",
+        "Op.9",
+        "Op.11",
+        "Op.14",
+        "Op.15",
+        "Op.16 quando pertinente"
+      ],
+      "complements": [
+        "Kreutzer",
+        "Fiorillo",
+        "Dont Op.35",
+        "Flesch",
+        "Galamian"
+      ],
+      "chapters": [
+        {
+          "chapter": 1,
+          "area": "Escalas e arpejos",
+          "target": "3 oitavas",
+          "base": "Galamian + Flesch + Sevcik"
+        },
+        {
+          "chapter": 2,
+          "area": "Mao esquerda",
+          "target": "posicoes 1-7, alta posicao",
+          "base": "Sevcik Op.1 L3-L4"
+        },
+        {
+          "chapter": 3,
+          "area": "Cordas duplas",
+          "target": "tercas, quartas, sextas, oitavas, decimas",
+          "base": "Sevcik Op.1 L4 + Op.9"
+        },
+        {
+          "chapter": 4,
+          "area": "Arco",
+          "target": "spiccato, sautille, ricochet, staccato",
+          "base": "Sevcik Op.2/3"
+        },
+        {
+          "chapter": 5,
+          "area": "Harmonicos e trilos",
+          "target": "natural/artificial e ornamentos",
+          "base": "Sevcik selecionado"
+        },
+        {
+          "chapter": 6,
+          "area": "Estudos",
+          "target": "consolidacao de concerto",
+          "base": "Kreutzer/Fiorillo/Dont"
+        }
+      ]
+    },
+    {
+      "id": "L4",
+      "name": "Pre-solista",
+      "goal": "Transformar dominio tecnico em resistencia, refinamento, velocidade e autonomia para grande repertorio.",
+      "minimumExit": "Mantem escalas e arpejos de 3 oitavas com variacoes, cordas duplas avancadas, tecnica de arco completa e consegue selecionar autonomamente os estudos necessarios para um problema musical.",
+      "scale": {
+        "octaves": "3",
+        "families": [
+          "maiores/menores completas",
+          "arpejos expandidos",
+          "tercas/sextas/oitavas/decimas",
+          "cromatica"
+        ],
+        "system": "Galamian/Flesch + variantes individuais",
+        "bowings": [
+          "todos os golpes relevantes",
+          "padroes de velocidade",
+          "ritmos assimetricos",
+          "variacoes personalizadas"
+        ]
+      },
+      "leftHand": [
+        "todas as posicoes",
+        "mudancas extensas",
+        "alta posicao",
+        "harmonicos naturais/artificiais",
+        "trilos e ornamentos",
+        "independencia extrema"
+      ],
+      "doubleStops": [
+        "tercas/sextas/oitavas/decimas",
+        "acordes de 4 notas",
+        "harmonicos em duplas",
+        "integracao musical"
+      ],
+      "rightHand": [
+        "spiccato/sautille de alta velocidade",
+        "ricochet",
+        "staccato longo",
+        "variedade de contato",
+        "controle de timbre",
+        "resistencia"
+      ],
+      "sevcik": [
+        "Op.4",
+        "Op.8-16 conforme diagnostico",
+        "Op.1/2 para manutencao seletiva"
+      ],
+      "complements": [
+        "Dont",
+        "Fiorillo",
+        "Rode",
+        "Kreutzer",
+        "Flesch",
+        "Galamian"
+      ],
+      "chapters": [
+        {
+          "chapter": 1,
+          "area": "Escalas e arpejos",
+          "target": "3 oitavas + duplas",
+          "base": "Galamian/Flesch individualizado"
+        },
+        {
+          "chapter": 2,
+          "area": "Mao esquerda",
+          "target": "todas as posicoes e alta posicao",
+          "base": "Sevcik conforme diagnostico"
+        },
+        {
+          "chapter": 3,
+          "area": "Cordas duplas",
+          "target": "tercas, sextas, oitavas, decimas, acordes",
+          "base": "Sevcik Op.9/14"
+        },
+        {
+          "chapter": 4,
+          "area": "Arco",
+          "target": "todos os golpes relevantes",
+          "base": "Sevcik Op.2/3"
+        },
+        {
+          "chapter": 5,
+          "area": "Integracao",
+          "target": "velocidade, resistencia, transferencia",
+          "base": "CVC + estudo aplicado"
+        },
+        {
+          "chapter": 6,
+          "area": "Estudos",
+          "target": "preparacao de grande repertorio",
+          "base": "Dont/Fiorillo/Rode"
+        }
+      ]
+    },
+    {
+      "id": "L5",
+      "name": "Solista",
+      "goal": "Manter uma base tecnica minima de alto nivel e escolher estudos conforme a obra, nao cumprir um programa mecanico.",
+      "minimumExit": "Mantem o nucleo tecnico sem depender de uma sequencia fixa; diagnostica lacunas, seleciona exercicios e transfere-os para repertorio de alto nivel.",
+      "scale": {
+        "octaves": "3+ conforme repertorio",
+        "families": [
+          "sistema completo",
+          "duplas",
+          "arpejos",
+          "cromatica",
+          "padroes especificos da obra"
+        ],
+        "system": "Galamian/Flesch individualizado + Sevcik sob diagnostico",
+        "bowings": [
+          "variacoes livres orientadas pelo problema musical"
+        ]
+      },
+      "leftHand": [
+        "manutencao de todas as competencias",
+        "alta posicao",
+        "harmonicos",
+        "cordas duplas",
+        "trilos",
+        "velocidade e precisao"
+      ],
+      "doubleStops": [
+        "todas conforme repertorio",
+        "decimas",
+        "acordes",
+        "polifonia"
+      ],
+      "rightHand": [
+        "todos os golpes",
+        "controle timbrico",
+        "velocidade",
+        "resistencia",
+        "articulacao estilistica"
+      ],
+      "sevcik": [
+        "qualquer Opus conforme diagnostico",
+        "manutencao seletiva dos cadernos HERMES"
+      ],
+      "complements": [
+        "Flesch",
+        "Galamian",
+        "Dont",
+        "Fiorillo",
+        "Rode",
+        "estudos especificos da obra"
+      ],
+      "chapters": [
+        {
+          "chapter": 1,
+          "area": "Escalas e arpejos",
+          "target": "3 oitavas ou alem conforme obra",
+          "base": "Galamian/Flesch individualizado"
+        },
+        {
+          "chapter": 2,
+          "area": "Mao esquerda",
+          "target": "manutencao completa",
+          "base": "Sevcik seletivo"
+        },
+        {
+          "chapter": 3,
+          "area": "Cordas duplas",
+          "target": "todas conforme repertorio",
+          "base": "Sevcik Op.9/14/12"
+        },
+        {
+          "chapter": 4,
+          "area": "Arco",
+          "target": "todos os golpes e timbres",
+          "base": "Sevcik Op.2/3"
+        },
+        {
+          "chapter": 5,
+          "area": "Diagnostico",
+          "target": "selecionar somente o que a obra exige",
+          "base": "CVC + Sevcik"
+        },
+        {
+          "chapter": 6,
+          "area": "Estudos",
+          "target": "manutencao e problema artistico",
+          "base": "Dont/Fiorillo/Rode"
+        }
+      ]
+    }
+  ],
+  "dailyMaintenance": {
+    "L1": "base curta e consistente",
+    "L2": "escala + Sevcik + articulacao + estudo",
+    "L3": "escala + tecnica especifica + etude + manutencao",
+    "L4": "nucleo tecnico + problema do repertorio",
+    "L5": "diagnostico + manutencao minima + problema artistico"
+  },
+  "progressionRule":"Nao avancar apenas por tempo. Avancar quando as competencias minimas do nivel forem demonstradas de forma consistente.",
+  "regressionRule":"Uma competencia pode voltar a nivel anterior quando a evidencia mostrar perda de consistencia.",
+  "notes":[
+    "Os numeros de oitavas sao metas pedagogicas, nao uma exigencia universal para todas as tonalidades desde o primeiro dia.",
+    "Carcassi foi identificado como metodo de violao, nao de violino; para o sistema de escalas de violino sera usado Carl Flesch juntamente com Galamian."
+  ],
+  "sources":[
+    "Eastman Community Music School - Violin Curriculum",
+    "World Violin Academy - Curriculum",
+    "Violinspiration - Sevcik",
+    "Galamian/Flesch pedagogy research"
+  ]
+}

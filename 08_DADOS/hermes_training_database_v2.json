@@ -38,19 +38,22 @@
         {
           "id": "SEVCIK_OP1_B1",
           "label": "Ševčík Op.1 — Livro 1",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P1",
           "label": "Ševčík Op.2 — Parte 1",
-          "role": "base_arco"
+          "role": "base_arco",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P2",
           "label": "Ševčík Op.2 — Parte 2",
           "role": "base_arco",
           "status": "local_pdf",
-          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op2_Book2.pdf"
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op2_Book2.pdf",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "WOHLFAHRT_OP45_B1",
@@ -68,24 +71,28 @@
           "label": "Ševčík Op.1 — Livro 2",
           "role": "base_posicoes",
           "status": "local_pdf",
-          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book2.pdf"
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book2.pdf",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP1_B3",
           "label": "Ševčík Op.1 — Livro 3",
           "role": "base_mudancas",
           "status": "local_pdf",
-          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book3.pdf"
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book3.pdf",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P1",
           "label": "Ševčík Op.2 — Parte 1",
-          "role": "base_arco"
+          "role": "base_arco",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P2",
           "label": "Ševčík Op.2 — Parte 2",
-          "role": "base_arco"
+          "role": "base_arco",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "KAYSER_OP20",
@@ -107,40 +114,47 @@
         {
           "id": "SEVCIK_OP1_B2",
           "label": "Ševčík Op.1 — Livro 2",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP1_B3",
           "label": "Ševčík Op.1 — Livro 3",
-          "role": "base_mudancas"
+          "role": "base_mudancas",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP1_B4",
           "label": "Ševčík Op.1 — Livro 4",
           "role": "base_cordas_duplas",
           "status": "local_pdf",
-          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book4.pdf"
+          "path": "F:/HERMES_Violin_Acervo/METODOS/SEVCIK/Sevcik_Op1_Book4.pdf",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P2",
           "label": "Ševčík Op.2 — Parte 2",
-          "role": "base_arco"
+          "role": "base_arco",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P3",
           "label": "Ševčík Op.2 — Parte 3",
           "role": "base_arco",
-          "status": "missing_pdf"
+          "status": "missing_pdf",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP8",
           "label": "Ševčík Op.8",
-          "role": "base_mudancas"
+          "role": "base_mudancas",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP9",
           "label": "Ševčík Op.9",
-          "role": "base_cordas_duplas"
+          "role": "base_cordas_duplas",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "KREUTZER_42",
@@ -151,7 +165,8 @@
         {
           "id": "MAZAS_OP36",
           "label": "Mazas Op.36",
-          "role": "segunda_opcao"
+          "role": "segunda_opcao",
+          "source": "https://imslp.org/wiki/Etudes,_Op.36_(Mazas,_Jacques_F%C3%A9r%C3%A9ol)"
         }
       ]
     },
@@ -162,22 +177,26 @@
         {
           "id": "SEVCIK_OP1_B3",
           "label": "Ševčík Op.1 — Livro 3",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP1_B4",
           "label": "Ševčík Op.1 — Livro 4",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP2_P3",
           "label": "Ševčík Op.2 — Parte 3",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP9",
           "label": "Ševčík Op.9",
-          "role": "base_cordas_duplas"
+          "role": "base_cordas_duplas",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "KREUTZER_42",
@@ -199,7 +218,8 @@
         {
           "id": "FLESCH_SCALE",
           "label": "Flesch — Das Skalensystem",
-          "role": "complementar"
+          "role": "complementar",
+          "source": "https://imslp.org/wiki/Das_Skalensystem_(Flesch,_Carl)"
         }
       ]
     },
@@ -210,22 +230,26 @@
         {
           "id": "SEVCIK_OP1_B4",
           "label": "Ševčík Op.1 — Livro 4",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP9",
           "label": "Ševčík Op.9",
-          "role": "base"
+          "role": "base",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP11",
           "label": "Ševčík Op.11",
-          "role": "base_afinacao"
+          "role": "base_afinacao",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "SEVCIK_OP14",
           "label": "Ševčík Op.14",
-          "role": "base_acordes"
+          "role": "base_acordes",
+          "source": "https://imslp.org/wiki/List_of_compositions_by_Otakar_%C5%A0ev%C4%8D%C3%ADk"
         },
         {
           "id": "KREUTZER_42",
@@ -245,7 +269,8 @@
         {
           "id": "FLESCH_SCALE",
           "label": "Flesch — Das Skalensystem",
-          "role": "complementar"
+          "role": "complementar",
+          "source": "https://imslp.org/wiki/Das_Skalensystem_(Flesch,_Carl)"
         }
       ]
     }
@@ -271,17 +296,21 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP1_B1",
-              "lesson": "Exercício 1 — primeira posição / independência dos dedos",
+              "lesson": "Exercício 1",
               "page": 1,
               "verified": true,
-              "lessonId": "OP1B1_01"
+              "lessonId": "OP1B1_01",
+              "pageEnd": null,
+              "pdfPage": 1,
+              "study": "Lento → controlado → musical → transferência."
             },
             {
               "priority": "2ª opção",
               "method": "SEVCIK_OP2_P1",
               "lesson": "Parte 1 — controle do arco e articulação",
               "page": null,
-              "verified": false
+              "verified": false,
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "3ª opção",
@@ -290,7 +319,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "R35-B",
@@ -305,11 +340,15 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Exercício 4 — Study in Half-Notes, 75 variações",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
               "page": 5,
               "verified": true,
               "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
-              "lessonId": "OP2P1_04"
+              "lessonId": "OP2P1_04",
+              "pageEnd": null,
+              "pdfPage": 5,
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -318,7 +357,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "R35-C",
@@ -332,11 +377,15 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP1_B1",
-              "lesson": "Exercício 3 — coordenação na primeira posição",
-              "page": 3,
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
               "verified": true,
-              "lessonId": "OP1B1_03"
+              "lessonId": "OP2P1_06",
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -345,9 +394,23 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         }
-      ]
+      ],
+      "tonality": "Si menor",
+      "analysis": {
+        "tonality": "Si menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
     },
     {
       "id": "SEITZ_OP22",
@@ -368,11 +431,15 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Exercício 6 — Study in Eighth-notes, 214 variações",
-              "page": 15,
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
               "verified": true,
               "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
-              "lessonId": "OP2P1_06"
+              "lessonId": "OP2P1_05",
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -381,7 +448,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "S22-B",
@@ -396,10 +469,14 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Exercício 4 — sustentação e divisão do arco",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
               "page": 5,
               "verified": true,
-              "lessonId": "OP2P1_04"
+              "lessonId": "OP2P1_04",
+              "pageEnd": null,
+              "pdfPage": 5,
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -408,7 +485,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "S22-C",
@@ -422,11 +505,15 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP1_B1",
-              "lesson": "Exercício 2 — coordenação na primeira posição",
-              "page": 2,
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
               "verified": true,
-              "lessonId": "OP1B1_02"
+              "lessonId": "OP2P1_06",
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -435,9 +522,23 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         }
-      ]
+      ],
+      "tonality": "Ré maior",
+      "analysis": {
+        "tonality": "Ré maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
     },
     {
       "id": "VIVALDI_RV356",
@@ -459,11 +560,15 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Exercício 6 — Study in Eighth-notes, 214 variações",
-              "page": 15,
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
               "verified": true,
               "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
-              "lessonId": "OP2P1_06"
+              "lessonId": "OP2P1_05",
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -479,7 +584,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "V356-B",
@@ -495,10 +606,14 @@
             {
               "priority": "1ª opção",
               "method": "SEVCIK_OP2_P1",
-              "lesson": "Exercício 4 — sustentação e divisão do arco",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
               "page": 5,
               "verified": true,
-              "lessonId": "OP2P1_04"
+              "lessonId": "OP2P1_04",
+              "pageEnd": null,
+              "pdfPage": 5,
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -507,7 +622,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "V356-C",
@@ -522,10 +643,15 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP1_B2",
-              "lesson": "Livro 2 — padrões de posição",
-              "page": null,
-              "verified": false
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -534,9 +660,23 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         }
-      ]
+      ],
+      "tonality": "Lá menor",
+      "analysis": {
+        "tonality": "Lá menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
     },
     {
       "id": "HAYDN_HOB_VIIA4",
@@ -557,11 +697,16 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP2_P2",
-              "lesson": "Parte 2 — articulação; selecionar a família correspondente ao ataque do trecho",
-              "page": null,
-              "verified": false,
-              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital"
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
+              "verified": true,
+              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "lessonId": "OP2P1_05",
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -577,7 +722,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "H4-B",
@@ -592,10 +743,15 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP2_P2",
-              "lesson": "Parte 2 — controle do arco",
-              "page": null,
-              "verified": false
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -604,7 +760,13 @@
               "page": null,
               "verified": false
             }
-          ]
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
         },
         {
           "id": "H4-C",
@@ -619,11 +781,16 @@
           "support": [
             {
               "priority": "1ª opção",
-              "method": "SEVCIK_OP1_B3",
-              "lesson": "Livro 3 — família de mudanças de posição; lição exata depende da edição",
-              "page": null,
-              "verified": false,
-              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital"
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "evidence": "rota técnica baseada na função do exercício; página ainda não verificada na edição digital",
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
             },
             {
               "priority": "2ª opção",
@@ -638,6 +805,1820 @@
               "lesson": "Estudo complementar",
               "page": null,
               "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Sol maior",
+      "analysis": {
+        "tonality": "Sol maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "VIVALDI_RV310",
+      "title": "Vivaldi RV310 — Concerto em Sol maior",
+      "level": "L3",
+      "source": "https://imslp.org/wiki/Violin_Concerto_in_G_major,_RV_310_(Vivaldi,_Antonio)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "V310-A",
+          "title": "I — Allegro",
+          "focus": "Articulação + cruzamento de cordas + coordenação",
+          "critical": "Tema e primeiras sequências",
+          "problems": [
+            "arco",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
+              "verified": true,
+              "lessonId": "OP2P1_05",
+              "pdfPage": 7,
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP1_B2",
+              "lesson": "Padrões de posição e coordenação",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "V310-B",
+          "title": "II — Largo",
+          "focus": "Som + legato + fraseado barroco",
+          "critical": "Tema cantabile",
+          "problems": [
+            "arco",
+            "musicalidade",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "lessonId": "OP2P1_04",
+              "pdfPage": 5,
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Estudo complementar de legato",
+              "page": null,
+              "verified": false
+            }
+          ]
+        },
+        {
+          "id": "V310-C",
+          "title": "III — Allegro",
+          "focus": "Velocidade construída sobre estabilidade",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "lessonId": "OP2P1_06",
+              "pdfPage": 15,
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KAYSER_OP20",
+              "lesson": "Estudo complementar de velocidade controlada",
+              "page": null,
+              "verified": false
+            }
+          ]
+        }
+      ],
+      "tonality": "Sol maior",
+      "analysis": {
+        "tonality": "Sol maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "ACCOLAY_NO1",
+      "title": "Accolay — Concerto nº 1 em Lá menor",
+      "level": "L4",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.1,_Op.12_(Accolay,_Jean-Baptiste)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "A1-A",
+          "title": "I — Tema e entrada",
+          "focus": "Afinação + articulação + mudanças iniciais",
+          "critical": "Entrada do solo",
+          "problems": [
+            "afinação",
+            "arco",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 10 — Sixths",
+              "page": 10,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 11,
+              "lessonId": "OP1B4_10",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Estudo complementar selecionado após CVC",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "A1-B",
+          "title": "II — Cantabile",
+          "focus": "Som + vibrato + frase",
+          "critical": "Tema cantabile",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Referência de afinação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "A1-C",
+          "title": "III — Allegro",
+          "focus": "Coordenação + velocidade + posição",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Estudo complementar",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Lá menor",
+      "analysis": {
+        "tonality": "Lá menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "MOZART_K216",
+      "title": "Mozart — Concerto nº 3 em Sol maior K.216",
+      "level": "L4",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.3,_K.216_(Mozart,_Wolfgang_Amadeus)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "K216-A",
+          "title": "I — Allegro",
+          "focus": "Articulação clássica + afinação + coordenação",
+          "critical": "Entrada e tema",
+          "problems": [
+            "arco",
+            "afinação",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
+              "verified": true,
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "lessonId": "OP2P1_05",
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP2_P2",
+              "lesson": "Preparação de arco",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "K216-B",
+          "title": "II — Adagio",
+          "focus": "Cantabile + controle do arco + afinação",
+          "critical": "Tema",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Controle de frase e arco",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "K216-C",
+          "title": "III — Rondeau",
+          "focus": "Agilidade + articulação + precisão",
+          "critical": "Rondó e passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP8",
+              "lesson": "Mudanças quando diagnosticadas",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Sol maior",
+      "analysis": {
+        "tonality": "Sol maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "BRUCH_OP26",
+      "title": "Bruch — Concerto nº 1 em Sol menor Op.26",
+      "level": "L5",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.1,_Op.26_(Bruch,_Max)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "B26-A",
+          "title": "I — Vorspiel",
+          "focus": "Som romntico + afinao + mudanas",
+          "critical": "Entrada e tema",
+          "problems": [
+            "afinação",
+            "musicalidade",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Afinação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "B26-B",
+          "title": "II — Adagio",
+          "focus": "Cantabile + sustentação + vibrato",
+          "critical": "Tema principal",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Referência tonal",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "B26-C",
+          "title": "III — Finale",
+          "focus": "Velocidade + resistência + articulação",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Reforço de resistência",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Sol menor",
+      "analysis": {
+        "tonality": "Sol menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "MENDELSSOHN_OP64",
+      "title": "Mendelssohn — Concerto em Mi menor Op.64",
+      "level": "L5",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.64_(Mendelssohn,_Felix)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "M64-A",
+          "title": "I — Allegro molto appassionato",
+          "focus": "Afinação + articulação + coordenação",
+          "critical": "Entrada e linhas rápidas",
+          "problems": [
+            "afinação",
+            "coordenação",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Articulação e coordenação",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "FIORILLO_36",
+              "lesson": "Clareza e velocidade",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "M64-B",
+          "title": "II — Andante",
+          "focus": "Cantabile + distribuição de arco + frase",
+          "critical": "Tema cantabile",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP2_P3",
+              "lesson": "Distribuição de arco",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "M64-C",
+          "title": "III — Allegretto non troppo / Allegro molto vivace",
+          "focus": "Virtuosismo + coordenação + resistência",
+          "critical": "Passagens rápidas e integração",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Resistência e virtuosismo",
+              "page": null,
+              "verified": false
+            },
+            {
+              "priority": "3ª opção",
+              "method": "SEVCIK_OP9",
+              "lesson": "Cordas duplas quando diagnosticadas",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Mi menor",
+      "analysis": {
+        "tonality": "Mi menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "LALO_OP21",
+      "title": "Lalo — Symphonie espagnole Op.21",
+      "level": "L5",
+      "source": "https://imslp.org/wiki/Symphonie_espagnole,_Op.21_(Lalo,_Édouard)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "L21-A",
+          "title": "I — Allegro non troppo",
+          "focus": "Articulação + posição + som",
+          "critical": "Entrada",
+          "problems": [
+            "arco",
+            "afinação",
+            "mudança de posição"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Articulação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "L21-B",
+          "title": "III — Intermezzo",
+          "focus": "Ritmo + arco + caráter",
+          "critical": "Passagens de caráter espanhol",
+          "problems": [
+            "arco",
+            "ritmo",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
+              "verified": true,
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "lessonId": "OP2P1_05",
+              "study": "4 notas → 8 notas → variação → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FIORILLO_36",
+              "lesson": "Coordenação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "L21-C",
+          "title": "V — Rondo",
+          "focus": "Velocidade + resistência + precisão",
+          "critical": "Rondó final",
+          "problems": [
+            "velocidade",
+            "resistência",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FIORILLO_36",
+              "lesson": "Velocidade",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré menor",
+      "analysis": {
+        "tonality": "Ré menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "SIBELIUS_OP47",
+      "title": "Sibelius — Concerto em Ré menor Op.47",
+      "level": "L6",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.47_(Sibelius,_Jean)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "S47-A",
+          "title": "I — Allegro moderato",
+          "focus": "Afinação + posições + projeção",
+          "critical": "Entrada e primeira grande frase",
+          "problems": [
+            "afinação",
+            "mudança de posição",
+            "musicalidade"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 10 — Sixths",
+              "page": 10,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 11,
+              "lessonId": "OP1B4_10",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Preparação avançada",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "S47-B",
+          "title": "II — Adagio di molto",
+          "focus": "Som + frase + controle de arco",
+          "critical": "Tema cantabile",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Controle avançado",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "S47-C",
+          "title": "III — Allegro ma non tanto",
+          "focus": "Virtuosismo + resistência + precisão",
+          "critical": "Dança final",
+          "problems": [
+            "velocidade",
+            "resistência",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FIORILLO_36",
+              "lesson": "Clareza",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré menor",
+      "analysis": {
+        "tonality": "Ré menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "TCHAIKOVSKY_OP35",
+      "title": "Tchaikovsky — Concerto em Ré maior Op.35",
+      "level": "L6",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.35_(Tchaikovsky,_Pyotr)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "T35-A",
+          "title": "I — Allegro moderato",
+          "focus": "Posições + arpejos + resistência",
+          "critical": "Entrada e tema",
+          "problems": [
+            "mudança de posição",
+            "arpejos",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Resistência",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "T35-B",
+          "title": "II — Canzonetta",
+          "focus": "Cantabile + arco + afinação",
+          "critical": "Tema",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP11",
+              "lesson": "Base harmônica de afinação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "T35-C",
+          "title": "III — Finale",
+          "focus": "Velocidade + resistência + coordenação",
+          "critical": "Passagens finais",
+          "problems": [
+            "velocidade",
+            "resistência",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FIORILLO_36",
+              "lesson": "Clareza e velocidade",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré maior",
+      "analysis": {
+        "tonality": "Ré maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "WIENIAWSKI_OP22",
+      "title": "Wieniawski — Concerto nº 2 em Ré menor Op.22",
+      "level": "L6",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.2,_Op.22_(Wieniawski,_Henryk)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "W22-A",
+          "title": "I — Allegro moderato",
+          "focus": "Mudanças + acordes + articulação",
+          "critical": "Entrada e desenvolvimento",
+          "problems": [
+            "mudança de posição",
+            "cordas duplas",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Estudo avançado",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "W22-B",
+          "title": "II — Romance",
+          "focus": "Som + frase + afinação",
+          "critical": "Tema",
+          "problems": [
+            "musicalidade",
+            "afinação",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Controle avançado",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "W22-C",
+          "title": "III — La Cadenza / Finale",
+          "focus": "Virtuosismo + resistência",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "resistência",
+            "cordas duplas"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Virtuosismo",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré menor",
+      "analysis": {
+        "tonality": "Ré menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "BRAHMS_OP77",
+      "title": "Brahms — Concerto em Ré maior Op.77",
+      "level": "L6",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.77_(Brahms,_Johannes)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "BR77-A",
+          "title": "I — Allegro non troppo",
+          "focus": "Som + estrutura + resistência",
+          "critical": "Entrada e desenvolvimento",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Resistência",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BR77-B",
+          "title": "II — Adagio",
+          "focus": "Cantabile + afinação + arco",
+          "critical": "Tema",
+          "problems": [
+            "musicalidade",
+            "afinação",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Referência tonal",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BR77-C",
+          "title": "III — Allegro giocoso",
+          "focus": "Articulação + coordenação + resistência",
+          "critical": "Rondó",
+          "problems": [
+            "arco",
+            "coordenação",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Complemento técnico",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré maior",
+      "analysis": {
+        "tonality": "Ré maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "BEETHOVEN_OP61",
+      "title": "Beethoven — Concerto em Ré maior Op.61",
+      "level": "L5",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.61_(Beethoven,_Ludwig_van)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "BE61-A",
+          "title": "I — Allegro ma non troppo",
+          "focus": "Estrutura + afinação + resistência",
+          "critical": "Entrada e tema",
+          "problems": [
+            "musicalidade",
+            "afinação",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Resistência avançada",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BE61-B",
+          "title": "II — Larghetto",
+          "focus": "Cantabile + arco + som",
+          "critical": "Tema",
+          "problems": [
+            "musicalidade",
+            "arco",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KREUTZER_42",
+              "lesson": "Controle de arco",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BE61-C",
+          "title": "III — Rondo",
+          "focus": "Articulação + precisão + resistência",
+          "critical": "Rondó final",
+          "problems": [
+            "arco",
+            "coordenação",
+            "resistência"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Resistência",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré maior",
+      "analysis": {
+        "tonality": "Ré maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "BACH_CHACONNE",
+      "title": "Bach — Chaconne da Partita nº 2 BWV 1004",
+      "level": "L6",
+      "source": "https://imslp.org/wiki/Partita_for_Solo_Violin_No.2,_BWV_1004_(Bach,_Johann_Sebastian)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "BC-A",
+          "title": "Chaconne — Abertura e tema",
+          "focus": "Polifonia + acordes + afinação",
+          "critical": "Tema inicial",
+          "problems": [
+            "cordas_duplas",
+            "cordas_triplas",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 1 — Octaves",
+              "page": 1,
+              "verified": true,
+              "pageEnd": 2,
+              "pdfPage": 1,
+              "lessonId": "OP1B4_01",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP14",
+              "lesson": "Preparação de acordes",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BC-B",
+          "title": "Chaconne — Variações",
+          "focus": "Arpejos + independência + vozes",
+          "critical": "Variações centrais",
+          "problems": [
+            "cordas_duplas",
+            "arpejos",
+            "independencia"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 21 — Exercises in Harmonics",
+              "page": 21,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 38,
+              "lessonId": "OP1B4_21",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "DONT_OP35",
+              "lesson": "Controle avançado",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "BC-C",
+          "title": "Chaconne — Reintegração",
+          "focus": "Musicalidade + resistência + polifonia",
+          "critical": "Retorno do tema e final",
+          "problems": [
+            "musicalidade",
+            "resistência",
+            "cordas_duplas"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B4",
+              "lesson": "Exercício 19 — Pizzicato for the left hand",
+              "page": 19,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 36,
+              "lessonId": "OP1B4_19",
+              "study": "Lento → controlado → musical → transferência.",
+              "customBookId": "HSEV_TERCAS"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "FLESCH_SCALE",
+              "lesson": "Afinação",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Ré menor",
+      "analysis": {
+        "tonality": "Ré menor",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "RIEDING_OP34",
+      "title": "Rieding — Concerto em Sol maior Op.34",
+      "level": "L2",
+      "source": "https://imslp.org/wiki/Violin_Concerto,_Op.34_(Rieding,_Oskar)",
+      "mappingStatus": "needs_score_mapping",
+      "sessions": [
+        {
+          "id": "R34-A",
+          "title": "I — Allegro moderato",
+          "focus": "Afinação + détaché + coordenação",
+          "critical": "Entrada e tema",
+          "problems": [
+            "afinação",
+            "arco",
+            "coordenação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP1_B1",
+              "lesson": "Exercício 1",
+              "page": 1,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 1,
+              "lessonId": "OP1B1_01",
+              "study": "Lento → controlado → musical → transferência."
+            },
+            {
+              "priority": "2ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Articulação e controle do arco",
+              "page": null,
+              "verified": false,
+              "customBookId": "HSEV_ARCO_BASE"
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "R34-B",
+          "title": "II — Andante",
+          "focus": "Legato + som + frase",
+          "critical": "Tema",
+          "problems": [
+            "arco",
+            "musicalidade",
+            "afinação"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "verified": true,
+              "pageEnd": null,
+              "pdfPage": 5,
+              "lessonId": "OP2P1_04",
+              "study": "Três variações; aplicar à frase.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "WOHLFAHRT_OP45_B1",
+              "lesson": "Legato complementar",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        },
+        {
+          "id": "R34-C",
+          "title": "III — Allegro",
+          "focus": "Agilidade + coordenação",
+          "critical": "Final",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "arco"
+          ],
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "verified": true,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            },
+            {
+              "priority": "2ª opção",
+              "method": "KAYSER_OP20",
+              "lesson": "Complemento após diagnóstico",
+              "page": null,
+              "verified": false
+            }
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping",
+            "note": "A técnica está definida; compassos exatos serão amarrados à edição local da partitura."
+          }
+        }
+      ],
+      "tonality": "Sol maior",
+      "analysis": {
+        "tonality": "Sol maior",
+        "harmony": "Tónica → regiões de tensão → dominante → cadências; localizar baixo e notas estruturais antes de acelerar.",
+        "hearing": "Ouvir baixo/vozes-guia, relação do solo com acompanhamento e estabilidade da afinação.",
+        "technique": "Diagnosticar CVC → estudar a lição exata → regressar ao trecho.",
+        "history": "Informação histórica deve ser apresentada com a etiqueta adequada (documentado/interpretação/tradição)."
+      }
+    },
+    {
+      "id": "VIOTTI_OP22",
+      "title": "Viotti — Concerto nº 22 em Lá menor G.97",
+      "level": "L4",
+      "source": "https://imslp.org/wiki/Violin_Concerto_No.22,_G.97_(Viotti,_Giovanni_Battista)",
+      "tonality": "Lá menor",
+      "mappingStatus": "needs_score_mapping",
+      "analysis": {
+        "tonality": "Lá menor",
+        "harmony": "Tónica, dominante, sequências e cadências.",
+        "hearing": "Ouvir diálogo solo/baixo e estrutura das cadências.",
+        "technique": "Articulação, coordenação e mudanças devem ser diagnosticadas antes do andamento."
+      },
+      "sessions": [
+        {
+          "id": "V22-A",
+          "title": "I — Moderato",
+          "focus": "Articulação + afinação + estrutura",
+          "critical": "Entrada e desenvolvimento",
+          "problems": [
+            "arco",
+            "afinação",
+            "coordenação"
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping"
+          },
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 5 — Détaché and springing bow",
+              "page": 7,
+              "pageEnd": 14,
+              "pdfPage": 7,
+              "verified": true,
+              "lessonId": "OP2P1_05",
+              "study": "4 notas → 8 notas → variação → retorno ao trecho.",
+              "customBookId": "HSEV_ARCO_BASE"
+            }
+          ]
+        },
+        {
+          "id": "V22-B",
+          "title": "II — Adagio",
+          "focus": "Cantabile + distribuição do arco",
+          "critical": "Tema",
+          "problems": [
+            "arco",
+            "musicalidade",
+            "afinação"
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping"
+          },
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 4 — Half-notes with 75 variations",
+              "page": 5,
+              "pdfPage": 5,
+              "verified": true,
+              "lessonId": "OP2P1_04",
+              "study": "Sustentar → dividir → frasear → aplicar.",
+              "customBookId": "HSEV_ARCO_BASE"
+            }
+          ]
+        },
+        {
+          "id": "V22-C",
+          "title": "III — Agitato assai",
+          "focus": "Velocidade + coordenação",
+          "critical": "Passagens rápidas",
+          "problems": [
+            "velocidade",
+            "coordenação",
+            "arco"
+          ],
+          "selection": {
+            "label": "Trecho crítico selecionado",
+            "status": "pedagogical_selection",
+            "mappingStatus": "needs_score_mapping"
+          },
+          "support": [
+            {
+              "priority": "1ª opção",
+              "method": "SEVCIK_OP2_P1",
+              "lesson": "Exercício 6 — Eighth-notes with 214 bowing variations",
+              "page": 15,
+              "pageEnd": 20,
+              "pdfPage": 15,
+              "verified": true,
+              "lessonId": "OP2P1_06",
+              "study": "4 notas → 8 notas → BPM gradual → transferência.",
+              "customBookId": "HSEV_ARCO_BASE"
             }
           ]
         }
@@ -668,6 +2649,10 @@
     "WOHLFAHRT_OP45_B1": {
       "file": "methods/Wohlfahrt_Op45_Book1.pdf",
       "local": "F:\\HERMES_Violin_Acervo\\METODOS\\WOHLFAHRT\\Wohlfahrt_Op45_Book1.pdf"
+    },
+    "SEVCIK_OP1_B1": {
+      "file": "methods/Sevcik_Op1_Book1.pdf",
+      "local": "C:\\Users\\Utilizador\\Desktop\\06 - Música e Violino\\professor de violino\\methods\\Sevcik_Op1_Book1.pdf"
     }
   },
   "lessonLinkPolicy": {
@@ -680,95 +2665,292 @@
   "methodLessons": {
     "SEVCIK_OP1_B1": {
       "label": "Ševčík Op.1 — Livro 1",
-      "source": "https://www.el-atril.com/partituras/Sevcik/School_of_Violin_Technique_Op1_Book1.pdf",
+      "source": "methods/Sevcik_Op1_Book1.pdf",
       "lessons": [
         {
           "id": "OP1B1_01",
           "exercise": "Exercício 1",
           "page": 1,
-          "pageEnd": 2,
+          "pdfPage": 1,
           "verified": true,
-          "description": "Exercícios de dedos na primeira posição; repetir cada compasso lentamente/rápido, détaché e legato."
+          "description": "Primeira posição e independência."
         },
         {
           "id": "OP1B1_02",
           "exercise": "Exercício 2",
           "page": 2,
+          "pdfPage": 2,
           "verified": true,
-          "description": "Exercício de primeira posição com padrão seguinte ao nº 1."
+          "description": "Primeira posição e independência."
         },
         {
           "id": "OP1B1_03",
           "exercise": "Exercício 3",
           "page": 3,
+          "pdfPage": 3,
           "verified": true,
-          "description": "Exercício de primeira posição."
+          "description": "Primeira posição e independência."
         },
         {
           "id": "OP1B1_04",
           "exercise": "Exercício 4",
           "page": 4,
+          "pdfPage": 4,
           "verified": true,
-          "description": "Exercício de primeira posição."
+          "description": "Primeira posição e independência."
         },
         {
           "id": "OP1B1_05",
           "exercise": "Exercício 5",
           "page": 5,
+          "pdfPage": 5,
           "verified": true,
-          "description": "Exercício de primeira posição."
+          "description": "Primeira posição e independência."
         }
       ]
     },
     "SEVCIK_OP2_P1": {
       "label": "Ševčík Op.2 — Parte 1",
-      "source": "https://ks4.imslp.info/files/imglnks/usimg/f/fa/IMSLP54472-PMLP45683-Sevcik,_Otakar_-_The_bowing_school._op._2_(Violin)._Book_1.pdf",
+      "source": "methods/Sevcik_Op2_Part1.pdf",
       "lessons": [
         {
           "id": "OP2P1_01",
-          "exercise": "Exercício 1",
+          "exercise": "Exercício 1 — How to Hold the Bow",
           "page": 1,
+          "pdfPage": 1,
           "verified": true,
-          "description": "How to Hold the Bow."
+          "description": "Preparação do arco.",
+          "study": "Preparar a mão; depois notas curtas."
         },
         {
           "id": "OP2P1_02",
-          "exercise": "Exercício 2",
+          "exercise": "Exercício 2 — How to Guide the Bow",
           "page": 1,
+          "pdfPage": 1,
           "verified": true,
-          "description": "How to Guide the Bow."
+          "description": "Guiar o arco.",
+          "study": "As seis formas; metade inferior/superior."
         },
         {
           "id": "OP2P1_03",
-          "exercise": "Exercício 3",
+          "exercise": "Exercício 3 — Whole notes with 57 variations",
           "page": 2,
+          "pdfPage": 2,
           "verified": true,
-          "description": "Whole notes with 57 variations."
+          "description": "Distribuição.",
+          "study": "Uma variação por vez."
         },
         {
           "id": "OP2P1_04",
-          "exercise": "Exercício 4",
+          "exercise": "Exercício 4 — Half-notes with 75 variations",
           "page": 5,
+          "pdfPage": 5,
           "verified": true,
-          "description": "Half-notes with 75 variations."
+          "description": "Sustentação.",
+          "study": "Três variações; aplicar à frase."
         },
         {
           "id": "OP2P1_05",
-          "exercise": "Exercício 5",
+          "exercise": "Exercício 5 — Détaché and springing bow",
           "page": 7,
           "pageEnd": 14,
+          "pdfPage": 7,
           "verified": true,
-          "description": "Détaché and springing bow; quarter-notes with 260 variations."
+          "description": "Détaché e staccato.",
+          "study": "4 notas → 8 notas → variação → trecho."
         },
         {
           "id": "OP2P1_06",
-          "exercise": "Exercício 6",
+          "exercise": "Exercício 6 — Eighth-notes with 214 bowing variations",
           "page": 15,
           "pageEnd": 20,
+          "pdfPage": 15,
           "verified": true,
-          "description": "Eighth-notes with 214 bowing variations."
+          "description": "Spiccato/sautillé e velocidade.",
+          "study": "4 notas → 8 notas → BPM gradual → trecho."
+        }
+      ]
+    },
+    "SEVCIK_OP1_B4": {
+      "label": "Ševčík Op.1 — Livro 4",
+      "source": "methods/Sevcik_Op1_Book4.pdf",
+      "lessons": [
+        {
+          "id": "OP1B4_01",
+          "exercise": "Exercício 1 — Octaves",
+          "page": 1,
+          "pageEnd": 2,
+          "pdfPage": 1,
+          "verified": true,
+          "description": "Oitavas."
+        },
+        {
+          "id": "OP1B4_10",
+          "exercise": "Exercício 10 — Sixths",
+          "page": 10,
+          "pdfPage": 11,
+          "verified": true,
+          "description": "Sextas."
+        },
+        {
+          "id": "OP1B4_12",
+          "exercise": "Exercício 12 — Tenths",
+          "page": 12,
+          "pdfPage": 13,
+          "verified": true,
+          "description": "Décimas."
+        },
+        {
+          "id": "OP1B4_19",
+          "exercise": "Exercício 19 — Pizzicato for the left hand",
+          "page": 19,
+          "pdfPage": 36,
+          "verified": true,
+          "description": "Pizzicato da mão esquerda."
+        },
+        {
+          "id": "OP1B4_21",
+          "exercise": "Exercício 21 — Exercises in Harmonics",
+          "page": 21,
+          "pdfPage": 38,
+          "verified": true,
+          "description": "Harmônicos."
+        },
+        {
+          "id": "OP1B4_23",
+          "exercise": "Exercício 23 — Major Scales in Thirds",
+          "page": 23,
+          "pdfPage": 31,
+          "verified": true,
+          "description": "Escalas em terças."
         }
       ]
     }
+  },
+  "sevcikPersonalizedBooks": {
+    "principle": "HERMES não apresenta o método inteiro como currículo. Reorganiza o material público por competência/técnica e preserva a referência à fonte original.",
+    "selectionRule": "Selecionar apenas exercícios necessários para a competência, em sequência progressiva e intercalada; não assumir que o método deve ser estudado do início ao fim.",
+    "books": [
+      {
+        "id": "HSEV_OITAVAS",
+        "title": "Cordas Duplas — Oitavas",
+        "sourceMethod": "Ševčík Op.1 Livro 4",
+        "sequence": [
+          1,
+          2,
+          3
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Duplas_Oitavas.pdf",
+        "sourcePages": [
+          1,
+          8
+        ],
+        "verified": true
+      },
+      {
+        "id": "HSEV_TERCAS",
+        "title": "Cordas Duplas — Terças",
+        "sourceMethod": "Ševčík Op.1 Livro 4",
+        "sequence": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Duplas_Tercas.pdf",
+        "sourcePages": [
+          11,
+          18
+        ],
+        "verified": true
+      },
+      {
+        "id": "HSEV_QUARTAS",
+        "title": "Cordas Duplas — Quartas / cruzamentos",
+        "sourceMethod": "Ševčík Op.1 Livro 4",
+        "sequence": [
+          7
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Duplas_Tercas.pdf",
+        "sourcePages": [
+          17,
+          18
+        ],
+        "verified": true,
+        "note": "O Ex.7 trabalha segundas, terças e quartas; não há uma secção exclusiva de quartas no Op.1 Livro 4."
+      },
+      {
+        "id": "HSEV_SEXTAS",
+        "title": "Cordas Duplas — Sextas",
+        "sourceMethod": "Ševčík Op.1 Livro 4",
+        "sequence": [
+          9,
+          10
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Duplas_Sextas.pdf",
+        "sourcePages": [
+          21,
+          23
+        ],
+        "verified": true
+      },
+      {
+        "id": "HSEV_DECIMAS",
+        "title": "Cordas Duplas — Décimas",
+        "sourceMethod": "Ševčík Op.1 Livro 4",
+        "sequence": [
+          12
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Duplas_Decimas.pdf",
+        "sourcePages": [
+          26,
+          28
+        ],
+        "verified": true
+      },
+      {
+        "id": "HSEV_ARCO_BASE",
+        "title": "Arco — Base e Golpes Fundamentais",
+        "sourceMethod": "Ševčík Op.2 Livro 1",
+        "sequence": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pdf": "methods/hermes/sevcik/HERMES_Sevcik_Arco_Base.pdf",
+        "sourcePages": [
+          1,
+          15
+        ],
+        "verified": true
+      }
+    ],
+    "pendingCategories": [
+      {
+        "category": "quintas",
+        "reason": "não existe uma sequência dedicada de quintas no Op.1 Livro 4 verificado; será mapeada a partir do Op.9/Op.12 quando o acervo correspondente for indexado."
+      },
+      {
+        "category": "iniciante",
+        "reason": "Ševčík Op.1 Livro 1 ainda precisa ser incorporado ao acervo local antes da montagem do caderno personalizado de iniciação."
+      },
+      {
+        "category": "mudancas_posicao",
+        "reason": "Op.1 Livro 3 precisa de indexação por exercício antes da montagem do caderno personalizado."
+      },
+      {
+        "category": "escalas",
+        "reason": "Op.1 Livro 3/Op.8 precisam ser indexados por família de escala antes da montagem final."
+      }
+    ],
+    "sourceEvidence": [
+      "turn2search0",
+      "turn0search9",
+      "turn0search5",
+      "turn3search1"
+    ]
   }
 }
